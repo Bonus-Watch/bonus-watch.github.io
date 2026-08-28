@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Bonus Watch</title>
+<meta name="description" content="How Bonus Watch works: what it records, where the figures come from, how corrections are handled, and who pays for it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --paper:#FFFFFF; --ink:#212B26; --credit:#0E7A52;
+  --debit:#B23A31; --rule:#E9E7E1; --muted:#73726C; --gold:#B8912E;
+}
+* { box-sizing:border-box; margin:0; }
+.mono { font-family:'IBM Plex Mono',monospace; }
+a { color:var(--credit); text-decoration-thickness:1px; text-underline-offset:2px; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline:2px solid var(--credit); outline-offset:2px;
+}
+
+body {
+  background:var(--paper); color:var(--ink);
+  font-family:'IBM Plex Sans',sans-serif; font-size:17px; line-height:1.62;
+}
+.wrap { max-width:660px; margin:0 auto; padding:0 24px; }
+header { padding:64px 0 24px; border-bottom:3px double var(--ink); }
+header h1 { font-family:'Libre Caslon Text',serif; font-weight:700; font-size:clamp(2rem,6vw,3rem); }
+header p { margin-top:10px; font-family:'Libre Caslon Text',serif; font-style:italic; color:var(--muted); }
+nav { margin-top:18px; display:flex; gap:22px; font-size:.9rem; }
+nav a { color:var(--ink); }
+main { padding:34px 0 20px; }
+h2 {
+  font-family:'Libre Caslon Text',serif; font-size:1.3rem; margin:34px 0 8px;
+  padding-top:20px; border-top:1px solid var(--rule);
+}
+h2:first-of-type { border-top:none; padding-top:0; margin-top:0; }
+p + p { margin-top:12px; }
+ul { margin:10px 0 0 20px; }
+li + li { margin-top:6px; }
+.lede { font-size:1.08rem; }
+.rule {
+  margin-top:14px; padding:14px 16px; border-left:3px solid var(--credit);
+  background:#F6F9F7; font-size:.95rem;
+}
+.rule b { color:var(--ink); }
+footer { padding:30px 0 70px; font-size:.85rem; color:var(--muted);
+          border-top:1px solid var(--rule); margin-top:34px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>About Bonus Watch</h1>
+    <p>Every bonus balances somewhere.</p>
+    <nav>
+      <a href="index.html">← The register</a>
+      <a href="scale.html">The scale</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <p class="lede">Bonus Watch is a public register of executive pay awarded against
+    the cost borne by everyone else. Each entry records two things: what was
+    credited to the executive, and what was debited from the company, its staff,
+    its customers or its shareholders in the same period.</p>
+
+    <h2>What gets recorded</h2>
+    <p>An entry needs a disclosed figure and a documented offsetting cost — job
+    cuts, a share price collapse, a regulatory finding, a shareholder revolt, a
+    rescue funded from somewhere else. Large pay on its own is not the story.
+    The juxtaposition is.</p>
+    <p>The register currently holds 13 entries across
+    5 countries, totalling
+    US$1.88b converted to US dollars at approximate rates.</p>
+
+    <h2>Where the figures come from</h2>
+    <p>Every figure is drawn from a company's own disclosures — annual reports,
+    remuneration reports, proxy statements, exchange announcements — or from
+    named reporting of them. Executive pay is public information precisely so it
+    can be scrutinised. Each entry links its sources; if a figure cannot be traced
+    to one, it does not go on the register.</p>
+    <div class="rule">
+      <b>Target pay and realised pay are different numbers.</b> Where a package is
+      an award that may never fully vest, the entry says so and states the
+      realisable figure alongside it. Rounding a target up into money-in-pocket is
+      the most common error in coverage of executive pay, and this register tries
+      not to make it.
+    </div>
+
+    <h2>Fact and opinion</h2>
+    <p>The two ledger columns carry facts. The footnote beneath each entry is
+    comment — ours, clearly marked, and not to be read as an allegation of
+    fact. Where a company or executive has responded publicly, the response is
+    recorded in the entry.</p>
+
+    <h2>Corrections</h2>
+    <p>Corrections are welcome and are made quickly. If a figure here is wrong,
+    out of date, or missing context that changes its meaning, write to
+    <a href="mailto:hello@bonus.watch">hello@bonus.watch</a> with the source and it
+    will be fixed. Entries are version-controlled, so every change to the register
+    is dated and recoverable.</p>
+
+    <h2>Who runs it</h2>
+    <p>Bonus Watch is an independent project, published pseudonymously and run by
+    one person in their own time. It is not affiliated with any company, union,
+    political party, campaign or investor, and it accepts no payment from anyone
+    with an interest in what it records.</p>
+
+    <h2>How it is paid for</h2>
+    <p>It costs less to run each year than the average entry earns in a minute.
+    There is no advertising and no sponsored content. If readers choose to support
+    it, that support is acknowledged and never buys influence over what is
+    recorded or how.</p>
+
+    <h2>Reuse</h2>
+    <p>Journalists, researchers and campaigners are welcome to use the figures
+    with attribution and a link. The underlying data is available on request and
+    will be published as a downloadable dataset.</p>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Bonus Watch · <a href="index.html">the register</a> ·
+    <a href="mailto:hello@bonus.watch">hello@bonus.watch</a></p>
+  </div>
+</footer>
+</body>
+</html>

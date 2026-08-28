@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Scale — Bonus Watch</title>
+<meta name="description" content="The total credited to the executives on the Bonus Watch register, drawn to scale. Scroll right. Keep scrolling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --paper:#FFFFFF; --ink:#212B26; --credit:#0E7A52;
+  --debit:#B23A31; --rule:#E9E7E1; --muted:#73726C; --gold:#B8912E;
+}
+* { box-sizing:border-box; margin:0; }
+.mono { font-family:'IBM Plex Mono',monospace; }
+a { color:var(--credit); text-decoration-thickness:1px; text-underline-offset:2px; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline:2px solid var(--credit); outline-offset:2px;
+}
+
+html, body { height:100%; }
+body {
+  background:#FFFFFF; color:var(--ink);
+  font-family:'IBM Plex Sans',sans-serif; font-size:17px; line-height:1.5;
+  overflow-y:hidden;
+}
+.intro {
+  position:fixed; top:0; left:0; width:100vw; z-index:5;
+  padding:20px 24px 0; pointer-events:none;
+}
+.intro a, .intro .counter { pointer-events:auto; }
+.intro h1 { font-family:'Libre Caslon Text',serif; font-weight:700; font-size:1.4rem; }
+.intro h1 a { color:var(--ink); text-decoration:none; }
+.intro p { color:var(--muted); font-size:.9rem; max-width:34ch; margin-top:4px; }
+.counter {
+  display:inline-block; margin-top:14px; padding:8px 14px;
+  border:1px solid var(--rule); border-radius:3px; background:#fff;
+  font-family:'IBM Plex Mono',monospace; font-size:1rem; color:var(--credit);
+  min-width:250px;
+}
+.counter small { display:block; color:var(--muted); font-family:'IBM Plex Sans',sans-serif; font-size:.72rem; }
+.counter .people { color:var(--debit); font-size:.82rem; }
+
+.track { position:relative; width:189327px; height:100vh; }
+.bar {
+  position:absolute; top:50%; left:0; height:56px; transform:translateY(-50%);
+  width:188427px; background:var(--credit); border-radius:0 4px 4px 0;
+}
+.bar::after {
+  content:"1 pixel = US$10,000"; position:absolute; left:12px; top:-26px;
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--muted); white-space:nowrap;
+}
+.you {
+  position:absolute; top:50%; left:2px; transform:translateY(calc(-50% - 64px));
+  font-size:.78rem; color:var(--muted); white-space:nowrap;
+}
+.you b { color:var(--debit); }
+
+.marker { position:absolute; top:0; height:100%; }
+.marker-line {
+  position:absolute; top:calc(50% - 90px); height:180px; width:1px;
+  background:var(--debit); opacity:.55;
+}
+.marker-label {
+  position:absolute; left:6px; width:190px;
+  font-size:.76rem; color:var(--ink);
+}
+.marker.high .marker-label { top:calc(50% - 138px); }
+.marker.low .marker-label { top:calc(50% - 196px); }
+.marker.low .marker-line { top:calc(50% - 150px); height:240px; }
+.marker-label .mono { color:var(--debit); }
+
+.boundary { position:absolute; top:0; height:100%; }
+.boundary-tick {
+  position:absolute; top:calc(50% + 28px); height:22px; width:1px; background:var(--ink); opacity:.5;
+}
+.boundary-label {
+  position:absolute; top:calc(50% + 56px); left:-4px; width:190px;
+  font-size:.74rem; color:var(--muted);
+}
+.boundary-label b { color:var(--ink); font-weight:500; }
+
+.endpanel {
+  position:absolute; top:50%; left:188487px; transform:translateY(-50%);
+  width:560px; max-width:80vw;
+}
+.endpanel h2 { font-family:'Libre Caslon Text',serif; font-size:1.8rem; }
+.endpanel .mono { color:var(--credit); }
+.endpanel p { margin-top:12px; color:var(--muted); max-width:52ch; }
+.endpanel p b { color:var(--ink); }
+.endpanel .back { display:inline-block; margin-top:18px; }
+.notdrawn {
+  margin-top:16px; padding:12px 14px; border-left:3px solid var(--debit);
+  background:#FBF6F5; font-size:.92rem;
+}
+
+.hint {
+  position:fixed; right:24px; bottom:22px; z-index:5;
+  font-size:.85rem; color:var(--muted);
+  animation:nudge 1.6s ease-in-out infinite;
+}
+@keyframes nudge { 50% { transform:translateX(6px); } }
+@media (prefers-reduced-motion: reduce) { .hint { animation:none; } }
+@media (max-width:560px) {
+  .marker-label, .boundary-label { width:140px; }
+  .endpanel { max-width:86vw; }
+}
+</style>
+</head>
+<body>
+<div class="intro">
+  <h1><a href="index.html">← Bonus Watch</a> · The Scale</h1>
+  <p>The green bar is every dollar credited on the register, drawn to scale. Ticks mark where each person’s package ends. Scroll right.</p>
+  <div class="counter" id="counter">US$0<span class="people" id="people"></span><small>scrolled past so far</small></div>
+</div>
+
+<div class="track">
+  <div class="bar"></div>
+  <div class="you">▲ <b>You are here.</b> Most people never leave this pixel.</div>
+
+    <div class="marker high" style="left:6px">
+      <div class="marker-line"></div>
+      <div class="marker-label"><span class="mono">≈ US$60k</span><br>One year of full-time work at the median wage</div>
+    </div>
+    <div class="marker low" style="left:45px">
+      <div class="marker-line"></div>
+      <div class="marker-label"><span class="mono">≈ US$450k</span><br>A house</div>
+    </div>
+    <div class="marker high" style="left:240px">
+      <div class="marker-line"></div>
+      <div class="marker-label"><span class="mono">≈ US$2.4m</span><br>An entire 40-year career at the median wage</div>
+    </div>
+    <div class="marker low" style="left:1200px">
+      <div class="marker-line"></div>
+      <div class="marker-label"><span class="mono">≈ US$12m</span><br>Five whole working lifetimes</div>
+    </div>
+    <div class="marker high" style="left:6000px">
+      <div class="marker-line"></div>
+      <div class="marker-label"><span class="mono">≈ US$60m</span><br>A thousand years at the median wage</div>
+    </div>
+    <div class="marker low" style="left:60000px">
+      <div class="marker-line"></div>
+      <div class="marker-label"><span class="mono">≈ US$600m</span><br>Ten thousand years — longer than recorded history</div>
+    </div>
+
+    <div class="boundary" style="left:53px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Jolie Hodson</b><br>Spark · <span class="mono">NZ$886k</span></div>
+    </div>
+    <div class="boundary" style="left:1465px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Alan Joyce</b><br>Qantas · <span class="mono">A$21.4m</span></div>
+    </div>
+    <div class="boundary" style="left:3319px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Sukhinder Singh Cassidy</b><br>Xero · <span class="mono">NZ$30.9m</span></div>
+    </div>
+    <div class="boundary" style="left:5465px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Pascal Soriot</b><br>AstraZeneca · <span class="mono">£16.9m</span></div>
+    </div>
+    <div class="boundary" style="left:7815px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>21 senior executives</b><br>Thames Water · <span class="mono">£18.5m</span></div>
+    </div>
+    <div class="boundary" style="left:11085px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Dave Calhoun</b><br>Boeing · <span class="mono">US$32.7m</span></div>
+    </div>
+    <div class="boundary" style="left:15027px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Carlos Tavares</b><br>Stellantis · <span class="mono">€36.5m</span></div>
+    </div>
+    <div class="boundary" style="left:20217px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>David Zaslav</b><br>Warner Bros. Discovery · <span class="mono">US$51.9m</span></div>
+    </div>
+    <div class="boundary" style="left:29817px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Brian Niccol</b><br>Starbucks · <span class="mono">US$96m</span></div>
+    </div>
+    <div class="boundary" style="left:50347px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Hock Tan</b><br>Broadcom · <span class="mono">US$205.3m</span></div>
+    </div>
+    <div class="boundary" style="left:78427px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Niraj Shah</b><br>Wayfair · <span class="mono">US$280.8m</span></div>
+    </div>
+    <div class="boundary" style="left:188427px">
+      <div class="boundary-tick"></div>
+      <div class="boundary-label"><b>Alex Karp</b><br>Palantir · <span class="mono">US$1.1b</span></div>
+    </div>
+  <div class="endpanel">
+    <h2>End of the bar.</h2>
+    <p><span class="mono">US$1.88b</span> credited to <b>32 people</b> across the 12 entries counted so far.</p>
+    <p>That is roughly <b>31,405 years</b> of work at the median wage — about <b>785 entire careers</b>, mostly credited for one year each.</p>
+    <p>The register grows most weeks. So does this page.</p>
+<p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla. At this scale the bar would be about <b>26 km</b> of screen. Browsers refuse to draw it. So do we.</p>
+    <a class="back" href="index.html">Back to the register →</a>
+  </div>
+</div>
+
+<div class="hint" id="hint">scroll →</div>
+
+<script>
+(function () {
+  var perPx = 10000;
+  var bounds = [{"x": 53, "people": 1}, {"x": 1465, "people": 2}, {"x": 3319, "people": 3}, {"x": 5465, "people": 4}, {"x": 7815, "people": 25}, {"x": 11085, "people": 26}, {"x": 15027, "people": 27}, {"x": 20217, "people": 28}, {"x": 29817, "people": 29}, {"x": 50347, "people": 30}, {"x": 78427, "people": 31}, {"x": 188427, "people": 32}];
+  var totalPeople = 32;
+  var counter = document.getElementById('counter');
+  var peopleEl = document.getElementById('people');
+  var hint = document.getElementById('hint');
+  var small = '<small>scrolled past so far</small>';
+  function fmt(n) {
+    return 'US$' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  function update() {
+    var x = window.scrollX || document.documentElement.scrollLeft || 0;
+    var passed = 0;
+    for (var i = 0; i < bounds.length; i++) {
+      if (x >= bounds[i].x) passed = bounds[i].people;
+    }
+    counter.innerHTML = fmt(Math.min(x * perPx, 1884273600))
+      + ' <span class="people">· ' + passed + '/' + totalPeople + ' people passed</span>'
+      + small;
+    hint.style.opacity = x > 200 ? 0 : 1;
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>

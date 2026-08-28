@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>League tables — Bonus Watch</title>
+<meta name="description" content="CEO-to-median-worker pay ratios and total packages, taken from company pay ratio disclosures in SEC proxy statements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --paper:#FFFFFF; --ink:#212B26; --credit:#0E7A52;
+  --debit:#B23A31; --rule:#E9E7E1; --muted:#73726C; --gold:#B8912E;
+}
+* { box-sizing:border-box; margin:0; }
+.mono { font-family:'IBM Plex Mono',monospace; }
+a { color:var(--credit); text-decoration-thickness:1px; text-underline-offset:2px; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline:2px solid var(--credit); outline-offset:2px;
+}
+
+body {
+  background:var(--paper); color:var(--ink);
+  font-family:'IBM Plex Sans',sans-serif; font-size:17px; line-height:1.55;
+}
+.wrap { max-width:860px; margin:0 auto; padding:0 24px; }
+header { padding:60px 0 24px; border-bottom:3px double var(--ink); }
+header h1 { font-family:'Libre Caslon Text',serif; font-weight:700; font-size:clamp(2rem,6vw,3rem); }
+header p { margin-top:10px; color:var(--muted); max-width:60ch; }
+nav { margin-top:18px; display:flex; gap:22px; font-size:.9rem; }
+nav a { color:var(--ink); }
+main { padding:30px 0 10px; }
+h2 { font-family:'Libre Caslon Text',serif; font-size:1.45rem; margin:36px 0 4px; }
+h2 + p { color:var(--muted); font-size:.9rem; margin-bottom:14px; }
+table { width:100%; border-collapse:collapse; font-size:.92rem; }
+th {
+  text-align:right; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); font-weight:500; padding:0 0 8px; border-bottom:2px solid var(--ink);
+}
+th:first-child { text-align:left; }
+td { padding:11px 0; border-bottom:1px solid var(--rule); vertical-align:top; }
+td.num { text-align:right; font-variant-numeric:tabular-nums; }
+td.num:nth-child(2) { color:var(--debit); font-weight:600; }
+td.num:nth-child(3) { color:var(--credit); font-weight:600; }
+td.med { color:var(--muted); font-weight:400; }
+.co { font-weight:500; }
+.who { display:block; color:var(--muted); font-size:.82rem; font-weight:400; }
+td.src { text-align:right; font-size:.8rem; }
+td.src a { color:var(--muted); }
+.empty { color:var(--muted); font-style:italic; text-align:center; padding:26px 0; }
+.empty code { font-family:'IBM Plex Mono',monospace; font-size:.85rem; font-style:normal; }
+.method {
+  margin-top:34px; padding:16px 18px; border-left:3px solid var(--credit);
+  background:#F6F9F7; font-size:.92rem;
+}
+footer { padding:26px 0 70px; font-size:.85rem; color:var(--muted);
+          border-top:1px solid var(--rule); margin-top:32px; }
+@media (max-width:600px) {
+  td.med, th:nth-child(4) { display:none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>League tables</h1>
+    <p>Every US-listed company must disclose what it pays its chief executive
+    against what it pays its median employee. These are those disclosures,
+    ranked. 0 filings processed.</p>
+    <nav>
+      <a href="index.html">← The register</a>
+      <a href="scale.html">The scale</a>
+      <a href="league.html">League tables</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h2>Widest pay ratios</h2>
+    <p>CEO annual total compensation as a multiple of the median employee's.</p>
+    <table>
+      <thead><tr><th>Company</th><th>Ratio</th><th>CEO total</th><th>Median</th><th></th></tr></thead>
+      <tbody>
+      <tr><td colspan="5" class="empty">No filings processed yet. Run
+      <code>python scripts/fetch_edgar.py --days 30</code> to populate this table.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Largest packages</h2>
+    <p>CEO annual total compensation as disclosed in the proxy statement.</p>
+    <table>
+      <thead><tr><th>Company</th><th>Ratio</th><th>CEO total</th><th>Median</th><th></th></tr></thead>
+      <tbody>
+      <tr><td colspan="5" class="empty">No filings processed yet. Run
+      <code>python scripts/fetch_edgar.py --days 30</code> to populate this table.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="method">
+      <b>Method.</b> Figures are taken from the pay ratio disclosure each company
+      files in its annual proxy statement (SEC Form DEF 14A), where the CEO's
+      annual total compensation, the median employee's, and the ratio between
+      them are stated together. Nothing here is estimated or adjusted. Where a
+      company's stated ratio does not reconcile with its own two figures, the
+      filing is held back rather than published. Every row links to the filing.
+      <a href="data/bonus-watch.csv">Download the data (CSV)</a>.
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="wrap"><p>Bonus Watch · <a href="index.html">the register</a> ·
+  <a href="mailto:hello@bonus.watch">hello@bonus.watch</a></p></div>
+</footer>
+</body>
+</html>
