@@ -1,482 +1,321 @@
 source,date,company,executive,figure,figure_usd,pay_ratio,median_employee_usd,context,url
 register,2026-08-24,Xero,Sukhinder Singh Cassidy,NZ$30.9m,18540000,,,Share price down roughly 47% over the prior year; 70%+ of shareholders initially opposed the package.,https://www.nzherald.co.nz/business/xero-ceos-309m-pay-package-frustrates-nz-shareholders-association-on-back-of-share-price-dive/premium/FACSC6KHEBA3XHSV3J2ODXEWIM/
-register,2026-08-20,Spark,Jolie Hodson,NZ$886k,531600,,,Awarded in a year the company cut 627 staff.,https://www.nzherald.co.nz/business/spark-reports-an-inline-result-loses-another-600-staff-ceo-scores-900k-in-bonuses/premium/UQSYTVLD5VHELI7VZ2LRUQAFKE/
+register,2026-08-20,Spark,Jolie Hodson,NZ$886k,531600,,,"Awarded in a year the company cut 627 staff, taking headcount to 3,416 from 4,043 — and from 5,343 two years earlier.",https://www.nzherald.co.nz/business/spark-reports-an-inline-result-loses-another-600-staff-ceo-scores-900k-in-bonuses/premium/UQSYTVLD5VHELI7VZ2LRUQAFKE/
 register,2026-08,Telstra,Vicki Brady,A$6.8m,4488000,,,"The 8 July outage left millions unable to connect and hundreds unable to reach Triple Zero, the emergency number. Telstra cut more than 1,200 jobs in the same twelve months, against falling revenue. Further accountability measures were deferred pending an external review.",https://www.abc.net.au/news/2026-08-13/asx-markets-business-live-news/107030738
 register,2026-07,Severn Trent,James Jesic,£4.8m,6096000,,,"Around 36,000 sewage spills lasting more than 200,000 hours in 2025, and more than 300 pollution incidents in 2024, while customers face higher bills. MPs co-signed a letter urging the company to reconsider, saying it does not feel appropriate while customers face higher water bills and waterways suffer persistent sewage pollution.",https://www.birminghamworld.uk/news/this-does-not-feel-appropriate-mp-wants-rethink-over-severn-trents-increased-ceo-bonus-plans-8800356
 register,2026-06,Absa Group,Kenny Fihla,R148m (US$9m),,,,"Almost 43% of shareholders voted against the remuneration policy at the AGM. Under South African governance rules any vote of 25% or more compels the company to engage formally with dissenting investors. Shareholders objected to the size, timing and structure, given Fihla had not yet had the chance to show results.",https://www.enca.com/business-top-stories/absa-faces-investor-revolt-over-ceos-r148m-pay
-register,2026-06,Star Entertainment Group,Steve McCann,A$12.1m,7986000,,,"Strong. McCann was brought in to rescue Star from financial ruin and left after roughly 17 months. Shares were suspended, the company went through acute financial turmoil, and he negotiated converting A$300m of rescue loans to equity. The casino operator was already under regulatory pressure.",https://thenightly.com.au/business/star-entertainment-groups-mr-fix-it-steve-mccann-walks-away-from-rebuilding-efforts-c-21019001
-register,2026-05,Wayfair,Niraj Shah,US$280.8m,280800000,,,"A 990% jump in a single year, technically attached to an US$80,000 salary.",https://www.fool.com/investing/how-to-invest/top-ceos/highest-paid-ceos/
-register,2026-05,Snowy Hydro,Dennis Barnes and four senior executives,A$1.24m,818400,,,Snowy 2.0 is years overdue and its budget has gone from A$2bn to A$12bn. The board paid the bonuses despite the company missing its targets on Snowy 2.0 and on broader financial performance. Auditors subsequently found the project was not holding contractors accountable.,https://www.abc.net.au/news/2026-05-22/snowy-hydro-executives-get-million-dollar-plus-in-bonus-pay/106704734
-register,2026-04,Rivian,RJ Scaringe,US$403m,403000000,,,"Rivian has never made a profit. It sold 42,247 vehicles in the year. Directors justified the award as entirely at-risk, unlocking only on significant share price and financial improvement.",https://www.autoblog.com/news/rivian-hasnt-made-a-profit-but-paid-its-ceo-403-million
-register,2026-04,KLM,Marjan Rintel,€1.6m,1728000,,,"Awarded during the 'Back on Track' cost programme, which cuts around 250 office jobs and targets a 5% rise in labour productivity. Dutch finance minister Eelco Heinen called the payouts 'highly inappropriate' given what is being asked of staff; the FNV union cited the widening gap between executives and employees.",https://nltimes.nl/2026/04/03/klm-ceo-pay-rises-32-amid-cost-cutting-measures-job-cuts
-register,2026-03,Broadcom,Hock Tan,US$205.3m,205300000,,,"Roughly 3,400 years of work at the US median wage, credited for one.",https://www.fool.com/investing/how-to-invest/top-ceos/highest-paid-ceos/
+register,2026-05,Wayfair,Niraj Shah,US$280.8m,280800000,,,"Roughly 990 times the US$283,145 he was paid the year before, technically attached to an US$80,000 salary.",https://www.fool.com/investing/how-to-invest/top-ceos/highest-paid-ceos/
+register,2026-05,Snowy Hydro,Dennis Barnes and four senior executives,A$1.24m,818400,,,"Snowy 2.0 is years overdue and its budget has gone from A$2bn to A$12bn — a blowout of roughly A$3m a day. The bonuses were paid in September, a month before Snowy Hydro confirmed the project would exceed even the A$10bn overrun it had already acknowledged. Auditors subsequently found the project was not holding contractors accountable.",https://www.abc.net.au/news/2026-05-22/snowy-hydro-executives-get-million-dollar-plus-in-bonus-pay/106704734
+register,2026-04,Rivian,RJ Scaringe,US$403m,403000000,,,"Rivian has never made an annual profit and lost US$3.6bn in the year. It sold 42,247 vehicles. Directors justified the award as entirely at-risk, unlocking only on significant share price and financial improvement.",https://www.autoblog.com/news/rivian-hasnt-made-a-profit-but-paid-its-ceo-403-million
+register,2026-04,KLM,Marjan Rintel,€1.6m,1728000,,,"Awarded during the 'Back on Track' cost programme, which cuts around 250 office jobs and targets a 5% rise in labour productivity. Dutch finance minister Eelco Heinen called the payouts 'highly inappropriate' given what is being asked of staff and said he would raise it at the next shareholders' meeting; the state holds 5.9% of KLM and 9.1% of Air France-KLM. The FNV union cited the widening gap between executives and employees.",https://nltimes.nl/2026/04/03/klm-ceo-pay-rises-32-amid-cost-cutting-measures-job-cuts
+register,2026-03,Broadcom,Hock Tan,US$205.3m,205300000,,,"Seventy-eight times his own pay the year before, and roughly 3,400 years of work at the US median wage.",https://www.fool.com/investing/how-to-invest/top-ceos/highest-paid-ceos/
 register,2026-03,Shell,Wael Sawan,£13.8m,17526000,,,"Adjusted earnings fell 22% to US$18.5bn, from US$23.7bn. In the same announcement Shell proposed a pay policy allowing a long-term award of up to nine times salary, a further 50% increase on what the chief executive can receive.",https://www.expressandstar.com/uk-news/2026/03/12/shell-boss-wael-sawan-sees-pay-jump-almost-60-to-138m-despite-profit-fall/
 register,2026-02,Centrica (British Gas),Chris O'Shea,£3.6m,4572000,,,"Underlying earnings nearly halved, to £814m from £1.55bn. The household supply arm's earnings fell 39% to £163m, including an £80m hit from unusually warm weather.",https://uk.finance.yahoo.com/news/centrica-boss-picks-3-6m-155330082.html
 register,2025-12,ANZ,Shayne Elliott,A$7.9m,5214000,,,"ANZ agreed to pay a A$240m civil penalty to regulators for systemic failures. Nearly a third of shareholders voted against the remuneration report at the December 2025 AGM, a second strike in two years. Proxy advisers said the cuts should have gone further.",https://thenightly.com.au/business/anz-receives-second-strike-against-remuneration-report-after-nearly-one-third-of-shareholders-vote-no-c-21045392
 register,2025-12,Aimco,Wes Powell,US$6.72m,6720000,,,Awarded to retain a chief executive to wind the company up. The board approved a Plan of Sale and Liquidation in November 2025; stockholders approved a payout of US$1.45 per share.,https://www.theglobeandmail.com/investing/markets/stocks/AIV/pressreleases/36846403/aimco-restructures-ceo-pay-to-support-liquidation-plan/
 register,2025-11-06,Tesla,Elon Musk,US$1tn,1000000000000,,,"Even at the board's conservative valuation, roughly what every other S&P 500 CEO combined was paid in a year, per Glass Lewis.",https://www.cnbc.com/2025/11/06/tesla-shareholders-musk-pay.html
 register,2025-11,Dallas Area Rapid Transit,Nadine Lee,"US$72,000",72,,,"Two months earlier DART made the largest service cuts in its history, citing a shortfall of US$42-43m. Several member cities including Plano were considering withdrawing from the system. Irving mayor Rick Stopfer, a board member, opposed the bonus and cited low ridership.",https://dallasexpress.com/metroplex/dart-board-oks-60k-ceo-bonus-despite-43m-shortfall-and-cities-threatening-to-leave/
+register,2025-10,Star Entertainment Group,Steve McCann,A$9.66m,6375600,,,"Star posted a statutory net loss after tax of A$427.9m for the year, following a A$1,684.6m loss the year before. No dividend was declared or paid. More than 40% of votes were cast against the remuneration report at the AGM, a first strike, and the company conceded the pay structure was not in line with typical market practice. McCann resigned with immediate effect on 16 December 2025, about 17 months into the job.",https://www.starentertainmentgroup.com.au/wp-content/uploads/2025/10/TSEG-Annual-Report-2025.pdf
 register,2025-08,Tricolor,Daniel Chu,US$6.25m,6250000,,,"Within days of the payments more than 1,000 employees were placed on unpaid leave. The company filed for bankruptcy on 10 September 2025. The indictment alleges roughly US$800m in bogus collateral created by double-pledging assets.",https://www.cnbc.com/2025/12/17/tricolor-ceo-bonus-bankruptcy-indictment.html
-register,2025-08,UCare,Hilary Marden-Resnik,US$1.27m,1270000,,,"UCare posted a US$504m operating loss in 2024. State officials took over the nonprofit health plan in December and it moved toward shutdown, with a further 102 jobs cut as liquidation continued. The company attributed the failure to low Medicaid reimbursement rates.",https://www.startribune.com/ucare-ceo-salary-topped-1m-as-the-health-insurer-foundered/601548209
+register,2025-08,UCare,Hilary Marden-Resnik,US$1.27m,1270000,,,"UCare posted a US$504m operating loss in 2024. State officials took over the nonprofit health plan in December and it moved toward shutdown, with a further 102 jobs cut as liquidation continued; the remaining business was sold to rival Medica on 1 January. The company attributed the failure to low Medicaid reimbursement rates.",https://www.startribune.com/ucare-ceo-salary-topped-1m-as-the-health-insurer-foundered/601548209
 register,2025-05,Thames Water,21 senior executives,£18.5m,23495000,,,"Paid out of a £3bn emergency loan raised to rescue the utility from financial collapse, amid sewage spills and a possible nationalisation.",https://finance.yahoo.com/news/mps-ask-ministers-whether-recoup-184736433.html
-register,2025-04,Warner Bros. Discovery,David Zaslav,US$51.9m,51900000,,,"398 times the median WBD employee's US$130,316.",https://m.imdb.com/news/ni65229235
-register,2025-01-24,Starbucks,Brian Niccol,US$96m,96000000,,,"6,666 times the median Starbucks worker's pay, for a third of a year, ahead of announced job cuts.",https://fortune.com/2025/01/25/starbucks-ceo-brian-niccol-compensation-96-million-stock-awards-performance
-register,2024-09,The Warehouse Group,Nick Grayston,NZ$2.2m,1320000,,,"A half-year loss of NZ$23.7m driven by writedowns on Torpedo7, the outdoor goods business the company ultimately sold for NZ$1. TheMarket, its separate online site, was closed after no buyer could be found. Grayston was hired from Sears in 2016 to lift sales, shareholder returns and the online business; the tenure instead ran through restructurings, a failed consumer finance venture, asset writedowns and erratic earnings.",https://www.nzherald.co.nz/business/companies/retail/former-warehouse-boss-22m-golden-parachute/RVFWXHLXBFGG5GYRVLLZ42TP3Q/
-register,2024-04-05,Boeing,Dave Calhoun,US$32.7m,32700000,,,"Voted through months after a fuselage panel blew out mid-flight, with the stock down ~29% and a DOJ fraud review in the headlines.",https://www.cnn.com/2024/05/17/investing/boeing-shareholders-vote-to-approve-usd33-million-ceo-pay-package/index.html
-register,2024-04,Stellantis,Carlos Tavares,€36.5m,39420000,,,Awarded while the carmaker cut costs and workforce for its EV transition; both major proxy advisers recommended voting it down.,https://gulfnews.com/business/markets/stellantis-shareholders-approve-ceos-388-million-pay-package-1.1713281367443
+register,2025-04,Warner Bros. Discovery,David Zaslav,US$51.9m,51900000,,,"398 times the median WBD employee's US$130,316. Shareholders rejected the package in the advisory say-on-pay vote, 1.06bn votes to 724m.",https://m.imdb.com/news/ni65229235
+register,2025-01-24,Starbucks,Brian Niccol,US$96m,96000000,,,"6,666 times the median Starbucks worker's US$14,674, for a third of a year, ahead of announced job cuts — the widest ratio of any company in the S&P 500, per the AFL-CIO.",https://fortune.com/2025/01/25/starbucks-ceo-brian-niccol-compensation-96-million-stock-awards-performance
+register,2024-09,The Warehouse Group,Nick Grayston,NZ$2.2m,1320000,,,"A half-year loss of NZ$23.7m driven by writedowns on Torpedo7, the outdoor goods business the company sold for NZ$1 having invested NZ$52.2m in it. TheMarket, its separate online site, was closed after no buyer could be found. Grayston was hired from Sears in 2016 to lift sales, shareholder returns and the online business; the tenure instead ran through restructurings, a failed consumer finance venture, asset writedowns and erratic earnings.",https://www.nzherald.co.nz/business/companies/retail/former-warehouse-boss-22m-golden-parachute/RVFWXHLXBFGG5GYRVLLZ42TP3Q/
+register,2024-04-05,Boeing,Dave Calhoun,US$32.8m,32799999,,,"Voted through months after a fuselage panel blew out mid-flight, with the stock down ~29% and a DOJ fraud review in the headlines.",https://www.cnn.com/2024/05/17/investing/boeing-shareholders-vote-to-approve-usd33-million-ceo-pay-package/index.html
+register,2024-04,Stellantis,Carlos Tavares,€36.5m,39420000,,,"Awarded while the carmaker cut costs and workforce for its EV transition. Glass Lewis, ISS and Proxinvest all recommended voting it down; it passed on 70% support, a thinner margin than the year before.",https://gulfnews.com/business/markets/stellantis-shareholders-approve-ceos-388-million-pay-package-1.1713281367443
 register,2024-04,AstraZeneca,Pascal Soriot,£16.9m,21463000,,,Proxy adviser Glass Lewis called the proposed increase 'excessive'.,https://offtolunch.substack.com/p/massively-underpaid
 register,2023-09-20,Qantas,Alan Joyce,A$21.4m,14124000,,,"The airline had illegally sacked 1,700 ground staff and was sued for selling tickets on flights it had already cancelled.",https://fortune.com/2023/09/20/qantas-may-claw-back-9m-from-former-ceo-whose-15m-bonus-and-early-retirement-was-dubbed-the-swindle-of-the-century
 register,2021-04,Palantir,Alex Karp,US$1.1b,1100000000,,,"An 8,991% increase on the US$12.1m he was paid the year before.",https://www.benzinga.com/news/21/04/20881752/palantir-ceo-saw-compensation-rise-nearly-9-000-in-2020
-sec-def14a,2023-04-05,Hertz Global Holdings,,,182780923,4983.0,36683,,https://www.sec.gov/Archives/edgar/data/1657853/000110465923042180/0001104659-23-042180-index.htm
 sec-def14a,2025-04-28,Mercadolibre,,,13747133,1589.0,8650,,https://www.sec.gov/Archives/edgar/data/1099590/000109959025000020/0001099590-25-000020-index.htm
+sec-def14a,2018-04-02,Fresh Del Monte Produce,,,8543343,1465.0,5833,,https://www.sec.gov/Archives/edgar/data/1047340/000104734018000096/0001047340-18-000096-index.htm
+sec-def14a,2019-04-01,Fresh Del Monte Produce,,,6666331,1207.0,5525,,https://www.sec.gov/Archives/edgar/data/1047340/000104734019000122/0001047340-19-000122-index.htm
 sec-def14a,2025-04-25,Fresh Del Monte Produce,,,8857945,1112.0,7965,,https://www.sec.gov/Archives/edgar/data/1047340/000095017025058700/0000950170-25-058700-index.htm
 sec-def14a,2023-03-24,Fresh Del Monte Produce,,,6130560,1030.0,5953,,https://www.sec.gov/Archives/edgar/data/1047340/000119312523079128/0001193125-23-079128-index.htm
 sec-def14a,2022-04-27,Mercadolibre,,,16680787,1002.0,16645,,https://www.sec.gov/Archives/edgar/data/1099590/000114036122016252/0001140361-22-016252-index.htm
 sec-def14a,2021-04-29,Mercadolibre,,,21509523,977.0,22018,,https://www.sec.gov/Archives/edgar/data/1099590/000156276221000170/0001562762-21-000170-index.htm
-sec-def14a,2024-04-11,Foot Locker,,,14692625,729.0,,,https://www.sec.gov/Archives/edgar/data/850209/000143774924011696/0001437749-24-011696-index.htm
+sec-def14a,2018-05-03,Dollar Tree,,,7990500,747.0,10695,,https://www.sec.gov/Archives/edgar/data/935703/000093570318000019/0000935703-18-000019-index.htm
 sec-def14a,2024-04-26,Fresh Del Monte Produce,,,4449489,690.0,6451,,https://www.sec.gov/Archives/edgar/data/1047340/000119312524115855/0001193125-24-115855-index.htm
 sec-def14a,2024-04-25,Mercadolibre,,,9591176,677.0,14177,,https://www.sec.gov/Archives/edgar/data/1099590/000114036124022081/0001140361-24-022081-index.htm
-sec-def14a,2019-11-12,Greenbrier Companies,,,7851446,655.0,11986,,https://www.sec.gov/Archives/edgar/data/923120/000119312519289141/0001193125-19-289141-index.htm
-sec-def14a,2018-11-14,Greenbrier Companies,,,7473644,643.0,11618,,https://www.sec.gov/Archives/edgar/data/923120/000119312518326048/0001193125-18-326048-index.htm
-sec-def14a,2026-03-26,Murphy USA,,,11762101,601.0,,,https://www.sec.gov/Archives/edgar/data/1573516/000157351626000110/0001573516-26-000110-index.htm
-sec-def14a,2025-03-18,Murphy USA,,,11077176,585.0,,,https://www.sec.gov/Archives/edgar/data/1573516/000157351625000021/0001573516-25-000021-index.htm
-sec-def14a,2024-03-28,Murphy USA,,,10558129,547.0,,,https://www.sec.gov/Archives/edgar/data/1573516/000157351624000026/0001573516-24-000026-index.htm
-sec-def14a,2019-03-29,Hilton Worldwide Holdings,,,19803897,542.0,,,https://www.sec.gov/Archives/edgar/data/1585689/000119312519091400/0001193125-19-091400-index.htm
-sec-def14a,2020-05-06,BJ's Wholesale Club Holdings,,,9971163,542.0,18393,,https://www.sec.gov/Archives/edgar/data/1531152/000153115220000073/0001531152-20-000073-index.htm
-sec-def14a,2018-04-30,Mercadolibre,,,12272005,517.0,,,https://www.sec.gov/Archives/edgar/data/1099590/000114036118020335/0001140361-18-020335-index.htm
-sec-def14a,2020-10-23,Greenbrier Companies,,,6923377,510.0,13582,,https://www.sec.gov/Archives/edgar/data/923120/000119312520275534/0001193125-20-275534-index.htm
-sec-def14a,2019-04-26,Mercadolibre,,,8695232,497.0,,,https://www.sec.gov/Archives/edgar/data/1099590/000156276219000100/0001562762-19-000100-index.htm
-sec-def14a,2021-03-26,Murphy USA,,,8240299,489.0,,,https://www.sec.gov/Archives/edgar/data/1573516/000119312521095384/0001193125-21-095384-index.htm
-sec-def14a,2025-07-07,Microchip Technology,,,23925160,457.0,52376,,https://www.sec.gov/Archives/edgar/data/827054/000082705425000099/0000827054-25-000099-index.htm
-sec-def14a,2022-03-25,Murphy USA,,,8638157,453.0,,,https://www.sec.gov/Archives/edgar/data/1573516/000119312522084474/0001193125-22-084474-index.htm
-sec-def14a,2021-11-10,Greenbrier Companies,,,5586741,451.0,12394,,https://www.sec.gov/Archives/edgar/data/923120/000119312521326030/0001193125-21-326030-index.htm
-sec-def14a,2020-03-27,Murphy USA,,,7139741,434.0,,,https://www.sec.gov/Archives/edgar/data/1573516/000119312520087677/0001193125-20-087677-index.htm
+sec-def14a,2021-12-21,SMART Global Holdings,,,14810329,617.0,,,https://www.sec.gov/Archives/edgar/data/1616533/000114036121042634/0001140361-21-042634-index.htm
+sec-def14a,2026-03-26,Murphy USA,,,11762101,601.0,19571,,https://www.sec.gov/Archives/edgar/data/1573516/000157351626000110/0001573516-26-000110-index.htm
+sec-def14a,2025-03-18,Murphy USA,,,11077176,585.0,18933,,https://www.sec.gov/Archives/edgar/data/1573516/000157351625000021/0001573516-25-000021-index.htm
+sec-def14a,2019-04-24,Ulta Beauty,,,14257713,556.0,25666,,https://www.sec.gov/Archives/edgar/data/1403568/000155837019003247/0001558370-19-003247-index.htm
+sec-def14a,2024-03-28,Murphy USA,,,10558129,547.0,19314,,https://www.sec.gov/Archives/edgar/data/1573516/000157351624000026/0001573516-24-000026-index.htm
+sec-def14a,2020-02-28,Calavo Growers,,,2590186,523.0,4948,,https://www.sec.gov/Archives/edgar/data/1133470/000155837020001777/0001558370-20-001777-index.htm
+sec-def14a,2021-03-26,Murphy USA,,,8240299,489.0,16852,,https://www.sec.gov/Archives/edgar/data/1573516/000119312521095384/0001193125-21-095384-index.htm
+sec-def14a,2022-03-25,Murphy USA,,,8638157,453.0,19058,,https://www.sec.gov/Archives/edgar/data/1573516/000119312522084474/0001193125-22-084474-index.htm
+sec-def14a,2020-03-27,Murphy USA,,,7139741,434.0,16435,,https://www.sec.gov/Archives/edgar/data/1573516/000119312520087677/0001193125-20-087677-index.htm
+sec-def14a,2021-12-02,Micron Technology,,,25316709,391.0,64827,,https://www.sec.gov/Archives/edgar/data/723125/000072312521000082/0000723125-21-000082-index.htm
 sec-def14a,2023-04-28,Mercadolibre,,,8270567,383.0,21575,,https://www.sec.gov/Archives/edgar/data/1099590/000114036123021623/0001140361-23-021623-index.htm
+sec-def14a,2021-03-01,Calavo Growers,,,1888814,382.0,4948,,https://www.sec.gov/Archives/edgar/data/1133470/000155837021002151/0001558370-21-002151-index.htm
+sec-def14a,2019-02-28,Calavo Growers,,,1468667,378.0,3885,,https://www.sec.gov/Archives/edgar/data/1133470/000155837019001307/0001558370-19-001307-index.htm
 sec-def14a,2025-04-16,Ares Management,,,85381842,356.0,240000,,https://www.sec.gov/Archives/edgar/data/1176948/000162828025018040/0001628280-25-018040-index.htm
 sec-def14a,2026-04-21,Ares Management,,,68279532,346.0,197440,,https://www.sec.gov/Archives/edgar/data/1176948/000162828026026286/0001628280-26-026286-index.htm
-sec-def14a,2025-10-02,Adtalem Global Education,,,17244988,341.0,,,https://www.sec.gov/Archives/edgar/data/730464/000110465925096070/0001104659-25-096070-index.htm
-sec-def14a,2023-12-07,Costco Wholesale Corp /New,,,16870623,336.0,50202,,https://www.sec.gov/Archives/edgar/data/909832/000090983223000058/0000909832-23-000058-index.htm
+sec-def14a,2022-04-29,Ares Management,,,70842896,333.0,212902,,https://www.sec.gov/Archives/edgar/data/1176948/000162828022011250/0001628280-22-011250-index.htm
 sec-def14a,2018-04-26,Patrick Industries,,,11868689,332.0,35741,,https://www.sec.gov/Archives/edgar/data/76605/000007660518000073/0000076605-18-000073-index.htm
-sec-def14a,2018-04-27,Carrols Restaurant Group,,,3384678,300.0,,,https://www.sec.gov/Archives/edgar/data/809248/000080924818000045/0000809248-18-000045-index.htm
-sec-def14a,2025-12-04,Costco Wholesale Corp /New,,,13932597,283.0,49186,,https://www.sec.gov/Archives/edgar/data/909832/000090983225000159/0000909832-25-000159-index.htm
+sec-def14a,2022-04-08,Cvent Holding,,,21200830,306.0,69299,,https://www.sec.gov/Archives/edgar/data/1827075/000114036122013782/0001140361-22-013782-index.htm
+sec-def14a,2022-12-20,SMART Global Holdings,,,6664870,301.0,,,https://www.sec.gov/Archives/edgar/data/1616533/000114036122046358/0001140361-22-046358-index.htm
 sec-def14a,2026-04-23,Red Rock Resorts,,,13349153,283.0,47206,,https://www.sec.gov/Archives/edgar/data/1653653/000119312526173964/0001193125-26-173964-index.htm
-sec-def14a,2024-10-17,Adtalem Global Education,,,14302851,277.0,,,https://www.sec.gov/Archives/edgar/data/730464/000155837024013376/0001558370-24-013376-index.htm
-sec-def14a,2021-10-26,Nutanix,,,37990055,234.0,162283,,https://www.sec.gov/Archives/edgar/data/1618732/000114036121035457/0001140361-21-035457-index.htm
+sec-def14a,2019-12-09,Micron Technology,,,16944751,279.0,60796,,https://www.sec.gov/Archives/edgar/data/723125/000104746919006745/0001047469-19-006745-index.htm
+sec-def14a,2023-02-17,Mccormick & Co,,,10426035,269.0,38724,,https://www.sec.gov/Archives/edgar/data/63754/000130817923000045/0001308179-23-000045-index.htm
+sec-def14a,2024-02-28,Calavo Growers,,,4105826,265.0,15503,,https://www.sec.gov/Archives/edgar/data/1133470/000155837024002018/0001558370-24-002018-index.htm
+sec-def14a,2018-12-06,Micron Technology,,,14241583,252.0,56540,,https://www.sec.gov/Archives/edgar/data/723125/000072312518000142/0000723125-18-000142-index.htm
+sec-def14a,2022-07-25,Deckers Outdoor,,,10854934,250.0,43501,,https://www.sec.gov/Archives/edgar/data/910521/000091052122000024/0000910521-22-000024-index.htm
+sec-def14a,2019-12-20,SMART Global Holdings,,,6151904,248.0,,,https://www.sec.gov/Archives/edgar/data/1616533/000119312519321081/0001193125-19-321081-index.htm
+sec-def14a,2020-12-21,SMART Global Holdings,,,6779624,247.0,,,https://www.sec.gov/Archives/edgar/data/1616533/000119312520323275/0001193125-20-323275-index.htm
 sec-def14a,2020-04-09,Endurance International Group Holdings,,,9772399,226.0,43284,,https://www.sec.gov/Archives/edgar/data/1237746/000119312520102016/0001193125-20-102016-index.htm
 sec-def14a,2025-04-17,Par Technology,,,15406922,224.0,68819,,https://www.sec.gov/Archives/edgar/data/708821/000070882125000056/0000708821-25-000056-index.htm
 sec-def14a,2023-07-24,Deckers Outdoor,,,11391476,222.0,51320,,https://www.sec.gov/Archives/edgar/data/910521/000091052123000025/0000910521-23-000025-index.htm
 sec-def14a,2022-01-20,Qualcomm Inc/De,,,21091022,215.0,98200,,https://www.sec.gov/Archives/edgar/data/804328/000110465922005926/0001104659-22-005926-index.htm
-sec-def14a,2018-04-06,Dillard'S,,,4788505,215.0,22316,,https://www.sec.gov/Archives/edgar/data/28917/000104746918002625/0001047469-18-002625-index.htm
 sec-def14a,2025-07-25,Deckers Outdoor,,,10051429,198.0,50714,,https://www.sec.gov/Archives/edgar/data/910521/000091052125000030/0000910521-25-000030-index.htm
-sec-def14a,2023-10-06,Adtalem Global Education,,,8054094,197.0,,,https://www.sec.gov/Archives/edgar/data/730464/000155837023016280/0001558370-23-016280-index.htm
 sec-def14a,2019-04-09,Ares Management,,,34171163,194.0,176588,,https://www.sec.gov/Archives/edgar/data/1176948/000162828019004051/0001628280-19-004051-index.htm
 sec-def14a,2018-12-19,Navistar International,,,6923149,193.0,35951,,https://www.sec.gov/Archives/edgar/data/808450/000080845018000238/0000808450-18-000238-index.htm
 sec-def14a,2020-07-27,Deckers Outdoor,,,6748144,180.0,37407,,https://www.sec.gov/Archives/edgar/data/910521/000091052120000021/0000910521-20-000021-index.htm
-sec-def14a,2020-04-24,Carrols Restaurant Group,,,2331775,179.0,,,https://www.sec.gov/Archives/edgar/data/809248/000080924820000018/0000809248-20-000018-index.htm
+sec-def14a,2025-03-31,Core Laboratories Inc. /DE/,,,5718312,179.0,,,https://www.sec.gov/Archives/edgar/data/1958086/000095017025047865/0000950170-25-047865-index.htm
 sec-def14a,2023-03-23,CLARIVATE Plc,,,9261928,173.0,53688,,https://www.sec.gov/Archives/edgar/data/1764046/000110465923036093/0001104659-23-036093-index.htm
-sec-def14a,2022-03-11,United States Steel,,,18824816,172.0,109369,,https://www.sec.gov/Archives/edgar/data/1163302/000110465922032922/0001104659-22-032922-index.htm
-sec-def14a,2019-07-26,Deckers Outdoor,,,6466472,171.0,37799,,https://www.sec.gov/Archives/edgar/data/910521/000091052119000017/0000910521-19-000017-index.htm
 sec-def14a,2018-07-10,Monro,,,5900411,171.0,34543,,https://www.sec.gov/Archives/edgar/data/876427/000119312518215380/0001193125-18-215380-index.htm
+sec-def14a,2019-07-26,Deckers Outdoor,,,6466472,171.0,37799,,https://www.sec.gov/Archives/edgar/data/910521/000091052119000017/0000910521-19-000017-index.htm
 sec-def14a,2022-01-05,Evoqua Water Technologies,,,15660392,170.0,92260,,https://www.sec.gov/Archives/edgar/data/1604643/000119312522002643/0001193125-22-002643-index.htm
-sec-def14a,2019-12-10,Costco Wholesale Corp /New,,,8016200,169.0,47312,,https://www.sec.gov/Archives/edgar/data/909832/000090983219000027/0000909832-19-000027-index.htm
 sec-def14a,2023-03-21,C. H. Robinson Worldwide,,,10529870,168.0,,,https://www.sec.gov/Archives/edgar/data/1043277/000104327723000009/0001043277-23-000009-index.htm
 sec-def14a,2023-03-08,Interactive Brokers Group,,,14041987,167.0,83972,,https://www.sec.gov/Archives/edgar/data/1381197/000114036123010698/0001140361-23-010698-index.htm
-sec-def14a,2022-04-07,Knight-Swift Transportation Holdings,,,6281262,163.0,38549,,https://www.sec.gov/Archives/edgar/data/1492691/000149269122000017/0001492691-22-000017-index.htm
-sec-def14a,2020-04-07,White Mountains Insurance Group Ltd,,,6858274,161.0,,,https://www.sec.gov/Archives/edgar/data/776867/000110465920044181/0001104659-20-044181-index.htm
 sec-def14a,2018-07-27,Deckers Outdoor,,,6069497,160.0,37825,,https://www.sec.gov/Archives/edgar/data/910521/000091052118000025/0000910521-18-000025-index.htm
 sec-def14a,2023-04-28,Ares Management,,,34601100,157.0,220000,,https://www.sec.gov/Archives/edgar/data/1176948/000162828023014249/0001628280-23-014249-index.htm
 sec-def14a,2024-06-25,Commvault Systems,,,12107760,157.0,77215,,https://www.sec.gov/Archives/edgar/data/1169561/000116956124000070/0001169561-24-000070-index.htm
 sec-def14a,2026-04-16,Par Technology,,,14164778,156.0,91058,,https://www.sec.gov/Archives/edgar/data/708821/000070882126000048/0000708821-26-000048-index.htm
 sec-def14a,2019-03-22,Tribune Media,,,8411000,151.0,,,https://www.sec.gov/Archives/edgar/data/726513/000119312519083525/0001193125-19-083525-index.htm
 sec-def14a,2026-04-20,Bright Horizons Family Solutions,,,5303738,146.0,36251,,https://www.sec.gov/Archives/edgar/data/1437578/000119312526162582/0001193125-26-162582-index.htm
-sec-def14a,2021-03-19,Lincoln Electric Holdings,,,7077536,145.0,48913,,https://www.sec.gov/Archives/edgar/data/59527/000117120021000116/0001171200-21-000116-index.htm
 sec-def14a,2018-12-20,Ugi Corp /Pa/,,,7446659,145.0,51275,,https://www.sec.gov/Archives/edgar/data/884614/000119312518354472/0001193125-18-354472-index.htm
+sec-def14a,2021-03-19,Lincoln Electric Holdings,,,7077536,145.0,48913,,https://www.sec.gov/Archives/edgar/data/59527/000117120021000116/0001171200-21-000116-index.htm
 sec-def14a,2022-03-09,Interactive Brokers Group,,,12289397,142.0,86317,,https://www.sec.gov/Archives/edgar/data/1381197/000114036122008624/0001140361-22-008624-index.htm
-sec-def14a,2019-04-05,Dillard'S,,,3285756,141.0,23352,,https://www.sec.gov/Archives/edgar/data/28917/000104746919002014/0001047469-19-002014-index.htm
+sec-def14a,2025-04-04,Lamar Advertising Co/New,,,9360034,142.0,65680,,https://www.sec.gov/Archives/edgar/data/1090425/000119312525073398/0001193125-25-073398-index.htm
+sec-def14a,2018-04-19,Tribune Media,,,7410800,139.0,53341,,https://www.sec.gov/Archives/edgar/data/726513/000119312518121966/0001193125-18-121966-index.htm
 sec-def14a,2018-03-29,Delek US Holdings,,,12168871,137.0,88955,,https://www.sec.gov/Archives/edgar/data/1694426/000169442618000098/0001694426-18-000098-index.htm
-sec-def14a,2019-03-29,C H Robinson Worldwide,,,8558856,135.0,63270,,https://www.sec.gov/Archives/edgar/data/1043277/000114036119005961/0001140361-19-005961-index.htm
 sec-def14a,2018-04-30,Exact Sciences,,,13278504,135.0,98724,,https://www.sec.gov/Archives/edgar/data/1124140/000104746918003348/0001047469-18-003348-index.htm
 sec-def14a,2019-12-13,Ugi Corp /Pa/,,,8592760,133.0,64610,,https://www.sec.gov/Archives/edgar/data/884614/000119312519314012/0001193125-19-314012-index.htm
-sec-def14a,2023-04-14,Douglas Emmett,,,8653835,133.0,65010,,https://www.sec.gov/Archives/edgar/data/1364250/000136425023000017/0001364250-23-000017-index.htm
-sec-def14a,2024-03-12,Reynolds Consumer Products,,,8721018,133.0,65556,,https://www.sec.gov/Archives/edgar/data/1786431/000162828024010521/0001628280-24-010521-index.htm
 sec-def14a,2021-04-22,Slm,,,11398565,132.0,86090,,https://www.sec.gov/Archives/edgar/data/1032033/000119312521126787/0001193125-21-126787-index.htm
-sec-def14a,2021-04-07,White Mountains Insurance Group Ltd,,,7170628,131.0,,,https://www.sec.gov/Archives/edgar/data/776867/000110465921047536/0001104659-21-047536-index.htm
-sec-def14a,2024-01-09,Hillenbrand,,,6568880,131.0,50282,,https://www.sec.gov/Archives/edgar/data/1417398/000141739824000053/0001417398-24-000053-index.htm
-sec-def14a,2024-04-19,Ares Management,,,30576590,130.0,235000,,https://www.sec.gov/Archives/edgar/data/1176948/000162828024016964/0001628280-24-016964-index.htm
 sec-def14a,2018-03-29,C H Robinson Worldwide,,,6834187,130.0,,,https://www.sec.gov/Archives/edgar/data/1043277/000119312518100809/0001193125-18-100809-index.htm
-sec-def14a,2025-04-18,Douglas Emmett,,,9083361,128.0,71067,,https://www.sec.gov/Archives/edgar/data/1364250/000136425025000018/0001364250-25-000018-index.htm
+sec-def14a,2024-04-19,Ares Management,,,30576590,130.0,235000,,https://www.sec.gov/Archives/edgar/data/1176948/000162828024016964/0001628280-24-016964-index.htm
 sec-def14a,2018-06-21,EnerSys,,,5212943,127.0,41035,,https://www.sec.gov/Archives/edgar/data/1289308/000119312518199547/0001193125-18-199547-index.htm
-sec-def14a,2021-04-08,Knight-Swift Transportation Holdings,,,5834698,126.0,46296,,https://www.sec.gov/Archives/edgar/data/1492691/000149269121000021/0001492691-21-000021-index.htm
-sec-def14a,2025-09-16,Cintas,,,9267498,125.0,,,https://www.sec.gov/Archives/edgar/data/723254/000072325425000025/0000723254-25-000025-index.htm
-sec-def14a,2025-01-07,Hillenbrand,,,6747446,125.0,53798,,https://www.sec.gov/Archives/edgar/data/1417398/000141739825000053/0001417398-25-000053-index.htm
-sec-def14a,2024-04-19,Douglas Emmett,,,8238984,122.0,67557,,https://www.sec.gov/Archives/edgar/data/1364250/000136425024000019/0001364250-24-000019-index.htm
-sec-def14a,2025-04-29,Generac Holdings,,,9311656,122.0,,,https://www.sec.gov/Archives/edgar/data/1474735/000110465925040848/0001104659-25-040848-index.htm
-sec-def14a,2026-04-29,Generac Holdings,,,8823989,122.0,,,https://www.sec.gov/Archives/edgar/data/1474735/000110465926051499/0001104659-26-051499-index.htm
+sec-def14a,2023-10-10,Performance Food Group,,,9512305,126.0,75257,,https://www.sec.gov/Archives/edgar/data/1618673/000130817923001027/0001308179-23-001027-index.htm
 sec-def14a,2018-03-15,Equity Lifestyle Properties,,,2802220,122.0,22880,,https://www.sec.gov/Archives/edgar/data/895417/000089541718000020/0000895417-18-000020-index.htm
 sec-def14a,2022-03-18,Cna Financial,,,14246207,121.0,118091,,https://www.sec.gov/Archives/edgar/data/21175/000110465922035392/0001104659-22-035392-index.htm
-sec-def14a,2025-04-10,Eastman Kodak,,,6232547,121.0,,,https://www.sec.gov/Archives/edgar/data/31235/000114036125013170/0001140361-25-013170-index.htm
-sec-def14a,2026-04-09,Eastman Kodak,,,6824970,121.0,,,https://www.sec.gov/Archives/edgar/data/31235/000114036126013928/0001140361-26-013928-index.htm
-sec-def14a,2025-03-11,Reynolds Consumer Products,,,8642216,120.0,71749,,https://www.sec.gov/Archives/edgar/data/1786431/000162828025011946/0001628280-25-011946-index.htm
 sec-def14a,2019-06-20,EnerSys,,,5208103,119.0,43926,,https://www.sec.gov/Archives/edgar/data/1289308/000119312519177537/0001193125-19-177537-index.htm
 sec-def14a,2020-04-23,Citizens,,,4260604,119.0,35907,,https://www.sec.gov/Archives/edgar/data/24090/000119312520115950/0001193125-20-115950-index.htm
 sec-def14a,2018-04-06,Nn,,,3358210,118.0,28567,,https://www.sec.gov/Archives/edgar/data/918541/000119312518109743/0001193125-18-109743-index.htm
-sec-def14a,2020-01-23,BrightView Holdings,,,3862893,116.0,,,https://www.sec.gov/Archives/edgar/data/1734713/000110465920006314/0001104659-20-006314-index.htm
-sec-def14a,2022-04-06,White Mountains Insurance Group Ltd,,,7185569,116.0,,,https://www.sec.gov/Archives/edgar/data/776867/000110465922043173/0001104659-22-043173-index.htm
-sec-def14a,2020-03-20,Cna Financial,,,13054480,114.0,114082,,https://www.sec.gov/Archives/edgar/data/21175/000104746920001634/0001047469-20-001634-index.htm
+sec-def14a,2018-03-29,Tootsie Roll Industries,,,5506238,114.0,48490,,https://www.sec.gov/Archives/edgar/data/98677/000104746918002310/0001047469-18-002310-index.htm
+sec-def14a,2023-04-26,Big 5 Sporting Goods,,,1236241,112.0,11029,,https://www.sec.gov/Archives/edgar/data/1156388/000119312523118502/0001193125-23-118502-index.htm
+sec-def14a,2020-03-16,Strategic Education,,,7436578,111.0,,,https://www.sec.gov/Archives/edgar/data/1013934/000104746920001527/0001047469-20-001527-index.htm
 sec-def14a,2021-10-08,Adtalem Global Education,,,8528433,111.0,76663,,https://www.sec.gov/Archives/edgar/data/730464/000120677421002578/0001206774-21-002578-index.htm
 sec-def14a,2020-04-03,Summit Materials,,,6812429,110.0,61969,,https://www.sec.gov/Archives/edgar/data/1621563/000104746920002067/0001047469-20-002067-index.htm
-sec-def14a,2023-03-14,Reynolds Consumer Products,,,6805161,110.0,61612,,https://www.sec.gov/Archives/edgar/data/1786431/000162828023007881/0001628280-23-007881-index.htm
 sec-def14a,2021-03-11,Interactive Brokers Group,,,10141570,109.0,92832,,https://www.sec.gov/Archives/edgar/data/1381197/000114036121008082/0001140361-21-008082-index.htm
-sec-def14a,2023-04-06,Knight-Swift Transportation Holdings,,,6365202,107.0,59368,,https://www.sec.gov/Archives/edgar/data/1492691/000149269123000036/0001492691-23-000036-index.htm
-sec-def14a,2023-04-28,Generac Holdings,,,6819822,107.0,,,https://www.sec.gov/Archives/edgar/data/1474735/000110465923052898/0001104659-23-052898-index.htm
-sec-def14a,2023-03-31,Realty Income,,,14286815,107.0,133556,,https://www.sec.gov/Archives/edgar/data/726728/000072672823000059/0000726728-23-000059-index.htm
-sec-def14a,2025-03-31,Quaker Chemical,,,5129477,107.0,47840,,https://www.sec.gov/Archives/edgar/data/81362/000008136225000051/0000081362-25-000051-index.htm
-sec-def14a,2025-03-26,Realty Income,,,15246209,106.0,143475,,https://www.sec.gov/Archives/edgar/data/726728/000072672825000080/0000726728-25-000080-index.htm
-sec-def14a,2026-04-08,Installed Building Products,,,6596834,106.0,,,https://www.sec.gov/Archives/edgar/data/1580905/000158090526000022/0001580905-26-000022-index.htm
+sec-def14a,2024-04-05,Lamar Advertising Co/New,,,6281977,106.2,59170,,https://www.sec.gov/Archives/edgar/data/1090425/000119312524088448/0001193125-24-088448-index.htm
 sec-def14a,2023-04-26,Exact Sciences,,,14223999,105.0,135992,,https://www.sec.gov/Archives/edgar/data/1124140/000110465923049976/0001104659-23-049976-index.htm
-sec-def14a,2026-03-25,Realty Income,,,16251931,105.0,154939,,https://www.sec.gov/Archives/edgar/data/726728/000072672826000021/0000726728-26-000021-index.htm
-sec-def14a,2019-04-19,Knight-Swift Transportation Holdings,,,5186587,104.0,49965,,https://www.sec.gov/Archives/edgar/data/1492691/000149269119000019/0001492691-19-000019-index.htm
 sec-def14a,2019-04-11,Team,,,7772409,103.0,75772,,https://www.sec.gov/Archives/edgar/data/318833/000031883319000020/0000318833-19-000020-index.htm
 sec-def14a,2021-04-02,Mohawk Industries,,,3636376,103.0,35331,,https://www.sec.gov/Archives/edgar/data/851968/000119312521105161/0001193125-21-105161-index.htm
-sec-def14a,2024-04-04,White Mountains Insurance Group Ltd,,,7577001,102.0,,,https://www.sec.gov/Archives/edgar/data/776867/000110465924043314/0001104659-24-043314-index.htm
-sec-def14a,2025-04-08,Installed Building Products,,,6174107,102.0,,,https://www.sec.gov/Archives/edgar/data/1580905/000119312525075059/0001193125-25-075059-index.htm
-sec-def14a,2018-03-16,Cna Financial,,,10635782,102.0,104527,,https://www.sec.gov/Archives/edgar/data/21175/000104746918001741/0001047469-18-001741-index.htm
+sec-def14a,2023-03-31,Lamar Advertising Co/New,,,6079394,102.7,59170,,https://www.sec.gov/Archives/edgar/data/1090425/000119312523088037/0001193125-23-088037-index.htm
 sec-def14a,2019-01-22,Helmerich & Payne,,,7777164,101.6,,,https://www.sec.gov/Archives/edgar/data/46765/000104746919000189/0001047469-19-000189-index.htm
-sec-def14a,2023-04-05,White Mountains Insurance Group Ltd,,,7191754,101.0,,,https://www.sec.gov/Archives/edgar/data/776867/000110465923042136/0001104659-23-042136-index.htm
-sec-def14a,2024-04-11,Installed Building Products,,,5932174,101.0,,,https://www.sec.gov/Archives/edgar/data/1580905/000119312524092539/0001193125-24-092539-index.htm
-sec-def14a,2024-04-29,Generac Holdings,,,7099106,101.0,,,https://www.sec.gov/Archives/edgar/data/1474735/000110465924053993/0001104659-24-053993-index.htm
-sec-def14a,2020-04-09,Knight-Swift Transportation Holdings,,,4645780,100.0,46648,,https://www.sec.gov/Archives/edgar/data/1492691/000149269120000019/0001492691-20-000019-index.htm
-sec-def14a,2022-03-15,Reynolds Consumer Products,,,5940377,98.0,60746,,https://www.sec.gov/Archives/edgar/data/1786431/000156459022010373/0001564590-22-010373-index.htm
-sec-def14a,2024-04-15,Realty Income,,,13128810,98.0,134421,,https://www.sec.gov/Archives/edgar/data/726728/000072672824000063/0000726728-24-000063-index.htm
-sec-def14a,2026-03-18,Reynolds Consumer Products,,,6722725,97.0,69461,,https://www.sec.gov/Archives/edgar/data/1786431/000162828026019380/0001628280-26-019380-index.htm
-sec-def14a,2021-04-01,Spx Flow,,,5434632,96.6,56246,,https://www.sec.gov/Archives/edgar/data/1641991/000114036121011260/0001140361-21-011260-index.htm
 sec-def14a,2021-03-19,Cna Financial,,,11469174,96.0,119598,,https://www.sec.gov/Archives/edgar/data/21175/000110465921038774/0001104659-21-038774-index.htm
 sec-def14a,2020-03-11,Interactive Brokers Group,,,8365000,95.0,88028,,https://www.sec.gov/Archives/edgar/data/1381197/000114036120005511/0001140361-20-005511-index.htm
-sec-def14a,2019-03-15,Cna Financial,,,10109176,93.0,108212,,https://www.sec.gov/Archives/edgar/data/21175/000104746919001295/0001047469-19-001295-index.htm
-sec-def14a,2023-04-13,Installed Building Products,,,5331034,93.0,,,https://www.sec.gov/Archives/edgar/data/1580905/000119312523099979/0001193125-23-099979-index.htm
-sec-def14a,2025-04-16,Zillow Group,,,15695359,93.0,,,https://www.sec.gov/Archives/edgar/data/1617640/000161764025000056/0001617640-25-000056-index.htm
+sec-def14a,2018-04-27,Big 5 Sporting Goods,,,911076,93.0,9831,,https://www.sec.gov/Archives/edgar/data/1156388/000119312518138216/0001193125-18-138216-index.htm
 sec-def14a,2025-03-28,United States Lime & Minerals,,,7763583,91.0,85297,,https://www.sec.gov/Archives/edgar/data/82020/000155837025003992/0001558370-25-003992-index.htm
-sec-def14a,2018-03-29,Spx Flow,,,5580964,90.0,61851,,https://www.sec.gov/Archives/edgar/data/1641991/000164199118000019/0001641991-18-000019-index.htm
-sec-def14a,2023-01-12,Hillenbrand,,,5085452,89.0,56920,,https://www.sec.gov/Archives/edgar/data/1417398/000114036123001483/0001140361-23-001483-index.htm
-sec-def14a,2022-04-29,Rocket Pharmaceuticals,,,7918750,88.0,89525,,https://www.sec.gov/Archives/edgar/data/1281895/000114036122016941/0001140361-22-016941-index.htm
+sec-def14a,2022-04-08,Lamar Advertising Co/New,,,5934758,90.9,65264,,https://www.sec.gov/Archives/edgar/data/1090425/000119312522100319/0001193125-22-100319-index.htm
 sec-def14a,2022-04-26,Red Rock Resorts,,,3150788,87.0,36261,,https://www.sec.gov/Archives/edgar/data/1653653/000119312522118312/0001193125-22-118312-index.htm
-sec-def14a,2024-04-12,Establishment Labs Holdings,,,2422307,87.0,27913,,https://www.sec.gov/Archives/edgar/data/1688757/000168875724000049/0001688757-24-000049-index.htm
 sec-def14a,2026-03-27,United States Lime & Minerals,,,7685278,87.0,88521,,https://www.sec.gov/Archives/edgar/data/82020/000110465926036078/0001104659-26-036078-index.htm
 sec-def14a,2021-03-10,Parsons,,,8231959,86.0,96020,,https://www.sec.gov/Archives/edgar/data/275880/000156459021011902/0001564590-21-011902-index.htm
-sec-def14a,2025-04-10,Establishment Labs Holdings,,,2601271,86.0,30079,,https://www.sec.gov/Archives/edgar/data/1688757/000168875725000026/0001688757-25-000026-index.htm
 sec-def14a,2021-03-23,Century Communities,,,8399383,85.0,,,https://www.sec.gov/Archives/edgar/data/1576940/000114036121009529/0001140361-21-009529-index.htm
 sec-def14a,2019-03-21,Delek US Holdings,,,2993948,84.0,35515,,https://www.sec.gov/Archives/edgar/data/1694426/000169442619000045/0001694426-19-000045-index.htm
 sec-def14a,2020-04-28,Slm,,,6062247,84.0,72550,,https://www.sec.gov/Archives/edgar/data/1032033/000119312520123160/0001193125-20-123160-index.htm
 sec-def14a,2024-04-18,Red Rock Resorts,,,3480037,84.0,41584,,https://www.sec.gov/Archives/edgar/data/1653653/000119312524100754/0001193125-24-100754-index.htm
+sec-def14a,2020-04-17,Lamar Advertising Co/New,,,4966110,83.4,59550,,https://www.sec.gov/Archives/edgar/data/1090425/000119312520110644/0001193125-20-110644-index.htm
+sec-def14a,2022-03-14,Strategic Education,,,6211379,83.0,,,https://www.sec.gov/Archives/edgar/data/1013934/000110465922033305/0001104659-22-033305-index.htm
 sec-def14a,2023-04-28,Red Rock Resorts,,,3259074,83.0,39364,,https://www.sec.gov/Archives/edgar/data/1653653/000119312523124515/0001193125-23-124515-index.htm
 sec-def14a,2020-04-20,Trico Bancshares /,,,4692366,81.0,57673,,https://www.sec.gov/Archives/edgar/data/356171/000035617120000032/0000356171-20-000032-index.htm
-sec-def14a,2025-04-03,Knight-Swift Transportation Holdings,,,4798814,81.0,59621,,https://www.sec.gov/Archives/edgar/data/1492691/000149269125000029/0001492691-25-000029-index.htm
+sec-def14a,2024-08-13,3D Systems,,,6535630,81.0,80353,,https://www.sec.gov/Archives/edgar/data/910638/000119312524199863/0001193125-24-199863-index.htm
+sec-def14a,2021-02-26,Kaman,,,6791841,80.0,,,https://www.sec.gov/Archives/edgar/data/54381/000005438121000018/0000054381-21-000018-index.htm
 sec-def14a,2022-04-28,Slm,,,7047062,80.0,88566,,https://www.sec.gov/Archives/edgar/data/1032033/000119312522127696/0001193125-22-127696-index.htm
 sec-def14a,2022-04-22,Bruker,,,5594539,80.0,70004,,https://www.sec.gov/Archives/edgar/data/1109354/000119312522115070/0001193125-22-115070-index.htm
 sec-def14a,2018-03-22,Heritage-Crystal Clean,,,4631867,79.0,58475,,https://www.sec.gov/Archives/edgar/data/1403431/000140343118000031/0001403431-18-000031-index.htm
 sec-def14a,2019-04-26,Slm,,,6187641,78.0,79408,,https://www.sec.gov/Archives/edgar/data/1032033/000119312519122463/0001193125-19-122463-index.htm
-sec-def14a,2020-04-03,Dillard'S,,,1928268,78.0,24631,,https://www.sec.gov/Archives/edgar/data/28917/000110465920043143/0001104659-20-043143-index.htm
 sec-def14a,2025-04-23,Red Rock Resorts,,,3330623,78.0,42864,,https://www.sec.gov/Archives/edgar/data/1653653/000119312525091346/0001193125-25-091346-index.htm
 sec-def14a,2025-03-31,Genie Energy Ltd.,,,3473746,78.0,44437,,https://www.sec.gov/Archives/edgar/data/1528356/000101376225004445/0001013762-25-004445-index.htm
 sec-def14a,2018-04-27,Quorum Health,,,3233350,77.0,41792,,https://www.sec.gov/Archives/edgar/data/1650445/000119312518138813/0001193125-18-138813-index.htm
 sec-def14a,2019-04-04,Summit Materials,,,4689562,76.0,61599,,https://www.sec.gov/Archives/edgar/data/1621563/000104746919001956/0001047469-19-001956-index.htm
+sec-def14a,2021-01-05,Evoqua Water Technologies,,,5657314,76.0,74540,,https://www.sec.gov/Archives/edgar/data/1604643/000119312521001981/0001193125-21-001981-index.htm
 sec-def14a,2021-12-16,Ugi Corp /Pa/,,,4775921,75.0,63449,,https://www.sec.gov/Archives/edgar/data/884614/000119312521359267/0001193125-21-359267-index.htm
 sec-def14a,2023-05-25,Snowflake,,,23687578,75.0,314471,,https://www.sec.gov/Archives/edgar/data/1640147/000164014723000082/0001640147-23-000082-index.htm
-sec-def14a,2024-01-18,StoneX Group,,,6518006,75.0,87457,,https://www.sec.gov/Archives/edgar/data/913760/000091376024000007/0000913760-24-000007-index.htm
+sec-def14a,2023-03-13,Strategic Education,,,5486086,75.0,,,https://www.sec.gov/Archives/edgar/data/1013934/000110465923031757/0001104659-23-031757-index.htm
 sec-def14a,2026-04-23,EverQuote,,,9209231,75.0,122786,,https://www.sec.gov/Archives/edgar/data/1640428/000119312526173669/0001193125-26-173669-index.htm
-sec-def14a,2018-04-10,White Mountains Insurance Group Ltd,,,6633124,75.0,,,https://www.sec.gov/Archives/edgar/data/776867/000110465918023265/0001104659-18-023265-index.htm
 sec-def14a,2022-12-23,Evoqua Water Technologies,,,6001562,74.0,81465,,https://www.sec.gov/Archives/edgar/data/1604643/000119312522311797/0001193125-22-311797-index.htm
-sec-def14a,2026-03-31,Quaker Chemical,,,3709451,74.0,,,https://www.sec.gov/Archives/edgar/data/81362/000162828026022236/0001628280-26-022236-index.htm
+sec-def14a,2020-01-15,TFS Financial,,,4749066,73.47,64639,,https://www.sec.gov/Archives/edgar/data/1381668/000138166820000003/0001381668-20-000003-index.htm
 sec-def14a,2026-04-15,Rex American Resources,,,5275200,73.4,71880,,https://www.sec.gov/Archives/edgar/data/744187/000093041326001049/0000930413-26-001049-index.htm
-sec-def14a,2020-03-24,Century Communities,,,8890824,73.0,,,https://www.sec.gov/Archives/edgar/data/1576940/000114036120006622/0001140361-20-006622-index.htm
-sec-def14a,2026-04-02,Knight-Swift Transportation Holdings,,,5011329,73.0,68556,,https://www.sec.gov/Archives/edgar/data/1492691/000149269126000025/0001492691-26-000025-index.htm
-sec-def14a,2026-04-24,Pegasystems,,,8332032,73.0,113833,,https://www.sec.gov/Archives/edgar/data/1013857/000101385726000031/0001013857-26-000031-index.htm
 sec-def14a,2018-05-25,Ennis,,,3406042,73.0,46820,,https://www.sec.gov/Archives/edgar/data/33002/000119312518174589/0001193125-18-174589-index.htm
-sec-def14a,2023-03-24,Murphy Oil,,,187969,72.0,,,https://www.sec.gov/Archives/edgar/data/717423/000119312523078459/0001193125-23-078459-index.htm
-sec-def14a,2018-04-30,Liveperson,,,5329620,72.0,74526,,https://www.sec.gov/Archives/edgar/data/1102993/000110299318000057/0001102993-18-000057-index.htm
+sec-def14a,2020-03-24,Century Communities,,,8890824,73.0,,,https://www.sec.gov/Archives/edgar/data/1576940/000114036120006622/0001140361-20-006622-index.htm
+sec-def14a,2023-04-05,3D Systems,,,5687163,72.0,79267,,https://www.sec.gov/Archives/edgar/data/910638/000119312523091651/0001193125-23-091651-index.htm
+sec-def14a,2024-03-11,Strategic Education,,,5436430,72.0,,,https://www.sec.gov/Archives/edgar/data/1013934/000110465924032963/0001104659-24-032963-index.htm
 sec-def14a,2019-01-08,TFS Financial,,,4448818,71.22,62468,,https://www.sec.gov/Archives/edgar/data/1381668/000138166819000004/0001381668-19-000004-index.htm
-sec-def14a,2020-04-28,Armstrong World Industries,,,5030560,71.0,,,https://www.sec.gov/Archives/edgar/data/7431/000119312520123201/0001193125-20-123201-index.htm
-sec-def14a,2023-04-11,Apa,,,13802119,71.0,194571,,https://www.sec.gov/Archives/edgar/data/1841666/000119312523097278/0001193125-23-097278-index.htm
-sec-def14a,2024-03-21,Murphy Oil,,,189710,70.0,,,https://www.sec.gov/Archives/edgar/data/717423/000119312524073238/0001193125-24-073238-index.htm
+sec-def14a,2025-03-10,Strategic Education,,,5508734,70.0,,,https://www.sec.gov/Archives/edgar/data/1013934/000110465925022148/0001104659-25-022148-index.htm
 sec-def14a,2026-01-14,TFS Financial,,,5208728,70.0,74055,,https://www.sec.gov/Archives/edgar/data/1381668/000138166826000002/0001381668-26-000002-index.htm
-sec-def14a,2021-04-28,Armstrong World Industries,,,5233588,69.0,,,https://www.sec.gov/Archives/edgar/data/7431/000119312521134720/0001193125-21-134720-index.htm
 sec-def14a,2022-01-12,TFS Financial,,,4751324,69.0,68608,,https://www.sec.gov/Archives/edgar/data/1381668/000138166822000007/0001381668-22-000007-index.htm
-sec-def14a,2026-04-01,White Mountains Insurance Group Ltd,,,8064309,69.0,,,https://www.sec.gov/Archives/edgar/data/776867/000110465926038487/0001104659-26-038487-index.htm
-sec-def14a,2023-04-12,First Bancshares Inc /Ms/,,,3079429,68.47,,,https://www.sec.gov/Archives/edgar/data/947559/000110465923044265/0001104659-23-044265-index.htm
-sec-def14a,2022-03-25,Murphy Oil,,,170735,67.0,,,https://www.sec.gov/Archives/edgar/data/717423/000119312522084487/0001193125-22-084487-index.htm
-sec-def14a,2023-04-28,Rocket Pharmaceuticals,,,6553203,67.0,97260,,https://www.sec.gov/Archives/edgar/data/1281895/000114036123021702/0001140361-23-021702-index.htm
-sec-def14a,2025-04-23,Confluent,,,15105701,67.0,225146,,https://www.sec.gov/Archives/edgar/data/1699838/000095017025057394/0000950170-25-057394-index.htm
+sec-def14a,2026-03-11,Strategic Education,,,5694473,69.0,,,https://www.sec.gov/Archives/edgar/data/1013934/000110465926026380/0001104659-26-026380-index.htm
+sec-def14a,2020-04-21,Ares Management,,,12665722,68.0,185000,,https://www.sec.gov/Archives/edgar/data/1176948/000162828020005199/0001628280-20-005199-index.htm
 sec-def14a,2018-04-17,Bruker,,,4872009,67.0,72517,,https://www.sec.gov/Archives/edgar/data/1109354/000104746918002886/0001047469-18-002886-index.htm
+sec-def14a,2020-12-18,Beazer Homes Usa,,,7085878,67.0,106024,,https://www.sec.gov/Archives/edgar/data/915840/000091584020000127/0000915840-20-000127-index.htm
 sec-def14a,2021-01-15,TFS Financial,,,4729853,66.76,70846,,https://www.sec.gov/Archives/edgar/data/1381668/000138166821000010/0001381668-21-000010-index.htm
+sec-def14a,2018-03-29,National General Holdings,,,3523270,66.0,53355,,https://www.sec.gov/Archives/edgar/data/1578735/000119312518101990/0001193125-18-101990-index.htm
 sec-def14a,2021-04-22,Red Rock Resorts,,,2442109,66.0,36904,,https://www.sec.gov/Archives/edgar/data/1653653/000119312521126921/0001193125-21-126921-index.htm
 sec-def14a,2023-01-11,TFS Financial,,,4629883,66.0,70559,,https://www.sec.gov/Archives/edgar/data/1381668/000138166823000006/0001381668-23-000006-index.htm
 sec-def14a,2024-01-10,TFS Financial,,,4819359,66.0,72629,,https://www.sec.gov/Archives/edgar/data/1381668/000138166824000007/0001381668-24-000007-index.htm
-sec-def14a,2024-04-04,Knight-Swift Transportation Holdings,,,4457450,66.0,67318,,https://www.sec.gov/Archives/edgar/data/1492691/000149269124000047/0001492691-24-000047-index.htm
-sec-def14a,2018-03-29,National General Holdings,,,3523270,66.0,53355,,https://www.sec.gov/Archives/edgar/data/1578735/000119312518101990/0001193125-18-101990-index.htm
 sec-def14a,2023-03-31,Aaon,,,3401462,65.49,51936,,https://www.sec.gov/Archives/edgar/data/824142/000082414223000084/0000824142-23-000084-index.htm
 sec-def14a,2020-04-22,Bruker,,,4909641,64.0,76488,,https://www.sec.gov/Archives/edgar/data/1109354/000104746920002510/0001047469-20-002510-index.htm
+sec-def14a,2022-12-21,Beazer Homes Usa,,,7038727,64.0,110862,,https://www.sec.gov/Archives/edgar/data/915840/000091584022000078/0000915840-22-000078-index.htm
 sec-def14a,2025-01-10,TFS Financial,,,4650050,64.0,72461,,https://www.sec.gov/Archives/edgar/data/1381668/000138166825000002/0001381668-25-000002-index.htm
-sec-def14a,2018-04-03,Mb Financial Inc /Md,,,4105837,64.0,,,https://www.sec.gov/Archives/edgar/data/1139812/000113981218000019/0001139812-18-000019-index.htm
 sec-def14a,2019-04-29,Red Rock Resorts,,,1957906,63.0,31047,,https://www.sec.gov/Archives/edgar/data/1653653/000119312519125551/0001193125-19-125551-index.htm
 sec-def14a,2020-04-22,Red Rock Resorts,,,1954803,63.0,31003,,https://www.sec.gov/Archives/edgar/data/1653653/000119312520115167/0001193125-20-115167-index.htm
+sec-def14a,2023-12-21,Beazer Homes Usa,,,6703471,63.0,107195,,https://www.sec.gov/Archives/edgar/data/915840/000091584023000086/0000915840-23-000086-index.htm
+sec-def14a,2021-04-09,Lamar Advertising Co/New,,,3912660,62.1,62978,,https://www.sec.gov/Archives/edgar/data/1090425/000119312521111642/0001193125-21-111642-index.htm
+sec-def14a,2019-04-30,Santander Consumer USA Holdings,,,3260064,62.0,52992,,https://www.sec.gov/Archives/edgar/data/1580608/000119312519129290/0001193125-19-129290-index.htm
 sec-def14a,2023-08-28,Avid Bioservices,,,6461784,62.0,104595,,https://www.sec.gov/Archives/edgar/data/704562/000168316823006115/0001683168-23-006115-index.htm
-sec-def14a,2026-04-23,Granite Construction,,,159401,62.0,,,https://www.sec.gov/Archives/edgar/data/861459/000086145926000012/0000861459-26-000012-index.htm
-sec-def14a,2024-08-01,Inter Parfums,,,4432417,61.33,72274,,https://www.sec.gov/Archives/edgar/data/822663/000175392624001312/0001753926-24-001312-index.htm
+sec-def14a,2026-04-23,Granite Construction,,,9861425,62.0,159401,,https://www.sec.gov/Archives/edgar/data/861459/000086145926000012/0000861459-26-000012-index.htm
 sec-def14a,2021-04-20,Bruker,,,4081963,61.0,67128,,https://www.sec.gov/Archives/edgar/data/1109354/000119312521122904/0001193125-21-122904-index.htm
 sec-def14a,2025-04-25,Rex American Resources,,,4237352,60.3,70294,,https://www.sec.gov/Archives/edgar/data/744187/000093041325001442/0000930413-25-001442-index.htm
-sec-def14a,2021-03-30,Tradeweb Markets,,,203964,60.0,,,https://www.sec.gov/Archives/edgar/data/1758730/000119312521098639/0001193125-21-098639-index.htm
-sec-def14a,2019-05-21,Armstrong World Industries,,,4730319,59.0,,,https://www.sec.gov/Archives/edgar/data/7431/000119312519152750/0001193125-19-152750-index.htm
+sec-def14a,2021-03-15,Strategic Education,,,4623700,60.0,,,https://www.sec.gov/Archives/edgar/data/1013934/000110465921036236/0001104659-21-036236-index.htm
+sec-def14a,2021-03-30,Tradeweb Markets,,,12312994,60.0,203964,,https://www.sec.gov/Archives/edgar/data/1758730/000119312521098639/0001193125-21-098639-index.htm
 sec-def14a,2023-03-30,United States Lime & Minerals,,,4170448,59.0,70170,,https://www.sec.gov/Archives/edgar/data/82020/000155837023004996/0001558370-23-004996-index.htm
-sec-def14a,2026-04-24,Zeta Global Holdings,,,6083236,59.0,102694,,https://www.sec.gov/Archives/edgar/data/1851003/000119312526177408/0001193125-26-177408-index.htm
-sec-def14a,2018-04-27,Prgx Global,,,2424468,59.0,,,https://www.sec.gov/Archives/edgar/data/1007330/000119312518138993/0001193125-18-138993-index.htm
-sec-def14a,2022-04-20,Ionis Pharmaceuticals,,,226222,58.0,,,https://www.sec.gov/Archives/edgar/data/874015/000114036122015116/0001140361-22-015116-index.htm
-sec-def14a,2023-12-14,Bellring Brands,,,6801904,58.0,117466,,https://www.sec.gov/Archives/edgar/data/1772016/000119312523295049/0001193125-23-295049-index.htm
 sec-def14a,2018-02-26,Fastenal,,,2039356,58.0,34967,,https://www.sec.gov/Archives/edgar/data/815556/000081555618000013/0000815556-18-000013-index.htm
-sec-def14a,2021-04-09,Neurocrine Biosciences,,,241848,57.0,,,https://www.sec.gov/Archives/edgar/data/914475/000119312521111693/0001193125-21-111693-index.htm
+sec-def14a,2022-04-20,Ionis Pharmaceuticals,,,13305673,58.0,226222,,https://www.sec.gov/Archives/edgar/data/874015/000114036122015116/0001140361-22-015116-index.htm
+sec-def14a,2023-12-14,Bellring Brands,,,6801904,58.0,117466,,https://www.sec.gov/Archives/edgar/data/1772016/000119312523295049/0001193125-23-295049-index.htm
+sec-def14a,2021-04-09,Neurocrine Biosciences,,,13880632,57.0,241848,,https://www.sec.gov/Archives/edgar/data/914475/000119312521111693/0001193125-21-111693-index.htm
+sec-def14a,2022-12-19,Moog,,,4030668,57.0,71151,,https://www.sec.gov/Archives/edgar/data/67887/000006788722000169/0000067887-22-000169-index.htm
 sec-def14a,2022-03-02,Parsons,,,5485561,56.0,98718,,https://www.sec.gov/Archives/edgar/data/275880/000156459022008267/0001564590-22-008267-index.htm
-sec-def14a,2025-12-22,Beazer Homes Usa,,,112819,56.0,,,https://www.sec.gov/Archives/edgar/data/915840/000091584025000095/0000915840-25-000095-index.htm
+sec-def14a,2025-12-22,Beazer Homes Usa,,,6367213,56.0,112819,,https://www.sec.gov/Archives/edgar/data/915840/000091584025000095/0000915840-25-000095-index.htm
 sec-def14a,2026-04-09,Apa,,,13202517,56.0,237527,,https://www.sec.gov/Archives/edgar/data/1841666/000119312526149453/0001193125-26-149453-index.htm
 sec-def14a,2022-03-31,Aaon,,,2912108,55.72,52267,,https://www.sec.gov/Archives/edgar/data/824142/000082414222000081/0000824142-22-000081-index.htm
-sec-def14a,2024-04-10,First Bancshares Inc /Ms/,,,2426148,55.17,,,https://www.sec.gov/Archives/edgar/data/947559/000110465924045454/0001104659-24-045454-index.htm
 sec-def14a,2019-04-25,Citizens,,,1990599,55.0,36286,,https://www.sec.gov/Archives/edgar/data/24090/000119312519118198/0001193125-19-118198-index.htm
-sec-def14a,2025-04-04,Alpha Metallurgical Resources,,,4945893,54.3,,,https://www.sec.gov/Archives/edgar/data/1704715/000114036125012165/0001140361-25-012165-index.htm
-sec-def14a,2019-08-15,Aar,,,3345147,54.0,,,https://www.sec.gov/Archives/edgar/data/1750/000120677419002678/0001206774-19-002678-index.htm
-sec-def14a,2021-04-16,Atlas Air Worldwide Holdings,,,6099551,54.0,113374,,https://www.sec.gov/Archives/edgar/data/1135185/000104746921000964/0001047469-21-000964-index.htm
-sec-def14a,2026-01-26,StoneX Group,,,5004047,53.0,95131,,https://www.sec.gov/Archives/edgar/data/913760/000091376026000006/0000913760-26-000006-index.htm
-sec-def14a,2020-03-27,Great Southern Bancorp,,,1577521,52.0,,,https://www.sec.gov/Archives/edgar/data/854560/000092708920000201/0000927089-20-000201-index.htm
+sec-def14a,2020-04-03,Covanta Holding,,,5524159,54.0,102569,,https://www.sec.gov/Archives/edgar/data/225648/000022564820000089/0000225648-20-000089-index.htm
+sec-def14a,2021-12-21,Beazer Homes Usa,,,5515019,54.0,99020,,https://www.sec.gov/Archives/edgar/data/915840/000091584021000097/0000915840-21-000097-index.htm
 sec-def14a,2018-03-06,Kirby,,,4381150,52.0,,,https://www.sec.gov/Archives/edgar/data/56047/000119312518072089/0001193125-18-072089-index.htm
 sec-def14a,2019-04-17,Bruker,,,4479898,51.0,87097,,https://www.sec.gov/Archives/edgar/data/1109354/000104746919002320/0001047469-19-002320-index.htm
+sec-def14a,2019-12-20,Beazer Homes Usa,,,5190140,51.0,101513,,https://www.sec.gov/Archives/edgar/data/915840/000091584019000088/0000915840-19-000088-index.htm
 sec-def14a,2022-03-25,United States Lime & Minerals,,,3589400,51.0,70851,,https://www.sec.gov/Archives/edgar/data/82020/000155837022004375/0001558370-22-004375-index.htm
-sec-def14a,2025-03-28,Murphy Oil,,,202161,51.0,,,https://www.sec.gov/Archives/edgar/data/717423/000119312525066248/0001193125-25-066248-index.htm
 sec-def14a,2019-04-18,Trico Bancshares /,,,3279918,50.0,65539,,https://www.sec.gov/Archives/edgar/data/356171/000119312519110946/0001193125-19-110946-index.htm
 sec-def14a,2020-04-09,Team,,,3723974,50.0,73895,,https://www.sec.gov/Archives/edgar/data/318833/000031883320000034/0000318833-20-000034-index.htm
 sec-def14a,2020-04-28,Craft Brew Alliance,,,2803560,50.0,55956,,https://www.sec.gov/Archives/edgar/data/892222/000089222220000039/0000892222-20-000039-index.htm
-sec-def14a,2018-04-30,Armstrong World Industries,,,3679491,50.0,,,https://www.sec.gov/Archives/edgar/data/7431/000119312518142850/0001193125-18-142850-index.htm
 sec-def14a,2025-04-23,Impinj,,,10234811,48.8,209876,,https://www.sec.gov/Archives/edgar/data/1114995/000095017025057451/0000950170-25-057451-index.htm
-sec-def14a,2021-04-06,First Industrial Realty Trust,,,121533,48.0,,,https://www.sec.gov/Archives/edgar/data/921825/000119312521107626/0001193125-21-107626-index.htm
+sec-def14a,2018-04-24,Fti Consulting,,,5339948,48.0,,,https://www.sec.gov/Archives/edgar/data/887936/000119312518127754/0001193125-18-127754-index.htm
 sec-def14a,2021-03-26,United States Lime & Minerals,,,3096841,48.0,64789,,https://www.sec.gov/Archives/edgar/data/82020/000155837021003537/0001558370-21-003537-index.htm
-sec-def14a,2022-05-05,Pure Storage,,,204641,48.0,,,https://www.sec.gov/Archives/edgar/data/1474432/000162828022012667/0001628280-22-012667-index.htm
 sec-def14a,2024-04-26,AdvanSix,,,4718496,48.0,,,https://www.sec.gov/Archives/edgar/data/1673985/000167398524000055/0001673985-24-000055-index.htm
-sec-def14a,2018-04-24,Fti Consulting,,,110565,48.0,,,https://www.sec.gov/Archives/edgar/data/887936/000119312518127754/0001193125-18-127754-index.htm
 sec-def14a,2022-04-29,10x Genomics,,,11700985,47.0,246380,,https://www.sec.gov/Archives/edgar/data/1770787/000177078722000022/0001770787-22-000022-index.htm
-sec-def14a,2024-03-28,Great Southern Bancorp,,,1779242,47.0,,,https://www.sec.gov/Archives/edgar/data/854560/000117494724000448/0001174947-24-000448-index.htm
-sec-def14a,2023-03-31,Overstock.Com,,,2948959,46.57,63326,,https://www.sec.gov/Archives/edgar/data/1130713/000114036123015035/0001140361-23-015035-index.htm
-sec-def14a,2021-05-06,Okta,,,12131012,46.0,265001,,https://www.sec.gov/Archives/edgar/data/1660134/000114036121016185/0001140361-21-016185-index.htm
-sec-def14a,2026-03-31,Great Southern Bancorp,,,1815277,46.0,,,https://www.sec.gov/Archives/edgar/data/854560/000207709626000017/0002077096-26-000017-index.htm
+sec-def14a,2021-05-06,Okta,,,12131012,46.0,258687,,https://www.sec.gov/Archives/edgar/data/1660134/000114036121016185/0001140361-21-016185-index.htm
 sec-def14a,2026-04-17,Corcept Therapeutics,,,15303551,46.0,334040,,https://www.sec.gov/Archives/edgar/data/1088856/000162828026025735/0001628280-26-025735-index.htm
 sec-def14a,2025-10-30,Idt,,,1479253,45.9,32225,,https://www.sec.gov/Archives/edgar/data/1005731/000149315225020225/0001493152-25-020225-index.htm
-sec-def14a,2019-03-19,Piedmont Office Realty Trust,,,5081683,45.4,111817,,https://www.sec.gov/Archives/edgar/data/1042776/000117494719000390/0001174947-19-000390-index.htm
-sec-def14a,2018-10-15,HomeTrust Bancshares,,,2496788,45.1,,,https://www.sec.gov/Archives/edgar/data/1538263/000092708918000372/0000927089-18-000372-index.htm
-sec-def14a,2022-03-31,Great Southern Bancorp,,,1577503,45.0,,,https://www.sec.gov/Archives/edgar/data/854560/000110465922040794/0001104659-22-040794-index.htm
-sec-def14a,2023-12-18,Surmodics,,,3527263,45.0,79129,,https://www.sec.gov/Archives/edgar/data/924717/000095017023071078/0000950170-23-071078-index.htm
-sec-def14a,2024-12-20,Beazer Homes Usa,,,120088,44.0,,,https://www.sec.gov/Archives/edgar/data/915840/000091584024000126/0000915840-24-000126-index.htm
-sec-def14a,2018-03-27,Great Southern Bancorp,,,1250110,44.0,,,https://www.sec.gov/Archives/edgar/data/854560/000092708918000143/0000927089-18-000143-index.htm
-sec-def14a,2025-07-28,Interparfums,,,3596750,43.06,83526,,https://www.sec.gov/Archives/edgar/data/822663/000175392625001189/0001753926-25-001189-index.htm
-sec-def14a,2023-04-17,Trico Bancshares /,,,3243899,43.0,75586,,https://www.sec.gov/Archives/edgar/data/356171/000035617123000020/0000356171-23-000020-index.htm
-sec-def14a,2024-12-19,Surmodics,,,3665496,43.0,85880,,https://www.sec.gov/Archives/edgar/data/924717/000095017024138240/0000950170-24-138240-index.htm
+sec-def14a,2018-10-15,HomeTrust Bancshares,,,1685028,45.1,,,https://www.sec.gov/Archives/edgar/data/1538263/000092708918000372/0000927089-18-000372-index.htm
+sec-def14a,2024-12-20,Beazer Homes Usa,,,5296988,44.0,120088,,https://www.sec.gov/Archives/edgar/data/915840/000091584024000126/0000915840-24-000126-index.htm
 sec-def14a,2024-04-25,American Vanguard,,,2509773,43.0,58240,,https://www.sec.gov/Archives/edgar/data/5981/000095017024048460/0000950170-24-048460-index.htm
-sec-def14a,2026-04-14,Lemaitre Vascular,,,3780990,43.0,88782,,https://www.sec.gov/Archives/edgar/data/1158895/000119312526153877/0001193125-26-153877-index.htm
 sec-def14a,2026-04-20,Barrett Business Services,,,5002291,43.0,116593,,https://www.sec.gov/Archives/edgar/data/902791/000119312526163963/0001193125-26-163963-index.htm
 sec-def14a,2020-04-29,Intersect ENT,,,7560012,42.0,181575,,https://www.sec.gov/Archives/edgar/data/1271214/000119312520126091/0001193125-20-126091-index.htm
-sec-def14a,2021-12-20,Surmodics,,,2938269,42.0,69207,,https://www.sec.gov/Archives/edgar/data/924717/000156459021060734/0001564590-21-060734-index.htm
 sec-def14a,2022-12-21,Bellring Brands,,,5046013,42.0,118926,,https://www.sec.gov/Archives/edgar/data/1772016/000119312522310044/0001193125-22-310044-index.htm
-sec-def14a,2023-03-31,Great Southern Bancorp,,,1598535,42.0,,,https://www.sec.gov/Archives/edgar/data/854560/000117494723000453/0001174947-23-000453-index.htm
-sec-def14a,2026-03-31,Alpha Metallurgical Resources,,,4167842,41.7,,,https://www.sec.gov/Archives/edgar/data/1704715/000114036126012338/0001140361-26-012338-index.htm
 sec-def14a,2019-04-02,Aaon,,,1946466,41.54,46852,,https://www.sec.gov/Archives/edgar/data/824142/000082414219000071/0000824142-19-000071-index.htm
-sec-def14a,2024-03-28,Beyond,,,4505789,41.15,,,https://www.sec.gov/Archives/edgar/data/1130713/000114036124015808/0001140361-24-015808-index.htm
-sec-def14a,2021-04-01,Great Southern Bancorp,,,1468621,41.0,,,https://www.sec.gov/Archives/edgar/data/854560/000110465921045127/0001104659-21-045127-index.htm
-sec-def14a,2025-03-27,Great Southern Bancorp,,,1563373,41.0,,,https://www.sec.gov/Archives/edgar/data/854560/000117494725000404/0001174947-25-000404-index.htm
-sec-def14a,2018-07-06,Seneca Foods,,,705678,41.0,17370,,https://www.sec.gov/Archives/edgar/data/88948/000143774918013056/0001437749-18-013056-index.htm
 sec-def14a,2018-03-15,Eastern,,,1017233,41.0,24761,,https://www.sec.gov/Archives/edgar/data/31107/000003110718000007/0000031107-18-000007-index.htm
-sec-def14a,2022-05-02,Omeros,,,7415675,40.6,182467,,https://www.sec.gov/Archives/edgar/data/1285819/000155837022006672/0001558370-22-006672-index.htm
-sec-def14a,2021-05-05,Pure Storage,,,204017,40.0,,,https://www.sec.gov/Archives/edgar/data/1474432/000162828021009085/0001628280-21-009085-index.htm
-sec-def14a,2022-04-13,Trico Bancshares /,,,2451832,40.0,60882,,https://www.sec.gov/Archives/edgar/data/356171/000035617122000026/0000356171-22-000026-index.htm
-sec-def14a,2025-03-21,Piedmont Office Realty Trust,,,5698958,40.0,143497,,https://www.sec.gov/Archives/edgar/data/1042776/000199937125002935/0001999371-25-002935-index.htm
 sec-def14a,2025-04-25,Corcept Therapeutics,,,9890081,40.0,245044,,https://www.sec.gov/Archives/edgar/data/1088856/000162828025019942/0001628280-25-019942-index.htm
-sec-def14a,2022-03-23,Overstock.Com,,,2855412,39.71,71898,,https://www.sec.gov/Archives/edgar/data/1130713/000114036122010786/0001140361-22-010786-index.htm
-sec-def14a,2020-03-20,Piedmont Office Realty Trust,,,5194879,39.2,132539,,https://www.sec.gov/Archives/edgar/data/1042776/000117494720000423/0001174947-20-000423-index.htm
-sec-def14a,2019-03-29,Great Southern Bancorp,,,1145553,39.0,,,https://www.sec.gov/Archives/edgar/data/854560/000092708919000153/0000927089-19-000153-index.htm
-sec-def14a,2022-12-19,Surmodics,,,3095627,39.0,78527,,https://www.sec.gov/Archives/edgar/data/924717/000156459022039468/0001564590-22-039468-index.htm
-sec-def14a,2026-04-10,Amalgamated Financial,,,113330,39.0,,,https://www.sec.gov/Archives/edgar/data/1823608/000182360826000098/0001823608-26-000098-index.htm
-sec-def14a,2022-04-06,First Bancshares Inc /Ms/,,,1677507,38.5,,,https://www.sec.gov/Archives/edgar/data/947559/000110465922043251/0001104659-22-043251-index.htm
-sec-def14a,2020-04-06,Lexington Realty Trust,,,148213,38.0,,,https://www.sec.gov/Archives/edgar/data/910108/000117494720000539/0001174947-20-000539-index.htm
-sec-def14a,2021-04-08,Lexington Realty Trust,,,151113,38.0,,,https://www.sec.gov/Archives/edgar/data/910108/000110465921048082/0001104659-21-048082-index.htm
-sec-def14a,2025-04-21,Barrett Business Services,,,4317412,38.0,114000,,https://www.sec.gov/Archives/edgar/data/902791/000095017025056284/0000950170-25-056284-index.htm
-sec-def14a,2026-03-27,Murphy Oil,,,203493,38.0,,,https://www.sec.gov/Archives/edgar/data/717423/000119312526127236/0001193125-26-127236-index.htm
+sec-def14a,2021-04-29,Ares Management,,,7303953,39.0,186000,,https://www.sec.gov/Archives/edgar/data/1176948/000162828021008232/0001628280-21-008232-index.htm
+sec-def14a,2022-04-25,Corcept Therapeutics,,,10984638,39.0,282843,,https://www.sec.gov/Archives/edgar/data/1088856/000162828022010131/0001628280-22-010131-index.htm
 sec-def14a,2018-04-26,Sinclair Broadcast Group,,,1836332,38.0,47927,,https://www.sec.gov/Archives/edgar/data/912752/000091275218000013/0000912752-18-000013-index.htm
-sec-def14a,2020-04-24,Pacira BioSciences,,,5806428,37.0,155462,,https://www.sec.gov/Archives/edgar/data/1396814/000104746920002571/0001047469-20-002571-index.htm
-sec-def14a,2023-04-10,LXP Industrial Trust,,,163600,37.0,,,https://www.sec.gov/Archives/edgar/data/910108/000153949723000616/0001539497-23-000616-index.htm
+sec-def14a,2020-04-06,Lexington Realty Trust,,,5703514,38.0,,,https://www.sec.gov/Archives/edgar/data/910108/000117494720000539/0001174947-20-000539-index.htm
+sec-def14a,2021-04-08,Lexington Realty Trust,,,5711382,38.0,,,https://www.sec.gov/Archives/edgar/data/910108/000110465921048082/0001104659-21-048082-index.htm
+sec-def14a,2025-04-21,Barrett Business Services,,,4317412,38.0,114000,,https://www.sec.gov/Archives/edgar/data/902791/000095017025056284/0000950170-25-056284-index.htm
+sec-def14a,2020-04-03,Berkshire Hills Bancorp,,,2130235,37.0,,,https://www.sec.gov/Archives/edgar/data/1108134/000110813420000005/0001108134-20-000005-index.htm
+sec-def14a,2023-04-10,LXP Industrial Trust,,,6062516,37.0,,,https://www.sec.gov/Archives/edgar/data/910108/000153949723000616/0001539497-23-000616-index.htm
 sec-def14a,2023-04-21,Barrett Business Services,,,4053415,37.0,110000,,https://www.sec.gov/Archives/edgar/data/902791/000095017023013812/0000950170-23-013812-index.htm
-sec-def14a,2024-04-10,Corcept Therapeutics,,,250469,37.0,,,https://www.sec.gov/Archives/edgar/data/1088856/000162828024015633/0001628280-24-015633-index.htm
-sec-def14a,2018-04-04,Crawford &,,,2034364,37.0,,,https://www.sec.gov/Archives/edgar/data/25475/000119312518107484/0001193125-18-107484-index.htm
+sec-def14a,2024-04-10,Corcept Therapeutics,,,9337734,37.0,250469,,https://www.sec.gov/Archives/edgar/data/1088856/000162828024015633/0001628280-24-015633-index.htm
 sec-def14a,2021-04-14,Full House Resorts,,,731242,36.0,20113,,https://www.sec.gov/Archives/edgar/data/891482/000089148221000028/0000891482-21-000028-index.htm
 sec-def14a,2024-04-22,Barrett Business Services,,,3971805,36.0,111000,,https://www.sec.gov/Archives/edgar/data/902791/000095017024046428/0000950170-24-046428-index.htm
-sec-def14a,2018-12-21,Surmodics,,,2253541,36.0,62294,,https://www.sec.gov/Archives/edgar/data/924717/000119312518356348/0001193125-18-356348-index.htm
-sec-def14a,2021-04-07,First Bancshares Inc /Ms/,,,1586035,35.0,,,https://www.sec.gov/Archives/edgar/data/947559/000110465921047609/0001104659-21-047609-index.htm
-sec-def14a,2024-04-25,Northwest Pipe,,,2414324,35.0,68513,,https://www.sec.gov/Archives/edgar/data/1001385/000143774924013214/0001437749-24-013214-index.htm
-sec-def14a,2024-08-28,Avid Bioservices,,,4475343,35.0,126552,,https://www.sec.gov/Archives/edgar/data/704562/000168316824006081/0001683168-24-006081-index.htm
-sec-def14a,2026-04-29,Evolus,,,6412214,35.0,181817,,https://www.sec.gov/Archives/edgar/data/1570562/000157056226000059/0001570562-26-000059-index.htm
+sec-def14a,2018-03-16,Parke Bancorp,,,1567054,35.0,,,https://www.sec.gov/Archives/edgar/data/1315399/000094627518000018/0000946275-18-000018-index.htm
 sec-def14a,2018-04-24,Citizens,,,1242675,35.0,36530,,https://www.sec.gov/Archives/edgar/data/24090/000119312518128158/0001193125-18-128158-index.htm
 sec-def14a,2018-03-23,United States Lime & Minerals,,,2227940,35.0,64281,,https://www.sec.gov/Archives/edgar/data/82020/000155837018002360/0001558370-18-002360-index.htm
-sec-def14a,2018-04-04,Ellie Mae,,,5323438,35.0,153634,,https://www.sec.gov/Archives/edgar/data/1122388/000112238818000019/0001122388-18-000019-index.htm
-sec-def14a,2026-03-23,Gorman Rupp,,,2187652,34.4,,,https://www.sec.gov/Archives/edgar/data/42682/000119312526118757/0001193125-26-118757-index.htm
+sec-def14a,2024-08-28,Avid Bioservices,,,4475343,35.0,126552,,https://www.sec.gov/Archives/edgar/data/704562/000168316824006081/0001683168-24-006081-index.htm
 sec-def14a,2019-04-29,Global Blood Therapeutics,,,10260240,34.0,297580,,https://www.sec.gov/Archives/edgar/data/1629137/000119312519125149/0001193125-19-125149-index.htm
 sec-def14a,2023-04-28,Arvinas,,,9545846,34.0,284130,,https://www.sec.gov/Archives/edgar/data/1655759/000165575923000034/0001655759-23-000034-index.htm
 sec-def14a,2024-04-24,Xencor,,,7965955,34.0,234077,,https://www.sec.gov/Archives/edgar/data/1326732/000132673224000017/0001326732-24-000017-index.htm
-sec-def14a,2025-04-25,Evolus,,,6998877,34.0,203184,,https://www.sec.gov/Archives/edgar/data/1570562/000157056225000066/0001570562-25-000066-index.htm
-sec-def14a,2026-04-28,BigBear.ai Holdings,,,195680,34.0,,,https://www.sec.gov/Archives/edgar/data/1836981/000183698126000028/0001836981-26-000028-index.htm
-sec-def14a,2019-04-09,Lexington Realty Trust,,,152582,33.0,,,https://www.sec.gov/Archives/edgar/data/910108/000117494719000538/0001174947-19-000538-index.htm
+sec-def14a,2026-04-28,BigBear.ai Holdings,,,6597191,34.0,195680,,https://www.sec.gov/Archives/edgar/data/1836981/000183698126000028/0001836981-26-000028-index.htm
+sec-def14a,2019-04-09,Lexington Realty Trust,,,5071152,33.0,,,https://www.sec.gov/Archives/edgar/data/910108/000117494719000538/0001174947-19-000538-index.htm
 sec-def14a,2020-04-22,Atara Biotherapeutics,,,6932981,33.0,210488,,https://www.sec.gov/Archives/edgar/data/1604464/000156459020017935/0001564590-20-017935-index.htm
-sec-def14a,2022-04-25,Granite Construction,,,72344,33.0,,,https://www.sec.gov/Archives/edgar/data/861459/000143774922009655/0001437749-22-009655-index.htm
+sec-def14a,2022-04-25,Granite Construction,,,2363633,33.0,72344,,https://www.sec.gov/Archives/edgar/data/861459/000143774922009655/0001437749-22-009655-index.htm
 sec-def14a,2022-04-26,Deciphera Pharmaceuticals,,,9414654,32.4,290520,,https://www.sec.gov/Archives/edgar/data/1654151/000165415122000007/0001654151-22-000007-index.htm
 sec-def14a,2020-03-27,United States Lime & Minerals,,,2591874,32.0,80440,,https://www.sec.gov/Archives/edgar/data/82020/000155837020003252/0001558370-20-003252-index.htm
-sec-def14a,2023-03-17,Piedmont Office Realty Trust,,,4026288,32.0,124888,,https://www.sec.gov/Archives/edgar/data/1042776/000110465923033532/0001104659-23-033532-index.htm
-sec-def14a,2024-04-16,Lemaitre Vascular,,,2220797,32.0,,,https://www.sec.gov/Archives/edgar/data/1158895/000143774924012147/0001437749-24-012147-index.htm
-sec-def14a,2025-04-17,Trico Bancshares /,,,2911298,32.0,92194,,https://www.sec.gov/Archives/edgar/data/356171/000035617125000049/0000356171-25-000049-index.htm
+sec-def14a,2024-04-26,GrowGeneration,,,1298148,32.0,,,https://www.sec.gov/Archives/edgar/data/1604868/000162828024018512/0001628280-24-018512-index.htm
 sec-def14a,2020-04-28,Global Blood Therapeutics,,,10097193,31.0,321142,,https://www.sec.gov/Archives/edgar/data/1629137/000119312520122993/0001193125-20-122993-index.htm
-sec-def14a,2026-04-17,Trico Bancshares /,,,2993806,31.0,,,https://www.sec.gov/Archives/edgar/data/356171/000035617126000033/0000356171-26-000033-index.htm
-sec-def14a,2018-04-30,Omeros,,,4535283,31.0,146462,,https://www.sec.gov/Archives/edgar/data/1285819/000156459018009842/0001564590-18-009842-index.htm
-sec-def14a,2019-04-26,Twilio,,,221899,30.0,,,https://www.sec.gov/Archives/edgar/data/1447669/000119312519122473/0001193125-19-122473-index.htm
+sec-def14a,2019-04-26,Twilio,,,6597956,30.0,,,https://www.sec.gov/Archives/edgar/data/1447669/000119312519122473/0001193125-19-122473-index.htm
 sec-def14a,2024-04-01,Netstreit,,,4078215,30.0,135966,,https://www.sec.gov/Archives/edgar/data/1798100/000110465924041411/0001104659-24-041411-index.htm
-sec-def14a,2024-04-11,Amalgamated Financial,,,107089,30.0,,,https://www.sec.gov/Archives/edgar/data/1823608/000182360824000104/0001823608-24-000104-index.htm
 sec-def14a,2026-04-09,Ranpak Holdings,,,1935935,30.0,71338,,https://www.sec.gov/Archives/edgar/data/1712463/000114036126014014/0001140361-26-014014-index.htm
-sec-def14a,2025-03-24,Gorman Rupp,,,1954761,29.7,,,https://www.sec.gov/Archives/edgar/data/42682/000119312525060940/0001193125-25-060940-index.htm
-sec-def14a,2018-04-30,GAIN Capital Holdings,,,78335,29.6,,,https://www.sec.gov/Archives/edgar/data/1444363/000144436318000045/0001444363-18-000045-index.htm
-sec-def14a,2022-03-18,Piedmont Office Realty Trust,,,3560678,29.0,122622,,https://www.sec.gov/Archives/edgar/data/1042776/000110465922035285/0001104659-22-035285-index.htm
 sec-def14a,2022-04-22,Barrett Business Services,,,3014992,29.0,103568,,https://www.sec.gov/Archives/edgar/data/902791/000156459022015217/0001564590-22-015217-index.htm
 sec-def14a,2023-04-17,Par Technology,,,2155099,29.0,74082,,https://www.sec.gov/Archives/edgar/data/708821/000114036123018656/0001140361-23-018656-index.htm
-sec-def14a,2023-04-14,Lemaitre Vascular,,,1940112,29.0,67375,,https://www.sec.gov/Archives/edgar/data/1158895/000143774923010217/0001437749-23-010217-index.htm
 sec-def14a,2024-04-16,Arvinas,,,7627032,29.0,266130,,https://www.sec.gov/Archives/edgar/data/1655759/000165575924000052/0001655759-24-000052-index.htm
-sec-def14a,2025-04-04,3D Systems,,,74583,29.0,,,https://www.sec.gov/Archives/edgar/data/910638/000119312525073438/0001193125-25-073438-index.htm
+sec-def14a,2025-04-04,3D Systems,,,2126755,29.0,74583,,https://www.sec.gov/Archives/edgar/data/910638/000119312525073438/0001193125-25-073438-index.htm
 sec-def14a,2024-11-01,Idt,,,1090000,28.5,38213,,https://www.sec.gov/Archives/edgar/data/1005731/000149315224043361/0001493152-24-043361-index.htm
-sec-def14a,2022-04-14,Lemaitre Vascular,,,1982030,28.0,71719,,https://www.sec.gov/Archives/edgar/data/1158895/000143774922008907/0001437749-22-008907-index.htm
-sec-def14a,2018-04-27,Pacira Pharmaceuticals,,,4718917,28.0,166427,,https://www.sec.gov/Archives/edgar/data/1396814/000104746918003298/0001047469-18-003298-index.htm
-sec-def14a,2019-04-09,Mgp Ingredients,,,2153228,27.0,79555,,https://www.sec.gov/Archives/edgar/data/835011/000162828019004065/0001628280-19-004065-index.htm
-sec-def14a,2020-04-15,First Bancshares Inc /Ms/,,,1104355,27.0,,,https://www.sec.gov/Archives/edgar/data/947559/000110465920046789/0001104659-20-046789-index.htm
-sec-def14a,2021-08-27,Avid Bioservices,,,2845283,27.0,104222,,https://www.sec.gov/Archives/edgar/data/704562/000168316821003969/0001683168-21-003969-index.htm
-sec-def14a,2023-04-14,Corcept Therapeutics,,,276749,27.0,,,https://www.sec.gov/Archives/edgar/data/1088856/000162828023011628/0001628280-23-011628-index.htm
-sec-def14a,2026-05-01,Sprinklr,,,62011,27.0,,,https://www.sec.gov/Archives/edgar/data/1569345/000114036126018552/0001140361-26-018552-index.htm
-sec-def14a,2018-09-14,Array Biopharma,,,204321,27.0,,,https://www.sec.gov/Archives/edgar/data/1100412/000104746918006229/0001047469-18-006229-index.htm
 sec-def14a,2018-04-27,Barrett Business Services,,,2630791,27.0,96421,,https://www.sec.gov/Archives/edgar/data/902791/000156459018009536/0001564590-18-009536-index.htm
-sec-def14a,2021-08-13,Inter Parfums,,,1806246,26.13,69078,,https://www.sec.gov/Archives/edgar/data/822663/000175392621000350/0001753926-21-000350-index.htm
-sec-def14a,2019-04-03,First Bancshares Inc /Ms/,,,893603,26.0,,,https://www.sec.gov/Archives/edgar/data/947559/000114420419017915/0001144204-19-017915-index.htm
+sec-def14a,2021-08-27,Avid Bioservices,,,2845283,27.0,104222,,https://www.sec.gov/Archives/edgar/data/704562/000168316821003969/0001683168-21-003969-index.htm
+sec-def14a,2023-04-14,Corcept Therapeutics,,,7352757,27.0,276749,,https://www.sec.gov/Archives/edgar/data/1088856/000162828023011628/0001628280-23-011628-index.htm
+sec-def14a,2018-04-12,Pc Connection,,,1648275,26.0,63416,,https://www.sec.gov/Archives/edgar/data/1050377/000155837018002941/0001558370-18-002941-index.htm
 sec-def14a,2019-04-24,Barrett Business Services,,,2622434,26.0,100000,,https://www.sec.gov/Archives/edgar/data/902791/000156459019012690/0001564590-19-012690-index.htm
 sec-def14a,2020-04-24,Barrett Business Services,,,2631122,26.0,100947,,https://www.sec.gov/Archives/edgar/data/902791/000156459020018416/0001564590-20-018416-index.htm
-sec-def14a,2022-04-28,Athenex,,,57390,26.0,,,https://www.sec.gov/Archives/edgar/data/1300699/000119312522127604/0001193125-22-127604-index.htm
-sec-def14a,2018-04-12,Pc Connection,,,63416,26.0,,,https://www.sec.gov/Archives/edgar/data/1050377/000155837018002941/0001558370-18-002941-index.htm
+sec-def14a,2022-04-28,Athenex,,,1504515,26.0,57390,,https://www.sec.gov/Archives/edgar/data/1300699/000119312522127604/0001193125-22-127604-index.htm
 sec-def14a,2022-04-29,Vapotherm,,,3442120,25.0,,,https://www.sec.gov/Archives/edgar/data/1253176/000119312522133965/0001193125-22-133965-index.htm
-sec-def14a,2022-03-28,Wilson Bank Holding,,,54426,25.0,,,https://www.sec.gov/Archives/edgar/data/885275/000143774922007375/0001437749-22-007375-index.htm
 sec-def14a,2023-04-17,Atlanticus Holdings,,,2189624,25.0,86868,,https://www.sec.gov/Archives/edgar/data/1464343/000143774923010448/0001437749-23-010448-index.htm
-sec-def14a,2023-03-27,Gorman Rupp,,,1712818,25.0,,,https://www.sec.gov/Archives/edgar/data/42682/000119312523079951/0001193125-23-079951-index.htm
 sec-def14a,2026-05-01,Genie Energy Ltd.,,,1371250,25.0,53844,,https://www.sec.gov/Archives/edgar/data/1528356/000143774926014295/0001437749-26-014295-index.htm
-sec-def14a,2018-04-09,Mgp Ingredients,,,1869066,25.0,75070,,https://www.sec.gov/Archives/edgar/data/835011/000162828018004091/0001628280-18-004091-index.htm
-sec-def14a,2018-04-25,Wayside Technology Group,,,51119,25.0,,,https://www.sec.gov/Archives/edgar/data/945983/000110465918026416/0001104659-18-026416-index.htm
-sec-def14a,2019-04-25,Sangamo Therapeutics,,,173399,24.0,,,https://www.sec.gov/Archives/edgar/data/1001233/000119312519119748/0001193125-19-119748-index.htm
-sec-def14a,2023-04-28,BridgeBio Pharma,,,6674437,24.0,273664,,https://www.sec.gov/Archives/edgar/data/1743881/000119312523127256/0001193125-23-127256-index.htm
-sec-def14a,2019-04-26,Prgx Global,,,926765,23.0,,,https://www.sec.gov/Archives/edgar/data/1007330/000119312519122559/0001193125-19-122559-index.htm
-sec-def14a,2024-04-18,Denali Therapeutics,,,7879267,23.0,345658,,https://www.sec.gov/Archives/edgar/data/1714899/000171489924000110/0001714899-24-000110-index.htm
+sec-def14a,2019-04-30,Xencor,,,4372828,24.1,179109,,https://www.sec.gov/Archives/edgar/data/1326732/000155837019003579/0001558370-19-003579-index.htm
 sec-def14a,2018-04-12,Craft Brew Alliance,,,1241442,23.0,54002,,https://www.sec.gov/Archives/edgar/data/892222/000089222218000035/0000892222-18-000035-index.htm
-sec-def14a,2018-04-03,Lexington Realty Trust,,,142895,23.0,,,https://www.sec.gov/Archives/edgar/data/910108/000114420418018822/0001144204-18-018822-index.htm
-sec-def14a,2024-04-11,Waterstone Financial,,,68942,22.6,,,https://www.sec.gov/Archives/edgar/data/1569994/000143774924011716/0001437749-24-011716-index.htm
-sec-def14a,2023-04-28,Vaxart,,,3589392,22.1,163906,,https://www.sec.gov/Archives/edgar/data/72444/000143774923011635/0001437749-23-011635-index.htm
+sec-def14a,2018-04-03,Lexington Realty Trust,,,3254315,23.0,,,https://www.sec.gov/Archives/edgar/data/910108/000114420418018822/0001144204-18-018822-index.htm
+sec-def14a,2019-04-10,Craft Brew Alliance,,,1249277,23.0,54543,,https://www.sec.gov/Archives/edgar/data/892222/000089222219000038/0000892222-19-000038-index.htm
+sec-def14a,2022-07-19,Agilysys,,,822789,23.0,35226,,https://www.sec.gov/Archives/edgar/data/78749/000095017022012790/0000950170-22-012790-index.htm
 sec-def14a,2019-04-23,Kosmos Energy Ltd.,,,6405443,22.0,296213,,https://www.sec.gov/Archives/edgar/data/1509991/000114036119007483/0001140361-19-007483-index.htm
 sec-def14a,2024-03-15,Bcb Bancorp,,,984444,22.0,44309,,https://www.sec.gov/Archives/edgar/data/1228454/000119312524068567/0001193125-24-068567-index.htm
-sec-def14a,2026-04-30,Esquire Financial Holdings,,,173214,22.0,,,https://www.sec.gov/Archives/edgar/data/1531031/000110465926052225/0001104659-26-052225-index.htm
-sec-def14a,2018-09-20,Mesa Laboratories Inc /Co,,,46286,22.0,,,https://www.sec.gov/Archives/edgar/data/724004/000143774918017231/0001437749-18-017231-index.htm
 sec-def14a,2026-04-27,Xencor,,,5521205,21.95,251539,,https://www.sec.gov/Archives/edgar/data/1326732/000132673226000031/0001326732-26-000031-index.htm
-sec-def14a,2020-03-31,Overstock.Com,,,1678357,21.4,78429,,https://www.sec.gov/Archives/edgar/data/1130713/000119312520091957/0001193125-20-091957-index.htm
-sec-def14a,2020-03-20,Gorman Rupp,,,1144331,21.1,,,https://www.sec.gov/Archives/edgar/data/42682/000119312520080048/0001193125-20-080048-index.htm
-sec-def14a,2019-03-19,Cambridge Bancorp,,,91312,21.0,,,https://www.sec.gov/Archives/edgar/data/711772/000156459019008477/0001564590-19-008477-index.htm
-sec-def14a,2019-03-21,Centennial Resource Development,,,2693240,21.0,,,https://www.sec.gov/Archives/edgar/data/1658566/000165856619000058/0001658566-19-000058-index.htm
-sec-def14a,2019-04-17,Lemaitre Vascular,,,1404207,21.0,66592,,https://www.sec.gov/Archives/edgar/data/1158895/000143774919007367/0001437749-19-007367-index.htm
-sec-def14a,2021-03-17,Cambridge Bancorp,,,108145,21.0,,,https://www.sec.gov/Archives/edgar/data/711772/000156459021013883/0001564590-21-013883-index.htm
-sec-def14a,2021-04-30,Pc Connection,,,65298,21.0,,,https://www.sec.gov/Archives/edgar/data/1050377/000155837021005340/0001558370-21-005340-index.htm
+sec-def14a,2019-03-19,Cambridge Bancorp,,,1925402,21.0,91312,,https://www.sec.gov/Archives/edgar/data/711772/000156459019008477/0001564590-19-008477-index.htm
+sec-def14a,2021-03-17,Cambridge Bancorp,,,2249248,21.0,108145,,https://www.sec.gov/Archives/edgar/data/711772/000156459021013883/0001564590-21-013883-index.htm
+sec-def14a,2021-04-30,Pc Connection,,,1388550,21.0,65298,,https://www.sec.gov/Archives/edgar/data/1050377/000155837021005340/0001558370-21-005340-index.htm
 sec-def14a,2023-05-01,Vapotherm,,,3874994,21.0,,,https://www.sec.gov/Archives/edgar/data/1253176/000119312523130473/0001193125-23-130473-index.htm
 sec-def14a,2024-04-25,Deciphera Pharmaceuticals,,,6010712,21.0,286140,,https://www.sec.gov/Archives/edgar/data/1654151/000165415124000012/0001654151-24-000012-index.htm
-sec-def14a,2026-04-29,Kymera Therapeutics,,,8545609,21.0,409607,,https://www.sec.gov/Archives/edgar/data/1815442/000119312526191495/0001193125-26-191495-index.htm
-sec-def14a,2021-03-22,Gorman Rupp,,,1170814,20.7,,,https://www.sec.gov/Archives/edgar/data/42682/000119312521088912/0001193125-21-088912-index.htm
-sec-def14a,2021-04-16,National Presto Industries,,,737853,20.13,,,https://www.sec.gov/Archives/edgar/data/80172/000089710121000285/0000897101-21-000285-index.htm
-sec-def14a,2022-09-26,Southern Missouri Bancorp,,,651898,20.1,32509,,https://www.sec.gov/Archives/edgar/data/916907/000155837022014617/0001558370-22-014617-index.htm
+sec-def14a,2020-04-27,Corcept Therapeutics,,,4958970,20.0,253070,,https://www.sec.gov/Archives/edgar/data/1088856/000162828020005588/0001628280-20-005588-index.htm
+sec-def14a,2021-04-22,Corcept Therapeutics,,,5762102,20.0,286664,,https://www.sec.gov/Archives/edgar/data/1088856/000162828021007363/0001628280-21-007363-index.htm
 sec-def14a,2026-04-29,Arvinas,,,6534127,20.0,327724,,https://www.sec.gov/Archives/edgar/data/1655759/000162828026028156/0001628280-26-028156-index.htm
-sec-def14a,2021-03-25,Overstock.Com,,,1527318,19.52,78248,,https://www.sec.gov/Archives/edgar/data/1130713/000119312521093428/0001193125-21-093428-index.htm
-sec-def14a,2021-09-20,Southern Missouri Bancorp,,,595934,19.3,30895,,https://www.sec.gov/Archives/edgar/data/916907/000155837021012623/0001558370-21-012623-index.htm
 sec-def14a,2022-04-27,Xencor,,,5370295,19.1,280453,,https://www.sec.gov/Archives/edgar/data/1326732/000155837022006086/0001558370-22-006086-index.htm
-sec-def14a,2018-04-09,National Presto Industries,,,700786,19.04,,,https://www.sec.gov/Archives/edgar/data/80172/000089710118000361/0000897101-18-000361-index.htm
-sec-def14a,2019-04-25,Wayside Technology Group,,,50772,19.0,,,https://www.sec.gov/Archives/edgar/data/945983/000110465919023477/0001104659-19-023477-index.htm
-sec-def14a,2020-06-16,Lemaitre Vascular,,,1397744,19.0,75176,,https://www.sec.gov/Archives/edgar/data/1158895/000143774920013199/0001437749-20-013199-index.htm
 sec-def14a,2021-04-23,Barrett Business Services,,,1951055,19.0,102062,,https://www.sec.gov/Archives/edgar/data/902791/000156459021020279/0001564590-21-020279-index.htm
-sec-def14a,2021-04-20,Lemaitre Vascular,,,1386506,19.0,72425,,https://www.sec.gov/Archives/edgar/data/1158895/000143774921009296/0001437749-21-009296-index.htm
-sec-def14a,2020-04-14,National Presto Industries,,,722271,18.8,,,https://www.sec.gov/Archives/edgar/data/80172/000089710120000239/0000897101-20-000239-index.htm
-sec-def14a,2022-03-21,Gorman Rupp,,,1078110,18.6,,,https://www.sec.gov/Archives/edgar/data/42682/000119312522080243/0001193125-22-080243-index.htm
-sec-def14a,2023-04-11,National Presto Industries,,,784410,18.38,,,https://www.sec.gov/Archives/edgar/data/80172/000089710123000147/0000897101-23-000147-index.htm
-sec-def14a,2023-04-06,Waterstone Financial,,,73451,18.3,,,https://www.sec.gov/Archives/edgar/data/1569994/000143774923009683/0001437749-23-009683-index.htm
 sec-def14a,2023-09-25,Southern Missouri Bancorp,,,661141,18.2,36230,,https://www.sec.gov/Archives/edgar/data/916907/000155837023016003/0001558370-23-016003-index.htm
-sec-def14a,2019-04-01,Enterprise Bancorp Inc /Ma/,,,1010752,18.0,57322,,https://www.sec.gov/Archives/edgar/data/1018399/000101839919000019/0001018399-19-000019-index.htm
 sec-def14a,2019-06-28,Hawkins,,,1516787,18.0,86652,,https://www.sec.gov/Archives/edgar/data/46250/000004625019000021/0000046250-19-000021-index.htm
-sec-def14a,2019-04-08,Southern First Bancshares,,,58083,18.0,,,https://www.sec.gov/Archives/edgar/data/1090009/000120677419001255/0001206774-19-001255-index.htm
-sec-def14a,2020-03-19,Centennial Resource Development,,,2513336,18.0,,,https://www.sec.gov/Archives/edgar/data/1658566/000165856620000064/0001658566-20-000064-index.htm
-sec-def14a,2021-04-21,Exponent,,,2674792,18.0,145857,,https://www.sec.gov/Archives/edgar/data/851520/000156459021019835/0001564590-21-019835-index.htm
-sec-def14a,2022-07-18,World Acceptance,,,52799,18.0,,,https://www.sec.gov/Archives/edgar/data/108385/000010838522000026/0000108385-22-000026-index.htm
-sec-def14a,2022-04-13,National Presto Industries,,,755904,18.0,,,https://www.sec.gov/Archives/edgar/data/80172/000089710122000405/0000897101-22-000405-index.htm
-sec-def14a,2022-04-15,Atlas Air Worldwide Holdings,,,2532232,18.0,135543,,https://www.sec.gov/Archives/edgar/data/1135185/000110465922046525/0001104659-22-046525-index.htm
-sec-def14a,2022-03-16,Cambridge Bancorp,,,110510,18.0,,,https://www.sec.gov/Archives/edgar/data/711772/000095017022003840/0000950170-22-003840-index.htm
-sec-def14a,2026-04-08,3D Systems,,,83611,18.0,,,https://www.sec.gov/Archives/edgar/data/910638/000119312526146294/0001193125-26-146294-index.htm
-sec-def14a,2021-10-05,HomeTrust Bancshares,,,1188755,17.9,,,https://www.sec.gov/Archives/edgar/data/1538263/000117494721000883/0001174947-21-000883-index.htm
-sec-def14a,2019-10-07,HomeTrust Bancshares,,,1056814,17.8,,,https://www.sec.gov/Archives/edgar/data/1538263/000092708919000367/0000927089-19-000367-index.htm
-sec-def14a,2020-10-05,HomeTrust Bancshares,,,1050884,17.5,,,https://www.sec.gov/Archives/edgar/data/1538263/000117494720000978/0001174947-20-000978-index.htm
-sec-def14a,2023-03-16,Cambridge Bancorp,,,114040,17.0,,,https://www.sec.gov/Archives/edgar/data/711772/000095017023008291/0000950170-23-008291-index.htm
+sec-def14a,2022-03-16,Cambridge Bancorp,,,1966312,18.0,110510,,https://www.sec.gov/Archives/edgar/data/711772/000095017022003840/0000950170-22-003840-index.htm
+sec-def14a,2026-04-08,3D Systems,,,1487950,18.0,83611,,https://www.sec.gov/Archives/edgar/data/910638/000119312526146294/0001193125-26-146294-index.htm
+sec-def14a,2023-03-16,Cambridge Bancorp,,,1935359,17.0,114040,,https://www.sec.gov/Archives/edgar/data/711772/000095017023008291/0000950170-23-008291-index.htm
 sec-def14a,2026-04-10,Atlanticus Holdings,,,2099003,17.0,125000,,https://www.sec.gov/Archives/edgar/data/1464343/000143774926012028/0001437749-26-012028-index.htm
 sec-def14a,2026-04-23,American Vanguard,,,1069480,16.8,63100,,https://www.sec.gov/Archives/edgar/data/5981/000119312526173620/0001193125-26-173620-index.htm
-sec-def14a,2020-08-20,Inter Parfums,,,1121412,16.66,67294,,https://www.sec.gov/Archives/edgar/data/822663/000121390020023008/0001213900-20-023008-index.htm
-sec-def14a,2018-04-05,Waterstone Financial,,,56686,16.5,,,https://www.sec.gov/Archives/edgar/data/1569994/000156999418000014/0001569994-18-000014-index.htm
-sec-def14a,2018-07-27,Inter Parfums,,,877237,16.31,53799,,https://www.sec.gov/Archives/edgar/data/822663/000161577418006925/0001615774-18-006925-index.htm
 sec-def14a,2023-03-21,Citizens Holding Co /Ms/,,,705796,16.1,43946,,https://www.sec.gov/Archives/edgar/data/1075706/000143774923007315/0001437749-23-007315-index.htm
-sec-def14a,2018-04-10,Southern First Bancshares,,,59578,16.0,,,https://www.sec.gov/Archives/edgar/data/1090009/000120677418001140/0001206774-18-001140-index.htm
-sec-def14a,2020-04-29,Prgx Global,,,625000,15.8,,,https://www.sec.gov/Archives/edgar/data/1007330/000119312520126068/0001193125-20-126068-index.htm
-sec-def14a,2026-04-14,National Presto Industries,,,754299,15.5,,,https://www.sec.gov/Archives/edgar/data/80172/000143774926012242/0001437749-26-012242-index.htm
+sec-def14a,2021-04-02,Covanta Holding,,,1536668,16.0,94750,,https://www.sec.gov/Archives/edgar/data/225648/000022564821000045/0000225648-21-000045-index.htm
+sec-def14a,2020-04-29,Xencor,,,3731514,15.5,241104,,https://www.sec.gov/Archives/edgar/data/1326732/000155837020004656/0001558370-20-004656-index.htm
 sec-def14a,2026-03-25,Tredegar,,,64569,15.0,,,https://www.sec.gov/Archives/edgar/data/850429/000162828026020996/0001628280-26-020996-index.htm
 sec-def14a,2022-03-18,Citizens Holding Co /Ms/,,,644888,14.9,43263,,https://www.sec.gov/Archives/edgar/data/1075706/000119312522078823/0001193125-22-078823-index.htm
-sec-def14a,2024-04-16,National Presto Industries,,,653625,14.19,,,https://www.sec.gov/Archives/edgar/data/80172/000089710124000135/0000897101-24-000135-index.htm
-sec-def14a,2025-04-15,National Presto Industries,,,658422,14.17,,,https://www.sec.gov/Archives/edgar/data/80172/000089710125000213/0000897101-25-000213-index.htm
+sec-def14a,2018-04-24,Corcept Therapeutics,,,4271452,14.0,297689,,https://www.sec.gov/Archives/edgar/data/1088856/000156459018008875/0001564590-18-008875-index.htm
 sec-def14a,2019-04-15,Achillion Pharmaceuticals,,,3378951,14.0,249211,,https://www.sec.gov/Archives/edgar/data/1070336/000119312519106556/0001193125-19-106556-index.htm
-sec-def14a,2019-04-16,Exponent,,,2143065,14.0,150868,,https://www.sec.gov/Archives/edgar/data/851520/000114420419019906/0001144204-19-019906-index.htm
-sec-def14a,2020-04-17,Mirati Therapeutics,,,8484393,14.0,588168,,https://www.sec.gov/Archives/edgar/data/1576263/000162828020005116/0001628280-20-005116-index.htm
-sec-def14a,2018-04-24,Corcept Therapeutics,,,297689,14.0,,,https://www.sec.gov/Archives/edgar/data/1088856/000156459018008875/0001564590-18-008875-index.htm
-sec-def14a,2018-04-20,Lemaitre Vascular,,,889150,14.0,63594,,https://www.sec.gov/Archives/edgar/data/1158895/000119312518123376/0001193125-18-123376-index.htm
 sec-def14a,2018-06-29,Hawkins,,,1049203,13.0,82023,,https://www.sec.gov/Archives/edgar/data/46250/000004625018000016/0000046250-18-000016-index.htm
-sec-def14a,2026-04-21,Denali Therapeutics,,,4751515,12.8,370857,,https://www.sec.gov/Archives/edgar/data/1714899/000171489926000054/0001714899-26-000054-index.htm
 sec-def14a,2019-03-18,Citizens Holding Co /Ms/,,,475664,12.0,39626,,https://www.sec.gov/Archives/edgar/data/1075706/000119312519077909/0001193125-19-077909-index.htm
-sec-def14a,2020-03-19,Cambridge Bancorp,,,173539,12.0,,,https://www.sec.gov/Archives/edgar/data/711772/000156459020011836/0001564590-20-011836-index.htm
+sec-def14a,2020-03-19,Cambridge Bancorp,,,2032239,12.0,173539,,https://www.sec.gov/Archives/edgar/data/711772/000156459020011836/0001564590-20-011836-index.htm
 sec-def14a,2024-11-07,Legacy Housing,,,400000,12.0,32240,,https://www.sec.gov/Archives/edgar/data/1436208/000155837024014911/0001558370-24-014911-index.htm
 sec-def14a,2025-11-12,Legacy Housing,,,400000,12.0,32240,,https://www.sec.gov/Archives/edgar/data/1436208/000110465925109708/0001104659-25-109708-index.htm
 sec-def14a,2021-03-24,Citizens Holding Co /Ms/,,,521844,11.8,44270,,https://www.sec.gov/Archives/edgar/data/1075706/000119312521092137/0001193125-21-092137-index.htm
-sec-def14a,2026-04-22,WEBTOON Entertainment,,,935582,11.53,,,https://www.sec.gov/Archives/edgar/data/1997859/000199785926000055/0001997859-26-000055-index.htm
 sec-def14a,2023-04-26,Deciphera Pharmaceuticals,,,3554485,11.4,310652,,https://www.sec.gov/Archives/edgar/data/1654151/000165415123000007/0001654151-23-000007-index.htm
-sec-def14a,2025-12-09,Rgc Resources,,,90935,11.0,,,https://www.sec.gov/Archives/edgar/data/1069533/000143774925037188/0001437749-25-037188-index.htm
-sec-def14a,2026-04-09,Waterstone Financial,,,71809,10.9,,,https://www.sec.gov/Archives/edgar/data/1569994/000143774926011833/0001437749-26-011833-index.htm
-sec-def14a,2025-04-10,Waterstone Financial,,,66761,10.7,,,https://www.sec.gov/Archives/edgar/data/1569994/000143774925011612/0001437749-25-011612-index.htm
-sec-def14a,2020-01-24,Gencor Industries,,,45583,10.0,,,https://www.sec.gov/Archives/edgar/data/64472/000119312520013748/0001193125-20-013748-index.htm
-sec-def14a,2023-12-01,Rgc Resources,,,101574,10.0,,,https://www.sec.gov/Archives/edgar/data/1069533/000143774923033400/0001437749-23-033400-index.htm
+sec-def14a,2019-07-16,Daktronics Inc /Sd/,,,516234,11.0,,,https://www.sec.gov/Archives/edgar/data/915779/000091577919000029/0000915779-19-000029-index.htm
 sec-def14a,2018-04-05,"Maiden Holdings, Ltd.",,,1451754,10.0,151668,,https://www.sec.gov/Archives/edgar/data/1412100/000141210018000027/0001412100-18-000027-index.htm
-sec-def14a,2022-04-01,Live Oak Bancshares,,,94806,9.3,,,https://www.sec.gov/Archives/edgar/data/1462120/000156459022013180/0001564590-22-013180-index.htm
-sec-def14a,2019-02-05,Gencor Industries,,,48419,9.0,,,https://www.sec.gov/Archives/edgar/data/64472/000119312519027642/0001193125-19-027642-index.htm
-sec-def14a,2019-04-24,Corcept Therapeutics,,,681316,9.0,,,https://www.sec.gov/Archives/edgar/data/1088856/000162828019004633/0001628280-19-004633-index.htm
+sec-def14a,2020-01-24,Gencor Industries,,,451138,10.0,45583,,https://www.sec.gov/Archives/edgar/data/64472/000119312520013748/0001193125-20-013748-index.htm
+sec-def14a,2019-02-05,Gencor Industries,,,451138,9.0,48419,,https://www.sec.gov/Archives/edgar/data/64472/000119312519027642/0001193125-19-027642-index.htm
+sec-def14a,2019-04-24,Corcept Therapeutics,,,6314617,9.0,681316,,https://www.sec.gov/Archives/edgar/data/1088856/000162828019004633/0001628280-19-004633-index.htm
 sec-def14a,2019-04-24,Telaria,,,1489672,9.0,172714,,https://www.sec.gov/Archives/edgar/data/1375796/000110465919023414/0001104659-19-023414-index.htm
 sec-def14a,2019-08-21,Avid Bioservices,,,879677,9.0,96570,,https://www.sec.gov/Archives/edgar/data/704562/000168316819002729/0001683168-19-002729-index.htm
 sec-def14a,2020-08-27,Avid Bioservices,,,773737,9.0,83115,,https://www.sec.gov/Archives/edgar/data/704562/000168316820002881/0001683168-20-002881-index.htm
-sec-def14a,2021-02-08,Gencor Industries,,,50510,9.0,,,https://www.sec.gov/Archives/edgar/data/64472/000119312521031461/0001193125-21-031461-index.htm
-sec-def14a,2024-12-05,Rgc Resources,,,113385,9.0,,,https://www.sec.gov/Archives/edgar/data/1069533/000143774924036749/0001437749-24-036749-index.htm
-sec-def14a,2021-03-25,National Health Investors,,,1789030,8.0,221635,,https://www.sec.gov/Archives/edgar/data/877860/000087786021000022/0000877860-21-000022-index.htm
-sec-def14a,2022-08-05,Catalyst Pharmaceuticals,,,2089432,8.0,257525,,https://www.sec.gov/Archives/edgar/data/1369568/000119312522213650/0001193125-22-213650-index.htm
-sec-def14a,2022-02-01,Gencor Industries,,,55077,8.0,,,https://www.sec.gov/Archives/edgar/data/64472/000119312522023905/0001193125-22-023905-index.htm
-sec-def14a,2019-03-07,Interactive Brokers Group,,,800000,7.0,109683,,https://www.sec.gov/Archives/edgar/data/1381197/000114036119004535/0001140361-19-004535-index.htm
-sec-def14a,2023-04-28,Expensify,,,233528,7.0,,,https://www.sec.gov/Archives/edgar/data/1476840/000147684023000064/0001476840-23-000064-index.htm
-sec-def14a,2024-04-26,Expensify,,,273459,7.0,,,https://www.sec.gov/Archives/edgar/data/1476840/000147684024000059/0001476840-24-000059-index.htm
-sec-def14a,2025-04-25,Expensify,,,316222,7.0,,,https://www.sec.gov/Archives/edgar/data/1476840/000147684025000064/0001476840-25-000064-index.htm
+sec-def14a,2021-02-08,Gencor Industries,,,451138,9.0,50510,,https://www.sec.gov/Archives/edgar/data/64472/000119312521031461/0001193125-21-031461-index.htm
+sec-def14a,2025-02-28,Calavo Growers,,,77760,9.0,8729,,https://www.sec.gov/Archives/edgar/data/1133470/000110465925019004/0001104659-25-019004-index.htm
+sec-def14a,2022-02-01,Gencor Industries,,,451138,8.0,55077,,https://www.sec.gov/Archives/edgar/data/64472/000119312522023905/0001193125-22-023905-index.htm
 sec-def14a,2018-03-08,Interactive Brokers Group,,,800000,7.0,115705,,https://www.sec.gov/Archives/edgar/data/1381197/000104746918001395/0001047469-18-001395-index.htm
-sec-def14a,2023-04-27,Fisker Inc./DE,,,117472,6.67,,,https://www.sec.gov/Archives/edgar/data/1720990/000172099023000043/0001720990-23-000043-index.htm
-sec-def14a,2020-03-31,Forrester Research,,,112206,6.4,,,https://www.sec.gov/Archives/edgar/data/1023313/000156459020014424/0001564590-20-014424-index.htm
-sec-def14a,2021-10-26,Catalyst Pharmaceuticals,,,1762272,6.0,288385,,https://www.sec.gov/Archives/edgar/data/1369568/000119312521308040/0001193125-21-308040-index.htm
+sec-def14a,2019-03-07,Interactive Brokers Group,,,800000,7.0,109683,,https://www.sec.gov/Archives/edgar/data/1381197/000114036119004535/0001140361-19-004535-index.htm
+sec-def14a,2023-04-27,Fisker Inc./DE,,,783255,6.67,117472,,https://www.sec.gov/Archives/edgar/data/1720990/000172099023000043/0001720990-23-000043-index.htm
 sec-def14a,2019-04-22,Geron,,,2772509,5.1,543149,,https://www.sec.gov/Archives/edgar/data/886744/000156459019012327/0001564590-19-012327-index.htm
 sec-def14a,2019-01-25,"Lincolnway Energy, LLC",,,265461,5.0,52180,,https://www.sec.gov/Archives/edgar/data/1350420/000114036119001558/0001140361-19-001558-index.htm
 sec-def14a,2019-01-28,"Advanced BioEnergy, LLC",,,318871,5.0,67523,,https://www.sec.gov/Archives/edgar/data/1325740/000156459019001215/0001564590-19-001215-index.htm
@@ -487,9 +326,3 @@ sec-def14a,2019-02-25,"Granite Falls Energy, LLC",,,298815,3.66,81660,,https://w
 sec-def14a,2018-10-15,CytoDyn,,,966561,3.0,339058,,https://www.sec.gov/Archives/edgar/data/1175680/000119312518298878/0001193125-18-298878-index.htm
 sec-def14a,2020-02-21,"Heron Lake BioEnergy, LLC",,,170906,2.05,83405,,https://www.sec.gov/Archives/edgar/data/1286964/000128696420000004/0001286964-20-000004-index.htm
 sec-def14a,2019-02-26,"Heron Lake BioEnergy, LLC",,,149408,1.96,76225,,https://www.sec.gov/Archives/edgar/data/1286964/000128696419000005/0001286964-19-000005-index.htm
-sec-def14a,2019-12-02,Rand Capital,,,175820,1.9,,,https://www.sec.gov/Archives/edgar/data/81955/000149315219018595/0001493152-19-018595-index.htm
-sec-def14a,2020-03-17,Rand Capital,,,184771,1.8,,,https://www.sec.gov/Archives/edgar/data/81955/000149315220004107/0001493152-20-004107-index.htm
-sec-def14a,2018-03-08,Rand Capital,,,155386,1.75,,,https://www.sec.gov/Archives/edgar/data/81955/000119312518074234/0001193125-18-074234-index.htm
-sec-def14a,2025-04-01,Forrester Research,,,123939,1.74,,,https://www.sec.gov/Archives/edgar/data/1023313/000095017025048145/0000950170-25-048145-index.htm
-sec-def14a,2018-04-30,Resource Capital,,,153599,1.23,,,https://www.sec.gov/Archives/edgar/data/1332551/000119312518143052/0001193125-18-143052-index.htm
-sec-def14a,2024-04-24,Confluent,,,65000,0.27,,,https://www.sec.gov/Archives/edgar/data/1699838/000119312524110168/0001193125-24-110168-index.htm
