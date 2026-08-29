@@ -44,10 +44,10 @@ body {
 .counter small { display:block; color:var(--muted); font-family:'IBM Plex Sans',sans-serif; font-size:.72rem; }
 .counter .people { color:var(--debit); font-size:.82rem; }
 
-.track { position:relative; width:235875px; height:100vh; }
+.track { position:relative; width:236782px; height:100vh; }
 .bar {
   position:absolute; top:50%; left:0; height:56px; transform:translateY(-50%);
-  width:234975px; background:var(--credit); border-radius:0 4px 4px 0;
+  width:235882px; background:var(--credit); border-radius:0 4px 4px 0;
 }
 .bar::after {
   content:"1 pixel = US$10,000"; position:absolute; left:12px; top:-26px;
@@ -56,35 +56,36 @@ body {
 .you {
   position:absolute; top:50%; left:2px; transform:translateY(calc(-50% - 64px));
   font-size:.78rem; color:var(--muted); white-space:nowrap;
+  z-index:3; background:var(--paper); padding-right:6px;
 }
 .you b { color:var(--debit); }
 
 .marker { position:absolute; top:0; height:100%; }
-.marker-line {
-  position:absolute; top:calc(50% - 90px); height:180px; width:1px;
-  background:var(--debit); opacity:.55;
+.marker-line { z-index:1;
+  position:absolute; width:1px; background:var(--debit); opacity:.55;
 }
 .marker-label {
-  position:absolute; left:6px; width:190px;
-  font-size:.76rem; color:var(--ink);
+  position:absolute; left:6px; width:190px; z-index:2;
+  font-size:.76rem; line-height:1.35; color:var(--ink);
+  background:var(--paper); padding:0 6px 2px 0;
 }
-.marker.high .marker-label { top:calc(50% - 138px); }
-.marker.low .marker-label { top:calc(50% - 196px); }
-.marker.low .marker-line { top:calc(50% - 150px); height:240px; }
 .marker-label .mono { color:var(--debit); }
 
 .boundary { position:absolute; top:0; height:100%; }
-.boundary-tick {
-  position:absolute; top:calc(50% + 28px); height:22px; width:1px; background:var(--ink); opacity:.5;
+.boundary-tick { z-index:1;
+  position:absolute; top:calc(50% + 28px); width:1px;
+  background:var(--ink); opacity:.35;
 }
 .boundary-label {
-  position:absolute; top:calc(50% + 56px); left:-4px; width:190px;
-  font-size:.74rem; color:var(--muted);
+  position:absolute; left:6px; width:190px; z-index:2;
+  font-size:.74rem; line-height:1.35; color:var(--muted);
+  background:var(--paper); padding:0 6px 2px 0;
 }
 .boundary-label b { color:var(--ink); font-weight:500; }
+.boundary-label .cum { color:var(--muted); opacity:.75; font-size:.68rem; }
 
 .endpanel {
-  position:absolute; top:50%; left:235035px; transform:translateY(-50%);
+  position:absolute; top:50%; left:235942px; transform:translateY(-50%);
   width:560px; max-width:80vw;
 }
 .endpanel h2 { font-family:'Libre Caslon Text',serif; font-size:1.8rem; }
@@ -121,139 +122,143 @@ body {
   <div class="bar"></div>
   <div class="you">▲ <b>You are here.</b> Most people never leave this pixel.</div>
 
-    <div class="marker high" style="left:6px">
-      <div class="marker-line"></div>
-      <div class="marker-label"><span class="mono">≈ US$60k</span><br>One year of full-time work at the median wage</div>
+    <div class="marker" style="left:6px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$60k</span><br>One year of full-time work at the median wage</div>
     </div>
-    <div class="marker low" style="left:45px">
-      <div class="marker-line"></div>
-      <div class="marker-label"><span class="mono">≈ US$450k</span><br>A house</div>
+    <div class="marker" style="left:45px">
+      <div class="marker-line" style="top:calc(50% - 141px); height:169px"></div>
+      <div class="marker-label" style="top:calc(50% - 192px)"><span class="mono">≈ US$450k</span><br>A house</div>
     </div>
-    <div class="marker high" style="left:240px">
-      <div class="marker-line"></div>
-      <div class="marker-label"><span class="mono">≈ US$2.4m</span><br>An entire 40-year career at the median wage</div>
+    <div class="marker" style="left:240px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$2.4m</span><br>An entire 40-year career at the median wage</div>
     </div>
-    <div class="marker low" style="left:1200px">
-      <div class="marker-line"></div>
-      <div class="marker-label"><span class="mono">≈ US$12m</span><br>Five whole working lifetimes</div>
+    <div class="marker" style="left:1200px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$12m</span><br>Five whole working lifetimes</div>
     </div>
-    <div class="marker high" style="left:6000px">
-      <div class="marker-line"></div>
-      <div class="marker-label"><span class="mono">≈ US$60m</span><br>A thousand years at the median wage</div>
+    <div class="marker" style="left:6000px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$60m</span><br>A thousand years at the median wage</div>
     </div>
-    <div class="marker low" style="left:60000px">
-      <div class="marker-line"></div>
-      <div class="marker-label"><span class="mono">≈ US$600m</span><br>Ten thousand years — longer than recorded history</div>
+    <div class="marker" style="left:60000px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$600m</span><br>Ten thousand years — longer than recorded history</div>
     </div>
 
-    <div class="boundary" style="left:0px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Nadine Lee</b><br>Dallas Area Rapid Transit · <span class="mono">US$72,000</span></div>
+    <div class="boundary" style="left:7px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Nadine Lee</b><br>Dallas Area Rapid Transit · <span class="mono">US$72,000</span><br><span class="cum">total to here US$72,000</span></div>
     </div>
-    <div class="boundary" style="left:53px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Jolie Hodson</b><br>Spark · <span class="mono">NZ$886k</span></div>
+    <div class="boundary" style="left:60px">
+      <div class="boundary-tick" style="height:94px"></div>
+      <div class="boundary-label" style="top:calc(50% + 122px)"><b>Jolie Hodson</b><br>Spark · <span class="mono">NZ$886k</span><br><span class="cum">total to here US$603,600</span></div>
     </div>
-    <div class="boundary" style="left:135px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Dennis Barnes and four senior executives</b><br>Snowy Hydro · <span class="mono">A$1.24m</span></div>
+    <div class="boundary" style="left:142px">
+      <div class="boundary-tick" style="height:174px"></div>
+      <div class="boundary-label" style="top:calc(50% + 202px)"><b>Dennis Barnes and four senior executives</b><br>Snowy Hydro · <span class="mono">A$1.24m</span><br><span class="cum">total to here US$1.4m</span></div>
     </div>
-    <div class="boundary" style="left:262px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Hilary Marden-Resnik</b><br>UCare · <span class="mono">US$1.27m</span></div>
+    <div class="boundary" style="left:269px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Hilary Marden-Resnik</b><br>UCare · <span class="mono">US$1.27m</span><br><span class="cum">total to here US$2.7m</span></div>
     </div>
-    <div class="boundary" style="left:394px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Nick Grayston</b><br>The Warehouse Group · <span class="mono">NZ$2.2m</span></div>
+    <div class="boundary" style="left:401px">
+      <div class="boundary-tick" style="height:94px"></div>
+      <div class="boundary-label" style="top:calc(50% + 122px)"><b>Nick Grayston</b><br>The Warehouse Group · <span class="mono">NZ$2.2m</span><br><span class="cum">total to here US$4.0m</span></div>
     </div>
-    <div class="boundary" style="left:566px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Marjan Rintel</b><br>KLM · <span class="mono">€1.6m</span></div>
+    <div class="boundary" style="left:574px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Marjan Rintel</b><br>KLM · <span class="mono">€1.6m</span><br><span class="cum">total to here US$5.7m</span></div>
     </div>
-    <div class="boundary" style="left:1015px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Vicki Brady</b><br>Telstra · <span class="mono">A$6.8m</span></div>
+    <div class="boundary" style="left:1022px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Vicki Brady</b><br>Telstra · <span class="mono">A$6.8m</span><br><span class="cum">total to here US$10.2m</span></div>
     </div>
-    <div class="boundary" style="left:1472px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Chris O&#x27;Shea</b><br>Centrica (British Gas) · <span class="mono">£3.6m</span></div>
+    <div class="boundary" style="left:1480px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Chris O&#x27;Shea</b><br>Centrica (British Gas) · <span class="mono">£3.6m</span><br><span class="cum">total to here US$14.8m</span></div>
     </div>
-    <div class="boundary" style="left:1994px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Shayne Elliott</b><br>ANZ · <span class="mono">A$7.9m</span></div>
+    <div class="boundary" style="left:2001px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Shayne Elliott</b><br>ANZ · <span class="mono">A$7.9m</span><br><span class="cum">total to here US$20.0m</span></div>
     </div>
-    <div class="boundary" style="left:2603px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>James Jesic</b><br>Severn Trent · <span class="mono">£4.8m</span></div>
+    <div class="boundary" style="left:2611px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>James Jesic</b><br>Severn Trent · <span class="mono">£4.8m</span><br><span class="cum">total to here US$26.1m</span></div>
     </div>
-    <div class="boundary" style="left:3228px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Daniel Chu</b><br>Tricolor · <span class="mono">US$6.25m</span></div>
+    <div class="boundary" style="left:3236px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Daniel Chu</b><br>Tricolor · <span class="mono">US$6.25m</span><br><span class="cum">total to here US$32.4m</span></div>
     </div>
-    <div class="boundary" style="left:3866px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Steve McCann</b><br>Star Entertainment Group · <span class="mono">A$9.66m</span></div>
+    <div class="boundary" style="left:3873px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Steve McCann</b><br>Star Entertainment Group · <span class="mono">A$9.66m</span><br><span class="cum">total to here US$38.7m</span></div>
     </div>
-    <div class="boundary" style="left:4538px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Wes Powell</b><br>Aimco · <span class="mono">US$6.72m</span></div>
+    <div class="boundary" style="left:4545px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Wes Powell</b><br>Aimco · <span class="mono">US$6.72m</span><br><span class="cum">total to here US$45.5m</span></div>
     </div>
-    <div class="boundary" style="left:5950px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Alan Joyce</b><br>Qantas · <span class="mono">A$21.4m</span></div>
+    <div class="boundary" style="left:5445px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Kenny Fihla</b><br>Absa Group · <span class="mono">R148m (US$9m)</span><br><span class="cum">total to here US$54.5m</span></div>
     </div>
-    <div class="boundary" style="left:7703px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Wael Sawan</b><br>Shell · <span class="mono">£13.8m</span></div>
+    <div class="boundary" style="left:6857px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Alan Joyce</b><br>Qantas · <span class="mono">A$21.4m</span><br><span class="cum">total to here US$68.6m</span></div>
     </div>
-    <div class="boundary" style="left:9557px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Sukhinder Singh Cassidy</b><br>Xero · <span class="mono">NZ$30.9m</span></div>
+    <div class="boundary" style="left:8610px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Wael Sawan</b><br>Shell · <span class="mono">£13.8m</span><br><span class="cum">total to here US$86.1m</span></div>
     </div>
-    <div class="boundary" style="left:11703px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Pascal Soriot</b><br>AstraZeneca · <span class="mono">£16.9m</span></div>
+    <div class="boundary" style="left:10464px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Sukhinder Singh Cassidy</b><br>Xero · <span class="mono">NZ$30.9m</span><br><span class="cum">total to here US$104.6m</span></div>
     </div>
-    <div class="boundary" style="left:14053px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>21 senior executives</b><br>Thames Water · <span class="mono">£18.5m</span></div>
+    <div class="boundary" style="left:12610px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Pascal Soriot</b><br>AstraZeneca · <span class="mono">£16.9m</span><br><span class="cum">total to here US$126.1m</span></div>
     </div>
-    <div class="boundary" style="left:17333px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Dave Calhoun</b><br>Boeing · <span class="mono">US$32.8m</span></div>
+    <div class="boundary" style="left:14960px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>21 senior executives</b><br>Thames Water · <span class="mono">£18.5m</span><br><span class="cum">total to here US$149.6m</span></div>
     </div>
-    <div class="boundary" style="left:21275px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Carlos Tavares</b><br>Stellantis · <span class="mono">€36.5m</span></div>
+    <div class="boundary" style="left:18240px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Dave Calhoun</b><br>Boeing · <span class="mono">US$32.8m</span><br><span class="cum">total to here US$182.4m</span></div>
     </div>
-    <div class="boundary" style="left:26465px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>David Zaslav</b><br>Warner Bros. Discovery · <span class="mono">US$51.9m</span></div>
+    <div class="boundary" style="left:22182px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Carlos Tavares</b><br>Stellantis · <span class="mono">€36.5m</span><br><span class="cum">total to here US$221.8m</span></div>
     </div>
-    <div class="boundary" style="left:36065px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Brian Niccol</b><br>Starbucks · <span class="mono">US$96m</span></div>
+    <div class="boundary" style="left:27372px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>David Zaslav</b><br>Warner Bros. Discovery · <span class="mono">US$51.9m</span><br><span class="cum">total to here US$273.7m</span></div>
     </div>
-    <div class="boundary" style="left:56595px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Hock Tan</b><br>Broadcom · <span class="mono">US$205.3m</span></div>
+    <div class="boundary" style="left:36972px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Brian Niccol</b><br>Starbucks · <span class="mono">US$96m</span><br><span class="cum">total to here US$369.7m</span></div>
     </div>
-    <div class="boundary" style="left:84675px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Niraj Shah</b><br>Wayfair · <span class="mono">US$280.8m</span></div>
+    <div class="boundary" style="left:57502px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Hock Tan</b><br>Broadcom · <span class="mono">US$205.3m</span><br><span class="cum">total to here US$575.0m</span></div>
     </div>
-    <div class="boundary" style="left:124975px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>RJ Scaringe</b><br>Rivian · <span class="mono">US$403m</span></div>
+    <div class="boundary" style="left:85582px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Niraj Shah</b><br>Wayfair · <span class="mono">US$280.8m</span><br><span class="cum">total to here US$855.8m</span></div>
     </div>
-    <div class="boundary" style="left:234975px">
-      <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Alex Karp</b><br>Palantir · <span class="mono">US$1.1b</span></div>
+    <div class="boundary" style="left:125882px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>RJ Scaringe</b><br>Rivian · <span class="mono">US$403m</span><br><span class="cum">total to here US$1.26b</span></div>
+    </div>
+    <div class="boundary" style="left:235882px">
+      <div class="boundary-tick" style="height:14px"></div>
+      <div class="boundary-label" style="top:calc(50% + 42px)"><b>Alex Karp</b><br>Palantir · <span class="mono">US$1.1b</span><br><span class="cum">total to here US$2.36b</span></div>
     </div>
   <div class="endpanel">
     <h2>End of the bar.</h2>
-    <p><span class="mono">US$2.35b</span> credited to <b>46 people</b> across the 26 entries counted so far.</p>
-    <p>That is roughly <b>39,163 years</b> of work at the median wage — about <b>979 entire careers</b>, mostly credited for one year each.</p>
+    <p><span class="mono">US$2.36b</span> credited to <b>47 people</b> across the 27 entries counted so far.</p>
+    <p>That is roughly <b>39,314 years</b> of work at the median wage — about <b>983 entire careers</b>, mostly credited for one year each.</p>
     <p>The register grows most weeks. So does this page.</p>
 <p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla. At this scale the bar would be about <b>26 km</b> of screen. Browsers refuse to draw it. So do we.</p>
     <a class="back" href="index.html">Back to the register →</a>
@@ -265,8 +270,8 @@ body {
 <script>
 (function () {
   var perPx = 10000;
-  var bounds = [{"x": 0, "people": 1}, {"x": 53, "people": 2}, {"x": 135, "people": 3}, {"x": 262, "people": 4}, {"x": 394, "people": 5}, {"x": 566, "people": 6}, {"x": 1015, "people": 7}, {"x": 1472, "people": 8}, {"x": 1994, "people": 9}, {"x": 2603, "people": 10}, {"x": 3228, "people": 11}, {"x": 3866, "people": 12}, {"x": 4538, "people": 13}, {"x": 5950, "people": 14}, {"x": 7703, "people": 15}, {"x": 9557, "people": 16}, {"x": 11703, "people": 17}, {"x": 14053, "people": 38}, {"x": 17333, "people": 39}, {"x": 21275, "people": 40}, {"x": 26465, "people": 41}, {"x": 36065, "people": 42}, {"x": 56595, "people": 43}, {"x": 84675, "people": 44}, {"x": 124975, "people": 45}, {"x": 234975, "people": 46}];
-  var totalPeople = 46;
+  var bounds = [{"x": 7, "people": 1}, {"x": 60, "people": 2}, {"x": 142, "people": 3}, {"x": 269, "people": 4}, {"x": 401, "people": 5}, {"x": 574, "people": 6}, {"x": 1022, "people": 7}, {"x": 1480, "people": 8}, {"x": 2001, "people": 9}, {"x": 2611, "people": 10}, {"x": 3236, "people": 11}, {"x": 3873, "people": 12}, {"x": 4545, "people": 13}, {"x": 5445, "people": 14}, {"x": 6857, "people": 15}, {"x": 8610, "people": 16}, {"x": 10464, "people": 17}, {"x": 12610, "people": 18}, {"x": 14960, "people": 39}, {"x": 18240, "people": 40}, {"x": 22182, "people": 41}, {"x": 27372, "people": 42}, {"x": 36972, "people": 43}, {"x": 57502, "people": 44}, {"x": 85582, "people": 45}, {"x": 125882, "people": 46}, {"x": 235882, "people": 47}];
+  var totalPeople = 47;
   var counter = document.getElementById('counter');
   var peopleEl = document.getElementById('people');
   var hint = document.getElementById('hint');
@@ -280,7 +285,7 @@ body {
     for (var i = 0; i < bounds.length; i++) {
       if (x >= bounds[i].x) passed = bounds[i].people;
     }
-    counter.innerHTML = fmt(Math.min(x * perPx, 2349751672))
+    counter.innerHTML = fmt(Math.min(x * perPx, 2358823600))
       + ' <span class="people">· ' + passed + '/' + totalPeople + ' people passed</span>'
       + small;
     hint.style.opacity = x > 200 ? 0 : 1;
