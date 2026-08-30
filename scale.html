@@ -448,6 +448,38 @@ body {
   }
   window.addEventListener('scroll', update, { passive: true });
   update();
+
+  // The bar only runs sideways, so a vertical wheel should drive it. Browsers
+  // do this inconsistently on a root scroller, so map it explicitly.
+  function pixels(e) {
+    if (e.deltaMode === 1) return e.deltaY * 16;            // reported in lines
+    if (e.deltaMode === 2) return e.deltaY * window.innerWidth;  // in pages
+    return e.deltaY;
+  }
+  window.addEventListener('wheel', function (e) {
+    if (e.ctrlKey) return;                                   // pinch to zoom
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;     // already sideways
+    var d = pixels(e);
+    if (!d) return;
+    e.preventDefault();
+    window.scrollBy(d, 0);
+  }, { passive: false });
+
+  // Keyboard, so the page is not mouse-only.
+  var STEP = 120;
+  window.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var w = window.innerWidth * 0.9, d = null;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') d = STEP;
+    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') d = -STEP;
+    else if (e.key === 'PageDown' || e.key === ' ') d = w;
+    else if (e.key === 'PageUp') d = -w;
+    else if (e.key === 'Home') { e.preventDefault(); window.scrollTo(0, 0); return; }
+    else if (e.key === 'End') { e.preventDefault(); window.scrollTo(document.body.scrollWidth, 0); return; }
+    if (d === null) return;
+    e.preventDefault();
+    window.scrollBy(d, 0);
+  });
 })();
 </script>
 <script data-goatcounter="https://bonuswatch.goatcounter.com/count"
