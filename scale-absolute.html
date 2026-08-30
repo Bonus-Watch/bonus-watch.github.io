@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Everyone, To Scale — Bonus Watch</title>
+<meta name="description" content="Every package on the Bonus Watch register measured from zero on one ruler, so each sits at its own figure rather than at a running total.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --paper:#FFFFFF; --ink:#212B26; --credit:#0E7A52;
+  --debit:#B23A31; --rule:#E9E7E1; --muted:#73726C; --gold:#B8912E;
+}
+* { box-sizing:border-box; margin:0; }
+.mono { font-family:'IBM Plex Mono',monospace; }
+a { color:var(--credit); text-decoration-thickness:1px; text-underline-offset:2px; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline:2px solid var(--credit); outline-offset:2px;
+}
+
+html, body { height:100%; }
+body {
+  background:#FFFFFF; color:var(--ink);
+  font-family:'IBM Plex Sans',sans-serif; font-size:17px; line-height:1.5;
+  overflow-y:hidden;
+}
+.intro {
+  position:fixed; top:0; left:0; width:100vw; z-index:5;
+  padding:20px 24px 0; pointer-events:none;
+}
+.intro a, .intro .counter { pointer-events:auto; }
+.intro h1 { font-family:'Libre Caslon Text',serif; font-weight:700; font-size:1.4rem; }
+.intro h1 a { color:var(--ink); text-decoration:none; }
+.intro p { color:var(--muted); font-size:.9rem; max-width:38ch; margin-top:4px; }
+.counter {
+  display:inline-block; margin-top:14px; padding:8px 14px;
+  border:1px solid var(--rule); border-radius:3px; background:#fff;
+  font-family:'IBM Plex Mono',monospace; font-size:1rem; color:var(--credit);
+  min-width:250px;
+}
+.counter small { display:block; color:var(--muted); font-family:'IBM Plex Sans',sans-serif; font-size:.72rem; }
+.counter .people { color:var(--debit); font-size:.82rem; }
+
+.track { position:relative; width:110900px; height:100vh; }
+.bar {
+  position:absolute; top:50%; left:0; height:56px; transform:translateY(-50%);
+  width:110000px; background:var(--credit); border-radius:0 4px 4px 0;
+}
+.bar::after {
+  content:"1 pixel = US$10,000 · the bar is one package";
+  position:absolute; left:12px; top:-26px;
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--muted); white-space:nowrap;
+}
+.you {
+  position:absolute; top:50%; left:2px; transform:translateY(calc(-50% - 64px));
+  font-size:.78rem; color:var(--muted); white-space:nowrap;
+  z-index:3; background:var(--paper); padding-right:6px;
+}
+.you b { color:var(--debit); }
+
+.marker { position:absolute; top:0; height:100%; }
+.marker-line { z-index:1;
+  position:absolute; width:1px; background:var(--debit); opacity:.55;
+}
+.marker-label {
+  position:absolute; left:6px; width:190px; z-index:2;
+  font-size:.76rem; line-height:1.35; color:var(--ink);
+  background:var(--paper); padding:0 6px 2px 0;
+}
+.marker-label .mono { color:var(--debit); }
+
+/* One package, ending. The stem drops from the bar into its own lane. */
+.pk { position:absolute; top:0; height:100%; }
+.pk-stem {
+  position:absolute; top:calc(50% + 28px); width:1px;
+  background:var(--ink); opacity:.3; z-index:1;
+}
+.pk-dot {
+  position:absolute; top:calc(50% + 26px); left:-2.5px;
+  width:5px; height:5px; border-radius:50%; background:var(--credit); z-index:2;
+}
+.pk-label {
+  position:absolute; left:5px; width:168px; z-index:2;
+  font-size:.7rem; line-height:1.25; color:var(--muted);
+  background:var(--paper); padding-right:6px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.pk-label b { color:var(--ink); font-weight:500; }
+.pk-label .mono { color:var(--credit); }
+.pk-label i { font-style:normal; }
+.pk-label:hover {
+  width:max-content; max-width:420px; overflow:visible; z-index:9;
+  padding:2px 8px 3px 4px; margin-left:-4px;
+  box-shadow:0 6px 18px rgba(0,0,0,.10);
+}
+
+/* Graduations along the bar: read the figure off the bar itself. */
+.grad {
+  position:absolute; top:50%; transform:translateY(-50%);
+  height:56px; width:1px; background:rgba(255,255,255,.34);
+}
+.grad.maj { background:rgba(255,255,255,.7); }
+.grad span {
+  position:absolute; left:6px; bottom:5px; white-space:nowrap;
+  font-size:.66rem; color:rgba(255,255,255,.72);
+}
+.grad.maj span { color:#fff; font-size:.72rem; font-weight:600; }
+
+.endpanel {
+  position:absolute; top:50%; left:110060px; transform:translateY(-50%);
+  width:560px; max-width:80vw;
+}
+.endpanel h2 { font-family:'Libre Caslon Text',serif; font-size:1.8rem; }
+.endpanel .mono { color:var(--credit); }
+.endpanel p { margin-top:12px; color:var(--muted); max-width:52ch; }
+.endpanel p b { color:var(--ink); }
+.endpanel .back { display:inline-block; margin-top:18px; }
+.notdrawn {
+  margin-top:16px; padding:12px 14px; border-left:3px solid var(--debit);
+  background:#FBF6F5; font-size:.92rem;
+}
+
+.hint {
+  position:fixed; right:24px; bottom:22px; z-index:5;
+  font-size:.85rem; color:var(--muted);
+  animation:nudge 1.6s ease-in-out infinite;
+}
+@keyframes nudge { 50% { transform:translateX(6px); } }
+@media (prefers-reduced-motion: reduce) { .hint { animation:none; } }
+@media (max-width:560px) {
+  .marker-label { width:140px; }
+  .endpanel { max-width:86vw; }
+}
+</style>
+</head>
+<body>
+<div class="intro">
+  <h1><a href="index.html">← Bonus Watch</a> · Everyone, to scale</h1>
+  <p>Every package measured from zero. The bar is the largest one.</p>
+  <div class="counter" id="counter">US$0<small>a package this size ends here</small></div>
+</div>
+
+<div class="track">
+  <div class="bar"></div>
+<div class="grad" style="left:1000px"><span class="mono">US$10m</span></div><div class="grad" style="left:2000px"><span class="mono">US$20m</span></div><div class="grad" style="left:3000px"><span class="mono">US$30m</span></div><div class="grad" style="left:4000px"><span class="mono">US$40m</span></div><div class="grad" style="left:5000px"><span class="mono">US$50m</span></div><div class="grad" style="left:6000px"><span class="mono">US$60m</span></div><div class="grad" style="left:7000px"><span class="mono">US$70m</span></div><div class="grad" style="left:8000px"><span class="mono">US$80m</span></div><div class="grad" style="left:9000px"><span class="mono">US$90m</span></div><div class="grad maj" style="left:10000px"><span class="mono">US$100m</span></div><div class="grad" style="left:11000px"><span class="mono">US$110m</span></div><div class="grad" style="left:12000px"><span class="mono">US$120m</span></div><div class="grad" style="left:13000px"><span class="mono">US$130m</span></div><div class="grad" style="left:14000px"><span class="mono">US$140m</span></div><div class="grad" style="left:15000px"><span class="mono">US$150m</span></div><div class="grad" style="left:16000px"><span class="mono">US$160m</span></div><div class="grad" style="left:17000px"><span class="mono">US$170m</span></div><div class="grad" style="left:18000px"><span class="mono">US$180m</span></div><div class="grad" style="left:19000px"><span class="mono">US$190m</span></div><div class="grad maj" style="left:20000px"><span class="mono">US$200m</span></div><div class="grad" style="left:21000px"><span class="mono">US$210m</span></div><div class="grad" style="left:22000px"><span class="mono">US$220m</span></div><div class="grad" style="left:23000px"><span class="mono">US$230m</span></div><div class="grad" style="left:24000px"><span class="mono">US$240m</span></div><div class="grad" style="left:25000px"><span class="mono">US$250m</span></div><div class="grad" style="left:26000px"><span class="mono">US$260m</span></div><div class="grad" style="left:27000px"><span class="mono">US$270m</span></div><div class="grad" style="left:28000px"><span class="mono">US$280m</span></div><div class="grad" style="left:29000px"><span class="mono">US$290m</span></div><div class="grad maj" style="left:30000px"><span class="mono">US$300m</span></div><div class="grad" style="left:31000px"><span class="mono">US$310m</span></div><div class="grad" style="left:32000px"><span class="mono">US$320m</span></div><div class="grad" style="left:33000px"><span class="mono">US$330m</span></div><div class="grad" style="left:34000px"><span class="mono">US$340m</span></div><div class="grad" style="left:35000px"><span class="mono">US$350m</span></div><div class="grad" style="left:36000px"><span class="mono">US$360m</span></div><div class="grad" style="left:37000px"><span class="mono">US$370m</span></div><div class="grad" style="left:38000px"><span class="mono">US$380m</span></div><div class="grad" style="left:39000px"><span class="mono">US$390m</span></div><div class="grad maj" style="left:40000px"><span class="mono">US$400m</span></div><div class="grad" style="left:41000px"><span class="mono">US$410m</span></div><div class="grad" style="left:42000px"><span class="mono">US$420m</span></div><div class="grad" style="left:43000px"><span class="mono">US$430m</span></div><div class="grad" style="left:44000px"><span class="mono">US$440m</span></div><div class="grad" style="left:45000px"><span class="mono">US$450m</span></div><div class="grad" style="left:46000px"><span class="mono">US$460m</span></div><div class="grad" style="left:47000px"><span class="mono">US$470m</span></div><div class="grad" style="left:48000px"><span class="mono">US$480m</span></div><div class="grad" style="left:49000px"><span class="mono">US$490m</span></div><div class="grad maj" style="left:50000px"><span class="mono">US$500m</span></div><div class="grad" style="left:51000px"><span class="mono">US$510m</span></div><div class="grad" style="left:52000px"><span class="mono">US$520m</span></div><div class="grad" style="left:53000px"><span class="mono">US$530m</span></div><div class="grad" style="left:54000px"><span class="mono">US$540m</span></div><div class="grad" style="left:55000px"><span class="mono">US$550m</span></div><div class="grad" style="left:56000px"><span class="mono">US$560m</span></div><div class="grad" style="left:57000px"><span class="mono">US$570m</span></div><div class="grad" style="left:58000px"><span class="mono">US$580m</span></div><div class="grad" style="left:59000px"><span class="mono">US$590m</span></div><div class="grad maj" style="left:60000px"><span class="mono">US$600m</span></div><div class="grad" style="left:61000px"><span class="mono">US$610m</span></div><div class="grad" style="left:62000px"><span class="mono">US$620m</span></div><div class="grad" style="left:63000px"><span class="mono">US$630m</span></div><div class="grad" style="left:64000px"><span class="mono">US$640m</span></div><div class="grad" style="left:65000px"><span class="mono">US$650m</span></div><div class="grad" style="left:66000px"><span class="mono">US$660m</span></div><div class="grad" style="left:67000px"><span class="mono">US$670m</span></div><div class="grad" style="left:68000px"><span class="mono">US$680m</span></div><div class="grad" style="left:69000px"><span class="mono">US$690m</span></div><div class="grad maj" style="left:70000px"><span class="mono">US$700m</span></div><div class="grad" style="left:71000px"><span class="mono">US$710m</span></div><div class="grad" style="left:72000px"><span class="mono">US$720m</span></div><div class="grad" style="left:73000px"><span class="mono">US$730m</span></div><div class="grad" style="left:74000px"><span class="mono">US$740m</span></div><div class="grad" style="left:75000px"><span class="mono">US$750m</span></div><div class="grad" style="left:76000px"><span class="mono">US$760m</span></div><div class="grad" style="left:77000px"><span class="mono">US$770m</span></div><div class="grad" style="left:78000px"><span class="mono">US$780m</span></div><div class="grad" style="left:79000px"><span class="mono">US$790m</span></div><div class="grad maj" style="left:80000px"><span class="mono">US$800m</span></div><div class="grad" style="left:81000px"><span class="mono">US$810m</span></div><div class="grad" style="left:82000px"><span class="mono">US$820m</span></div><div class="grad" style="left:83000px"><span class="mono">US$830m</span></div><div class="grad" style="left:84000px"><span class="mono">US$840m</span></div><div class="grad" style="left:85000px"><span class="mono">US$850m</span></div><div class="grad" style="left:86000px"><span class="mono">US$860m</span></div><div class="grad" style="left:87000px"><span class="mono">US$870m</span></div><div class="grad" style="left:88000px"><span class="mono">US$880m</span></div><div class="grad" style="left:89000px"><span class="mono">US$890m</span></div><div class="grad maj" style="left:90000px"><span class="mono">US$900m</span></div><div class="grad" style="left:91000px"><span class="mono">US$910m</span></div><div class="grad" style="left:92000px"><span class="mono">US$920m</span></div><div class="grad" style="left:93000px"><span class="mono">US$930m</span></div><div class="grad" style="left:94000px"><span class="mono">US$940m</span></div><div class="grad" style="left:95000px"><span class="mono">US$950m</span></div><div class="grad" style="left:96000px"><span class="mono">US$960m</span></div><div class="grad" style="left:97000px"><span class="mono">US$970m</span></div><div class="grad" style="left:98000px"><span class="mono">US$980m</span></div><div class="grad" style="left:99000px"><span class="mono">US$990m</span></div><div class="grad maj" style="left:100000px"><span class="mono">US$1b</span></div><div class="grad" style="left:101000px"><span class="mono">US$1.01b</span></div><div class="grad" style="left:102000px"><span class="mono">US$1.02b</span></div><div class="grad" style="left:103000px"><span class="mono">US$1.03b</span></div><div class="grad" style="left:104000px"><span class="mono">US$1.04b</span></div><div class="grad" style="left:105000px"><span class="mono">US$1.05b</span></div><div class="grad" style="left:106000px"><span class="mono">US$1.06b</span></div><div class="grad" style="left:107000px"><span class="mono">US$1.07b</span></div><div class="grad" style="left:108000px"><span class="mono">US$1.08b</span></div><div class="grad" style="left:109000px"><span class="mono">US$1.09b</span></div>
+  <div class="you">▲ <b>You are here.</b> Most people never leave this pixel.</div>
+
+    <div class="marker" style="left:6px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$60k</span><br>One year of full-time work at the median wage</div>
+    </div>
+    <div class="marker" style="left:45px">
+      <div class="marker-line" style="top:calc(50% - 141px); height:169px"></div>
+      <div class="marker-label" style="top:calc(50% - 192px)"><span class="mono">≈ US$450k</span><br>A house</div>
+    </div>
+    <div class="marker" style="left:240px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$2.4m</span><br>An entire 40-year career at the median wage</div>
+    </div>
+    <div class="marker" style="left:1200px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$12m</span><br>Five whole working lifetimes</div>
+    </div>
+    <div class="marker" style="left:6000px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$60m</span><br>A thousand years at the median wage</div>
+    </div>
+    <div class="marker" style="left:60000px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$600m</span><br>Ten thousand years — longer than recorded history</div>
+    </div>
+
+    <div class="pk" style="left:7px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Nadine Lee — Dallas Area Rapid Transit · US$72,000"><b>Nadine Lee</b> <span class="mono">US$72,000</span> <i>Dallas Area Rapid Transit</i></div>
+    </div>
+    <div class="pk" style="left:21px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Dennis Barnes — Snowy Hydro · A$323k"><b>Dennis Barnes</b> <span class="mono">A$323k</span> <i>Snowy Hydro</i></div>
+    </div>
+    <div class="pk" style="left:23px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Peter Hebblethwaite — P&amp;O Ferries · £183k"><b>Peter Hebblethwaite</b> <span class="mono">£183k</span> <i>P&amp;O Ferries</i></div>
+    </div>
+    <div class="pk" style="left:37px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="Ryan Tubridy — RTÉ · €345k"><b>Ryan Tubridy</b> <span class="mono">€345k</span> <i>RTÉ</i></div>
+    </div>
+    <div class="pk" style="left:49px">
+      <div class="pk-stem" style="height:84px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 112px)" title="Lisa Roberts — University of Exeter · £392k"><b>Lisa Roberts</b> <span class="mono">£392k</span> <i>University of Exeter</i></div>
+    </div>
+    <div class="pk" style="left:53px">
+      <div class="pk-stem" style="height:102px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 130px)" title="Jolie Hodson — Spark · NZ$886k"><b>Jolie Hodson</b> <span class="mono">NZ$886k</span> <i>Spark</i></div>
+    </div>
+    <div class="pk" style="left:54px">
+      <div class="pk-stem" style="height:120px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 148px)" title="Alexandra Reis — TAP Air Portugal · €500k"><b>Alexandra Reis</b> <span class="mono">€500k</span> <i>TAP Air Portugal</i></div>
+    </div>
+    <div class="pk" style="left:54px">
+      <div class="pk-stem" style="height:138px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 166px)" title="Peter Mathieson — University of Edinburgh · £426k"><b>Peter Mathieson</b> <span class="mono">£426k</span> <i>University of Edinburgh</i></div>
+    </div>
+    <div class="pk" style="left:88px">
+      <div class="pk-stem" style="height:156px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 184px)" title="Colin Skellett — Wessex Water · £693k"><b>Colin Skellett</b> <span class="mono">£693k</span> <i>Wessex Water</i></div>
+    </div>
+    <div class="pk" style="left:89px">
+      <div class="pk-stem" style="height:174px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 202px)" title="Fred Goodwin — Royal Bank of Scotland · £703k"><b>Fred Goodwin</b> <span class="mono">£703k</span> <i>Royal Bank of Scotland</i></div>
+    </div>
+    <div class="pk" style="left:111px">
+      <div class="pk-stem" style="height:192px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 220px)" title="Each of 21 senior executives — Thames Water · £881k avg"><b>Each of 21 senior executives</b> <span class="mono">£881k avg</span> <i>Thames Water</i></div>
+    </div>
+    <div class="pk" style="left:127px">
+      <div class="pk-stem" style="height:210px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 238px)" title="Hilary Marden-Resnik — UCare · US$1.27m"><b>Hilary Marden-Resnik</b> <span class="mono">US$1.27m</span> <i>UCare</i></div>
+    </div>
+    <div class="pk" style="left:132px">
+      <div class="pk-stem" style="height:228px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 256px)" title="Nick Grayston — The Warehouse Group · NZ$2.2m"><b>Nick Grayston</b> <span class="mono">NZ$2.2m</span> <i>The Warehouse Group</i></div>
+    </div>
+    <div class="pk" style="left:172px">
+      <div class="pk-stem" style="height:246px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 274px)" title="Marjan Rintel — KLM · €1.6m"><b>Marjan Rintel</b> <span class="mono">€1.6m</span> <i>KLM</i></div>
+    </div>
+    <div class="pk" style="left:190px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Richard Howson — Carillion · £1.5m"><b>Richard Howson</b> <span class="mono">£1.5m</span> <i>Carillion</i></div>
+    </div>
+    <div class="pk" style="left:241px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Mark Thurston — Anglian Water · £1.9m"><b>Mark Thurston</b> <span class="mono">£1.9m</span> <i>Anglian Water</i></div>
+    </div>
+    <div class="pk" style="left:270px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Mads Nipper — Ørsted · DKK18.9m (US$2.7m)"><b>Mads Nipper</b> <span class="mono">DKK18.9m (US$2.7m)</span> <i>Ørsted</i></div>
+    </div>
+    <div class="pk" style="left:270px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="Birgitte Bonnesen — Swedbank · SEK26.6m (US$2.7m)"><b>Birgitte Bonnesen</b> <span class="mono">SEK26.6m (US$2.7m)</span> <i>Swedbank</i></div>
+    </div>
+    <div class="pk" style="left:279px">
+      <div class="pk-stem" style="height:84px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 112px)" title="Paula Vennells — Post Office · £2.2m"><b>Paula Vennells</b> <span class="mono">£2.2m</span> <i>Post Office</i></div>
+    </div>
+    <div class="pk" style="left:360px">
+      <div class="pk-stem" style="height:102px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 130px)" title="Greg Becker — Silicon Valley Bank · US$3.6m"><b>Greg Becker</b> <span class="mono">US$3.6m</span> <i>Silicon Valley Bank</i></div>
+    </div>
+    <div class="pk" style="left:448px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Vicki Brady — Telstra · A$6.8m"><b>Vicki Brady</b> <span class="mono">A$6.8m</span> <i>Telstra</i></div>
+    </div>
+    <div class="pk" style="left:457px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Chris O&#x27;Shea — Centrica (British Gas) · £3.6m"><b>Chris O&#x27;Shea</b> <span class="mono">£3.6m</span> <i>Centrica (British Gas)</i></div>
+    </div>
+    <div class="pk" style="left:521px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Shayne Elliott — ANZ · A$7.9m"><b>Shayne Elliott</b> <span class="mono">A$7.9m</span> <i>ANZ</i></div>
+    </div>
+    <div class="pk" style="left:609px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="James Jesic — Severn Trent · £4.8m"><b>James Jesic</b> <span class="mono">£4.8m</span> <i>Severn Trent</i></div>
+    </div>
+    <div class="pk" style="left:625px">
+      <div class="pk-stem" style="height:84px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 112px)" title="Daniel Chu — Tricolor · US$6.25m"><b>Daniel Chu</b> <span class="mono">US$6.25m</span> <i>Tricolor</i></div>
+    </div>
+    <div class="pk" style="left:637px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Steve McCann — Star Entertainment Group · A$9.66m"><b>Steve McCann</b> <span class="mono">A$9.66m</span> <i>Star Entertainment Group</i></div>
+    </div>
+    <div class="pk" style="left:672px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Wes Powell — Aimco · US$6.72m"><b>Wes Powell</b> <span class="mono">US$6.72m</span> <i>Aimco</i></div>
+    </div>
+    <div class="pk" style="left:777px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Carlos Ghosn — Renault · €7.2m"><b>Carlos Ghosn</b> <span class="mono">€7.2m</span> <i>Renault</i></div>
+    </div>
+    <div class="pk" style="left:781px">
+      <div class="pk-stem" style="height:102px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 130px)" title="Rainer Seele — OMV · €7.24m"><b>Rainer Seele</b> <span class="mono">€7.24m</span> <i>OMV</i></div>
+    </div>
+    <div class="pk" style="left:788px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="Martin Winterkorn — Volkswagen · €7.3m"><b>Martin Winterkorn</b> <span class="mono">€7.3m</span> <i>Volkswagen</i></div>
+    </div>
+    <div class="pk" style="left:860px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Galen Weston — Loblaw · C$11.79m"><b>Galen Weston</b> <span class="mono">C$11.79m</span> <i>Loblaw</i></div>
+    </div>
+    <div class="pk" style="left:900px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Kenny Fihla — Absa Group · R148m (US$9m)"><b>Kenny Fihla</b> <span class="mono">R148m (US$9m)</span> <i>Absa Group</i></div>
+    </div>
+    <div class="pk" style="left:900px">
+      <div class="pk-stem" style="height:84px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 112px)" title="Salil Parekh — Infosys · ₹82.6 crore (US$9m)"><b>Salil Parekh</b> <span class="mono">₹82.6 crore (US$9m)</span> <i>Infosys</i></div>
+    </div>
+    <div class="pk" style="left:1000px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Pat Gelsinger — Intel · US$10m"><b>Pat Gelsinger</b> <span class="mono">US$10m</span> <i>Intel</i></div>
+    </div>
+    <div class="pk" style="left:1260px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Euisun Chung — Hyundai Motor · ₩17.5bn (US$12.6m)"><b>Euisun Chung</b> <span class="mono">₩17.5bn (US$12.6m)</span> <i>Hyundai Motor</i></div>
+    </div>
+    <div class="pk" style="left:1340px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Alan Shaw — Norfolk Southern · US$13.4m"><b>Alan Shaw</b> <span class="mono">US$13.4m</span> <i>Norfolk Southern</i></div>
+    </div>
+    <div class="pk" style="left:1350px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Akio Toyoda — Toyota · ¥1.95bn (US$13.5m)"><b>Akio Toyoda</b> <span class="mono">¥1.95bn (US$13.5m)</span> <i>Toyota</i></div>
+    </div>
+    <div class="pk" style="left:1412px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="Alan Joyce — Qantas · A$21.4m"><b>Alan Joyce</b> <span class="mono">A$21.4m</span> <i>Qantas</i></div>
+    </div>
+    <div class="pk" style="left:1590px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Sergio Ermotti — UBS · CHF14.4m (US$15.9m)"><b>Sergio Ermotti</b> <span class="mono">CHF14.4m (US$15.9m)</span> <i>UBS</i></div>
+    </div>
+    <div class="pk" style="left:1689px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Jean-Sébastien Jacques — Rio Tinto · £13.3m"><b>Jean-Sébastien Jacques</b> <span class="mono">£13.3m</span> <i>Rio Tinto</i></div>
+    </div>
+    <div class="pk" style="left:1752px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Wael Sawan — Shell · £13.8m"><b>Wael Sawan</b> <span class="mono">£13.8m</span> <i>Shell</i></div>
+    </div>
+    <div class="pk" style="left:1854px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Sukhinder Singh Cassidy — Xero · NZ$30.9m"><b>Sukhinder Singh Cassidy</b> <span class="mono">NZ$30.9m</span> <i>Xero</i></div>
+    </div>
+    <div class="pk" style="left:2146px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Pascal Soriot — AstraZeneca · £16.9m"><b>Pascal Soriot</b> <span class="mono">£16.9m</span> <i>AstraZeneca</i></div>
+    </div>
+    <div class="pk" style="left:2460px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Albert Bourla — Pfizer · US$24.6m"><b>Albert Bourla</b> <span class="mono">US$24.6m</span> <i>Pfizer</i></div>
+    </div>
+    <div class="pk" style="left:3279px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Dave Calhoun — Boeing · US$32.8m"><b>Dave Calhoun</b> <span class="mono">US$32.8m</span> <i>Boeing</i></div>
+    </div>
+    <div class="pk" style="left:3865px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Andrew Wilson — Electronic Arts · US$38.65m"><b>Andrew Wilson</b> <span class="mono">US$38.65m</span> <i>Electronic Arts</i></div>
+    </div>
+    <div class="pk" style="left:3942px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Carlos Tavares — Stellantis · €36.5m"><b>Carlos Tavares</b> <span class="mono">€36.5m</span> <i>Stellantis</i></div>
+    </div>
+    <div class="pk" style="left:5190px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="David Zaslav — Warner Bros. Discovery · US$51.9m"><b>David Zaslav</b> <span class="mono">US$51.9m</span> <i>Warner Bros. Discovery</i></div>
+    </div>
+    <div class="pk" style="left:7322px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Andrea Orcel — Santander · €67.8m"><b>Andrea Orcel</b> <span class="mono">€67.8m</span> <i>Santander</i></div>
+    </div>
+    <div class="pk" style="left:7990px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Marc Casper — Thermo Fisher Scientific · US$79.9m"><b>Marc Casper</b> <span class="mono">US$79.9m</span> <i>Thermo Fisher Scientific</i></div>
+    </div>
+    <div class="pk" style="left:8000px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Carlos Ghosn — Nissan · US$80m"><b>Carlos Ghosn</b> <span class="mono">US$80m</span> <i>Nissan</i></div>
+    </div>
+    <div class="pk" style="left:9600px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Brian Niccol — Starbucks · US$96m"><b>Brian Niccol</b> <span class="mono">US$96m</span> <i>Starbucks</i></div>
+    </div>
+    <div class="pk" style="left:10800px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Michael O&#x27;Leary — Ryanair · €100m"><b>Michael O&#x27;Leary</b> <span class="mono">€100m</span> <i>Ryanair</i></div>
+    </div>
+    <div class="pk" style="left:13000px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="John Stumpf — Wells Fargo · US$130m"><b>John Stumpf</b> <span class="mono">US$130m</span> <i>Wells Fargo</i></div>
+    </div>
+    <div class="pk" style="left:15100px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Nikesh Arora — Palo Alto Networks · US$151m"><b>Nikesh Arora</b> <span class="mono">US$151m</span> <i>Palo Alto Networks</i></div>
+    </div>
+    <div class="pk" style="left:20530px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Hock Tan — Broadcom · US$205.3m"><b>Hock Tan</b> <span class="mono">US$205.3m</span> <i>Broadcom</i></div>
+    </div>
+    <div class="pk" style="left:28080px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Niraj Shah — Wayfair · US$280.8m"><b>Niraj Shah</b> <span class="mono">US$280.8m</span> <i>Wayfair</i></div>
+    </div>
+    <div class="pk" style="left:40300px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="RJ Scaringe — Rivian · US$403m"><b>RJ Scaringe</b> <span class="mono">US$403m</span> <i>Rivian</i></div>
+    </div>
+    <div class="pk" style="left:44500px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Adam Neumann — WeWork · US$445m"><b>Adam Neumann</b> <span class="mono">US$445m</span> <i>WeWork</i></div>
+    </div>
+    <div class="pk" style="left:44800px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Sridhar Ramaswamy — Snowflake · US$448m"><b>Sridhar Ramaswamy</b> <span class="mono">US$448m</span> <i>Snowflake</i></div>
+    </div>
+    <div class="pk" style="left:52150px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Angelo Mozilo — Countrywide Financial · US$521.5m"><b>Angelo Mozilo</b> <span class="mono">US$521.5m</span> <i>Countrywide Financial</i></div>
+    </div>
+    <div class="pk" style="left:82100px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Shankh Mitra — Welltower · US$821m"><b>Shankh Mitra</b> <span class="mono">US$821m</span> <i>Welltower</i></div>
+    </div>
+    <div class="pk" style="left:110000px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Alex Karp — Palantir · US$1.1b"><b>Alex Karp</b> <span class="mono">US$1.1b</span> <i>Palantir</i></div>
+    </div>
+  <div class="endpanel">
+    <h2>Alex Karp.</h2>
+    <p><span class="mono">US$1.1b</span> at Palantir. One person, the whole page.</p>
+    <p>Second place — Shankh Mitra on US$821m — stopped <b>27,900 pixels</b> back.</p>
+    <p>The middle of the register is <span class="mono">US$9.0m</span>, which ends <b>900 pixels</b> in. The first <b>0.8%</b> of this page holds half the register.</p>
+<p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla — <b>909 times</b> the length of this page. Browsers refuse to draw it. So do we.</p>
+    <a class="back" href="scale.html">The register end to end →</a>
+  </div>
+</div>
+
+<div class="hint" id="hint">scroll →</div>
+
+<script>
+(function () {
+  var perPx = 10000;
+  var marks = [{"x": 7, "people": 1}, {"x": 21, "people": 2}, {"x": 23, "people": 3}, {"x": 37, "people": 4}, {"x": 49, "people": 5}, {"x": 53, "people": 6}, {"x": 54, "people": 7}, {"x": 54, "people": 8}, {"x": 88, "people": 9}, {"x": 89, "people": 10}, {"x": 111, "people": 11}, {"x": 127, "people": 12}, {"x": 132, "people": 13}, {"x": 172, "people": 14}, {"x": 190, "people": 15}, {"x": 241, "people": 16}, {"x": 270, "people": 17}, {"x": 270, "people": 18}, {"x": 279, "people": 19}, {"x": 360, "people": 20}, {"x": 448, "people": 21}, {"x": 457, "people": 22}, {"x": 521, "people": 23}, {"x": 609, "people": 24}, {"x": 625, "people": 25}, {"x": 637, "people": 26}, {"x": 672, "people": 27}, {"x": 777, "people": 28}, {"x": 781, "people": 29}, {"x": 788, "people": 30}, {"x": 860, "people": 31}, {"x": 900, "people": 32}, {"x": 900, "people": 33}, {"x": 1000, "people": 34}, {"x": 1260, "people": 35}, {"x": 1340, "people": 36}, {"x": 1350, "people": 37}, {"x": 1412, "people": 38}, {"x": 1590, "people": 39}, {"x": 1689, "people": 40}, {"x": 1752, "people": 41}, {"x": 1854, "people": 42}, {"x": 2146, "people": 43}, {"x": 2460, "people": 44}, {"x": 3279, "people": 45}, {"x": 3865, "people": 46}, {"x": 3942, "people": 47}, {"x": 5190, "people": 48}, {"x": 7322, "people": 49}, {"x": 7990, "people": 50}, {"x": 8000, "people": 51}, {"x": 9600, "people": 52}, {"x": 10800, "people": 53}, {"x": 13000, "people": 54}, {"x": 15100, "people": 55}, {"x": 20530, "people": 56}, {"x": 28080, "people": 57}, {"x": 40300, "people": 58}, {"x": 44500, "people": 59}, {"x": 44800, "people": 60}, {"x": 52150, "people": 61}, {"x": 82100, "people": 62}, {"x": 110000, "people": 63}];
+  var totalPeople = 63;
+  var maxUsd = 1100000000;
+  var counter = document.getElementById('counter');
+  var hint = document.getElementById('hint');
+  var small = '<small>a package this size ends here</small>';
+  function fmt(n) {
+    return 'US$' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+  function update() {
+    var x = window.scrollX || document.documentElement.scrollLeft || 0;
+    var passed = 0;
+    for (var i = 0; i < marks.length; i++) {
+      if (x >= marks[i].x) passed = marks[i].people;
+    }
+    counter.innerHTML = fmt(Math.min(x * perPx, maxUsd))
+      + ' <span class="people">· ' + passed + '/' + totalPeople + ' packages ended</span>'
+      + small;
+    hint.style.opacity = x > 200 ? 0 : 1;
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+
+  // The bar only runs sideways, so a vertical wheel should drive it.
+  function pixels(e) {
+    if (e.deltaMode === 1) return e.deltaY * 16;
+    if (e.deltaMode === 2) return e.deltaY * window.innerWidth;
+    return e.deltaY;
+  }
+  window.addEventListener('wheel', function (e) {
+    if (e.ctrlKey) return;
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    var d = pixels(e);
+    if (!d) return;
+    e.preventDefault();
+    window.scrollBy(d, 0);
+  }, { passive: false });
+
+  var STEP = 120;
+  window.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var w = window.innerWidth * 0.9, d = null;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') d = STEP;
+    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') d = -STEP;
+    else if (e.key === 'PageDown' || e.key === ' ') d = w;
+    else if (e.key === 'PageUp') d = -w;
+    else if (e.key === 'Home') { e.preventDefault(); window.scrollTo(0, 0); return; }
+    else if (e.key === 'End') { e.preventDefault(); window.scrollTo(document.body.scrollWidth, 0); return; }
+    if (d === null) return;
+    e.preventDefault();
+    window.scrollBy(d, 0);
+  });
+})();
+</script>
+<script data-goatcounter="https://bonuswatch.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
