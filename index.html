@@ -55,6 +55,18 @@ main { padding:38px 0 10px; }
 .serial { letter-spacing:.08em; }
 .entry-co { font-family:'Libre Caslon Text',serif; font-weight:700; font-size:1.8rem; }
 .entry-who { color:var(--muted); font-size:.95rem; margin:2px 0 18px; }
+.entry-who:has(+ .kind) { margin-bottom:8px; }
+.kind {
+  display:inline-flex; align-items:center; gap:6px; margin:0 0 18px;
+  padding:3px 9px 3px 7px; border:1px solid var(--rule); border-radius:99px;
+  font-size:.74rem; letter-spacing:.02em; color:var(--gold); background:#FCFAF4;
+  cursor:help;
+}
+.kind-icon {
+  width:14px; height:14px; flex:none;
+  fill:none; stroke:currentColor; stroke-width:1.3;
+  stroke-linecap:round; stroke-linejoin:round;
+}
 
 .ledger-line {
   display:grid; grid-template-columns:1fr 1fr;
@@ -127,7 +139,7 @@ footer p + p { margin-top:8px; }
     <h1 class="masthead">BONUS<span class="watch">.WATCH</span></h1>
     <p class="strap">Every bonus balances somewhere.</p>
     <nav>
-      <a class="scale-link" href="scale.html">The scale ↦</a>
+      <a class="scale-link" href="scale.html">The scale</a>
       
       <a href="about.html">About</a>
       <a href="https://ko-fi.com/bonuswatch" rel="noopener">Support</a>
@@ -151,6 +163,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Xero</h2>
       <p class="entry-who">Sukhinder Singh Cassidy, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -173,6 +186,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Spark</h2>
       <p class="entry-who">Jolie Hodson, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -195,6 +209,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Telstra</h2>
       <p class="entry-who">Vicki Brady, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -217,6 +232,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Severn Trent</h2>
       <p class="entry-who">James Jesic, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -239,6 +255,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Anglian Water</h2>
       <p class="entry-who">Mark Thurston, CEO</p>
+      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -261,6 +278,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Electronic Arts</h2>
       <p class="entry-who">Andrew Wilson, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -283,6 +301,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Absa Group</h2>
       <p class="entry-who">Kenny Fihla, CEO</p>
+      <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -305,6 +324,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Welltower</h2>
       <p class="entry-who">Shankh Mitra, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -327,6 +347,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Snowflake</h2>
       <p class="entry-who">Sridhar Ramaswamy, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -349,6 +370,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Palo Alto Networks</h2>
       <p class="entry-who">Nikesh Arora, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -371,6 +393,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Wayfair</h2>
       <p class="entry-who">Niraj Shah, Co-founder &amp; CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -393,6 +416,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Snowy Hydro</h2>
       <p class="entry-who">Dennis Barnes, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -415,6 +439,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Infosys</h2>
       <p class="entry-who">Salil Parekh, CEO and MD</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -437,6 +462,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Thermo Fisher Scientific</h2>
       <p class="entry-who">Marc Casper, Chairman, President and CEO</p>
+      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -459,6 +485,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">University of Edinburgh</h2>
       <p class="entry-who">Peter Mathieson, Vice-Chancellor</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -481,6 +508,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Rivian</h2>
       <p class="entry-who">RJ Scaringe, CEO and founder</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -503,6 +531,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">KLM</h2>
       <p class="entry-who">Marjan Rintel, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -525,6 +554,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Broadcom</h2>
       <p class="entry-who">Hock Tan, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -547,6 +577,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Shell</h2>
       <p class="entry-who">Wael Sawan, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -569,6 +600,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Hyundai Motor</h2>
       <p class="entry-who">Euisun Chung, Executive chairman</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -591,6 +623,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Centrica (British Gas)</h2>
       <p class="entry-who">Chris O&#x27;Shea, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -613,6 +646,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">University of Exeter</h2>
       <p class="entry-who">Lisa Roberts, Vice-Chancellor</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -635,6 +669,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">ANZ</h2>
       <p class="entry-who">Shayne Elliott, Former CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -657,6 +692,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Aimco</h2>
       <p class="entry-who">Wes Powell, President and CEO</p>
+      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -679,6 +715,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Tesla</h2>
       <p class="entry-who">Elon Musk, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -701,6 +738,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Dallas Area Rapid Transit</h2>
       <p class="entry-who">Nadine Lee, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -723,6 +761,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Star Entertainment Group</h2>
       <p class="entry-who">Steve McCann, Former CEO</p>
+      <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -745,6 +784,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Tricolor</h2>
       <p class="entry-who">Daniel Chu, CEO and founder</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -767,6 +807,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">UCare</h2>
       <p class="entry-who">Hilary Marden-Resnik, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -789,6 +830,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Toyota</h2>
       <p class="entry-who">Akio Toyoda, Chairman</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -811,6 +853,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Thames Water</h2>
       <p class="entry-who">Each of 21 senior executives, Management retention scheme</p>
+      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -833,6 +876,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Ryanair</h2>
       <p class="entry-who">Michael O&#x27;Leary, CEO</p>
+      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -855,6 +899,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Warner Bros. Discovery</h2>
       <p class="entry-who">David Zaslav, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -877,6 +922,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Pfizer</h2>
       <p class="entry-who">Albert Bourla, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -899,6 +945,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Ørsted</h2>
       <p class="entry-who">Mads Nipper, CEO (departing)</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -921,6 +968,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Starbucks</h2>
       <p class="entry-who">Brian Niccol, CEO</p>
+      <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -943,6 +991,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Wessex Water</h2>
       <p class="entry-who">Colin Skellett, Former CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -965,6 +1014,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Intel</h2>
       <p class="entry-who">Pat Gelsinger, CEO (departing)</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -987,6 +1037,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">The Warehouse Group</h2>
       <p class="entry-who">Nick Grayston, Former CEO</p>
+      <p class="kind k-parachute" title="Agreed in the contract before it was needed, and paid because the job ended"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.6 8.1a6.4 6.4 0 0 1 12.8 0"/><path d="M1.6 8.1 8 13.2"/><path d="M14.4 8.1 8 13.2"/><path d="M8 8.1v5.1"/><rect x="6.7" y="13.2" width="2.6" height="1.9" rx=".4"/></svg>Golden parachute</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1009,6 +1060,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Boeing</h2>
       <p class="entry-who">Dave Calhoun, CEO (departing)</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1031,6 +1083,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Stellantis</h2>
       <p class="entry-who">Carlos Tavares, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1053,6 +1106,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">AstraZeneca</h2>
       <p class="entry-who">Pascal Soriot, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1075,6 +1129,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">P&amp;O Ferries</h2>
       <p class="entry-who">Peter Hebblethwaite, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1097,6 +1152,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">UBS</h2>
       <p class="entry-who">Sergio Ermotti, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1119,6 +1175,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Norfolk Southern</h2>
       <p class="entry-who">Alan Shaw, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1141,6 +1198,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Qantas</h2>
       <p class="entry-who">Alan Joyce, CEO (departing)</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1163,6 +1221,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">RTÉ</h2>
       <p class="entry-who">Ryan Tubridy, Presenter</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1185,6 +1244,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Loblaw</h2>
       <p class="entry-who">Galen Weston, Chairman and CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1207,6 +1267,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Silicon Valley Bank</h2>
       <p class="entry-who">Greg Becker, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1229,6 +1290,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">TAP Air Portugal</h2>
       <p class="entry-who">Alexandra Reis, Former board member</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1251,6 +1313,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Santander</h2>
       <p class="entry-who">Andrea Orcel, CEO appointee (never started)</p>
+      <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1273,6 +1336,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Palantir</h2>
       <p class="entry-who">Alex Karp, Co-founder &amp; CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1295,6 +1359,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Rio Tinto</h2>
       <p class="entry-who">Jean-Sébastien Jacques, CEO (departing)</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1317,6 +1382,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">WeWork</h2>
       <p class="entry-who">Adam Neumann, Co-founder and former CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1339,6 +1405,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Swedbank</h2>
       <p class="entry-who">Birgitte Bonnesen, Former CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1361,6 +1428,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Post Office</h2>
       <p class="entry-who">Paula Vennells, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1383,6 +1451,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">OMV</h2>
       <p class="entry-who">Rainer Seele, CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1405,6 +1474,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Nissan</h2>
       <p class="entry-who">Carlos Ghosn, Chairman</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1427,6 +1497,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Carillion</h2>
       <p class="entry-who">Richard Howson, Former CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1449,6 +1520,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Wells Fargo</h2>
       <p class="entry-who">John Stumpf, Chairman and CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1471,6 +1543,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Volkswagen</h2>
       <p class="entry-who">Martin Winterkorn, Former CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1493,6 +1566,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Renault</h2>
       <p class="entry-who">Carlos Ghosn, Chairman and CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1515,6 +1589,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">McKesson</h2>
       <p class="entry-who">John Hammergren, Chairman and CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1537,6 +1612,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Royal Bank of Scotland</h2>
       <p class="entry-who">Fred Goodwin, Former CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1559,6 +1635,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Lehman Brothers</h2>
       <p class="entry-who">Dick Fuld, Chairman and CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1581,6 +1658,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Countrywide Financial</h2>
       <p class="entry-who">Angelo Mozilo, Co-founder and CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1603,6 +1681,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Merrill Lynch</h2>
       <p class="entry-who">Stan O&#x27;Neal, Chairman and CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1625,6 +1704,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Home Depot</h2>
       <p class="entry-who">Robert Nardelli, Chairman and CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1647,6 +1727,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">Pfizer</h2>
       <p class="entry-who">Hank McKinnell, Chairman and CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1669,6 +1750,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">ExxonMobil</h2>
       <p class="entry-who">Lee Raymond, Chairman and CEO</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1691,6 +1773,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">New York Stock Exchange</h2>
       <p class="entry-who">Richard Grasso, Chairman and CEO</p>
+      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1713,6 +1796,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">The Walt Disney Company</h2>
       <p class="entry-who">Michael Ovitz, President</p>
+      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1735,6 +1819,7 @@ footer p + p { margin-top:8px; }
       </div>
       <h2 class="entry-co">RJR Nabisco</h2>
       <p class="entry-who">F. Ross Johnson, President and CEO</p>
+      <p class="kind k-parachute" title="Agreed in the contract before it was needed, and paid because the job ended"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.6 8.1a6.4 6.4 0 0 1 12.8 0"/><path d="M1.6 8.1 8 13.2"/><path d="M14.4 8.1 8 13.2"/><path d="M8 8.1v5.1"/><rect x="6.7" y="13.2" width="2.6" height="1.9" rx=".4"/></svg>Golden parachute</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
