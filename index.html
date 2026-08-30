@@ -65,16 +65,19 @@ nav a.scale-link { color:var(--debit); font-weight:500; }
 main { padding:38px 0 10px; }
 .entry { border-bottom:1px solid var(--rule); padding:40px 0 36px; }
 .entry-head {
-  display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px;
+  display:flex; justify-content:space-between; align-items:flex-start;
+  flex-wrap:wrap; gap:4px;
   font-size:.76rem; color:var(--muted); margin-bottom:10px;
 }
 .serial { text-decoration:none; color:inherit;
    letter-spacing:.08em; }
 .entry-co { font-family:'Libre Caslon Text',serif; font-weight:700; font-size:1.8rem; }
 .entry-who { color:var(--muted); font-size:.95rem; margin:2px 0 18px; }
-.entry-who:has(+ .kind) { margin-bottom:8px; }
+.head-right {
+  display:flex; flex-direction:column; align-items:flex-end; gap:7px;
+}
 .kind {
-  display:inline-flex; align-items:center; gap:6px; margin:0 0 18px;
+  display:inline-flex; align-items:center; gap:6px; margin:0;
   padding:3px 9px 3px 7px; border:1px solid var(--rule); border-radius:99px;
   font-size:.74rem; letter-spacing:.02em; color:var(--gold); background:#FCFAF4;
   cursor:help;
@@ -110,6 +113,11 @@ main { padding:38px 0 10px; }
   margin-top:16px; font-family:'Libre Caslon Text',serif; font-style:italic;
   font-size:1rem; max-width:62ch;
 }
+.filings {
+  margin-top:5px; font-size:.82rem; color:var(--muted);
+}
+.filings a { color:var(--muted); }
+.filings a:hover { color:var(--credit); }
 .sources { margin-top:10px; font-size:.8rem; color:var(--muted); }
 
 .newsletter { padding:34px 0; border-bottom:1px solid var(--rule); }
@@ -176,11 +184,13 @@ footer p + p { margin-top:8px; }
     <article class="entry" id="bw-0073">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0073">ENTRY Nº BW-0073</a>
-        <span class="mono">2026-08 · ASX</span>
+        <div class="head-right">
+          <span class="mono">2026-08 · ASX</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Xero</h2>
       <p class="entry-who">Sukhinder Singh Cassidy, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -194,16 +204,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Awarded in the same week the chair explained the company must &#x27;remain competitive&#x27;.</p>
       <p class="sources">Sources: <a href="https://www.nzherald.co.nz/business/xero-ceos-309m-pay-package-frustrates-nz-shareholders-association-on-back-of-share-price-dive/premium/FACSC6KHEBA3XHSV3J2ODXEWIM/" rel="noopener">NZ Herald</a> · <a href="https://businessdesk.co.nz/article/markets/xero-defends-ceos-30m-pay-package-amid-growing-shareholder-revolt" rel="noopener">BusinessDesk</a> · <a href="https://www.nbr.co.nz/investment/xero-shareholders-reject-ceo-pay-scheme-after-poor-performance/" rel="noopener">NBR</a> · <a href="https://www.rnz.co.nz/news/business/1102842/xero-s-ceo-gets-pay-rise-after-review-finds-pay-below-other-technology-company-leaders" rel="noopener">RNZ</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0072">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0072">ENTRY Nº BW-0072</a>
-        <span class="mono">2026-08 · NZX</span>
+        <div class="head-right">
+          <span class="mono">2026-08 · NZX</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Spark</h2>
       <p class="entry-who">Jolie Hodson, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -217,16 +230,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The CEO says the bonus was &#x27;based on performance&#x27;. The 627 staff were unavailable for comment.</p>
       <p class="sources">Sources: <a href="https://www.nzherald.co.nz/business/spark-reports-an-inline-result-loses-another-600-staff-ceo-scores-900k-in-bonuses/premium/UQSYTVLD5VHELI7VZ2LRUQAFKE/" rel="noopener">NZ Herald</a> · <a href="https://newsroom.co.nz/2026/08/24/spark-shows-signs-of-a-turnaround-but-challenges-remain/" rel="noopener">Newsroom</a> · <a href="https://www.newstalkzb.co.nz/on-air/heather-du-plessis-allan-drive/audio/jolie-hodson-spark-nz-ceo-defends-bonus-and-pay-bump-amid-job-cuts/" rel="noopener">Newstalk ZB</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0071">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0071">ENTRY Nº BW-0071</a>
-        <span class="mono">2026-08 · ASX</span>
+        <div class="head-right">
+          <span class="mono">2026-08 · ASX</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Telstra</h2>
       <p class="entry-who">Vicki Brady, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -240,16 +256,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Her bonus was docked A$607,000. Her pay rose A$600,000.</p>
       <p class="sources">Sources: <a href="https://www.abc.net.au/news/2026-08-13/asx-markets-business-live-news/107030738" rel="noopener">ABC News</a> · <a href="https://www.channelnews.com.au/telstra-ceo-pay-rises-11-despite-triple-0-outage-and-revenue-drop/" rel="noopener">ChannelNews</a> · <a href="https://ia.acs.org.au/article/2026/telstra-boosted-ceo-pay-despite-revenue-slump--outage.html" rel="noopener">Information Age</a> · <a href="https://au.finance.yahoo.com/news/telstra-2-4bn-profit-huge-221001369.html" rel="noopener">Yahoo Finance Australia</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0070">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0070">ENTRY Nº BW-0070</a>
-        <span class="mono">2026-07 · LSE</span>
+        <div class="head-right">
+          <span class="mono">2026-07 · LSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Severn Trent</h2>
       <p class="entry-who">James Jesic, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -263,16 +282,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Two hundred thousand hours of sewage. The long-term incentive plan was doubled.</p>
       <p class="sources">Sources: <a href="https://www.birminghamworld.uk/news/this-does-not-feel-appropriate-mp-wants-rethink-over-severn-trents-increased-ceo-bonus-plans-8800356" rel="noopener">BirminghamWorld</a> · <a href="https://www.aol.co.uk/articles/severn-trent-doubles-ceo-reward-060005000.html" rel="noopener">AOL</a> · <a href="https://www.thecanary.co/uk/analysis/2025/07/16/severn-trent-water/" rel="noopener">The Canary</a> · <a href="https://garethsnell.org.uk/letter-to-severn-trent-ceo-james-jesic/" rel="noopener">Gareth Snell MP</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0069">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0069">ENTRY Nº BW-0069</a>
-        <span class="mono">2026-07 · Private (UK)</span>
+        <div class="head-right">
+          <span class="mono">2026-07 · Private (UK)</span>
+          <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
+        </div>
       </div>
       <h2 class="entry-co">Anglian Water</h2>
       <p class="entry-who">Mark Thurston, CEO</p>
-      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -286,16 +308,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The bonus ban held. The £500,000 was not called a bonus.</p>
       <p class="sources">Sources: <a href="https://www.lbc.co.uk/article/sewage-anglian-water-uk-mark-thurston-5HjdfHF_2/" rel="noopener">LBC</a> · <a href="https://www.aol.co.uk/articles/water-bosses-total-pay-rises-170313000.html" rel="noopener">PA via AOL</a> · <a href="https://kalkine.co.uk/news/economy/anglian-water-chief-receives-13-million-retention-award-despite-industry-bonus-curbs" rel="noopener">Kalkine</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0068">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0068">ENTRY Nº BW-0068</a>
-        <span class="mono">2026-07 · NASDAQ</span>
+        <div class="head-right">
+          <span class="mono">2026-07 · NASDAQ</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Electronic Arts</h2>
       <p class="entry-who">Andrew Wilson, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -309,16 +334,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The teams that made the year&#x27;s best-selling game were cut in the same year it paid for the jet.</p>
       <p class="sources">Sources: <a href="https://www.stocktitan.net/sec-filings/EA/10-k-a-electronic-arts-inc-amends-annual-report-39d201ea7fcb.html" rel="noopener">EA 10-K/A via StockTitan</a> · <a href="https://www.gamefile.news/p/ea-pay-very-tall-chart-2026" rel="noopener">Game File</a> · <a href="https://finance.yahoo.com/markets/stocks/articles/ea-ceo-earned-38-6m-193000334.html" rel="noopener">Yahoo Finance</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000712515&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0067">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0067">ENTRY Nº BW-0067</a>
-        <span class="mono">2026-06 · JSE</span>
+        <div class="head-right">
+          <span class="mono">2026-06 · JSE</span>
+          <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
+        </div>
       </div>
       <h2 class="entry-co">Absa Group</h2>
       <p class="entry-who">Kenny Fihla, CEO</p>
-      <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -332,16 +360,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Two thirds of the package rewards work he did for a competitor.</p>
       <p class="sources">Sources: <a href="https://www.enca.com/business-top-stories/absa-faces-investor-revolt-over-ceos-r148m-pay" rel="noopener">eNCA</a> · <a href="https://www.billionaires.africa/2026/06/07/absa-ceo-kenny-fihlas-9-million-pay-triggers-shareholder-revolt/" rel="noopener">Billionaires.Africa</a> · <a href="https://arbiterz.com/profile-kenny-fihla-the-banker-who-was-paid-9-million-to-leave-standard-bank-by-absa/" rel="noopener">Arbiterz</a> · <a href="https://www.moneyweb.co.za/news/companies-and-deals/investors-thump-absa-with-astounding-43-vote-against-exec-pay/" rel="noopener">Moneyweb</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0066">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0066">ENTRY Nº BW-0066</a>
-        <span class="mono">2026-06 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2026-06 · NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Welltower</h2>
       <p class="entry-who">Shankh Mitra, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -355,16 +386,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Eighty-one per cent said no. The vote was advisory.</p>
       <p class="sources">Sources: <a href="https://therealdeal.com/national/2026/06/29/welltowers-821m-ceo-payday-sparks-backlash-despite-big-run/" rel="noopener">The Real Deal</a> · <a href="https://seniorhousingnews.com/2026/06/29/welltower-exec-pay-plans-in-spotlight-again-after-wall-street-journal-analysis/" rel="noopener">Senior Housing News</a> · <a href="https://www.boardroomalpha.com/research/ceo-pay-25-million-club-2026" rel="noopener">Boardroom Alpha</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000766704&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0065">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0065">ENTRY Nº BW-0065</a>
-        <span class="mono">2026-06 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2026-06 · NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Snowflake</h2>
       <p class="entry-who">Sridhar Ramaswamy, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -378,16 +412,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">They asked the shareholders what was wrong, listened, and lost the vote a second time.</p>
       <p class="sources">Sources: <a href="https://finance.yahoo.com/markets/stocks/articles/snowflake-unveils-448-million-pay-115142537.html" rel="noopener">Reuters via Yahoo Finance</a> · <a href="https://www.tipranks.com/news/company-announcements/snowflake-shareholders-reject-executive-pay-support-governance-changes" rel="noopener">TipRanks</a> · <a href="https://corpgov.law.harvard.edu/2026/08/12/2026-say-on-pay-results-strong-overall-with-large-special-awards-common-among-low-vote-outcomes/" rel="noopener">Harvard Law CorpGov</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001640147&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0064">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0064">ENTRY Nº BW-0064</a>
-        <span class="mono">2026-06 · NASDAQ</span>
+        <div class="head-right">
+          <span class="mono">2026-06 · NASDAQ</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Palo Alto Networks</h2>
       <p class="entry-who">Nikesh Arora, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -401,16 +438,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Seven rejections. Seven packages.</p>
       <p class="sources">Sources: <a href="https://finance.yahoo.com/markets/stocks/articles/palo-alto-ceo-pay-now-121504850.html" rel="noopener">Bloomberg via Yahoo Finance</a> · <a href="https://www.inc.com/brian-contreras/ceo-salary-compensation-say-on-pay-shareholder-vote-palo-alto-networks/91354205" rel="noopener">Inc.</a> · <a href="https://www.boardroomalpha.com/research/ceo-pay-25-million-club-2026" rel="noopener">Boardroom Alpha</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001327567&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0063">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0063">ENTRY Nº BW-0063</a>
-        <span class="mono">2026-05 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2026-05 · NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Wayfair</h2>
       <p class="entry-who">Niraj Shah, Co-founder &amp; CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -424,16 +464,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The US$80,000 salary is presumably for the days the stock units are resting.</p>
       <p class="sources">Sources: <a href="https://www.fool.com/investing/how-to-invest/top-ceos/highest-paid-ceos/" rel="noopener">The Motley Fool</a> · <a href="https://businessmodelanalyst.com/highest-paid-ceos/" rel="noopener">Business Model Analyst</a> · <a href="https://www.nbcboston.com/boston-business-journal/wayfair-ceos-pay-package-ballooned-to-280m-in-2025/3926730/" rel="noopener">Boston Business Journal</a> · <a href="https://www.boston.com/news/business/2026/05/11/these-are-bostons-highest-paid-tech-ceos-bbj-data-shows/" rel="noopener">Boston.com</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001616707&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0062">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0062">ENTRY Nº BW-0062</a>
-        <span class="mono">2026-05 · State-owned</span>
+        <div class="head-right">
+          <span class="mono">2026-05 · State-owned</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Snowy Hydro</h2>
       <p class="entry-who">Dennis Barnes, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -447,16 +490,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Six times over budget and years late, but the customer satisfaction target was met.</p>
       <p class="sources">Sources: <a href="https://www.abc.net.au/news/2026-05-22/snowy-hydro-executives-get-million-dollar-plus-in-bonus-pay/106704734" rel="noopener">ABC News</a> · <a href="https://www.abc.net.au/news/2026-06-03/billions-over-budget-years-late-how-snowy-hydro-2-got-here/106706518" rel="noopener">ABC News</a> · <a href="https://reneweconomy.com.au/snowy-hydro-admits-contractors-make-claims-on-snowy-2-0-but-gives-out-bonuses-anyway/" rel="noopener">RenewEconomy</a> · <a href="https://www.monaropost.com.au/news/snowy-hydro-execs-receive-12-million-in-bonuses-scor737m" rel="noopener">Monaro Post</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0061">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0061">ENTRY Nº BW-0061</a>
-        <span class="mono">2026-05 · NSE/NYSE</span>
+        <div class="head-right">
+          <span class="mono">2026-05 · NSE/NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Infosys</h2>
       <p class="entry-who">Salil Parekh, CEO and MD</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -470,16 +516,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Seven hundred and forty-two times the median. The median&#x27;s rise was still under review.</p>
       <p class="sources">Sources: <a href="https://www.businesstoday.in/latest/corporate/story/infosys-pay-check-ceo-salil-parekh-took-home-rs82-6-crore-742-times-median-employee-pay-534067-2026-05-30" rel="noopener">Business Today</a> · <a href="https://www.outlookbusiness.com/corporate/what-powered-salil-parekhs-82-cr-pay-package-at-infosys" rel="noopener">Outlook Business</a> · <a href="https://www.storyboard18.com/brand-makers/infosys-ceo-salil-parekhs-pay-rose-2-5-in-fy26-heres-how-much-he-earned-99689.htm" rel="noopener">Storyboard18</a> · <a href="https://www.deccanherald.com/business/companies/infosys-ceo-salil-parekhs-pay-for-fy26-increases-by-245-to-rs-826-crore-4020972" rel="noopener">Deccan Herald</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001067491&amp;type=20-F&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">20-F filings</a></p>
     </article>
 
     <article class="entry" id="bw-0060">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0060">ENTRY Nº BW-0060</a>
-        <span class="mono">2026-05 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2026-05 · NYSE</span>
+          <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
+        </div>
       </div>
       <h2 class="entry-co">Thermo Fisher Scientific</h2>
       <p class="entry-who">Marc Casper, Chairman, President and CEO</p>
-      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -493,16 +542,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Retained at eighty million, against the wishes of two-thirds of the owners.</p>
       <p class="sources">Sources: <a href="https://corpgov.law.harvard.edu/2026/08/12/2026-say-on-pay-results-strong-overall-with-large-special-awards-common-among-low-vote-outcomes/" rel="noopener">Harvard Law CorpGov</a> · <a href="https://www.sec.gov/Archives/edgar/data/97745/000119312526144585/d66426ddef14a.htm" rel="noopener">Thermo Fisher DEF 14A 2026</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000097745&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0059">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0059">ENTRY Nº BW-0059</a>
-        <span class="mono">2026-05 · University (UK)</span>
+        <div class="head-right">
+          <span class="mono">2026-05 · University (UK)</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">University of Edinburgh</h2>
       <p class="entry-who">Peter Mathieson, Vice-Chancellor</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -516,16 +568,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Eighteen million spent removing staff. Thirteen thousand more for the vice-chancellor.</p>
       <p class="sources">Sources: <a href="https://www.timeshighereducation.com/depth/do-uk-university-finances-justify-redundancy-wave-or-v-c-pay" rel="noopener">Times Higher Education</a> · <a href="https://human-resources.ed.ac.uk/pay-reward/remuneration-committee/principal-remuneration" rel="noopener">University of Edinburgh — Principal&#x27;s Remuneration</a> · <a href="https://www.edinburghnews.scotsman.com/news/edinburgh-university-principal-sir-peter-mathieson-handed-ps20000-pay-rise-4864424" rel="noopener">Edinburgh Evening News</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0058">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0058">ENTRY Nº BW-0058</a>
-        <span class="mono">2026-04 · NASDAQ</span>
+        <div class="head-right">
+          <span class="mono">2026-04 · NASDAQ</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Rivian</h2>
       <p class="entry-who">RJ Scaringe, CEO and founder</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -539,16 +594,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Forty-two thousand cars. Four hundred and three million dollars. Or, as one trade outlet measured it, fifteen Jim Farleys.</p>
       <p class="sources">Sources: <a href="https://www.autoblog.com/news/rivian-hasnt-made-a-profit-but-paid-its-ceo-403-million" rel="noopener">Autoblog</a> · <a href="https://www.carscoops.com/2026/04/rivian-ceo-pay-package/" rel="noopener">Carscoops</a> · <a href="https://www.thestreet.com/automotive/rivian-ceo-walks-away-with-403-million-despite-huge-losses" rel="noopener">TheStreet</a> · <a href="https://evmagazine.com/articles/top-paid-auto-ceo-rj-scaringes-403m-rivian-pay-package" rel="noopener">EV Magazine</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001874178&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0057">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0057">ENTRY Nº BW-0057</a>
-        <span class="mono">2026-04 · </span>
+        <div class="head-right">
+          <span class="mono">2026-04 · </span>
+          
+        </div>
       </div>
       <h2 class="entry-co">KLM</h2>
       <p class="entry-who">Marjan Rintel, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -562,16 +620,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Labour productivity is to rise five per cent. The board did not specify whose labour.</p>
       <p class="sources">Sources: <a href="https://nltimes.nl/2026/04/03/klm-ceo-pay-rises-32-amid-cost-cutting-measures-job-cuts" rel="noopener">NL Times</a> · <a href="https://www.dutchnews.nl/2026/04/finance-minister-says-klm-boss-pay-boost-is-inappropriate/" rel="noopener">DutchNews</a> · <a href="https://nltimes.nl/2026/04/07/finance-minister-object-klm-ceos-bonus-amid-staff-pay-restrictions" rel="noopener">NL Times</a> · <a href="https://dutchreview.com/news/dutch-government-condemns-klm-ceo-pay-rise/" rel="noopener">DutchReview</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0056">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0056">ENTRY Nº BW-0056</a>
-        <span class="mono">2026-03 · NASDAQ</span>
+        <div class="head-right">
+          <span class="mono">2026-03 · NASDAQ</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Broadcom</h2>
       <p class="entry-who">Hock Tan, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -585,16 +646,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Semiconductors had a good year. One person had a better one.</p>
       <p class="sources">Sources: <a href="https://www.fool.com/investing/how-to-invest/top-ceos/highest-paid-ceos/" rel="noopener">The Motley Fool</a> · <a href="https://www.bloomberg.com/news/articles/2026-03-02/broadcom-ceo-pay-soars-to-205-3-million-after-ai-fueled-rally" rel="noopener">Bloomberg</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001730168&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0055">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0055">ENTRY Nº BW-0055</a>
-        <span class="mono">2026-03 · LSE</span>
+        <div class="head-right">
+          <span class="mono">2026-03 · LSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Shell</h2>
       <p class="entry-who">Wael Sawan, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -608,16 +672,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">A 22% fall in profit earned a 60% rise in pay. The board&#x27;s response was to propose making the arithmetic more generous.</p>
       <p class="sources">Sources: <a href="https://www.expressandstar.com/uk-news/2026/03/12/shell-boss-wael-sawan-sees-pay-jump-almost-60-to-138m-despite-profit-fall/" rel="noopener">Express &amp; Star</a> · <a href="https://www.ibtimes.com/shell-ceo-wael-sawans-pay-jumps-60-138m-despite-22-profit-slide-he-seeks-even-bigger-3799081" rel="noopener">IBTimes</a> · <a href="https://uk.finance.yahoo.com/news/shell-boss-wael-sawan-sees-091431064.html" rel="noopener">PA via Yahoo Finance UK</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001306965&amp;type=20-F&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">20-F filings</a></p>
     </article>
 
     <article class="entry" id="bw-0054">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0054">ENTRY Nº BW-0054</a>
-        <span class="mono">2026-03 · KRX</span>
+        <div class="head-right">
+          <span class="mono">2026-03 · KRX</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Hyundai Motor</h2>
       <p class="entry-who">Euisun Chung, Executive chairman</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -631,16 +698,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Seventy times, and widening.</p>
       <p class="sources">Sources: <a href="https://en.sedaily.com/finance/2026/03/18/hyundais-chung-receives-126m-pay-up-52-percent-from-prior" rel="noopener">Seoul Economic Daily</a> · <a href="https://www.asiae.co.kr/en/article/2026031818033096029" rel="noopener">The Asia Business Daily</a> · <a href="https://en.sedaily.com/finance/2026/03/25/top-exec-pay-gap-widens-to-21x-as-korean-workers-average" rel="noopener">Seoul Economic Daily</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0053">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0053">ENTRY Nº BW-0053</a>
-        <span class="mono">2026-02 · LSE</span>
+        <div class="head-right">
+          <span class="mono">2026-02 · LSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Centrica (British Gas)</h2>
       <p class="entry-who">Chris O&#x27;Shea, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -654,16 +724,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">O&#x27;Shea once said there was &#x27;no point&#x27; trying to justify his £8.2m package. He has not attempted to justify this one either.</p>
       <p class="sources">Sources: <a href="https://uk.finance.yahoo.com/news/centrica-boss-picks-3-6m-155330082.html" rel="noopener">The Independent</a> · <a href="https://www.lbc.co.uk/article/c71b9e044e04431a876ba9f2f1ef15e3-5HjdSZT_2/" rel="noopener">LBC</a> · <a href="https://www.gbnews.com/money/british-gas-bonus-energy-profits" rel="noopener">GB News</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0052">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0052">ENTRY Nº BW-0052</a>
-        <span class="mono">2026-02 · University (UK)</span>
+        <div class="head-right">
+          <span class="mono">2026-02 · University (UK)</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">University of Exeter</h2>
       <p class="entry-who">Lisa Roberts, Vice-Chancellor</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -677,16 +750,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Four hundred and twenty-seven people left. The vice-chancellor&#x27;s pay went up by three thousand.</p>
       <p class="sources">Sources: <a href="https://www.timeshighereducation.com/depth/do-uk-university-finances-justify-redundancy-wave-or-v-c-pay" rel="noopener">Times Higher Education</a> · <a href="https://www.timeshighereducation.com/news/vice-chancellor-bonuses-growing-despite-sector-funding-crisis" rel="noopener">Times Higher Education</a> · <a href="https://thetab.com/2026/02/12/exeter-universitys-vice-chancellor-received-3000-pay-rise-despite-hundreds-of-jobs-cut" rel="noopener">The Tab</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0051">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0051">ENTRY Nº BW-0051</a>
-        <span class="mono">2025-12 · ASX</span>
+        <div class="head-right">
+          <span class="mono">2025-12 · ASX</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">ANZ</h2>
       <p class="entry-who">Shayne Elliott, Former CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -700,16 +776,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The board called it accountability. The proxy advisers called it insufficient. Both were describing the same A$7.9m.</p>
       <p class="sources">Sources: <a href="https://thenightly.com.au/business/anz-receives-second-strike-against-remuneration-report-after-nearly-one-third-of-shareholders-vote-no-c-21045392" rel="noopener">The Nightly</a> · <a href="https://www.capitalbrief.com/briefing/anz-board-suffers-second-strike-as-proxy-firms-oppose-rem-report-3fdaa056-72ca-445e-9114-c3f443d612c9/" rel="noopener">Capital Brief</a> · <a href="https://www.lawfuel.com/former-anz-ceo-abandons-court-fight-over-unpaid-bonus-as-board-holds-the-line/" rel="noopener">LawFuel</a> · <a href="https://fortune.com/asia/2025/09/15/anz-australia-160-million-fine-asic" rel="noopener">Fortune Asia</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0050">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0050">ENTRY Nº BW-0050</a>
-        <span class="mono">2025-12 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2025-12 · NYSE</span>
+          <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
+        </div>
       </div>
       <h2 class="entry-co">Aimco</h2>
       <p class="entry-who">Wes Powell, President and CEO</p>
-      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -723,16 +802,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">A retention award, for staying until there is nothing left to stay for.</p>
       <p class="sources">Sources: <a href="https://www.theglobeandmail.com/investing/markets/stocks/AIV/pressreleases/36846403/aimco-restructures-ceo-pay-to-support-liquidation-plan/" rel="noopener">The Globe and Mail</a> · <a href="https://www.multifamilydive.com/news/aimco-liquidation-apartment-reit-development/805447/" rel="noopener">Multifamily Dive</a> · <a href="https://www.sec.gov/Archives/edgar/data/922864/000119312526085511/aiv-ex99_1.htm" rel="noopener">SEC Form 8-K</a> · <a href="https://www.investing.com/news/sec-filings/apartment-investment-and-management-grants-ceo-retention-award-and-bonus-prepayment-93CH-4425950" rel="noopener">Investing.com</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000922864&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0049">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0049">ENTRY Nº BW-0049</a>
-        <span class="mono">2025-11 · NASDAQ</span>
+        <div class="head-right">
+          <span class="mono">2025-11 · NASDAQ</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Tesla</h2>
       <p class="entry-who">Elon Musk, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -746,16 +828,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The largest pay package in corporate history, announced on stage with dancing robots. Too large to draw on our scale page — see for yourself.</p>
       <p class="sources">Sources: <a href="https://www.cnbc.com/2025/11/06/tesla-shareholders-musk-pay.html" rel="noopener">CNBC</a> · <a href="https://npr.org/2025/11/06/nx-s1-5596440/tesla-musk-2025-trillion-dollar-compensation-vote" rel="noopener">NPR</a> · <a href="https://www.cbsnews.com/news/elon-musk-pay-package-trillion-dollar-vote-tesla-shareholders/" rel="noopener">CBS News</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001318605&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0048">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0048">ENTRY Nº BW-0048</a>
-        <span class="mono">2025-11 · Public agency</span>
+        <div class="head-right">
+          <span class="mono">2025-11 · Public agency</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Dallas Area Rapid Transit</h2>
       <p class="entry-who">Nadine Lee, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -769,16 +854,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The largest service cuts in the agency&#x27;s history came in September. The bonus came in November. Nadine Lee announced her departure the following year.</p>
       <p class="sources">Sources: <a href="https://dallasexpress.com/metroplex/dart-board-oks-60k-ceo-bonus-despite-43m-shortfall-and-cities-threatening-to-leave/" rel="noopener">Dallas Express</a> · <a href="https://dallasexpress.com/city/exclusive-dart-spent-2-4-million-on-executive-bonuses-before-massive-service-cuts/" rel="noopener">Dallas Express</a> · <a href="https://www.dallasobserver.com/news/in-heartbreaking-turn-3-north-texas-cities-discuss-ending-dart-relationship-40611582/" rel="noopener">Dallas Observer</a> · <a href="https://www.nbcdfw.com/news/local/dallas-gives-up-dart-board-majority-amid-negotiations-to-prevent-other-member-cities-from-leaving/3982562/" rel="noopener">NBC DFW</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0047">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0047">ENTRY Nº BW-0047</a>
-        <span class="mono">2025-10 · ASX</span>
+        <div class="head-right">
+          <span class="mono">2025-10 · ASX</span>
+          <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
+        </div>
       </div>
       <h2 class="entry-co">Star Entertainment Group</h2>
       <p class="entry-who">Steve McCann, Former CEO</p>
-      <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -792,16 +880,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Eight per cent of it was performance related. The A$91,337 of car parking, accommodation, airfares and travel was not.</p>
       <p class="sources">Sources: <a href="https://www.starentertainmentgroup.com.au/wp-content/uploads/2025/10/TSEG-Annual-Report-2025.pdf" rel="noopener">Star Entertainment FY25 Annual Report</a> · <a href="https://casinobeats.com/2025/10/02/star-casino-huge-losses-executives-pocket-millions/" rel="noopener">CasinoBeats</a> · <a href="https://asgam.com/2025/12/16/steve-mccann-steps-down-as-group-ceo-and-managing-director-of-australias-star-with-immediate-effect/" rel="noopener">ASGAM</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0046">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0046">ENTRY Nº BW-0046</a>
-        <span class="mono">2025-08 · </span>
+        <div class="head-right">
+          <span class="mono">2025-08 · </span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Tricolor</h2>
       <p class="entry-who">Daniel Chu, CEO and founder</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -815,16 +906,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The bonus cleared. The payroll did not.</p>
       <p class="sources">Sources: <a href="https://www.cnbc.com/2025/12/17/tricolor-ceo-bonus-bankruptcy-indictment.html" rel="noopener">CNBC</a> · <a href="https://www.ibtimes.co.uk/layoffs-hit-1000-workers-weeks-after-ceo-pocketed-625m-1763842" rel="noopener">IBTimes</a> · <a href="https://www.cnn.com/2026/08/18/business/sec-fraud-charges-subprime-auto-lender-tricolor" rel="noopener">CNN</a> · <a href="https://niada.com/dashboard/tricolor-founder-charged-with-defrauding-banks/" rel="noopener">NIADA</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0045">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0045">ENTRY Nº BW-0045</a>
-        <span class="mono">2025-08 · Nonprofit</span>
+        <div class="head-right">
+          <span class="mono">2025-08 · Nonprofit</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">UCare</h2>
       <p class="entry-who">Hilary Marden-Resnik, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -838,16 +932,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The plan lost US$397 for every dollar it paid her.</p>
       <p class="sources">Sources: <a href="https://www.startribune.com/ucare-ceo-salary-topped-1m-as-the-health-insurer-foundered/601548209" rel="noopener">Star Tribune</a> · <a href="https://www.startribune.com/ucare-paid-ceo-128m-during-collapse-including-a-bonus/601852695" rel="noopener">Star Tribune</a> · <a href="https://www.startribune.com/ucare-insurer-layoffs-medicaid-medica/601875412" rel="noopener">Star Tribune</a> · <a href="https://www.beckerspayer.com/payer/ucare-names-new-ceo/" rel="noopener">Becker&#x27;s Payer Issues</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0044">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0044">ENTRY Nº BW-0044</a>
-        <span class="mono">2025-06 · TSE/NYSE</span>
+        <div class="head-right">
+          <span class="mono">2025-06 · TSE/NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Toyota</h2>
       <p class="entry-who">Akio Toyoda, Chairman</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -861,16 +958,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Twice the chief executive&#x27;s pay, for not being chief executive.</p>
       <p class="sources">Sources: <a href="https://asia.nikkei.com/business/automobiles/toyota-chairman-s-pay-hits-new-record-up-20-despite-lower-profit" rel="noopener">Nikkei Asia</a> · <a href="https://japantoday.com/category/business/toyota-chairman&#x27;s-pay-hits-record-1.9-billion-yen-despite-scandals" rel="noopener">Japan Today</a> · <a href="https://www.japantimes.co.jp/business/2024/09/30/companies/toyota-chairman-big-shareholders/" rel="noopener">The Japan Times</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0043">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0043">ENTRY Nº BW-0043</a>
-        <span class="mono">2025-05 · Private (UK)</span>
+        <div class="head-right">
+          <span class="mono">2025-05 · Private (UK)</span>
+          <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
+        </div>
       </div>
       <h2 class="entry-co">Thames Water</h2>
       <p class="entry-who">Each of 21 senior executives, Management retention scheme</p>
-      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -884,16 +984,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The chair told MPs the board &#x27;does not intend to recover this money&#x27;. The sewage, presumably, also stays where it landed.</p>
       <p class="sources">Sources: <a href="https://finance.yahoo.com/news/mps-ask-ministers-whether-recoup-184736433.html" rel="noopener">The Guardian via Yahoo</a> · <a href="https://www.hl.co.uk/shares/stock-market-news/company--news/thames-water-pauses-2.5m-of-bonus-payouts" rel="noopener">Sharecast/HL</a> · <a href="https://www.cityam.com/thames-water-chair-says-he-mispoke-to-mps-on-emergency-loan-bonuses/" rel="noopener">City AM</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0042">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0042">ENTRY Nº BW-0042</a>
-        <span class="mono">2025-05 · Euronext/LSE</span>
+        <div class="head-right">
+          <span class="mono">2025-05 · Euronext/LSE</span>
+          <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
+        </div>
       </div>
       <h2 class="entry-co">Ryanair</h2>
       <p class="entry-who">Michael O&#x27;Leary, CEO</p>
-      <p class="kind k-handcuffs" title="Paid for staying"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="4.3" cy="8" r="2.9"/><circle cx="11.7" cy="8" r="2.9"/><path d="M7.2 8h1.6"/></svg>Golden handcuffs</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -907,16 +1010,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">He compared it to a footballer&#x27;s wages. Footballers do not approve their own transfer fees.</p>
       <p class="sources">Sources: <a href="https://www.bloomberg.com/opinion/articles/2025-05-30/ryanair-100-million-ceo-michael-o-leary-is-klopp-of-airlines" rel="noopener">Bloomberg Opinion</a> · <a href="https://www.euronews.com/business/2025/05/26/ryanair-ceo-eyes-multi-million-euro-bonus-as-share-price-stays-high" rel="noopener">Euronews</a> · <a href="https://aviationa2z.com/index.php/2025/05/26/ryanair-ceo-eyes-e100m-bonus/" rel="noopener">Aviation A2Z</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001038683&amp;type=20-F&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">20-F filings</a></p>
     </article>
 
     <article class="entry" id="bw-0041">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0041">ENTRY Nº BW-0041</a>
-        <span class="mono">2025-04 · NASDAQ</span>
+        <div class="head-right">
+          <span class="mono">2025-04 · NASDAQ</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Warner Bros. Discovery</h2>
       <p class="entry-who">David Zaslav, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -930,16 +1036,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The &#x27;other&#x27; column includes US$991,179 for personal security and US$813,990 of personal jet use. His 401(k) match was US$20,700 — almost relatable.</p>
       <p class="sources">Sources: <a href="https://m.imdb.com/news/ni65229235" rel="noopener">Variety via IMDb</a> · <a href="https://www.hollywoodreporter.com/business/business-news/warner-bros-discovery-ceo-pay-2024-david-zaslav-1236169058/" rel="noopener">The Hollywood Reporter</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001437107&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0040">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0040">ENTRY Nº BW-0040</a>
-        <span class="mono">2025-04 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2025-04 · NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Pfizer</h2>
       <p class="entry-who">Albert Bourla, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -953,16 +1062,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Two hundred and sixty-nine times the median, for trailing the index.</p>
       <p class="sources">Sources: <a href="https://www.fiercepharma.com/pharma/rebound-year-pfizer-ceo-bourla-gets-14-pay-hike-246m" rel="noopener">Fierce Pharma</a> · <a href="https://www.fiercepharma.com/pharma/pfizer-ceo-bourla-collects-275m-25-pay-after-spearheading-mfn-deal-metsera-buy" rel="noopener">Fierce Pharma</a> · <a href="https://www.mmm-online.com/news/what-did-big-pharma-ceos-get-paid-in-2024/" rel="noopener">MM+M</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000078003&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0039">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0039">ENTRY Nº BW-0039</a>
-        <span class="mono">2025-02 · Nasdaq Copenhagen</span>
+        <div class="head-right">
+          <span class="mono">2025-02 · Nasdaq Copenhagen</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Ørsted</h2>
       <p class="entry-who">Mads Nipper, CEO (departing)</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -976,16 +1088,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Ninety-four billion of market value became fifteen. The severance was paid monthly for a year.</p>
       <p class="sources">Sources: <a href="https://cdn.orsted.com/-/media/annual2024/orsted-rem-report-2024.pdf" rel="noopener">Ørsted remuneration report 2024</a> · <a href="https://energywatch.com/EnergyNews/wind/article18994870.ece" rel="noopener">EnergyWatch</a> · <a href="https://finance.yahoo.com/news/renewables-group-orsted-replaces-ceo-074517953.html" rel="noopener">Reuters via Yahoo Finance</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0038">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0038">ENTRY Nº BW-0038</a>
-        <span class="mono">2025-01 · NASDAQ</span>
+        <div class="head-right">
+          <span class="mono">2025-01 · NASDAQ</span>
+          <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
+        </div>
       </div>
       <h2 class="entry-co">Starbucks</h2>
       <p class="entry-who">Brian Niccol, CEO</p>
-      <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -999,16 +1114,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Works out near US$800,000 a day. The company also covered his jet commute from Southern California; relocation to Seattle was not required.</p>
       <p class="sources">Sources: <a href="https://fortune.com/2025/01/25/starbucks-ceo-brian-niccol-compensation-96-million-stock-awards-performance" rel="noopener">Fortune/Bloomberg</a> · <a href="https://finance.yahoo.com/markets/stocks/articles/starbucks-ceo-paid-31m-why-134608911.html" rel="noopener">Yahoo Finance</a> · <a href="https://qz.com/starbucks-ceo-worker-pay-ratio-food-service-051926" rel="noopener">Quartz</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000829224&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0037">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0037">ENTRY Nº BW-0037</a>
-        <span class="mono">2025 · Private (UK)</span>
+        <div class="head-right">
+          <span class="mono">2025 · Private (UK)</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Wessex Water</h2>
       <p class="entry-who">Colin Skellett, Former CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1022,16 +1140,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Banned from taking a bonus at the water company. Paid one by its owner.</p>
       <p class="sources">Sources: <a href="https://www.lbc.co.uk/article/wessex-water-boss-170k-bonus-ban-5HjdPwS_2/" rel="noopener">LBC</a> · <a href="https://www.gbnews.com/money/wessex-water-ex-boss-paid-170000-bonus-despite-ban" rel="noopener">GB News</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0036">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0036">ENTRY Nº BW-0036</a>
-        <span class="mono">2024-12 · NASDAQ</span>
+        <div class="head-right">
+          <span class="mono">2024-12 · NASDAQ</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">Intel</h2>
       <p class="entry-who">Pat Gelsinger, CEO (departing)</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1045,16 +1166,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The savings plan reached the benefits before it reached the severance.</p>
       <p class="sources">Sources: <a href="https://fortune.com/2024/12/03/intel-ceo-pat-gelsinger-resignation-pay-package-performance-severance" rel="noopener">Fortune</a> · <a href="https://techcrunch.com/2024/08/01/intel-to-lay-off-15000-employees/" rel="noopener">TechCrunch</a> · <a href="https://www.calcalistech.com/ctechnews/article/by08yfnqkl" rel="noopener">Calcalist</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000050863&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0035">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0035">ENTRY Nº BW-0035</a>
-        <span class="mono">2024-09 · NZX</span>
+        <div class="head-right">
+          <span class="mono">2024-09 · NZX</span>
+          <p class="kind k-parachute" title="Agreed in the contract before it was needed, and paid because the job ended"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.6 8.1a6.4 6.4 0 0 1 12.8 0"/><path d="M1.6 8.1 8 13.2"/><path d="M14.4 8.1 8 13.2"/><path d="M8 8.1v5.1"/><rect x="6.7" y="13.2" width="2.6" height="1.9" rx=".4"/></svg>Golden parachute</p>
+        </div>
       </div>
       <h2 class="entry-co">The Warehouse Group</h2>
       <p class="entry-who">Nick Grayston, Former CEO</p>
-      <p class="kind k-parachute" title="Agreed in the contract before it was needed, and paid because the job ended"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.6 8.1a6.4 6.4 0 0 1 12.8 0"/><path d="M1.6 8.1 8 13.2"/><path d="M14.4 8.1 8 13.2"/><path d="M8 8.1v5.1"/><rect x="6.7" y="13.2" width="2.6" height="1.9" rx=".4"/></svg>Golden parachute</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1068,16 +1192,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">He was paid NZ$2.2m to leave. Torpedo7 sold for a dollar.</p>
       <p class="sources">Sources: <a href="https://www.nzherald.co.nz/business/companies/retail/former-warehouse-boss-22m-golden-parachute/RVFWXHLXBFGG5GYRVLLZ42TP3Q/" rel="noopener">NZ Herald</a> · <a href="https://businessdesk.co.nz/article/retail/the-warehouse-groups-nick-graystons-22m-payout" rel="noopener">BusinessDesk</a> · <a href="https://www.rnz.co.nz/news/business/517099/the-warehouse-boss-nick-grayston-abruptly-quits" rel="noopener">RNZ</a> · <a href="https://www.1news.co.nz/2024/03/20/warehouse-group-posts-237m-half-year-loss-sobering/" rel="noopener">1News</a> · <a href="https://www.nzherald.co.nz/business/companies/retail/warehouse-group-sells-torpedo7-for-1-after-paying-52m-for-it/HMFY4ELDBRBC7DJ7XWTC2E7CM4/" rel="noopener">NZ Herald</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0034">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0034">ENTRY Nº BW-0034</a>
-        <span class="mono">2024-04 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2024-04 · NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Boeing</h2>
       <p class="entry-who">Dave Calhoun, CEO (departing)</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1091,16 +1218,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">He declined the US$2.8m annual incentive bonus after the door blew off. The other US$32.8m stayed bolted on.</p>
       <p class="sources">Sources: <a href="https://www.cnn.com/2024/05/17/investing/boeing-shareholders-vote-to-approve-usd33-million-ceo-pay-package/index.html" rel="noopener">CNN</a> · <a href="https://fortune.com/2024/04/05/boeing-ceo-calhoun-cut-his-bonus-737-max-9-alaska-airlines" rel="noopener">Fortune</a> · <a href="https://www.cnn.com/2024/04/05/business/boeing-ceo-pay/index.html" rel="noopener">CNN Business</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000012927&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0033">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0033">ENTRY Nº BW-0033</a>
-        <span class="mono">2024-04 · Euronext/NYSE</span>
+        <div class="head-right">
+          <span class="mono">2024-04 · Euronext/NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Stellantis</h2>
       <p class="entry-who">Carlos Tavares, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1114,16 +1244,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">He compared his contract to a footballer&#x27;s or an F1 driver&#x27;s. Neither of those gets to restructure the stadium.</p>
       <p class="sources">Sources: <a href="https://gulfnews.com/business/markets/stellantis-shareholders-approve-ceos-388-million-pay-package-1.1713281367443" rel="noopener">Gulf News/AFP</a> · <a href="https://eu.detroitnews.com/story/business/autos/chrysler/2024/04/16/stellantis-ceo-carlos-tavares-gets-shareholder-backing-for-39m-in-pay/73340977007/" rel="noopener">The Detroit News</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001605484&amp;type=20-F&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">20-F filings</a></p>
     </article>
 
     <article class="entry" id="bw-0032">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0032">ENTRY Nº BW-0032</a>
-        <span class="mono">2024-04 · LSE</span>
+        <div class="head-right">
+          <span class="mono">2024-04 · LSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">AstraZeneca</h2>
       <p class="entry-who">Pascal Soriot, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1137,16 +1270,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">A top-20 shareholder&#x27;s rebuttal: he is &#x27;massively underpaid&#x27;. Somewhere, a nurse doing a double shift agrees to disagree.</p>
       <p class="sources">Sources: <a href="https://offtolunch.substack.com/p/massively-underpaid" rel="noopener">Off to Lunch</a> · <a href="https://uk.finance.yahoo.com/news/top-paid-ftse-boss-astrazeneca-174255004.html" rel="noopener">PA via Yahoo Finance UK</a> · <a href="https://highpaycentre.org/the-ftse-100s-highest-paid-ceo-gets-a-pay-rise/" rel="noopener">High Pay Centre</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000901832&amp;type=20-F&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">20-F filings</a></p>
     </article>
 
     <article class="entry" id="bw-0031">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0031">ENTRY Nº BW-0031</a>
-        <span class="mono">2024-03 · Private (UK)</span>
+        <div class="head-right">
+          <span class="mono">2024-03 · Private (UK)</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">P&amp;O Ferries</h2>
       <p class="entry-who">Peter Hebblethwaite, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1160,16 +1296,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">£4.87 an hour for the replacements. £183,000 for the man who chose them.</p>
       <p class="sources">Sources: <a href="https://www.nautilusint.org/en/news-insight/news/po-ferries-boss-pocketed-more-than-500000-after-sacking-uk-seafarers/" rel="noopener">Nautilus International</a> · <a href="https://www.itfglobal.org/en/news/po-boss-misleading-wages-claim-attempt-spin-away-companys-appalling-seafarer-exploitation" rel="noopener">ITF Global</a> · <a href="https://www.euronews.com/2022/03/24/p-o-ferries-outcry-as-boss-admits-breaking-uk-law-in-sacking-nearly-800" rel="noopener">Euronews</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0030">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0030">ENTRY Nº BW-0030</a>
-        <span class="mono">2024-03 · SIX/NYSE</span>
+        <div class="head-right">
+          <span class="mono">2024-03 · SIX/NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">UBS</h2>
       <p class="entry-who">Sergio Ermotti, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1183,16 +1322,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Parliament responded by trying to make the number illegal.</p>
       <p class="sources">Sources: <a href="https://www.cnbc.com/2024/03/28/ubs-chiefs-surprise-return-to-the-swiss-banking-giant-bagged-him-a-15point9-million-paycheck.html" rel="noopener">CNBC</a> · <a href="https://www.bankingdive.com/news/ubs-sergio-ermotti-top-paid-europe-bank-ceo-botin-quinn-credit-suisse-bonus-pool/711655/" rel="noopener">Banking Dive</a> · <a href="https://www.swissinfo.ch/eng/ermotti-tops-europe-bank-boss-pay-while-ubs-shrinks-bonuses/74470145" rel="noopener">SWI swissinfo.ch</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001610520&amp;type=20-F&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">20-F filings</a></p>
     </article>
 
     <article class="entry" id="bw-0029">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0029">ENTRY Nº BW-0029</a>
-        <span class="mono">2024-02 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2024-02 · NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Norfolk Southern</h2>
       <p class="entry-who">Alan Shaw, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1206,16 +1348,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The derailment had its own line in the bonus calculation. It raised the payout.</p>
       <p class="sources">Sources: <a href="https://www.cnn.com/2024/02/26/business/norfolk-southern-ceo-pay-raise" rel="noopener">CNN Business</a> · <a href="https://www.eenews.net/articles/a-year-after-east-palestine-wreck-railroad-ceo-gets-a-big-pay-raise/" rel="noopener">E&amp;E News / Politico</a> · <a href="https://www.commondreams.org/news/norfolk-southern-ceo-pay-raise" rel="noopener">Common Dreams</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000702165&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0028">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0028">ENTRY Nº BW-0028</a>
-        <span class="mono">2023-09 · ASX</span>
+        <div class="head-right">
+          <span class="mono">2023-09 · ASX</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">Qantas</h2>
       <p class="entry-who">Alan Joyce, CEO (departing)</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1229,16 +1374,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The board found his decisions caused &#x27;considerable harm&#x27; to staff and customers. The remaining millions cleared for landing anyway.</p>
       <p class="sources">Sources: <a href="https://fortune.com/2023/09/20/qantas-may-claw-back-9m-from-former-ceo-whose-15m-bonus-and-early-retirement-was-dubbed-the-swindle-of-the-century" rel="noopener">Fortune/Bloomberg</a> · <a href="https://fortune.com/asia/2024/08/08/qantas-claws-back-6m-ex-ceo-alan-joyce-ghost-flight-scandal" rel="noopener">Fortune Asia</a> · <a href="https://www.abc.net.au/news/2023-09-20/qantas-alan-joyce-21-4-million-final-payout/102880572" rel="noopener">ABC News</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0027">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0027">ENTRY Nº BW-0027</a>
-        <span class="mono">2023-06 · State broadcaster (IE)</span>
+        <div class="head-right">
+          <span class="mono">2023-06 · State broadcaster (IE)</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">RTÉ</h2>
       <p class="entry-who">Ryan Tubridy, Presenter</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1252,16 +1400,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The declared figure was under half a million. That was the point of the arrangement.</p>
       <p class="sources">Sources: <a href="https://www.irishexaminer.com/news/arid-41207533.html" rel="noopener">Irish Examiner</a> · <a href="https://en.wikipedia.org/wiki/RT%C3%89_secret_payment_scandal" rel="noopener">Wikipedia — RTÉ secret payment scandal</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0026">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0026">ENTRY Nº BW-0026</a>
-        <span class="mono">2023-04 · TSX</span>
+        <div class="head-right">
+          <span class="mono">2023-04 · TSX</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Loblaw</h2>
       <p class="entry-who">Galen Weston, Chairman and CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1275,16 +1426,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The consultants were hired by the company. They found he was underpaid.</p>
       <p class="sources">Sources: <a href="https://www.cbc.ca/news/business/grocery-executive-compensation-1.6802091" rel="noopener">CBC News</a> · <a href="https://www.theglobeandmail.com/business/article-loblaw-galen-weston-pay/" rel="noopener">The Globe and Mail</a> · <a href="https://jacobin.com/2023/04/loblaws-ceo-galen-weston-pay-compensation/" rel="noopener">Jacobin</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0025">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0025">ENTRY Nº BW-0025</a>
-        <span class="mono">2023-03 · NASDAQ</span>
+        <div class="head-right">
+          <span class="mono">2023-03 · NASDAQ</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Silicon Valley Bank</h2>
       <p class="entry-who">Greg Becker, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1298,16 +1452,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The plan was filed in January. The bank failed in March.</p>
       <p class="sources">Sources: <a href="https://fortune.com/2023/03/10/silicon-valley-bank-ceo-greg-becker-3-6-million-stock-sale/" rel="noopener">Fortune</a> · <a href="https://www.cnbc.com/2023/03/14/svb-execs-sold-84-million-of-the-banks-stock-over-the-past-2-years.html" rel="noopener">CNBC</a> · <a href="https://thehill.com/business/banking-financial-institutions/4006252-sherrod-brown-blasts-svb-chief-over-bonuses-stock-sales/" rel="noopener">The Hill</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000719739&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0024">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0024">ENTRY Nº BW-0024</a>
-        <span class="mono">2022-12 · State-owned (PT)</span>
+        <div class="head-right">
+          <span class="mono">2022-12 · State-owned (PT)</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">TAP Air Portugal</h2>
       <p class="entry-who">Alexandra Reis, Former board member</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1321,16 +1478,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Half a million to leave a state airline, on the way into a government job that lasted a month.</p>
       <p class="sources">Sources: <a href="https://www.euronews.com/2022/12/29/tapgate-resignations-in-portugals-government-over-severance-pay-controversy" rel="noopener">Euronews</a> · <a href="https://www.portugalresident.com/minister-of-infrastructure-resigns-in-wake-of-tap-payoff-scandal/" rel="noopener">Portugal Resident</a> · <a href="https://www.aerotime.aero/articles/portugals-tap-air-ceo-ousted-following-severance-payment-scandal" rel="noopener">AeroTime</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0023">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0023">ENTRY Nº BW-0023</a>
-        <span class="mono">2021-12 · BME</span>
+        <div class="head-right">
+          <span class="mono">2021-12 · BME</span>
+          <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
+        </div>
       </div>
       <h2 class="entry-co">Santander</h2>
       <p class="entry-who">Andrea Orcel, CEO appointee (never started)</p>
-      <p class="kind k-hello" title="Paid for arriving"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3.9" cy="8" r="2.6"/><path d="M6.5 8H14.4"/><path d="M11.3 8v2.7"/><path d="M13.5 8v2.1"/></svg>Golden hello</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1344,16 +1504,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Sixty-eight million euros for a job he did not start.</p>
       <p class="sources">Sources: <a href="https://en.ara.cat/business/ana-botin-defeated-santander-to-pay-andrea-orcel-68m_1_4208917.html" rel="noopener">Ara</a> · <a href="https://www.euronews.com/next/2021/12/11/santander-ceo-orcel" rel="noopener">Euronews</a> · <a href="https://www.cityam.com/santander-boss-ana-botin-defends-andrea-orcel-ceo-offer-as-top-bankers-face-off-in-court/" rel="noopener">City AM</a> · <a href="https://www.finextra.com/newsarticle/36940/santander-to-make-job-and-branch-cuts-in-spain---reuters" rel="noopener">Reuters via Finextra</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0022">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0022">ENTRY Nº BW-0022</a>
-        <span class="mono">2021-04 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2021-04 · NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Palantir</h2>
       <p class="entry-who">Alex Karp, Co-founder &amp; CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1367,16 +1530,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">By 2024 the same equity had ballooned so far that the SEC&#x27;s &#x27;compensation actually paid&#x27; line read US$6.8b. Palantir&#x27;s footnote insists that isn&#x27;t real money.</p>
       <p class="sources">Sources: <a href="https://www.benzinga.com/news/21/04/20881752/palantir-ceo-saw-compensation-rise-nearly-9-000-in-2020" rel="noopener">Benzinga</a> · <a href="https://www.sherwood.news/markets/palantirs-alex-karp-made-usd6-8-billion-last-year/" rel="noopener">Sherwood News</a> · <a href="https://www.cnbc.com/2021/04/29/palantir-ceo-karp-earned-1point1-billion-in-2020-tied-to-equity-awards.html" rel="noopener">CNBC</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001321655&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0021">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0021">ENTRY Nº BW-0021</a>
-        <span class="mono">2021-02 · LSE/ASX</span>
+        <div class="head-right">
+          <span class="mono">2021-02 · LSE/ASX</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Rio Tinto</h2>
       <p class="entry-who">Jean-Sébastien Jacques, CEO (departing)</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1390,16 +1556,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Forty-six thousand years, ended for an iron ore expansion. His best-paid year followed.</p>
       <p class="sources">Sources: <a href="https://www.cnn.com/2021/02/22/business/rio-tinto-annual-report-2020-intl-hnk" rel="noopener">CNN Business</a> · <a href="https://www.mining.com/rio-tintos-former-boss-gets-huge-payout-despite-caves-blast/" rel="noopener">Mining.com</a> · <a href="https://www.abc.net.au/news/2021-05-07/rio-tinto-investor-revolt-over-juukan-caves-destruction/100122824" rel="noopener">ABC News</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000863064&amp;type=20-F&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">20-F filings</a></p>
     </article>
 
     <article class="entry" id="bw-0020">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0020">ENTRY Nº BW-0020</a>
-        <span class="mono">2021 · Private</span>
+        <div class="head-right">
+          <span class="mono">2021 · Private</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">WeWork</h2>
       <p class="entry-who">Adam Neumann, Co-founder and former CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1413,16 +1582,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">We over me.</p>
       <p class="sources">Sources: <a href="https://www.cnbc.com/2023/11/07/heres-how-much-wework-founder-adam-neumann-got-before-bankruptcy.html" rel="noopener">CNBC</a> · <a href="https://www.verdict.co.uk/wework-cofounder-gets-450bn-payout-from-softbank/" rel="noopener">Verdict</a> · <a href="https://www.foxbusiness.com/business-leaders/weworks-adam-neumann-to-get-extra-50m-payout-in-softbank-settlement" rel="noopener">Fox Business</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001813756&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0019">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0019">ENTRY Nº BW-0019</a>
-        <span class="mono">2020-03 · Nasdaq Stockholm</span>
+        <div class="head-right">
+          <span class="mono">2020-03 · Nasdaq Stockholm</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">Swedbank</h2>
       <p class="entry-who">Birgitte Bonnesen, Former CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1436,16 +1608,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Removed an hour before the shareholders could ask.</p>
       <p class="sources">Sources: <a href="https://www.bloomberg.com/news/articles/2020-02-20/swedbank-s-ousted-ceo-gets-2-7-million-in-termination-benefits" rel="noopener">Bloomberg</a> · <a href="https://www.investing.com/news/stock-market-news/swedbank-pulls-exceos-golden-parachute-over-moneylaundering-crisis-2118443" rel="noopener">Reuters via Investing.com</a> · <a href="https://www.deminor.com/en/news-insights/the-case-of-swedbanks-former-ceo-birgitte-bonnesen-landmark-ruling-for-the-swedish-banking-sector-and-the-future-communication-of-publicly-listed-companies/" rel="noopener">Deminor</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0018">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0018">ENTRY Nº BW-0018</a>
-        <span class="mono">2019-04 · State-owned (UK)</span>
+        <div class="head-right">
+          <span class="mono">2019-04 · State-owned (UK)</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Post Office</h2>
       <p class="entry-who">Paula Vennells, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1459,16 +1634,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Seven hundred and thirty-six prosecutions. Two point two million in bonuses.</p>
       <p class="sources">Sources: <a href="https://www.computerweekly.com/news/252498388/Ex-Post-Office-CEO-Paula-Vennells-walked-away-from-IT-scandal-with-over-400,000-in-pay-and-bonuses" rel="noopener">Computer Weekly</a> · <a href="https://www.theregister.com/2024/01/10/post_office_boss_returns_cbe/" rel="noopener">The Register</a> · <a href="https://www.lbc.co.uk/article/horizon-scandal-post-office-bonuses-convictions-75k-deal-fresh-battle-5Hjcc9P_2/" rel="noopener">LBC</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0017">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0017">ENTRY Nº BW-0017</a>
-        <span class="mono">2019 · Vienna</span>
+        <div class="head-right">
+          <span class="mono">2019 · Vienna</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">OMV</h2>
       <p class="entry-who">Rainer Seele, CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1482,16 +1660,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Twenty thousand a day. The flights were extra.</p>
       <p class="sources">Sources: <a href="https://www.derstandard.at/story/2000117748239/omv-chef-rainer-seele-ist-mit-7-24-millionen-euro" rel="noopener">Der Standard</a> · <a href="https://dossier.at/dossiers/andere-themen/aus-dem-luxusleben-eines-oelprinzen" rel="noopener">Dossier</a> · <a href="https://www.trend.at/wirtschaft/gagen-bosse-oesterreichs-ceos-11542881" rel="noopener">Trend</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0016">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0016">ENTRY Nº BW-0016</a>
-        <span class="mono">2018-11 · TSE</span>
+        <div class="head-right">
+          <span class="mono">2018-11 · TSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Nissan</h2>
       <p class="entry-who">Carlos Ghosn, Chairman</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1505,16 +1686,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Eighty million dollars, kept off the disclosure.</p>
       <p class="sources">Sources: <a href="https://www.cnbc.com/2018/11/29/nissan-reportedly-finds-ghosn-didnt-disclose-80-million-in-pay-.html" rel="noopener">CNBC</a> · <a href="https://www.nbcnews.com/business/autos/nissan-chairman-arrested-hiding-millions-pay-n937901" rel="noopener">NBC News</a> · <a href="https://www.aljazeera.com/economy/2018/12/10/former-nissan-chief-carlos-ghosn-charged-re-arrested" rel="noopener">Al Jazeera</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0015">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0015">ENTRY Nº BW-0015</a>
-        <span class="mono">2018-01 · LSE</span>
+        <div class="head-right">
+          <span class="mono">2018-01 · LSE</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">Carillion</h2>
       <p class="entry-who">Richard Howson, Former CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1528,16 +1712,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The clawback rules were changed first. The company collapsed second.</p>
       <p class="sources">Sources: <a href="https://www.constructionnews.co.uk/sections/news/carillion-directors-bonus-pay-halted-18-01-2018/" rel="noopener">Construction News</a> · <a href="https://www.thecorporategovernanceinstitute.com/insights/case-studies/what-happened-to-carillion/" rel="noopener">Corporate Governance Institute</a> · <a href="https://www.pressreader.com/uk/daily-mail/20180207/281711205100451" rel="noopener">Daily Mail via PressReader</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0014">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0014">ENTRY Nº BW-0014</a>
-        <span class="mono">2016-10 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2016-10 · NYSE</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">Wells Fargo</h2>
       <p class="entry-who">John Stumpf, Chairman and CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1551,16 +1738,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Five thousand three hundred people were sacked for hitting the targets he set.</p>
       <p class="sources">Sources: <a href="https://money.cnn.com/2016/10/13/investing/wells-fargo-ceo-resigns-compensation/index.html" rel="noopener">CNN Money</a> · <a href="https://money.cnn.com/2016/09/27/investing/wells-fargo-ceo-clawback-john-stumpf-tolstedt/index.html" rel="noopener">CNN Money</a> · <a href="https://www.npr.org/sections/thetwo-way/2017/04/10/523254069/wells-fargo-claws-back-75-million-more-from-2-executives-over-fake-accounts" rel="noopener">NPR</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000072971&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0013">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0013">ENTRY Nº BW-0013</a>
-        <span class="mono">2016-04 · Frankfurt</span>
+        <div class="head-right">
+          <span class="mono">2016-04 · Frankfurt</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Volkswagen</h2>
       <p class="entry-who">Martin Winterkorn, Former CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1574,16 +1764,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">A bonus for the year the cheating was found.</p>
       <p class="sources">Sources: <a href="https://money.cnn.com/2016/04/28/news/companies/volkswagen-scandal-ceo-salary/index.html" rel="noopener">CNN Money</a> · <a href="https://www.handelsblatt.com/english/companies/winterkorn-windfall-vw-pension-payout-sparks-outrage/23565028.html" rel="noopener">Handelsblatt</a> · <a href="https://www.malaymail.com/news/money/2021/06/01/ex-vw-boss-to-pay-10-mln-euros-in-dieselgate-damages-reports-business-insid/1978596" rel="noopener">Reuters via Malay Mail</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0012">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0012">ENTRY Nº BW-0012</a>
-        <span class="mono">2016-04 · Euronext</span>
+        <div class="head-right">
+          <span class="mono">2016-04 · Euronext</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Renault</h2>
       <p class="entry-who">Carlos Ghosn, Chairman and CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1597,16 +1790,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The shareholders voted no. The board voted yes. The board won.</p>
       <p class="sources">Sources: <a href="https://www.industryweek.com/finance/article/21976864/renault-cuts-ceo-ghosns-pay-after-shareholder-revolt" rel="noopener">IndustryWeek / AFP</a> · <a href="https://www.euronews.com/2019/02/13/carlos-ghosn-won-t-get-a-30-million-payout-from-renault" rel="noopener">Euronews</a> · <a href="https://investing.com/news/stock-market-news/france-presses-renault-to-cut-ceo-pay-after-investor-revolt-399561" rel="noopener">Investing.com / Reuters</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0011">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0011">ENTRY Nº BW-0011</a>
-        <span class="mono">2013-06 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2013-06 · NYSE</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">McKesson</h2>
       <p class="entry-who">John Hammergren, Chairman and CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1620,16 +1816,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The pension and the penalty are nine million dollars apart.</p>
       <p class="sources">Sources: <a href="https://www.npr.org/sections/thetwo-way/2013/06/25/195678230/mckesson-ceos-pension-reported-at-a-record-159-million" rel="noopener">NPR</a> · <a href="https://www.cbc.ca/news/business/hammergren-sets-ceo-pension-record-at-159-million-1.1404074" rel="noopener">CBC News</a> · <a href="https://www.justice.gov/archives/opa/pr/mckesson-agrees-pay-record-150-million-settlement-failure-report-suspicious-orders" rel="noopener">US Department of Justice</a> · <a href="https://money.cnn.com/2017/07/26/news/companies/mckesson-ceo-pay-opposed-shareholder-meeting/index.html" rel="noopener">CNN Money</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000927653&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0010">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0010">ENTRY Nº BW-0010</a>
-        <span class="mono">2009-02 · LSE</span>
+        <div class="head-right">
+          <span class="mono">2009-02 · LSE</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">Royal Bank of Scotland</h2>
       <p class="entry-who">Fred Goodwin, Former CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1643,16 +1842,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">He took early retirement at fifty. The taxpayer did not.</p>
       <p class="sources">Sources: <a href="https://www.parliament.uk/business/news/news-by-year/2009/03/letter-from-rbs-on-sir-fred-goodwins-pension/" rel="noopener">UK Parliament — RBS letter on the pension</a> · <a href="https://investing.com/news/equities-news/update-3-former-rbs-ceo-goodwin-agrees-to-pension-cut-63994" rel="noopener">Reuters via Investing.com</a> · <a href="https://www.professionalpensions.com/news/1442498/goodwin-hands-pension-rbs" rel="noopener">Professional Pensions</a> · <a href="https://www.cnn.com/2009/BUSINESS/02/27/fred.goodwin.pension.outrage/index.html" rel="noopener">CNN</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0009">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0009">ENTRY Nº BW-0009</a>
-        <span class="mono">2008-10 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2008-10 · NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Lehman Brothers</h2>
       <p class="entry-who">Dick Fuld, Chairman and CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1666,16 +1868,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The pay was real money. The assets were not.</p>
       <p class="sources">Sources: <a href="https://abcnews.com/Blotter/story?id=5965360&amp;page=1" rel="noopener">ABC News</a> · <a href="https://laweconcenter.law.harvard.edu/wp-content/uploads/2024/11/Bebchuk_657.pdf" rel="noopener">Bebchuk, Cohen &amp; Spamann, Harvard Law School</a> · <a href="https://www.britannica.com/event/bankruptcy-of-Lehman-Brothers" rel="noopener">Britannica</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000806085&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0008">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0008">ENTRY Nº BW-0008</a>
-        <span class="mono">2008 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2008 · NYSE</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">Countrywide Financial</h2>
       <p class="entry-who">Angelo Mozilo, Co-founder and CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1689,16 +1894,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Half a billion dollars, and no charges.</p>
       <p class="sources">Sources: <a href="https://fortune.com/2023/07/17/angelo-mozilo-obit-countrywide-financial-housing-crisis" rel="noopener">Fortune</a> · <a href="https://moneyweek.com/494993/the-villains-behind-the-financial-crisis" rel="noopener">MoneyWeek</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000025191&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0007">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0007">ENTRY Nº BW-0007</a>
-        <span class="mono">2007-10 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2007-10 · NYSE</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">Merrill Lynch</h2>
       <p class="entry-who">Stan O&#x27;Neal, Chairman and CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1712,16 +1920,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Two per cent of the writedown, paid to the man who signed it off.</p>
       <p class="sources">Sources: <a href="https://www.nbcnews.com/id/wbna21549196" rel="noopener">NBC News</a> · <a href="https://www.sec.gov/Archives/edgar/data/0000065100/000095012307014495/y41570exv99w1.htm" rel="noopener">Merrill Lynch 8-K (SEC)</a> · <a href="https://fortune.com/2007/10/29/stan-oneals-sweet-exit-package" rel="noopener">Fortune</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000065100&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0006">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0006">ENTRY Nº BW-0006</a>
-        <span class="mono">2007-01 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2007-01 · NYSE</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">Home Depot</h2>
       <p class="entry-who">Robert Nardelli, Chairman and CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1735,16 +1946,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Seven years of the customer-service budget, paid once, to one person.</p>
       <p class="sources">Sources: <a href="https://money.cnn.com/2007/01/03/news/companies/home_depot/index.htm" rel="noopener">CNN Money</a> · <a href="https://www.nbcnews.com/id/wbna16469224" rel="noopener">NBC News</a> · <a href="https://www.nbcnews.com/news/amp/wbna16567310" rel="noopener">NBC News (shareholder challenge)</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000354950&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0005">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0005">ENTRY Nº BW-0005</a>
-        <span class="mono">2006-12 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2006-12 · NYSE</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">Pfizer</h2>
       <p class="entry-who">Hank McKinnell, Chairman and CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1758,16 +1972,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Shareholders hired a plane. The banner read “Give it back, Hank!”</p>
       <p class="sources">Sources: <a href="http://www.washingtonpost.com/wp-dyn/content/article/2006/12/21/AR2006122101167.html" rel="noopener">The Washington Post</a> · <a href="https://www.cnbc.com/2006/12/22/pfizers-mckinnell-the-200-million-dollar-man.html" rel="noopener">CNBC</a> · <a href="https://law.georgia.gov/press-releases/2009-09-02/pfizer-pay-23-billion-settle-allegations-kickbacks-label-marketing" rel="noopener">US Department of Justice</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000078003&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0004">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0004">ENTRY Nº BW-0004</a>
-        <span class="mono">2005-12 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">2005-12 · NYSE</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">ExxonMobil</h2>
       <p class="entry-who">Lee Raymond, Chairman and CEO</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1781,16 +1998,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Forty-three years in, ninety-eight million out, forty-three front groups funded.</p>
       <p class="sources">Sources: <a href="https://www.nbcnews.com/id/wbna12356099" rel="noopener">NBC News</a> · <a href="https://www.ucs.org/resources/smoke-mirrors-hot-air" rel="noopener">Union of Concerned Scientists</a> · <a href="https://ir.exxonmobil.com/news-releases/news-release-details/exxonmobil-chairman-and-ceo-lee-raymond-announces-retirement" rel="noopener">ExxonMobil (retirement announcement)</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000034088&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0003">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0003">ENTRY Nº BW-0003</a>
-        <span class="mono">2003-08 · Nonprofit</span>
+        <div class="head-right">
+          <span class="mono">2003-08 · Nonprofit</span>
+          
+        </div>
       </div>
       <h2 class="entry-co">New York Stock Exchange</h2>
       <p class="entry-who">Richard Grasso, Chairman and CEO</p>
-      
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1804,16 +2024,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">A non-profit paid it. The courts let him keep it.</p>
       <p class="sources">Sources: <a href="https://ag.ny.gov/press-release/2004/former-nyse-chief-sued-over-excessive-pay-package" rel="noopener">New York Attorney General</a> · <a href="http://www.washingtonpost.com/wp-dyn/articles/A51413-2004May24.html" rel="noopener">The Washington Post</a> · <a href="https://www.npr.org/2007/05/09/10089941/grasso-wins-round-in-battle-over-nyse-pay" rel="noopener">NPR</a></p>
+      
     </article>
 
     <article class="entry" id="bw-0002">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0002">ENTRY Nº BW-0002</a>
-        <span class="mono">1996-12 · NYSE</span>
+        <div class="head-right">
+          <span class="mono">1996-12 · NYSE</span>
+          <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
+        </div>
       </div>
       <h2 class="entry-co">The Walt Disney Company</h2>
       <p class="entry-who">Michael Ovitz, President</p>
-      <p class="kind k-handshake" title="Paid on the way out"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="4.2" r="2"/><path d="M1.8 8.2a6.2 6.2 0 0 0 12.4 0"/><path d="M1.8 8.2h12.4"/></svg>Golden handshake</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1827,16 +2050,19 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">Ten million a month, and a court called it lawful.</p>
       <p class="sources">Sources: <a href="https://www.nbcnews.com/id/wbna8887620" rel="noopener">NBC News</a> · <a href="https://courts.delaware.gov/opinions/download.aspx?ID=77400" rel="noopener">Delaware Supreme Court opinion</a> · <a href="https://www.npr.org/2004/11/18/4176647/disney-shareholders-sue-over-ovitz-severance" rel="noopener">NPR</a></p>
+      <p class="filings">Filed with the SEC: <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001001039&amp;type=DEF+14A&amp;dateb=&amp;owner=include&amp;count=40" rel="noopener">DEF 14A filings</a></p>
     </article>
 
     <article class="entry" id="bw-0001">
       <div class="entry-head">
         <a class="mono serial" href="#bw-0001">ENTRY Nº BW-0001</a>
-        <span class="mono">1989-02 · Private (post-LBO)</span>
+        <div class="head-right">
+          <span class="mono">1989-02 · Private (post-LBO)</span>
+          <p class="kind k-parachute" title="Agreed in the contract before it was needed, and paid because the job ended"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.6 8.1a6.4 6.4 0 0 1 12.8 0"/><path d="M1.6 8.1 8 13.2"/><path d="M14.4 8.1 8 13.2"/><path d="M8 8.1v5.1"/><rect x="6.7" y="13.2" width="2.6" height="1.9" rx=".4"/></svg>Golden parachute</p>
+        </div>
       </div>
       <h2 class="entry-co">RJR Nabisco</h2>
       <p class="entry-who">F. Ross Johnson, President and CEO</p>
-      <p class="kind k-parachute" title="Agreed in the contract before it was needed, and paid because the job ended"><svg class="kind-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.6 8.1a6.4 6.4 0 0 1 12.8 0"/><path d="M1.6 8.1 8 13.2"/><path d="M14.4 8.1 8 13.2"/><path d="M8 8.1v5.1"/><rect x="6.7" y="13.2" width="2.6" height="1.9" rx=".4"/></svg>Golden parachute</p>
       <div class="ledger-line">
         <div class="col col-cr">
           <h3 class="col-head">Credited <span class="mono drcr">CR</span></h3>
@@ -1850,6 +2076,7 @@ footer p + p { margin-top:8px; }
       </div>
       <p class="footnote">The bid failed. The parachute did not.</p>
       <p class="sources">Sources: <a href="https://www.upi.com/Archives/1989/08/10/RJ-Reynolds-announces-layoffs/2384618724800/" rel="noopener">UPI (10 August 1989)</a> · <a href="https://www.bangordailynews.com/2017/01/02/obituaries/f-ross-johnson-who-allowed-rjr-nabisco-buyout-dies-at-85/" rel="noopener">Associated Press obituary</a> · <a href="https://content.time.com/time/covers/0,16641,19881205,00.html" rel="noopener">TIME, “A Game of Greed”</a></p>
+      
     </article>
 
   </div>
