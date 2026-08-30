@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Scale — Bonus Watch</title>
-<meta name="description" content="The total credited to the executives on the Bonus Watch register, drawn to scale. Scroll right. Keep scrolling.">
+<meta name="description" content="Everything credited to the executives on the Bonus Watch register, drawn to scale — laid end to end, or each package measured from zero. Scroll right. Keep scrolling.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -31,12 +31,12 @@ body {
   position:fixed; top:0; left:0; width:100vw; z-index:5;
   padding:20px 24px 0; pointer-events:none;
 }
-.intro a, .intro .counter { pointer-events:auto; }
+.intro a, .intro .counter, .intro .modes { pointer-events:auto; }
 .intro h1 { font-family:'Libre Caslon Text',serif; font-weight:700; font-size:1.4rem; }
 .intro h1 a { color:var(--ink); text-decoration:none; }
-.intro p { color:var(--muted); font-size:.9rem; max-width:34ch; margin-top:4px; }
+.intro p { color:var(--muted); font-size:.9rem; max-width:38ch; margin-top:4px; }
 .counter {
-  display:inline-block; margin-top:14px; padding:8px 14px;
+  display:inline-block; margin-top:12px; padding:8px 14px;
   border:1px solid var(--rule); border-radius:3px; background:#fff;
   font-family:'IBM Plex Mono',monospace; font-size:1rem; color:var(--credit);
   min-width:250px;
@@ -44,15 +44,32 @@ body {
 .counter small { display:block; color:var(--muted); font-family:'IBM Plex Sans',sans-serif; font-size:.72rem; }
 .counter .people { color:var(--debit); font-size:.82rem; }
 
-.track { position:relative; width:540916px; height:100vh; }
+.modes { display:flex; margin-top:10px; width:max-content; }
+.modes button {
+  font:inherit; font-size:.8rem; cursor:pointer;
+  padding:6px 13px; background:#fff; color:var(--muted);
+  border:1px solid var(--rule); border-right-width:0;
+}
+.modes button:last-child { border-right-width:1px; border-radius:0 3px 3px 0; }
+.modes button:first-child { border-radius:3px 0 0 3px; }
+.modes button:hover { color:var(--ink); }
+.modes button[aria-pressed="true"] {
+  background:var(--credit); border-color:var(--credit); color:#fff;
+}
+.modes button:focus-visible { outline:2px solid var(--ink); outline-offset:1px; }
+
+.track { position:relative; height:100vh; }
+body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
 .bar {
   position:absolute; top:50%; left:0; height:56px; transform:translateY(-50%);
-  width:540016px; background:var(--credit); border-radius:0 4px 4px 0;
+  background:var(--credit); border-radius:0 4px 4px 0;
 }
 .bar::after {
-  content:"1 pixel = US$10,000"; position:absolute; left:12px; top:-26px;
+  position:absolute; left:12px; top:-26px;
   font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--muted); white-space:nowrap;
 }
+.t-cum .bar::after { content:"1 pixel = US$10,000 · the register, end to end"; }
+.t-abs .bar::after { content:"1 pixel = US$10,000 · the bar is one package"; }
 .you {
   position:absolute; top:50%; left:2px; transform:translateY(calc(-50% - 64px));
   font-size:.78rem; color:var(--muted); white-space:nowrap;
@@ -71,6 +88,7 @@ body {
 }
 .marker-label .mono { color:var(--debit); }
 
+/* End to end: a name marks where the running total reaches it. */
 .boundary { position:absolute; top:0; height:100%; }
 .boundary-tick { z-index:1;
   position:absolute; top:calc(50% + 28px); width:1px;
@@ -83,7 +101,32 @@ body {
 }
 .boundary-label b { color:var(--ink); font-weight:500; }
 
-/* Graduations along the bar: the running total, read off the bar itself. */
+/* From zero: one package, ending. The stem drops into its own lane. */
+.pk { position:absolute; top:0; height:100%; }
+.pk-stem {
+  position:absolute; top:calc(50% + 28px); width:1px;
+  background:var(--ink); opacity:.3; z-index:1;
+}
+.pk-dot {
+  position:absolute; top:calc(50% + 26px); left:-2.5px;
+  width:5px; height:5px; border-radius:50%; background:var(--credit); z-index:2;
+}
+.pk-label {
+  position:absolute; left:5px; width:168px; z-index:2;
+  font-size:.7rem; line-height:1.25; color:var(--muted);
+  background:var(--paper); padding-right:6px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.pk-label b { color:var(--ink); font-weight:500; }
+.pk-label .mono { color:var(--credit); }
+.pk-label i { font-style:normal; }
+.pk-label:hover {
+  width:max-content; max-width:420px; overflow:visible; z-index:9;
+  padding:2px 8px 3px 4px; margin-left:-4px;
+  box-shadow:0 6px 18px rgba(0,0,0,.10);
+}
+
+/* Graduations along the bar: read the figure off the bar itself. */
 .grad {
   position:absolute; top:50%; transform:translateY(-50%);
   height:56px; width:1px; background:rgba(255,255,255,.34);
@@ -96,7 +139,7 @@ body {
 .grad.maj span { color:#fff; font-size:.72rem; font-weight:600; }
 
 .endpanel {
-  position:absolute; top:50%; left:540076px; transform:translateY(-50%);
+  position:absolute; top:50%; transform:translateY(-50%);
   width:560px; max-width:80vw;
 }
 .endpanel h2 { font-family:'Libre Caslon Text',serif; font-size:1.8rem; }
@@ -122,15 +165,19 @@ body {
 }
 </style>
 </head>
-<body>
+<body class="m-cum">
 <div class="intro">
   <h1><a href="index.html">← Bonus Watch</a> · The Scale</h1>
   <p>Scroll right.</p>
-  <div class="counter" id="counter">US$0<span class="people" id="people"></span><small>scrolled past so far</small></div>
+  <div class="counter" id="counter">US$0</div>
+  <div class="modes" id="modes">
+    <button type="button" data-mode="cum" aria-pressed="true">End to end</button>
+    <button type="button" data-mode="abs" aria-pressed="false">Each from zero</button>
+  </div>
 </div>
 
-<div class="track">
-  <div class="bar"></div>
+<div class="track t-cum" style="width:540916px">
+  <div class="bar" style="width:540016px"></div>
 <div class="grad" style="left:1000px"><span class="mono">US$10m</span></div><div class="grad" style="left:2000px"><span class="mono">US$20m</span></div><div class="grad" style="left:3000px"><span class="mono">US$30m</span></div><div class="grad" style="left:4000px"><span class="mono">US$40m</span></div><div class="grad" style="left:5000px"><span class="mono">US$50m</span></div><div class="grad" style="left:6000px"><span class="mono">US$60m</span></div><div class="grad" style="left:7000px"><span class="mono">US$70m</span></div><div class="grad" style="left:8000px"><span class="mono">US$80m</span></div><div class="grad" style="left:9000px"><span class="mono">US$90m</span></div><div class="grad maj" style="left:10000px"><span class="mono">US$100m</span></div><div class="grad" style="left:11000px"><span class="mono">US$110m</span></div><div class="grad" style="left:12000px"><span class="mono">US$120m</span></div><div class="grad" style="left:13000px"><span class="mono">US$130m</span></div><div class="grad" style="left:14000px"><span class="mono">US$140m</span></div><div class="grad" style="left:15000px"><span class="mono">US$150m</span></div><div class="grad" style="left:16000px"><span class="mono">US$160m</span></div><div class="grad" style="left:17000px"><span class="mono">US$170m</span></div><div class="grad" style="left:18000px"><span class="mono">US$180m</span></div><div class="grad" style="left:19000px"><span class="mono">US$190m</span></div><div class="grad maj" style="left:20000px"><span class="mono">US$200m</span></div><div class="grad" style="left:21000px"><span class="mono">US$210m</span></div><div class="grad" style="left:22000px"><span class="mono">US$220m</span></div><div class="grad" style="left:23000px"><span class="mono">US$230m</span></div><div class="grad" style="left:24000px"><span class="mono">US$240m</span></div><div class="grad" style="left:25000px"><span class="mono">US$250m</span></div><div class="grad" style="left:26000px"><span class="mono">US$260m</span></div><div class="grad" style="left:27000px"><span class="mono">US$270m</span></div><div class="grad" style="left:28000px"><span class="mono">US$280m</span></div><div class="grad" style="left:29000px"><span class="mono">US$290m</span></div><div class="grad maj" style="left:30000px"><span class="mono">US$300m</span></div><div class="grad" style="left:31000px"><span class="mono">US$310m</span></div><div class="grad" style="left:32000px"><span class="mono">US$320m</span></div><div class="grad" style="left:33000px"><span class="mono">US$330m</span></div><div class="grad" style="left:34000px"><span class="mono">US$340m</span></div><div class="grad" style="left:35000px"><span class="mono">US$350m</span></div><div class="grad" style="left:36000px"><span class="mono">US$360m</span></div><div class="grad" style="left:37000px"><span class="mono">US$370m</span></div><div class="grad" style="left:38000px"><span class="mono">US$380m</span></div><div class="grad" style="left:39000px"><span class="mono">US$390m</span></div><div class="grad maj" style="left:40000px"><span class="mono">US$400m</span></div><div class="grad" style="left:41000px"><span class="mono">US$410m</span></div><div class="grad" style="left:42000px"><span class="mono">US$420m</span></div><div class="grad" style="left:43000px"><span class="mono">US$430m</span></div><div class="grad" style="left:44000px"><span class="mono">US$440m</span></div><div class="grad" style="left:45000px"><span class="mono">US$450m</span></div><div class="grad" style="left:46000px"><span class="mono">US$460m</span></div><div class="grad" style="left:47000px"><span class="mono">US$470m</span></div><div class="grad" style="left:48000px"><span class="mono">US$480m</span></div><div class="grad" style="left:49000px"><span class="mono">US$490m</span></div><div class="grad maj" style="left:50000px"><span class="mono">US$500m</span></div><div class="grad" style="left:51000px"><span class="mono">US$510m</span></div><div class="grad" style="left:52000px"><span class="mono">US$520m</span></div><div class="grad" style="left:53000px"><span class="mono">US$530m</span></div><div class="grad" style="left:54000px"><span class="mono">US$540m</span></div><div class="grad" style="left:55000px"><span class="mono">US$550m</span></div><div class="grad" style="left:56000px"><span class="mono">US$560m</span></div><div class="grad" style="left:57000px"><span class="mono">US$570m</span></div><div class="grad" style="left:58000px"><span class="mono">US$580m</span></div><div class="grad" style="left:59000px"><span class="mono">US$590m</span></div><div class="grad maj" style="left:60000px"><span class="mono">US$600m</span></div><div class="grad" style="left:61000px"><span class="mono">US$610m</span></div><div class="grad" style="left:62000px"><span class="mono">US$620m</span></div><div class="grad" style="left:63000px"><span class="mono">US$630m</span></div><div class="grad" style="left:64000px"><span class="mono">US$640m</span></div><div class="grad" style="left:65000px"><span class="mono">US$650m</span></div><div class="grad" style="left:66000px"><span class="mono">US$660m</span></div><div class="grad" style="left:67000px"><span class="mono">US$670m</span></div><div class="grad" style="left:68000px"><span class="mono">US$680m</span></div><div class="grad" style="left:69000px"><span class="mono">US$690m</span></div><div class="grad maj" style="left:70000px"><span class="mono">US$700m</span></div><div class="grad" style="left:71000px"><span class="mono">US$710m</span></div><div class="grad" style="left:72000px"><span class="mono">US$720m</span></div><div class="grad" style="left:73000px"><span class="mono">US$730m</span></div><div class="grad" style="left:74000px"><span class="mono">US$740m</span></div><div class="grad" style="left:75000px"><span class="mono">US$750m</span></div><div class="grad" style="left:76000px"><span class="mono">US$760m</span></div><div class="grad" style="left:77000px"><span class="mono">US$770m</span></div><div class="grad" style="left:78000px"><span class="mono">US$780m</span></div><div class="grad" style="left:79000px"><span class="mono">US$790m</span></div><div class="grad maj" style="left:80000px"><span class="mono">US$800m</span></div><div class="grad" style="left:81000px"><span class="mono">US$810m</span></div><div class="grad" style="left:82000px"><span class="mono">US$820m</span></div><div class="grad" style="left:83000px"><span class="mono">US$830m</span></div><div class="grad" style="left:84000px"><span class="mono">US$840m</span></div><div class="grad" style="left:85000px"><span class="mono">US$850m</span></div><div class="grad" style="left:86000px"><span class="mono">US$860m</span></div><div class="grad" style="left:87000px"><span class="mono">US$870m</span></div><div class="grad" style="left:88000px"><span class="mono">US$880m</span></div><div class="grad" style="left:89000px"><span class="mono">US$890m</span></div><div class="grad maj" style="left:90000px"><span class="mono">US$900m</span></div><div class="grad" style="left:91000px"><span class="mono">US$910m</span></div><div class="grad" style="left:92000px"><span class="mono">US$920m</span></div><div class="grad" style="left:93000px"><span class="mono">US$930m</span></div><div class="grad" style="left:94000px"><span class="mono">US$940m</span></div><div class="grad" style="left:95000px"><span class="mono">US$950m</span></div><div class="grad" style="left:96000px"><span class="mono">US$960m</span></div><div class="grad" style="left:97000px"><span class="mono">US$970m</span></div><div class="grad" style="left:98000px"><span class="mono">US$980m</span></div><div class="grad" style="left:99000px"><span class="mono">US$990m</span></div><div class="grad maj" style="left:100000px"><span class="mono">US$1b</span></div><div class="grad" style="left:101000px"><span class="mono">US$1.01b</span></div><div class="grad" style="left:102000px"><span class="mono">US$1.02b</span></div><div class="grad" style="left:103000px"><span class="mono">US$1.03b</span></div><div class="grad" style="left:104000px"><span class="mono">US$1.04b</span></div><div class="grad" style="left:105000px"><span class="mono">US$1.05b</span></div><div class="grad" style="left:106000px"><span class="mono">US$1.06b</span></div><div class="grad" style="left:107000px"><span class="mono">US$1.07b</span></div><div class="grad" style="left:108000px"><span class="mono">US$1.08b</span></div><div class="grad" style="left:109000px"><span class="mono">US$1.09b</span></div><div class="grad maj" style="left:110000px"><span class="mono">US$1.1b</span></div><div class="grad" style="left:111000px"><span class="mono">US$1.11b</span></div><div class="grad" style="left:112000px"><span class="mono">US$1.12b</span></div><div class="grad" style="left:113000px"><span class="mono">US$1.13b</span></div><div class="grad" style="left:114000px"><span class="mono">US$1.14b</span></div><div class="grad" style="left:115000px"><span class="mono">US$1.15b</span></div><div class="grad" style="left:116000px"><span class="mono">US$1.16b</span></div><div class="grad" style="left:117000px"><span class="mono">US$1.17b</span></div><div class="grad" style="left:118000px"><span class="mono">US$1.18b</span></div><div class="grad" style="left:119000px"><span class="mono">US$1.19b</span></div><div class="grad maj" style="left:120000px"><span class="mono">US$1.2b</span></div><div class="grad" style="left:121000px"><span class="mono">US$1.21b</span></div><div class="grad" style="left:122000px"><span class="mono">US$1.22b</span></div><div class="grad" style="left:123000px"><span class="mono">US$1.23b</span></div><div class="grad" style="left:124000px"><span class="mono">US$1.24b</span></div><div class="grad" style="left:125000px"><span class="mono">US$1.25b</span></div><div class="grad" style="left:126000px"><span class="mono">US$1.26b</span></div><div class="grad" style="left:127000px"><span class="mono">US$1.27b</span></div><div class="grad" style="left:128000px"><span class="mono">US$1.28b</span></div><div class="grad" style="left:129000px"><span class="mono">US$1.29b</span></div><div class="grad maj" style="left:130000px"><span class="mono">US$1.3b</span></div><div class="grad" style="left:131000px"><span class="mono">US$1.31b</span></div><div class="grad" style="left:132000px"><span class="mono">US$1.32b</span></div><div class="grad" style="left:133000px"><span class="mono">US$1.33b</span></div><div class="grad" style="left:134000px"><span class="mono">US$1.34b</span></div><div class="grad" style="left:135000px"><span class="mono">US$1.35b</span></div><div class="grad" style="left:136000px"><span class="mono">US$1.36b</span></div><div class="grad" style="left:137000px"><span class="mono">US$1.37b</span></div><div class="grad" style="left:138000px"><span class="mono">US$1.38b</span></div><div class="grad" style="left:139000px"><span class="mono">US$1.39b</span></div><div class="grad maj" style="left:140000px"><span class="mono">US$1.4b</span></div><div class="grad" style="left:141000px"><span class="mono">US$1.41b</span></div><div class="grad" style="left:142000px"><span class="mono">US$1.42b</span></div><div class="grad" style="left:143000px"><span class="mono">US$1.43b</span></div><div class="grad" style="left:144000px"><span class="mono">US$1.44b</span></div><div class="grad" style="left:145000px"><span class="mono">US$1.45b</span></div><div class="grad" style="left:146000px"><span class="mono">US$1.46b</span></div><div class="grad" style="left:147000px"><span class="mono">US$1.47b</span></div><div class="grad" style="left:148000px"><span class="mono">US$1.48b</span></div><div class="grad" style="left:149000px"><span class="mono">US$1.49b</span></div><div class="grad maj" style="left:150000px"><span class="mono">US$1.5b</span></div><div class="grad" style="left:151000px"><span class="mono">US$1.51b</span></div><div class="grad" style="left:152000px"><span class="mono">US$1.52b</span></div><div class="grad" style="left:153000px"><span class="mono">US$1.53b</span></div><div class="grad" style="left:154000px"><span class="mono">US$1.54b</span></div><div class="grad" style="left:155000px"><span class="mono">US$1.55b</span></div><div class="grad" style="left:156000px"><span class="mono">US$1.56b</span></div><div class="grad" style="left:157000px"><span class="mono">US$1.57b</span></div><div class="grad" style="left:158000px"><span class="mono">US$1.58b</span></div><div class="grad" style="left:159000px"><span class="mono">US$1.59b</span></div><div class="grad maj" style="left:160000px"><span class="mono">US$1.6b</span></div><div class="grad" style="left:161000px"><span class="mono">US$1.61b</span></div><div class="grad" style="left:162000px"><span class="mono">US$1.62b</span></div><div class="grad" style="left:163000px"><span class="mono">US$1.63b</span></div><div class="grad" style="left:164000px"><span class="mono">US$1.64b</span></div><div class="grad" style="left:165000px"><span class="mono">US$1.65b</span></div><div class="grad" style="left:166000px"><span class="mono">US$1.66b</span></div><div class="grad" style="left:167000px"><span class="mono">US$1.67b</span></div><div class="grad" style="left:168000px"><span class="mono">US$1.68b</span></div><div class="grad" style="left:169000px"><span class="mono">US$1.69b</span></div><div class="grad maj" style="left:170000px"><span class="mono">US$1.7b</span></div><div class="grad" style="left:171000px"><span class="mono">US$1.71b</span></div><div class="grad" style="left:172000px"><span class="mono">US$1.72b</span></div><div class="grad" style="left:173000px"><span class="mono">US$1.73b</span></div><div class="grad" style="left:174000px"><span class="mono">US$1.74b</span></div><div class="grad" style="left:175000px"><span class="mono">US$1.75b</span></div><div class="grad" style="left:176000px"><span class="mono">US$1.76b</span></div><div class="grad" style="left:177000px"><span class="mono">US$1.77b</span></div><div class="grad" style="left:178000px"><span class="mono">US$1.78b</span></div><div class="grad" style="left:179000px"><span class="mono">US$1.79b</span></div><div class="grad maj" style="left:180000px"><span class="mono">US$1.8b</span></div><div class="grad" style="left:181000px"><span class="mono">US$1.81b</span></div><div class="grad" style="left:182000px"><span class="mono">US$1.82b</span></div><div class="grad" style="left:183000px"><span class="mono">US$1.83b</span></div><div class="grad" style="left:184000px"><span class="mono">US$1.84b</span></div><div class="grad" style="left:185000px"><span class="mono">US$1.85b</span></div><div class="grad" style="left:186000px"><span class="mono">US$1.86b</span></div><div class="grad" style="left:187000px"><span class="mono">US$1.87b</span></div><div class="grad" style="left:188000px"><span class="mono">US$1.88b</span></div><div class="grad" style="left:189000px"><span class="mono">US$1.89b</span></div><div class="grad maj" style="left:190000px"><span class="mono">US$1.9b</span></div><div class="grad" style="left:191000px"><span class="mono">US$1.91b</span></div><div class="grad" style="left:192000px"><span class="mono">US$1.92b</span></div><div class="grad" style="left:193000px"><span class="mono">US$1.93b</span></div><div class="grad" style="left:194000px"><span class="mono">US$1.94b</span></div><div class="grad" style="left:195000px"><span class="mono">US$1.95b</span></div><div class="grad" style="left:196000px"><span class="mono">US$1.96b</span></div><div class="grad" style="left:197000px"><span class="mono">US$1.97b</span></div><div class="grad" style="left:198000px"><span class="mono">US$1.98b</span></div><div class="grad" style="left:199000px"><span class="mono">US$1.99b</span></div><div class="grad maj" style="left:200000px"><span class="mono">US$2b</span></div><div class="grad" style="left:201000px"><span class="mono">US$2.01b</span></div><div class="grad" style="left:202000px"><span class="mono">US$2.02b</span></div><div class="grad" style="left:203000px"><span class="mono">US$2.03b</span></div><div class="grad" style="left:204000px"><span class="mono">US$2.04b</span></div><div class="grad" style="left:205000px"><span class="mono">US$2.05b</span></div><div class="grad" style="left:206000px"><span class="mono">US$2.06b</span></div><div class="grad" style="left:207000px"><span class="mono">US$2.07b</span></div><div class="grad" style="left:208000px"><span class="mono">US$2.08b</span></div><div class="grad" style="left:209000px"><span class="mono">US$2.09b</span></div><div class="grad maj" style="left:210000px"><span class="mono">US$2.1b</span></div><div class="grad" style="left:211000px"><span class="mono">US$2.11b</span></div><div class="grad" style="left:212000px"><span class="mono">US$2.12b</span></div><div class="grad" style="left:213000px"><span class="mono">US$2.13b</span></div><div class="grad" style="left:214000px"><span class="mono">US$2.14b</span></div><div class="grad" style="left:215000px"><span class="mono">US$2.15b</span></div><div class="grad" style="left:216000px"><span class="mono">US$2.16b</span></div><div class="grad" style="left:217000px"><span class="mono">US$2.17b</span></div><div class="grad" style="left:218000px"><span class="mono">US$2.18b</span></div><div class="grad" style="left:219000px"><span class="mono">US$2.19b</span></div><div class="grad maj" style="left:220000px"><span class="mono">US$2.2b</span></div><div class="grad" style="left:221000px"><span class="mono">US$2.21b</span></div><div class="grad" style="left:222000px"><span class="mono">US$2.22b</span></div><div class="grad" style="left:223000px"><span class="mono">US$2.23b</span></div><div class="grad" style="left:224000px"><span class="mono">US$2.24b</span></div><div class="grad" style="left:225000px"><span class="mono">US$2.25b</span></div><div class="grad" style="left:226000px"><span class="mono">US$2.26b</span></div><div class="grad" style="left:227000px"><span class="mono">US$2.27b</span></div><div class="grad" style="left:228000px"><span class="mono">US$2.28b</span></div><div class="grad" style="left:229000px"><span class="mono">US$2.29b</span></div><div class="grad maj" style="left:230000px"><span class="mono">US$2.3b</span></div><div class="grad" style="left:231000px"><span class="mono">US$2.31b</span></div><div class="grad" style="left:232000px"><span class="mono">US$2.32b</span></div><div class="grad" style="left:233000px"><span class="mono">US$2.33b</span></div><div class="grad" style="left:234000px"><span class="mono">US$2.34b</span></div><div class="grad" style="left:235000px"><span class="mono">US$2.35b</span></div><div class="grad" style="left:236000px"><span class="mono">US$2.36b</span></div><div class="grad" style="left:237000px"><span class="mono">US$2.37b</span></div><div class="grad" style="left:238000px"><span class="mono">US$2.38b</span></div><div class="grad" style="left:239000px"><span class="mono">US$2.39b</span></div><div class="grad maj" style="left:240000px"><span class="mono">US$2.4b</span></div><div class="grad" style="left:241000px"><span class="mono">US$2.41b</span></div><div class="grad" style="left:242000px"><span class="mono">US$2.42b</span></div><div class="grad" style="left:243000px"><span class="mono">US$2.43b</span></div><div class="grad" style="left:244000px"><span class="mono">US$2.44b</span></div><div class="grad" style="left:245000px"><span class="mono">US$2.45b</span></div><div class="grad" style="left:246000px"><span class="mono">US$2.46b</span></div><div class="grad" style="left:247000px"><span class="mono">US$2.47b</span></div><div class="grad" style="left:248000px"><span class="mono">US$2.48b</span></div><div class="grad" style="left:249000px"><span class="mono">US$2.49b</span></div><div class="grad maj" style="left:250000px"><span class="mono">US$2.5b</span></div><div class="grad" style="left:251000px"><span class="mono">US$2.51b</span></div><div class="grad" style="left:252000px"><span class="mono">US$2.52b</span></div><div class="grad" style="left:253000px"><span class="mono">US$2.53b</span></div><div class="grad" style="left:254000px"><span class="mono">US$2.54b</span></div><div class="grad" style="left:255000px"><span class="mono">US$2.55b</span></div><div class="grad" style="left:256000px"><span class="mono">US$2.56b</span></div><div class="grad" style="left:257000px"><span class="mono">US$2.57b</span></div><div class="grad" style="left:258000px"><span class="mono">US$2.58b</span></div><div class="grad" style="left:259000px"><span class="mono">US$2.59b</span></div><div class="grad maj" style="left:260000px"><span class="mono">US$2.6b</span></div><div class="grad" style="left:261000px"><span class="mono">US$2.61b</span></div><div class="grad" style="left:262000px"><span class="mono">US$2.62b</span></div><div class="grad" style="left:263000px"><span class="mono">US$2.63b</span></div><div class="grad" style="left:264000px"><span class="mono">US$2.64b</span></div><div class="grad" style="left:265000px"><span class="mono">US$2.65b</span></div><div class="grad" style="left:266000px"><span class="mono">US$2.66b</span></div><div class="grad" style="left:267000px"><span class="mono">US$2.67b</span></div><div class="grad" style="left:268000px"><span class="mono">US$2.68b</span></div><div class="grad" style="left:269000px"><span class="mono">US$2.69b</span></div><div class="grad maj" style="left:270000px"><span class="mono">US$2.7b</span></div><div class="grad" style="left:271000px"><span class="mono">US$2.71b</span></div><div class="grad" style="left:272000px"><span class="mono">US$2.72b</span></div><div class="grad" style="left:273000px"><span class="mono">US$2.73b</span></div><div class="grad" style="left:274000px"><span class="mono">US$2.74b</span></div><div class="grad" style="left:275000px"><span class="mono">US$2.75b</span></div><div class="grad" style="left:276000px"><span class="mono">US$2.76b</span></div><div class="grad" style="left:277000px"><span class="mono">US$2.77b</span></div><div class="grad" style="left:278000px"><span class="mono">US$2.78b</span></div><div class="grad" style="left:279000px"><span class="mono">US$2.79b</span></div><div class="grad maj" style="left:280000px"><span class="mono">US$2.8b</span></div><div class="grad" style="left:281000px"><span class="mono">US$2.81b</span></div><div class="grad" style="left:282000px"><span class="mono">US$2.82b</span></div><div class="grad" style="left:283000px"><span class="mono">US$2.83b</span></div><div class="grad" style="left:284000px"><span class="mono">US$2.84b</span></div><div class="grad" style="left:285000px"><span class="mono">US$2.85b</span></div><div class="grad" style="left:286000px"><span class="mono">US$2.86b</span></div><div class="grad" style="left:287000px"><span class="mono">US$2.87b</span></div><div class="grad" style="left:288000px"><span class="mono">US$2.88b</span></div><div class="grad" style="left:289000px"><span class="mono">US$2.89b</span></div><div class="grad maj" style="left:290000px"><span class="mono">US$2.9b</span></div><div class="grad" style="left:291000px"><span class="mono">US$2.91b</span></div><div class="grad" style="left:292000px"><span class="mono">US$2.92b</span></div><div class="grad" style="left:293000px"><span class="mono">US$2.93b</span></div><div class="grad" style="left:294000px"><span class="mono">US$2.94b</span></div><div class="grad" style="left:295000px"><span class="mono">US$2.95b</span></div><div class="grad" style="left:296000px"><span class="mono">US$2.96b</span></div><div class="grad" style="left:297000px"><span class="mono">US$2.97b</span></div><div class="grad" style="left:298000px"><span class="mono">US$2.98b</span></div><div class="grad" style="left:299000px"><span class="mono">US$2.99b</span></div><div class="grad maj" style="left:300000px"><span class="mono">US$3b</span></div><div class="grad" style="left:301000px"><span class="mono">US$3.01b</span></div><div class="grad" style="left:302000px"><span class="mono">US$3.02b</span></div><div class="grad" style="left:303000px"><span class="mono">US$3.03b</span></div><div class="grad" style="left:304000px"><span class="mono">US$3.04b</span></div><div class="grad" style="left:305000px"><span class="mono">US$3.05b</span></div><div class="grad" style="left:306000px"><span class="mono">US$3.06b</span></div><div class="grad" style="left:307000px"><span class="mono">US$3.07b</span></div><div class="grad" style="left:308000px"><span class="mono">US$3.08b</span></div><div class="grad" style="left:309000px"><span class="mono">US$3.09b</span></div><div class="grad maj" style="left:310000px"><span class="mono">US$3.1b</span></div><div class="grad" style="left:311000px"><span class="mono">US$3.11b</span></div><div class="grad" style="left:312000px"><span class="mono">US$3.12b</span></div><div class="grad" style="left:313000px"><span class="mono">US$3.13b</span></div><div class="grad" style="left:314000px"><span class="mono">US$3.14b</span></div><div class="grad" style="left:315000px"><span class="mono">US$3.15b</span></div><div class="grad" style="left:316000px"><span class="mono">US$3.16b</span></div><div class="grad" style="left:317000px"><span class="mono">US$3.17b</span></div><div class="grad" style="left:318000px"><span class="mono">US$3.18b</span></div><div class="grad" style="left:319000px"><span class="mono">US$3.19b</span></div><div class="grad maj" style="left:320000px"><span class="mono">US$3.2b</span></div><div class="grad" style="left:321000px"><span class="mono">US$3.21b</span></div><div class="grad" style="left:322000px"><span class="mono">US$3.22b</span></div><div class="grad" style="left:323000px"><span class="mono">US$3.23b</span></div><div class="grad" style="left:324000px"><span class="mono">US$3.24b</span></div><div class="grad" style="left:325000px"><span class="mono">US$3.25b</span></div><div class="grad" style="left:326000px"><span class="mono">US$3.26b</span></div><div class="grad" style="left:327000px"><span class="mono">US$3.27b</span></div><div class="grad" style="left:328000px"><span class="mono">US$3.28b</span></div><div class="grad" style="left:329000px"><span class="mono">US$3.29b</span></div><div class="grad maj" style="left:330000px"><span class="mono">US$3.3b</span></div><div class="grad" style="left:331000px"><span class="mono">US$3.31b</span></div><div class="grad" style="left:332000px"><span class="mono">US$3.32b</span></div><div class="grad" style="left:333000px"><span class="mono">US$3.33b</span></div><div class="grad" style="left:334000px"><span class="mono">US$3.34b</span></div><div class="grad" style="left:335000px"><span class="mono">US$3.35b</span></div><div class="grad" style="left:336000px"><span class="mono">US$3.36b</span></div><div class="grad" style="left:337000px"><span class="mono">US$3.37b</span></div><div class="grad" style="left:338000px"><span class="mono">US$3.38b</span></div><div class="grad" style="left:339000px"><span class="mono">US$3.39b</span></div><div class="grad maj" style="left:340000px"><span class="mono">US$3.4b</span></div><div class="grad" style="left:341000px"><span class="mono">US$3.41b</span></div><div class="grad" style="left:342000px"><span class="mono">US$3.42b</span></div><div class="grad" style="left:343000px"><span class="mono">US$3.43b</span></div><div class="grad" style="left:344000px"><span class="mono">US$3.44b</span></div><div class="grad" style="left:345000px"><span class="mono">US$3.45b</span></div><div class="grad" style="left:346000px"><span class="mono">US$3.46b</span></div><div class="grad" style="left:347000px"><span class="mono">US$3.47b</span></div><div class="grad" style="left:348000px"><span class="mono">US$3.48b</span></div><div class="grad" style="left:349000px"><span class="mono">US$3.49b</span></div><div class="grad maj" style="left:350000px"><span class="mono">US$3.5b</span></div><div class="grad" style="left:351000px"><span class="mono">US$3.51b</span></div><div class="grad" style="left:352000px"><span class="mono">US$3.52b</span></div><div class="grad" style="left:353000px"><span class="mono">US$3.53b</span></div><div class="grad" style="left:354000px"><span class="mono">US$3.54b</span></div><div class="grad" style="left:355000px"><span class="mono">US$3.55b</span></div><div class="grad" style="left:356000px"><span class="mono">US$3.56b</span></div><div class="grad" style="left:357000px"><span class="mono">US$3.57b</span></div><div class="grad" style="left:358000px"><span class="mono">US$3.58b</span></div><div class="grad" style="left:359000px"><span class="mono">US$3.59b</span></div><div class="grad maj" style="left:360000px"><span class="mono">US$3.6b</span></div><div class="grad" style="left:361000px"><span class="mono">US$3.61b</span></div><div class="grad" style="left:362000px"><span class="mono">US$3.62b</span></div><div class="grad" style="left:363000px"><span class="mono">US$3.63b</span></div><div class="grad" style="left:364000px"><span class="mono">US$3.64b</span></div><div class="grad" style="left:365000px"><span class="mono">US$3.65b</span></div><div class="grad" style="left:366000px"><span class="mono">US$3.66b</span></div><div class="grad" style="left:367000px"><span class="mono">US$3.67b</span></div><div class="grad" style="left:368000px"><span class="mono">US$3.68b</span></div><div class="grad" style="left:369000px"><span class="mono">US$3.69b</span></div><div class="grad maj" style="left:370000px"><span class="mono">US$3.7b</span></div><div class="grad" style="left:371000px"><span class="mono">US$3.71b</span></div><div class="grad" style="left:372000px"><span class="mono">US$3.72b</span></div><div class="grad" style="left:373000px"><span class="mono">US$3.73b</span></div><div class="grad" style="left:374000px"><span class="mono">US$3.74b</span></div><div class="grad" style="left:375000px"><span class="mono">US$3.75b</span></div><div class="grad" style="left:376000px"><span class="mono">US$3.76b</span></div><div class="grad" style="left:377000px"><span class="mono">US$3.77b</span></div><div class="grad" style="left:378000px"><span class="mono">US$3.78b</span></div><div class="grad" style="left:379000px"><span class="mono">US$3.79b</span></div><div class="grad maj" style="left:380000px"><span class="mono">US$3.8b</span></div><div class="grad" style="left:381000px"><span class="mono">US$3.81b</span></div><div class="grad" style="left:382000px"><span class="mono">US$3.82b</span></div><div class="grad" style="left:383000px"><span class="mono">US$3.83b</span></div><div class="grad" style="left:384000px"><span class="mono">US$3.84b</span></div><div class="grad" style="left:385000px"><span class="mono">US$3.85b</span></div><div class="grad" style="left:386000px"><span class="mono">US$3.86b</span></div><div class="grad" style="left:387000px"><span class="mono">US$3.87b</span></div><div class="grad" style="left:388000px"><span class="mono">US$3.88b</span></div><div class="grad" style="left:389000px"><span class="mono">US$3.89b</span></div><div class="grad maj" style="left:390000px"><span class="mono">US$3.9b</span></div><div class="grad" style="left:391000px"><span class="mono">US$3.91b</span></div><div class="grad" style="left:392000px"><span class="mono">US$3.92b</span></div><div class="grad" style="left:393000px"><span class="mono">US$3.93b</span></div><div class="grad" style="left:394000px"><span class="mono">US$3.94b</span></div><div class="grad" style="left:395000px"><span class="mono">US$3.95b</span></div><div class="grad" style="left:396000px"><span class="mono">US$3.96b</span></div><div class="grad" style="left:397000px"><span class="mono">US$3.97b</span></div><div class="grad" style="left:398000px"><span class="mono">US$3.98b</span></div><div class="grad" style="left:399000px"><span class="mono">US$3.99b</span></div><div class="grad maj" style="left:400000px"><span class="mono">US$4b</span></div><div class="grad" style="left:401000px"><span class="mono">US$4.01b</span></div><div class="grad" style="left:402000px"><span class="mono">US$4.02b</span></div><div class="grad" style="left:403000px"><span class="mono">US$4.03b</span></div><div class="grad" style="left:404000px"><span class="mono">US$4.04b</span></div><div class="grad" style="left:405000px"><span class="mono">US$4.05b</span></div><div class="grad" style="left:406000px"><span class="mono">US$4.06b</span></div><div class="grad" style="left:407000px"><span class="mono">US$4.07b</span></div><div class="grad" style="left:408000px"><span class="mono">US$4.08b</span></div><div class="grad" style="left:409000px"><span class="mono">US$4.09b</span></div><div class="grad maj" style="left:410000px"><span class="mono">US$4.1b</span></div><div class="grad" style="left:411000px"><span class="mono">US$4.11b</span></div><div class="grad" style="left:412000px"><span class="mono">US$4.12b</span></div><div class="grad" style="left:413000px"><span class="mono">US$4.13b</span></div><div class="grad" style="left:414000px"><span class="mono">US$4.14b</span></div><div class="grad" style="left:415000px"><span class="mono">US$4.15b</span></div><div class="grad" style="left:416000px"><span class="mono">US$4.16b</span></div><div class="grad" style="left:417000px"><span class="mono">US$4.17b</span></div><div class="grad" style="left:418000px"><span class="mono">US$4.18b</span></div><div class="grad" style="left:419000px"><span class="mono">US$4.19b</span></div><div class="grad maj" style="left:420000px"><span class="mono">US$4.2b</span></div><div class="grad" style="left:421000px"><span class="mono">US$4.21b</span></div><div class="grad" style="left:422000px"><span class="mono">US$4.22b</span></div><div class="grad" style="left:423000px"><span class="mono">US$4.23b</span></div><div class="grad" style="left:424000px"><span class="mono">US$4.24b</span></div><div class="grad" style="left:425000px"><span class="mono">US$4.25b</span></div><div class="grad" style="left:426000px"><span class="mono">US$4.26b</span></div><div class="grad" style="left:427000px"><span class="mono">US$4.27b</span></div><div class="grad" style="left:428000px"><span class="mono">US$4.28b</span></div><div class="grad" style="left:429000px"><span class="mono">US$4.29b</span></div><div class="grad maj" style="left:430000px"><span class="mono">US$4.3b</span></div><div class="grad" style="left:431000px"><span class="mono">US$4.31b</span></div><div class="grad" style="left:432000px"><span class="mono">US$4.32b</span></div><div class="grad" style="left:433000px"><span class="mono">US$4.33b</span></div><div class="grad" style="left:434000px"><span class="mono">US$4.34b</span></div><div class="grad" style="left:435000px"><span class="mono">US$4.35b</span></div><div class="grad" style="left:436000px"><span class="mono">US$4.36b</span></div><div class="grad" style="left:437000px"><span class="mono">US$4.37b</span></div><div class="grad" style="left:438000px"><span class="mono">US$4.38b</span></div><div class="grad" style="left:439000px"><span class="mono">US$4.39b</span></div><div class="grad maj" style="left:440000px"><span class="mono">US$4.4b</span></div><div class="grad" style="left:441000px"><span class="mono">US$4.41b</span></div><div class="grad" style="left:442000px"><span class="mono">US$4.42b</span></div><div class="grad" style="left:443000px"><span class="mono">US$4.43b</span></div><div class="grad" style="left:444000px"><span class="mono">US$4.44b</span></div><div class="grad" style="left:445000px"><span class="mono">US$4.45b</span></div><div class="grad" style="left:446000px"><span class="mono">US$4.46b</span></div><div class="grad" style="left:447000px"><span class="mono">US$4.47b</span></div><div class="grad" style="left:448000px"><span class="mono">US$4.48b</span></div><div class="grad" style="left:449000px"><span class="mono">US$4.49b</span></div><div class="grad maj" style="left:450000px"><span class="mono">US$4.5b</span></div><div class="grad" style="left:451000px"><span class="mono">US$4.51b</span></div><div class="grad" style="left:452000px"><span class="mono">US$4.52b</span></div><div class="grad" style="left:453000px"><span class="mono">US$4.53b</span></div><div class="grad" style="left:454000px"><span class="mono">US$4.54b</span></div><div class="grad" style="left:455000px"><span class="mono">US$4.55b</span></div><div class="grad" style="left:456000px"><span class="mono">US$4.56b</span></div><div class="grad" style="left:457000px"><span class="mono">US$4.57b</span></div><div class="grad" style="left:458000px"><span class="mono">US$4.58b</span></div><div class="grad" style="left:459000px"><span class="mono">US$4.59b</span></div><div class="grad maj" style="left:460000px"><span class="mono">US$4.6b</span></div><div class="grad" style="left:461000px"><span class="mono">US$4.61b</span></div><div class="grad" style="left:462000px"><span class="mono">US$4.62b</span></div><div class="grad" style="left:463000px"><span class="mono">US$4.63b</span></div><div class="grad" style="left:464000px"><span class="mono">US$4.64b</span></div><div class="grad" style="left:465000px"><span class="mono">US$4.65b</span></div><div class="grad" style="left:466000px"><span class="mono">US$4.66b</span></div><div class="grad" style="left:467000px"><span class="mono">US$4.67b</span></div><div class="grad" style="left:468000px"><span class="mono">US$4.68b</span></div><div class="grad" style="left:469000px"><span class="mono">US$4.69b</span></div><div class="grad maj" style="left:470000px"><span class="mono">US$4.7b</span></div><div class="grad" style="left:471000px"><span class="mono">US$4.71b</span></div><div class="grad" style="left:472000px"><span class="mono">US$4.72b</span></div><div class="grad" style="left:473000px"><span class="mono">US$4.73b</span></div><div class="grad" style="left:474000px"><span class="mono">US$4.74b</span></div><div class="grad" style="left:475000px"><span class="mono">US$4.75b</span></div><div class="grad" style="left:476000px"><span class="mono">US$4.76b</span></div><div class="grad" style="left:477000px"><span class="mono">US$4.77b</span></div><div class="grad" style="left:478000px"><span class="mono">US$4.78b</span></div><div class="grad" style="left:479000px"><span class="mono">US$4.79b</span></div><div class="grad maj" style="left:480000px"><span class="mono">US$4.8b</span></div><div class="grad" style="left:481000px"><span class="mono">US$4.81b</span></div><div class="grad" style="left:482000px"><span class="mono">US$4.82b</span></div><div class="grad" style="left:483000px"><span class="mono">US$4.83b</span></div><div class="grad" style="left:484000px"><span class="mono">US$4.84b</span></div><div class="grad" style="left:485000px"><span class="mono">US$4.85b</span></div><div class="grad" style="left:486000px"><span class="mono">US$4.86b</span></div><div class="grad" style="left:487000px"><span class="mono">US$4.87b</span></div><div class="grad" style="left:488000px"><span class="mono">US$4.88b</span></div><div class="grad" style="left:489000px"><span class="mono">US$4.89b</span></div><div class="grad maj" style="left:490000px"><span class="mono">US$4.9b</span></div><div class="grad" style="left:491000px"><span class="mono">US$4.91b</span></div><div class="grad" style="left:492000px"><span class="mono">US$4.92b</span></div><div class="grad" style="left:493000px"><span class="mono">US$4.93b</span></div><div class="grad" style="left:494000px"><span class="mono">US$4.94b</span></div><div class="grad" style="left:495000px"><span class="mono">US$4.95b</span></div><div class="grad" style="left:496000px"><span class="mono">US$4.96b</span></div><div class="grad" style="left:497000px"><span class="mono">US$4.97b</span></div><div class="grad" style="left:498000px"><span class="mono">US$4.98b</span></div><div class="grad" style="left:499000px"><span class="mono">US$4.99b</span></div><div class="grad maj" style="left:500000px"><span class="mono">US$5b</span></div><div class="grad" style="left:501000px"><span class="mono">US$5.01b</span></div><div class="grad" style="left:502000px"><span class="mono">US$5.02b</span></div><div class="grad" style="left:503000px"><span class="mono">US$5.03b</span></div><div class="grad" style="left:504000px"><span class="mono">US$5.04b</span></div><div class="grad" style="left:505000px"><span class="mono">US$5.05b</span></div><div class="grad" style="left:506000px"><span class="mono">US$5.06b</span></div><div class="grad" style="left:507000px"><span class="mono">US$5.07b</span></div><div class="grad" style="left:508000px"><span class="mono">US$5.08b</span></div><div class="grad" style="left:509000px"><span class="mono">US$5.09b</span></div><div class="grad maj" style="left:510000px"><span class="mono">US$5.1b</span></div><div class="grad" style="left:511000px"><span class="mono">US$5.11b</span></div><div class="grad" style="left:512000px"><span class="mono">US$5.12b</span></div><div class="grad" style="left:513000px"><span class="mono">US$5.13b</span></div><div class="grad" style="left:514000px"><span class="mono">US$5.14b</span></div><div class="grad" style="left:515000px"><span class="mono">US$5.15b</span></div><div class="grad" style="left:516000px"><span class="mono">US$5.16b</span></div><div class="grad" style="left:517000px"><span class="mono">US$5.17b</span></div><div class="grad" style="left:518000px"><span class="mono">US$5.18b</span></div><div class="grad" style="left:519000px"><span class="mono">US$5.19b</span></div><div class="grad maj" style="left:520000px"><span class="mono">US$5.2b</span></div><div class="grad" style="left:521000px"><span class="mono">US$5.21b</span></div><div class="grad" style="left:522000px"><span class="mono">US$5.22b</span></div><div class="grad" style="left:523000px"><span class="mono">US$5.23b</span></div><div class="grad" style="left:524000px"><span class="mono">US$5.24b</span></div><div class="grad" style="left:525000px"><span class="mono">US$5.25b</span></div><div class="grad" style="left:526000px"><span class="mono">US$5.26b</span></div><div class="grad" style="left:527000px"><span class="mono">US$5.27b</span></div><div class="grad" style="left:528000px"><span class="mono">US$5.28b</span></div><div class="grad" style="left:529000px"><span class="mono">US$5.29b</span></div><div class="grad maj" style="left:530000px"><span class="mono">US$5.3b</span></div><div class="grad" style="left:531000px"><span class="mono">US$5.31b</span></div><div class="grad" style="left:532000px"><span class="mono">US$5.32b</span></div><div class="grad" style="left:533000px"><span class="mono">US$5.33b</span></div><div class="grad" style="left:534000px"><span class="mono">US$5.34b</span></div><div class="grad" style="left:535000px"><span class="mono">US$5.35b</span></div><div class="grad" style="left:536000px"><span class="mono">US$5.36b</span></div><div class="grad" style="left:537000px"><span class="mono">US$5.37b</span></div><div class="grad" style="left:538000px"><span class="mono">US$5.38b</span></div><div class="grad" style="left:539000px"><span class="mono">US$5.39b</span></div><div class="grad maj" style="left:540000px"><span class="mono">US$5.4b</span></div>
   <div class="you">▲ <b>You are here.</b> Most people never leave this pixel.</div>
 
@@ -411,12 +458,368 @@ body {
       <div class="boundary-tick" style="height:14px"></div>
       <div class="boundary-label" style="top:calc(50% + 42px)"><b>Alex Karp</b><br>Palantir · <span class="mono">US$1.1b</span></div>
     </div>
-  <div class="endpanel">
+
+  <div class="endpanel" style="left:540076px">
     <h2>End of the bar.</h2>
     <p><span class="mono">US$5.40b</span> credited to <b>63 people</b>.</p>
     <p>That is roughly <b>90,003 years</b> of work at the median wage — about <b>2,250 entire careers</b>, mostly credited for one year each.</p>
     <p>The register grows most weeks. So does this page.</p>
-<p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla. At this scale the bar would be about <b>26 km</b> of screen. Browsers refuse to draw it. So do we.</p>
+<p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla — about <b>26 km</b> of screen. Browsers refuse to draw it. So do we.</p>
+    <a class="back" href="index.html">Back to the register →</a>
+  </div>
+</div>
+<div class="track t-abs" style="width:110900px">
+  <div class="bar" style="width:110000px"></div>
+<div class="grad" style="left:1000px"><span class="mono">US$10m</span></div><div class="grad" style="left:2000px"><span class="mono">US$20m</span></div><div class="grad" style="left:3000px"><span class="mono">US$30m</span></div><div class="grad" style="left:4000px"><span class="mono">US$40m</span></div><div class="grad" style="left:5000px"><span class="mono">US$50m</span></div><div class="grad" style="left:6000px"><span class="mono">US$60m</span></div><div class="grad" style="left:7000px"><span class="mono">US$70m</span></div><div class="grad" style="left:8000px"><span class="mono">US$80m</span></div><div class="grad" style="left:9000px"><span class="mono">US$90m</span></div><div class="grad maj" style="left:10000px"><span class="mono">US$100m</span></div><div class="grad" style="left:11000px"><span class="mono">US$110m</span></div><div class="grad" style="left:12000px"><span class="mono">US$120m</span></div><div class="grad" style="left:13000px"><span class="mono">US$130m</span></div><div class="grad" style="left:14000px"><span class="mono">US$140m</span></div><div class="grad" style="left:15000px"><span class="mono">US$150m</span></div><div class="grad" style="left:16000px"><span class="mono">US$160m</span></div><div class="grad" style="left:17000px"><span class="mono">US$170m</span></div><div class="grad" style="left:18000px"><span class="mono">US$180m</span></div><div class="grad" style="left:19000px"><span class="mono">US$190m</span></div><div class="grad maj" style="left:20000px"><span class="mono">US$200m</span></div><div class="grad" style="left:21000px"><span class="mono">US$210m</span></div><div class="grad" style="left:22000px"><span class="mono">US$220m</span></div><div class="grad" style="left:23000px"><span class="mono">US$230m</span></div><div class="grad" style="left:24000px"><span class="mono">US$240m</span></div><div class="grad" style="left:25000px"><span class="mono">US$250m</span></div><div class="grad" style="left:26000px"><span class="mono">US$260m</span></div><div class="grad" style="left:27000px"><span class="mono">US$270m</span></div><div class="grad" style="left:28000px"><span class="mono">US$280m</span></div><div class="grad" style="left:29000px"><span class="mono">US$290m</span></div><div class="grad maj" style="left:30000px"><span class="mono">US$300m</span></div><div class="grad" style="left:31000px"><span class="mono">US$310m</span></div><div class="grad" style="left:32000px"><span class="mono">US$320m</span></div><div class="grad" style="left:33000px"><span class="mono">US$330m</span></div><div class="grad" style="left:34000px"><span class="mono">US$340m</span></div><div class="grad" style="left:35000px"><span class="mono">US$350m</span></div><div class="grad" style="left:36000px"><span class="mono">US$360m</span></div><div class="grad" style="left:37000px"><span class="mono">US$370m</span></div><div class="grad" style="left:38000px"><span class="mono">US$380m</span></div><div class="grad" style="left:39000px"><span class="mono">US$390m</span></div><div class="grad maj" style="left:40000px"><span class="mono">US$400m</span></div><div class="grad" style="left:41000px"><span class="mono">US$410m</span></div><div class="grad" style="left:42000px"><span class="mono">US$420m</span></div><div class="grad" style="left:43000px"><span class="mono">US$430m</span></div><div class="grad" style="left:44000px"><span class="mono">US$440m</span></div><div class="grad" style="left:45000px"><span class="mono">US$450m</span></div><div class="grad" style="left:46000px"><span class="mono">US$460m</span></div><div class="grad" style="left:47000px"><span class="mono">US$470m</span></div><div class="grad" style="left:48000px"><span class="mono">US$480m</span></div><div class="grad" style="left:49000px"><span class="mono">US$490m</span></div><div class="grad maj" style="left:50000px"><span class="mono">US$500m</span></div><div class="grad" style="left:51000px"><span class="mono">US$510m</span></div><div class="grad" style="left:52000px"><span class="mono">US$520m</span></div><div class="grad" style="left:53000px"><span class="mono">US$530m</span></div><div class="grad" style="left:54000px"><span class="mono">US$540m</span></div><div class="grad" style="left:55000px"><span class="mono">US$550m</span></div><div class="grad" style="left:56000px"><span class="mono">US$560m</span></div><div class="grad" style="left:57000px"><span class="mono">US$570m</span></div><div class="grad" style="left:58000px"><span class="mono">US$580m</span></div><div class="grad" style="left:59000px"><span class="mono">US$590m</span></div><div class="grad maj" style="left:60000px"><span class="mono">US$600m</span></div><div class="grad" style="left:61000px"><span class="mono">US$610m</span></div><div class="grad" style="left:62000px"><span class="mono">US$620m</span></div><div class="grad" style="left:63000px"><span class="mono">US$630m</span></div><div class="grad" style="left:64000px"><span class="mono">US$640m</span></div><div class="grad" style="left:65000px"><span class="mono">US$650m</span></div><div class="grad" style="left:66000px"><span class="mono">US$660m</span></div><div class="grad" style="left:67000px"><span class="mono">US$670m</span></div><div class="grad" style="left:68000px"><span class="mono">US$680m</span></div><div class="grad" style="left:69000px"><span class="mono">US$690m</span></div><div class="grad maj" style="left:70000px"><span class="mono">US$700m</span></div><div class="grad" style="left:71000px"><span class="mono">US$710m</span></div><div class="grad" style="left:72000px"><span class="mono">US$720m</span></div><div class="grad" style="left:73000px"><span class="mono">US$730m</span></div><div class="grad" style="left:74000px"><span class="mono">US$740m</span></div><div class="grad" style="left:75000px"><span class="mono">US$750m</span></div><div class="grad" style="left:76000px"><span class="mono">US$760m</span></div><div class="grad" style="left:77000px"><span class="mono">US$770m</span></div><div class="grad" style="left:78000px"><span class="mono">US$780m</span></div><div class="grad" style="left:79000px"><span class="mono">US$790m</span></div><div class="grad maj" style="left:80000px"><span class="mono">US$800m</span></div><div class="grad" style="left:81000px"><span class="mono">US$810m</span></div><div class="grad" style="left:82000px"><span class="mono">US$820m</span></div><div class="grad" style="left:83000px"><span class="mono">US$830m</span></div><div class="grad" style="left:84000px"><span class="mono">US$840m</span></div><div class="grad" style="left:85000px"><span class="mono">US$850m</span></div><div class="grad" style="left:86000px"><span class="mono">US$860m</span></div><div class="grad" style="left:87000px"><span class="mono">US$870m</span></div><div class="grad" style="left:88000px"><span class="mono">US$880m</span></div><div class="grad" style="left:89000px"><span class="mono">US$890m</span></div><div class="grad maj" style="left:90000px"><span class="mono">US$900m</span></div><div class="grad" style="left:91000px"><span class="mono">US$910m</span></div><div class="grad" style="left:92000px"><span class="mono">US$920m</span></div><div class="grad" style="left:93000px"><span class="mono">US$930m</span></div><div class="grad" style="left:94000px"><span class="mono">US$940m</span></div><div class="grad" style="left:95000px"><span class="mono">US$950m</span></div><div class="grad" style="left:96000px"><span class="mono">US$960m</span></div><div class="grad" style="left:97000px"><span class="mono">US$970m</span></div><div class="grad" style="left:98000px"><span class="mono">US$980m</span></div><div class="grad" style="left:99000px"><span class="mono">US$990m</span></div><div class="grad maj" style="left:100000px"><span class="mono">US$1b</span></div><div class="grad" style="left:101000px"><span class="mono">US$1.01b</span></div><div class="grad" style="left:102000px"><span class="mono">US$1.02b</span></div><div class="grad" style="left:103000px"><span class="mono">US$1.03b</span></div><div class="grad" style="left:104000px"><span class="mono">US$1.04b</span></div><div class="grad" style="left:105000px"><span class="mono">US$1.05b</span></div><div class="grad" style="left:106000px"><span class="mono">US$1.06b</span></div><div class="grad" style="left:107000px"><span class="mono">US$1.07b</span></div><div class="grad" style="left:108000px"><span class="mono">US$1.08b</span></div><div class="grad" style="left:109000px"><span class="mono">US$1.09b</span></div>
+  <div class="you">▲ <b>You are here.</b> Most people never leave this pixel.</div>
+
+    <div class="marker" style="left:6px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$60k</span><br>One year of full-time work at the median wage</div>
+    </div>
+    <div class="marker" style="left:45px">
+      <div class="marker-line" style="top:calc(50% - 141px); height:169px"></div>
+      <div class="marker-label" style="top:calc(50% - 192px)"><span class="mono">≈ US$450k</span><br>A house</div>
+    </div>
+    <div class="marker" style="left:240px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$2.4m</span><br>An entire 40-year career at the median wage</div>
+    </div>
+    <div class="marker" style="left:1200px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$12m</span><br>Five whole working lifetimes</div>
+    </div>
+    <div class="marker" style="left:6000px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$60m</span><br>A thousand years at the median wage</div>
+    </div>
+    <div class="marker" style="left:60000px">
+      <div class="marker-line" style="top:calc(50% - 78px); height:106px"></div>
+      <div class="marker-label" style="top:calc(50% - 129px)"><span class="mono">≈ US$600m</span><br>Ten thousand years — longer than recorded history</div>
+    </div>
+
+    <div class="pk" style="left:7px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Nadine Lee — Dallas Area Rapid Transit · US$72,000"><b>Nadine Lee</b> <span class="mono">US$72,000</span> <i>Dallas Area Rapid Transit</i></div>
+    </div>
+    <div class="pk" style="left:21px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Dennis Barnes — Snowy Hydro · A$323k"><b>Dennis Barnes</b> <span class="mono">A$323k</span> <i>Snowy Hydro</i></div>
+    </div>
+    <div class="pk" style="left:23px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Peter Hebblethwaite — P&amp;O Ferries · £183k"><b>Peter Hebblethwaite</b> <span class="mono">£183k</span> <i>P&amp;O Ferries</i></div>
+    </div>
+    <div class="pk" style="left:37px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="Ryan Tubridy — RTÉ · €345k"><b>Ryan Tubridy</b> <span class="mono">€345k</span> <i>RTÉ</i></div>
+    </div>
+    <div class="pk" style="left:49px">
+      <div class="pk-stem" style="height:84px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 112px)" title="Lisa Roberts — University of Exeter · £392k"><b>Lisa Roberts</b> <span class="mono">£392k</span> <i>University of Exeter</i></div>
+    </div>
+    <div class="pk" style="left:53px">
+      <div class="pk-stem" style="height:102px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 130px)" title="Jolie Hodson — Spark · NZ$886k"><b>Jolie Hodson</b> <span class="mono">NZ$886k</span> <i>Spark</i></div>
+    </div>
+    <div class="pk" style="left:54px">
+      <div class="pk-stem" style="height:120px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 148px)" title="Alexandra Reis — TAP Air Portugal · €500k"><b>Alexandra Reis</b> <span class="mono">€500k</span> <i>TAP Air Portugal</i></div>
+    </div>
+    <div class="pk" style="left:54px">
+      <div class="pk-stem" style="height:138px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 166px)" title="Peter Mathieson — University of Edinburgh · £426k"><b>Peter Mathieson</b> <span class="mono">£426k</span> <i>University of Edinburgh</i></div>
+    </div>
+    <div class="pk" style="left:88px">
+      <div class="pk-stem" style="height:156px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 184px)" title="Colin Skellett — Wessex Water · £693k"><b>Colin Skellett</b> <span class="mono">£693k</span> <i>Wessex Water</i></div>
+    </div>
+    <div class="pk" style="left:89px">
+      <div class="pk-stem" style="height:174px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 202px)" title="Fred Goodwin — Royal Bank of Scotland · £703k"><b>Fred Goodwin</b> <span class="mono">£703k</span> <i>Royal Bank of Scotland</i></div>
+    </div>
+    <div class="pk" style="left:111px">
+      <div class="pk-stem" style="height:192px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 220px)" title="Each of 21 senior executives — Thames Water · £881k avg"><b>Each of 21 senior executives</b> <span class="mono">£881k avg</span> <i>Thames Water</i></div>
+    </div>
+    <div class="pk" style="left:127px">
+      <div class="pk-stem" style="height:210px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 238px)" title="Hilary Marden-Resnik — UCare · US$1.27m"><b>Hilary Marden-Resnik</b> <span class="mono">US$1.27m</span> <i>UCare</i></div>
+    </div>
+    <div class="pk" style="left:132px">
+      <div class="pk-stem" style="height:228px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 256px)" title="Nick Grayston — The Warehouse Group · NZ$2.2m"><b>Nick Grayston</b> <span class="mono">NZ$2.2m</span> <i>The Warehouse Group</i></div>
+    </div>
+    <div class="pk" style="left:172px">
+      <div class="pk-stem" style="height:246px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 274px)" title="Marjan Rintel — KLM · €1.6m"><b>Marjan Rintel</b> <span class="mono">€1.6m</span> <i>KLM</i></div>
+    </div>
+    <div class="pk" style="left:190px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Richard Howson — Carillion · £1.5m"><b>Richard Howson</b> <span class="mono">£1.5m</span> <i>Carillion</i></div>
+    </div>
+    <div class="pk" style="left:241px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Mark Thurston — Anglian Water · £1.9m"><b>Mark Thurston</b> <span class="mono">£1.9m</span> <i>Anglian Water</i></div>
+    </div>
+    <div class="pk" style="left:270px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Mads Nipper — Ørsted · DKK18.9m (US$2.7m)"><b>Mads Nipper</b> <span class="mono">DKK18.9m (US$2.7m)</span> <i>Ørsted</i></div>
+    </div>
+    <div class="pk" style="left:270px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="Birgitte Bonnesen — Swedbank · SEK26.6m (US$2.7m)"><b>Birgitte Bonnesen</b> <span class="mono">SEK26.6m (US$2.7m)</span> <i>Swedbank</i></div>
+    </div>
+    <div class="pk" style="left:279px">
+      <div class="pk-stem" style="height:84px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 112px)" title="Paula Vennells — Post Office · £2.2m"><b>Paula Vennells</b> <span class="mono">£2.2m</span> <i>Post Office</i></div>
+    </div>
+    <div class="pk" style="left:360px">
+      <div class="pk-stem" style="height:102px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 130px)" title="Greg Becker — Silicon Valley Bank · US$3.6m"><b>Greg Becker</b> <span class="mono">US$3.6m</span> <i>Silicon Valley Bank</i></div>
+    </div>
+    <div class="pk" style="left:448px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Vicki Brady — Telstra · A$6.8m"><b>Vicki Brady</b> <span class="mono">A$6.8m</span> <i>Telstra</i></div>
+    </div>
+    <div class="pk" style="left:457px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Chris O&#x27;Shea — Centrica (British Gas) · £3.6m"><b>Chris O&#x27;Shea</b> <span class="mono">£3.6m</span> <i>Centrica (British Gas)</i></div>
+    </div>
+    <div class="pk" style="left:521px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Shayne Elliott — ANZ · A$7.9m"><b>Shayne Elliott</b> <span class="mono">A$7.9m</span> <i>ANZ</i></div>
+    </div>
+    <div class="pk" style="left:609px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="James Jesic — Severn Trent · £4.8m"><b>James Jesic</b> <span class="mono">£4.8m</span> <i>Severn Trent</i></div>
+    </div>
+    <div class="pk" style="left:625px">
+      <div class="pk-stem" style="height:84px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 112px)" title="Daniel Chu — Tricolor · US$6.25m"><b>Daniel Chu</b> <span class="mono">US$6.25m</span> <i>Tricolor</i></div>
+    </div>
+    <div class="pk" style="left:637px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Steve McCann — Star Entertainment Group · A$9.66m"><b>Steve McCann</b> <span class="mono">A$9.66m</span> <i>Star Entertainment Group</i></div>
+    </div>
+    <div class="pk" style="left:672px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Wes Powell — Aimco · US$6.72m"><b>Wes Powell</b> <span class="mono">US$6.72m</span> <i>Aimco</i></div>
+    </div>
+    <div class="pk" style="left:777px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Carlos Ghosn — Renault · €7.2m"><b>Carlos Ghosn</b> <span class="mono">€7.2m</span> <i>Renault</i></div>
+    </div>
+    <div class="pk" style="left:781px">
+      <div class="pk-stem" style="height:102px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 130px)" title="Rainer Seele — OMV · €7.24m"><b>Rainer Seele</b> <span class="mono">€7.24m</span> <i>OMV</i></div>
+    </div>
+    <div class="pk" style="left:788px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="Martin Winterkorn — Volkswagen · €7.3m"><b>Martin Winterkorn</b> <span class="mono">€7.3m</span> <i>Volkswagen</i></div>
+    </div>
+    <div class="pk" style="left:860px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Galen Weston — Loblaw · C$11.79m"><b>Galen Weston</b> <span class="mono">C$11.79m</span> <i>Loblaw</i></div>
+    </div>
+    <div class="pk" style="left:900px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Kenny Fihla — Absa Group · R148m (US$9m)"><b>Kenny Fihla</b> <span class="mono">R148m (US$9m)</span> <i>Absa Group</i></div>
+    </div>
+    <div class="pk" style="left:900px">
+      <div class="pk-stem" style="height:84px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 112px)" title="Salil Parekh — Infosys · ₹82.6 crore (US$9m)"><b>Salil Parekh</b> <span class="mono">₹82.6 crore (US$9m)</span> <i>Infosys</i></div>
+    </div>
+    <div class="pk" style="left:1000px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Pat Gelsinger — Intel · US$10m"><b>Pat Gelsinger</b> <span class="mono">US$10m</span> <i>Intel</i></div>
+    </div>
+    <div class="pk" style="left:1260px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Euisun Chung — Hyundai Motor · ₩17.5bn (US$12.6m)"><b>Euisun Chung</b> <span class="mono">₩17.5bn (US$12.6m)</span> <i>Hyundai Motor</i></div>
+    </div>
+    <div class="pk" style="left:1340px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Alan Shaw — Norfolk Southern · US$13.4m"><b>Alan Shaw</b> <span class="mono">US$13.4m</span> <i>Norfolk Southern</i></div>
+    </div>
+    <div class="pk" style="left:1350px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Akio Toyoda — Toyota · ¥1.95bn (US$13.5m)"><b>Akio Toyoda</b> <span class="mono">¥1.95bn (US$13.5m)</span> <i>Toyota</i></div>
+    </div>
+    <div class="pk" style="left:1412px">
+      <div class="pk-stem" style="height:66px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 94px)" title="Alan Joyce — Qantas · A$21.4m"><b>Alan Joyce</b> <span class="mono">A$21.4m</span> <i>Qantas</i></div>
+    </div>
+    <div class="pk" style="left:1590px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Sergio Ermotti — UBS · CHF14.4m (US$15.9m)"><b>Sergio Ermotti</b> <span class="mono">CHF14.4m (US$15.9m)</span> <i>UBS</i></div>
+    </div>
+    <div class="pk" style="left:1689px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Jean-Sébastien Jacques — Rio Tinto · £13.3m"><b>Jean-Sébastien Jacques</b> <span class="mono">£13.3m</span> <i>Rio Tinto</i></div>
+    </div>
+    <div class="pk" style="left:1752px">
+      <div class="pk-stem" style="height:48px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 76px)" title="Wael Sawan — Shell · £13.8m"><b>Wael Sawan</b> <span class="mono">£13.8m</span> <i>Shell</i></div>
+    </div>
+    <div class="pk" style="left:1854px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Sukhinder Singh Cassidy — Xero · NZ$30.9m"><b>Sukhinder Singh Cassidy</b> <span class="mono">NZ$30.9m</span> <i>Xero</i></div>
+    </div>
+    <div class="pk" style="left:2146px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Pascal Soriot — AstraZeneca · £16.9m"><b>Pascal Soriot</b> <span class="mono">£16.9m</span> <i>AstraZeneca</i></div>
+    </div>
+    <div class="pk" style="left:2460px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Albert Bourla — Pfizer · US$24.6m"><b>Albert Bourla</b> <span class="mono">US$24.6m</span> <i>Pfizer</i></div>
+    </div>
+    <div class="pk" style="left:3279px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Dave Calhoun — Boeing · US$32.8m"><b>Dave Calhoun</b> <span class="mono">US$32.8m</span> <i>Boeing</i></div>
+    </div>
+    <div class="pk" style="left:3865px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Andrew Wilson — Electronic Arts · US$38.65m"><b>Andrew Wilson</b> <span class="mono">US$38.65m</span> <i>Electronic Arts</i></div>
+    </div>
+    <div class="pk" style="left:3942px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Carlos Tavares — Stellantis · €36.5m"><b>Carlos Tavares</b> <span class="mono">€36.5m</span> <i>Stellantis</i></div>
+    </div>
+    <div class="pk" style="left:5190px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="David Zaslav — Warner Bros. Discovery · US$51.9m"><b>David Zaslav</b> <span class="mono">US$51.9m</span> <i>Warner Bros. Discovery</i></div>
+    </div>
+    <div class="pk" style="left:7322px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Andrea Orcel — Santander · €67.8m"><b>Andrea Orcel</b> <span class="mono">€67.8m</span> <i>Santander</i></div>
+    </div>
+    <div class="pk" style="left:7990px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Marc Casper — Thermo Fisher Scientific · US$79.9m"><b>Marc Casper</b> <span class="mono">US$79.9m</span> <i>Thermo Fisher Scientific</i></div>
+    </div>
+    <div class="pk" style="left:8000px">
+      <div class="pk-stem" style="height:30px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 58px)" title="Carlos Ghosn — Nissan · US$80m"><b>Carlos Ghosn</b> <span class="mono">US$80m</span> <i>Nissan</i></div>
+    </div>
+    <div class="pk" style="left:9600px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Brian Niccol — Starbucks · US$96m"><b>Brian Niccol</b> <span class="mono">US$96m</span> <i>Starbucks</i></div>
+    </div>
+    <div class="pk" style="left:10800px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Michael O&#x27;Leary — Ryanair · €100m"><b>Michael O&#x27;Leary</b> <span class="mono">€100m</span> <i>Ryanair</i></div>
+    </div>
+    <div class="pk" style="left:13000px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="John Stumpf — Wells Fargo · US$130m"><b>John Stumpf</b> <span class="mono">US$130m</span> <i>Wells Fargo</i></div>
+    </div>
+    <div class="pk" style="left:15100px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Nikesh Arora — Palo Alto Networks · US$151m"><b>Nikesh Arora</b> <span class="mono">US$151m</span> <i>Palo Alto Networks</i></div>
+    </div>
+    <div class="pk" style="left:20530px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Hock Tan — Broadcom · US$205.3m"><b>Hock Tan</b> <span class="mono">US$205.3m</span> <i>Broadcom</i></div>
+    </div>
+    <div class="pk" style="left:28080px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Niraj Shah — Wayfair · US$280.8m"><b>Niraj Shah</b> <span class="mono">US$280.8m</span> <i>Wayfair</i></div>
+    </div>
+    <div class="pk" style="left:40300px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="RJ Scaringe — Rivian · US$403m"><b>RJ Scaringe</b> <span class="mono">US$403m</span> <i>Rivian</i></div>
+    </div>
+    <div class="pk" style="left:44500px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Adam Neumann — WeWork · US$445m"><b>Adam Neumann</b> <span class="mono">US$445m</span> <i>WeWork</i></div>
+    </div>
+    <div class="pk" style="left:44800px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Sridhar Ramaswamy — Snowflake · US$448m"><b>Sridhar Ramaswamy</b> <span class="mono">US$448m</span> <i>Snowflake</i></div>
+    </div>
+    <div class="pk" style="left:52150px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Angelo Mozilo — Countrywide Financial · US$521.5m"><b>Angelo Mozilo</b> <span class="mono">US$521.5m</span> <i>Countrywide Financial</i></div>
+    </div>
+    <div class="pk" style="left:82100px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Shankh Mitra — Welltower · US$821m"><b>Shankh Mitra</b> <span class="mono">US$821m</span> <i>Welltower</i></div>
+    </div>
+    <div class="pk" style="left:110000px">
+      <div class="pk-stem" style="height:12px"></div>
+      <div class="pk-dot"></div>
+      <div class="pk-label" style="top:calc(50% + 40px)" title="Alex Karp — Palantir · US$1.1b"><b>Alex Karp</b> <span class="mono">US$1.1b</span> <i>Palantir</i></div>
+    </div>
+
+  <div class="endpanel" style="left:110060px">
+    <h2>Alex Karp.</h2>
+    <p><span class="mono">US$1.1b</span> at Palantir. One person, the whole page.</p>
+    <p>Second place — Shankh Mitra on US$821m — stopped <b>27,900 pixels</b> back.</p>
+    <p>The middle of the register is <span class="mono">US$9.0m</span>, which ends <b>900 pixels</b> in. The first <b>0.8%</b> of this page holds half of it.</p>
+<p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla — <b>909 times</b> the length of this page. Browsers refuse to draw it. So do we.</p>
     <a class="back" href="index.html">Back to the register →</a>
   </div>
 </div>
@@ -426,26 +829,46 @@ body {
 <script>
 (function () {
   var perPx = 10000;
-  var bounds = [{"x": 7, "people": 1}, {"x": 28, "people": 2}, {"x": 51, "people": 3}, {"x": 89, "people": 4}, {"x": 138, "people": 5}, {"x": 191, "people": 6}, {"x": 245, "people": 7}, {"x": 300, "people": 8}, {"x": 388, "people": 9}, {"x": 477, "people": 10}, {"x": 589, "people": 11}, {"x": 716, "people": 12}, {"x": 848, "people": 13}, {"x": 1021, "people": 14}, {"x": 1211, "people": 15}, {"x": 1452, "people": 16}, {"x": 1722, "people": 17}, {"x": 1992, "people": 18}, {"x": 2272, "people": 19}, {"x": 2632, "people": 20}, {"x": 3081, "people": 21}, {"x": 3538, "people": 22}, {"x": 4059, "people": 23}, {"x": 4669, "people": 24}, {"x": 5294, "people": 25}, {"x": 5931, "people": 26}, {"x": 6603, "people": 27}, {"x": 7381, "people": 28}, {"x": 8163, "people": 29}, {"x": 8951, "people": 30}, {"x": 9812, "people": 31}, {"x": 10712, "people": 32}, {"x": 11612, "people": 33}, {"x": 12612, "people": 34}, {"x": 13872, "people": 35}, {"x": 15212, "people": 36}, {"x": 16562, "people": 37}, {"x": 17974, "people": 38}, {"x": 19564, "people": 39}, {"x": 21253, "people": 40}, {"x": 23006, "people": 41}, {"x": 24860, "people": 42}, {"x": 27006, "people": 43}, {"x": 29466, "people": 44}, {"x": 32746, "people": 45}, {"x": 36611, "people": 46}, {"x": 40553, "people": 47}, {"x": 45743, "people": 48}, {"x": 53066, "people": 49}, {"x": 61056, "people": 50}, {"x": 69056, "people": 51}, {"x": 78656, "people": 52}, {"x": 89456, "people": 53}, {"x": 102456, "people": 54}, {"x": 117556, "people": 55}, {"x": 138086, "people": 56}, {"x": 166166, "people": 57}, {"x": 206466, "people": 58}, {"x": 250966, "people": 59}, {"x": 295766, "people": 60}, {"x": 347916, "people": 61}, {"x": 430016, "people": 62}, {"x": 540016, "people": 63}];
-  var totalPeople = 63;
+  var MODES = {"cum": {"marks": [{"x": 7, "n": 1}, {"x": 28, "n": 2}, {"x": 51, "n": 3}, {"x": 89, "n": 4}, {"x": 138, "n": 5}, {"x": 191, "n": 6}, {"x": 245, "n": 7}, {"x": 300, "n": 8}, {"x": 388, "n": 9}, {"x": 477, "n": 10}, {"x": 589, "n": 11}, {"x": 716, "n": 12}, {"x": 848, "n": 13}, {"x": 1021, "n": 14}, {"x": 1211, "n": 15}, {"x": 1452, "n": 16}, {"x": 1722, "n": 17}, {"x": 1992, "n": 18}, {"x": 2272, "n": 19}, {"x": 2632, "n": 20}, {"x": 3081, "n": 21}, {"x": 3538, "n": 22}, {"x": 4059, "n": 23}, {"x": 4669, "n": 24}, {"x": 5294, "n": 25}, {"x": 5931, "n": 26}, {"x": 6603, "n": 27}, {"x": 7381, "n": 28}, {"x": 8163, "n": 29}, {"x": 8951, "n": 30}, {"x": 9812, "n": 31}, {"x": 10712, "n": 32}, {"x": 11612, "n": 33}, {"x": 12612, "n": 34}, {"x": 13872, "n": 35}, {"x": 15212, "n": 36}, {"x": 16562, "n": 37}, {"x": 17974, "n": 38}, {"x": 19564, "n": 39}, {"x": 21253, "n": 40}, {"x": 23006, "n": 41}, {"x": 24860, "n": 42}, {"x": 27006, "n": 43}, {"x": 29466, "n": 44}, {"x": 32746, "n": 45}, {"x": 36611, "n": 46}, {"x": 40553, "n": 47}, {"x": 45743, "n": 48}, {"x": 53066, "n": 49}, {"x": 61056, "n": 50}, {"x": 69056, "n": 51}, {"x": 78656, "n": 52}, {"x": 89456, "n": 53}, {"x": 102456, "n": 54}, {"x": 117556, "n": 55}, {"x": 138086, "n": 56}, {"x": 166166, "n": 57}, {"x": 206466, "n": 58}, {"x": 250966, "n": 59}, {"x": 295766, "n": 60}, {"x": 347916, "n": 61}, {"x": 430016, "n": 62}, {"x": 540016, "n": 63}], "total": 63, "max": 5400161940, "unit": "people passed", "caption": "scrolled past so far"}, "abs": {"marks": [{"x": 7, "n": 1}, {"x": 21, "n": 2}, {"x": 23, "n": 3}, {"x": 37, "n": 4}, {"x": 49, "n": 5}, {"x": 53, "n": 6}, {"x": 54, "n": 7}, {"x": 54, "n": 8}, {"x": 88, "n": 9}, {"x": 89, "n": 10}, {"x": 111, "n": 11}, {"x": 127, "n": 12}, {"x": 132, "n": 13}, {"x": 172, "n": 14}, {"x": 190, "n": 15}, {"x": 241, "n": 16}, {"x": 270, "n": 17}, {"x": 270, "n": 18}, {"x": 279, "n": 19}, {"x": 360, "n": 20}, {"x": 448, "n": 21}, {"x": 457, "n": 22}, {"x": 521, "n": 23}, {"x": 609, "n": 24}, {"x": 625, "n": 25}, {"x": 637, "n": 26}, {"x": 672, "n": 27}, {"x": 777, "n": 28}, {"x": 781, "n": 29}, {"x": 788, "n": 30}, {"x": 860, "n": 31}, {"x": 900, "n": 32}, {"x": 900, "n": 33}, {"x": 1000, "n": 34}, {"x": 1260, "n": 35}, {"x": 1340, "n": 36}, {"x": 1350, "n": 37}, {"x": 1412, "n": 38}, {"x": 1590, "n": 39}, {"x": 1689, "n": 40}, {"x": 1752, "n": 41}, {"x": 1854, "n": 42}, {"x": 2146, "n": 43}, {"x": 2460, "n": 44}, {"x": 3279, "n": 45}, {"x": 3865, "n": 46}, {"x": 3942, "n": 47}, {"x": 5190, "n": 48}, {"x": 7322, "n": 49}, {"x": 7990, "n": 50}, {"x": 8000, "n": 51}, {"x": 9600, "n": 52}, {"x": 10800, "n": 53}, {"x": 13000, "n": 54}, {"x": 15100, "n": 55}, {"x": 20530, "n": 56}, {"x": 28080, "n": 57}, {"x": 40300, "n": 58}, {"x": 44500, "n": 59}, {"x": 44800, "n": 60}, {"x": 52150, "n": 61}, {"x": 82100, "n": 62}, {"x": 110000, "n": 63}], "total": 63, "max": 1100000000, "unit": "packages ended", "caption": "a package this size ends here"}};
+  var mode = location.hash === '#each' ? 'abs' : 'cum';
   var counter = document.getElementById('counter');
-  var peopleEl = document.getElementById('people');
   var hint = document.getElementById('hint');
-  var small = '<small>scrolled past so far</small>';
+  var buttons = document.querySelectorAll('#modes button');
+
   function fmt(n) {
     return 'US$' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
   function update() {
+    var m = MODES[mode];
     var x = window.scrollX || document.documentElement.scrollLeft || 0;
     var passed = 0;
-    for (var i = 0; i < bounds.length; i++) {
-      if (x >= bounds[i].x) passed = bounds[i].people;
+    for (var i = 0; i < m.marks.length; i++) {
+      if (x >= m.marks[i].x) passed = m.marks[i].n;
     }
-    counter.innerHTML = fmt(Math.min(x * perPx, 5400161940))
-      + ' <span class="people">· ' + passed + '/' + totalPeople + ' people passed</span>'
-      + small;
+    counter.innerHTML = fmt(Math.min(x * perPx, m.max))
+      + ' <span class="people">· ' + passed + '/' + m.total + ' ' + m.unit + '</span>'
+      + '<small>' + m.caption + '</small>';
     hint.style.opacity = x > 200 ? 0 : 1;
   }
+  // Both variants are the same ruler, so the scroll position is the same
+  // money in either. Keep it, clamped to whichever bar is shorter.
+  function setMode(next, stamp) {
+    var x = window.scrollX || document.documentElement.scrollLeft || 0;
+    mode = next;
+    document.body.className = 'm-' + next;
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute('aria-pressed', buttons[i].dataset.mode === next);
+    }
+    window.scrollTo(Math.min(x, document.documentElement.scrollWidth - window.innerWidth), 0);
+    // Only stamp the URL on a real toggle, so arriving here leaves it clean.
+    if (stamp) history.replaceState(null, '', next === 'abs' ? '#each' : '#total');
+    update();
+  }
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () { setMode(this.dataset.mode, true); });
+  }
+  setMode(mode, false);
+
   window.addEventListener('scroll', update, { passive: true });
   update();
 
@@ -469,13 +892,14 @@ body {
   var STEP = 120;
   window.addEventListener('keydown', function (e) {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.target.tagName === 'BUTTON' && (e.key === ' ' || e.key === 'Enter')) return;
     var w = window.innerWidth * 0.9, d = null;
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') d = STEP;
     else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') d = -STEP;
     else if (e.key === 'PageDown' || e.key === ' ') d = w;
     else if (e.key === 'PageUp') d = -w;
     else if (e.key === 'Home') { e.preventDefault(); window.scrollTo(0, 0); return; }
-    else if (e.key === 'End') { e.preventDefault(); window.scrollTo(document.body.scrollWidth, 0); return; }
+    else if (e.key === 'End') { e.preventDefault(); window.scrollTo(document.documentElement.scrollWidth, 0); return; }
     if (d === null) return;
     e.preventDefault();
     window.scrollBy(d, 0);
