@@ -6,11 +6,16 @@ IBM Plex Sans and IBM Plex Mono
   https://github.com/IBM/plex
 
 Libre Caslon Text
+Libre Caslon Display
   Copyright © 2019 The Libre Caslon Project Authors
   https://github.com/impallari/Libre-Caslon
 
 These are the woff2 subsets Google Fonts serves, fetched once and hosted
 alongside the site so that no reader request goes to a third party.
+
+libre-caslon-display-wordmark.woff2 is the exception: a subset of Libre
+Caslon Display cut down to the twelve characters of the masthead
+(B O N U S W A T C H . $) and nothing else, which the licence permits.
 
 ----------------------------------------------------------------------
 

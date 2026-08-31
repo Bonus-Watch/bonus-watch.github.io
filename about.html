@@ -20,14 +20,17 @@
 <meta name="twitter:image" content="https://bonus.watch/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.svg">
+<meta name="theme-color" content="#0E7A52">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/libre-caslon-display-wordmark.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/libre-caslon-text-700-latin.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/ibm-plex-sans-latin.woff2">
-<style>@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibm-plex-mono-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibm-plex-mono-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/ibm-plex-mono-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/ibm-plex-mono-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/ibm-plex-sans-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/ibm-plex-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'Libre Caslon Text';font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/libre-caslon-text-400i-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'Libre Caslon Text';font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/libre-caslon-text-400i-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/libre-caslon-text-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/libre-caslon-text-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/libre-caslon-text-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/libre-caslon-text-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}</style>
+<style>@font-face{font-family:'BW Display';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/libre-caslon-display-wordmark.woff2) format('woff2')}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibm-plex-mono-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/ibm-plex-mono-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/ibm-plex-mono-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/ibm-plex-mono-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/ibm-plex-sans-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;font-display:swap;src:url(/fonts/ibm-plex-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'Libre Caslon Text';font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/libre-caslon-text-400i-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'Libre Caslon Text';font-style:italic;font-weight:400;font-display:swap;src:url(/fonts/libre-caslon-text-400i-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/libre-caslon-text-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/libre-caslon-text-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/libre-caslon-text-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/libre-caslon-text-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}</style>
 <style>
 
 :root {
   --paper:#FFFFFF; --ink:#212B26; --credit:#0E7A52;
   --debit:#B23A31; --rule:#E9E7E1; --muted:#73726C; --gold:#B8912E;
+  --wash:#F6F9F7; --wash-gold:#FCFAF4; --wash-debit:#FBF6F5;
 }
 * { box-sizing:border-box; margin:0; }
 .mono { font-family:'IBM Plex Mono',monospace; }
@@ -36,16 +39,47 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   outline:2px solid var(--credit); outline-offset:2px;
 }
 
+/* The flag. Identical on every page; only the size changes. */
+header.site-head { position:relative; padding:46px 0 22px; overflow:hidden;
+  border-bottom:3px double var(--ink); }
+header.site-head.is-home { padding:64px 0 26px; }
+.flag { --wm:clamp(1.8rem,5vw,2.3rem); font-weight:400; line-height:1; }
+.is-home .flag { --wm:clamp(2.15rem,7.5vw,4.2rem); }
+.wordmark {
+  display:inline-block; font-family:'BW Display','Libre Caslon Text',serif;
+  font-weight:400; font-size:var(--wm); line-height:1; letter-spacing:.03em;
+  color:var(--ink); text-decoration:none; white-space:nowrap;
+}
+.wordmark .dom { color:var(--credit); }
+/* The S is a real S in the markup, so it still copies and still reads aloud.
+   The dollar sign is a pseudo-element laid over it, and the two cross-fade. */
+.wordmark .ess { position:relative; display:inline-block; transition:color .22s ease; }
+.wordmark .ess::after {
+  content:"$"; position:absolute; left:0; right:0; text-align:center;
+  letter-spacing:0; color:var(--gold); opacity:0; transition:opacity .22s ease;
+  pointer-events:none;
+}
+.wordmark:hover .ess, .wordmark:focus-visible .ess,
+.wordmark:active .ess { color:transparent; }
+.wordmark:hover .ess::after, .wordmark:focus-visible .ess::after,
+.wordmark:active .ess::after { opacity:1; }
+@media (prefers-reduced-motion:reduce) {
+  .wordmark .ess, .wordmark .ess::after { transition:none; }
+}
+.page-title { font-family:'Libre Caslon Text',serif; font-weight:700;
+  font-size:clamp(1.55rem,4.4vw,2rem); line-height:1.15; margin-top:8px; }
+.strap { margin-top:10px; font-family:'Libre Caslon Text',serif;
+  font-style:italic; font-size:1.05rem; }
+.page-note { margin-top:10px; color:var(--muted); max-width:60ch; font-size:.95rem; }
+nav.site-nav { margin-top:18px; display:flex; gap:20px; flex-wrap:wrap; font-size:.9rem; }
+nav.site-nav a { color:var(--ink); text-underline-offset:3px; }
+nav.site-nav a[aria-current="page"] { color:var(--gold); text-decoration-thickness:2px; }
+
 body {
   background:var(--paper); color:var(--ink);
   font-family:'IBM Plex Sans',sans-serif; font-size:17px; line-height:1.62;
 }
 .wrap { max-width:660px; margin:0 auto; padding:0 24px; }
-header { padding:64px 0 24px; border-bottom:3px double var(--ink); }
-header h1 { font-family:'Libre Caslon Text',serif; font-weight:700; font-size:clamp(2rem,6vw,3rem); }
-header p { margin-top:10px; font-family:'Libre Caslon Text',serif; font-style:italic; color:var(--muted); }
-nav { margin-top:18px; display:flex; gap:22px; font-size:.9rem; }
-nav a { color:var(--ink); }
 main { padding:34px 0 20px; }
 h2 {
   font-family:'Libre Caslon Text',serif; font-size:1.3rem; margin:34px 0 8px;
@@ -58,7 +92,7 @@ li + li { margin-top:6px; }
 .lede { font-size:1.08rem; }
 .rule {
   margin-top:14px; padding:14px 16px; border-left:3px solid var(--credit);
-  background:#F6F9F7; font-size:.95rem;
+  background:var(--wash); font-size:.95rem;
 }
 .rule b { color:var(--ink); }
 footer { padding:30px 0 70px; font-size:.85rem; color:var(--muted);
@@ -66,14 +100,19 @@ footer { padding:30px 0 70px; font-size:.85rem; color:var(--muted);
 </style>
 </head>
 <body>
-<header>
+<header class="site-head">
+  
   <div class="wrap">
-    <h1>About Bonus Watch</h1>
-    <p>Every bonus balances somewhere.</p>
-    <nav>
+    <p class="flag"><a class="wordmark" href="index.html">BONU<span class="ess">S</span><span class="dom">.WATCH</span></a></p>
+    <h1 class="page-title">About the register</h1>
+    
+    
+    <nav class="site-nav">
       <a href="index.html">The register</a>
       <a href="scale.html">The scale</a>
       <a href="to-their-credit.html">To their credit</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="https://ko-fi.com/bonuswatch" rel="noopener">Support</a>
     </nav>
   </div>
 </header>
