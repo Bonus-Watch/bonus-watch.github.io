@@ -323,17 +323,23 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
 }
 
 
-/* One name, opened where it stands. Enough to know whether it is worth
-   crossing to the register for, and no more. */
+/* One name, opened where it stands. It lives inside the track rather than
+   over the page, so it travels with the name it belongs to when the reader
+   keeps scrolling. Enough to know whether it is worth crossing to the
+   register for, and no more. */
 .peek {
-  position:fixed; left:50%; bottom:18px; transform:translateX(-50%) translateY(8px);
-  z-index:12; width:min(430px,calc(100vw - 28px));
+  position:absolute; left:0; top:0; z-index:30;
+  width:min(430px,calc(100vw - 28px));
   padding:16px 18px 15px; background:var(--paper);
   border:1px solid var(--ink); border-radius:3px;
   box-shadow:0 10px 34px rgba(33,43,38,.18);
-  opacity:0; visibility:hidden; transition:opacity .16s ease, transform .16s ease;
+  opacity:0; visibility:hidden; transform:translateY(6px);
+  transition:opacity .16s ease, transform .16s ease;
 }
-.peek.on { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+.peek.on { opacity:1; visibility:visible; transform:translateY(0); }
+/* The name that opened it, marked while it is open. */
+.boundary-label.open, .pk-label.open { z-index:29; }
+.boundary-label.open b, .pk-label.open b { color:var(--credit); }
 @media (prefers-reduced-motion: reduce) { .peek { transition:none; } }
 .peek-head {
   display:flex; justify-content:space-between; gap:12px; align-items:baseline;
@@ -1457,7 +1463,26 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
     note: document.getElementById('peekNote')
   };
 
-  function show(id) {
+  function place(label) {
+    /* Under the name if there is room for it, over it if there is not, and
+       always inside the window rather than half off the side of it. */
+    var track = label.closest('.track');
+    if (card.parentNode !== track) track.appendChild(card);
+    var tr = track.getBoundingClientRect();
+    var lr = label.getBoundingClientRect();
+    var vw = document.documentElement.clientWidth;
+    var vh = document.documentElement.clientHeight;
+    var w = card.offsetWidth, h = card.offsetHeight;
+
+    var x = Math.max(14, Math.min(lr.left - 4, vw - w - 14));
+    var below = lr.bottom + 10;
+    var y = (below + h <= vh - 14) ? below : Math.max(14, lr.top - h - 10);
+
+    card.style.left = (x - tr.left) + 'px';
+    card.style.top = (y - tr.top) + 'px';
+  }
+
+  function show(id, label) {
     var e = PEEK[id];
     if (!e) return;
     open = id;
@@ -1468,13 +1493,20 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
     f.fig.textContent = e.f;
     f.note.textContent = e.t;
     go.href = 'index.html#' + e.n.toLowerCase();
+    mark(label);
+    place(label);
     card.classList.add('on');
   }
-  function hide() { open = null; card.classList.remove('on'); }
+  function mark(label) {
+    var was = document.querySelector('.boundary-label.open, .pk-label.open');
+    if (was) was.classList.remove('open');
+    if (label) label.classList.add('open');
+  }
+  function hide() { open = null; card.classList.remove('on'); mark(null); }
 
   document.addEventListener('click', function (ev) {
     var label = ev.target.closest('.boundary-label, .pk-label');
-    if (label) { ev.preventDefault(); show(label.dataset.id); return; }
+    if (label) { ev.preventDefault(); show(label.dataset.id, label); return; }
     if (!card.contains(ev.target)) hide();
   });
   document.getElementById('peekClose').addEventListener('click', hide);
