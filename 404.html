@@ -29,6 +29,10 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* The flag. Identical on every page; only the size changes. */
 header.site-head { position:relative; padding:46px 0 22px; overflow:hidden;
   border-bottom:3px double var(--ink); }
+.guilloche {
+  position:absolute; right:-40px; top:-30px; width:260px; height:260px;
+  color:var(--ink); opacity:.05; pointer-events:none;
+}
 header.site-head.is-home { padding:64px 0 26px; }
 .flag { --wm:clamp(1.8rem,5vw,2.3rem); font-weight:400; line-height:1; }
 .is-home .flag { --wm:clamp(2.15rem,7.5vw,4.2rem); }
@@ -39,26 +43,31 @@ header.site-head.is-home { padding:64px 0 26px; }
 }
 .wordmark .dom { color:var(--credit); }
 /* The S is a real S in the markup, so it still copies and still reads aloud.
-   The dollar sign is a pseudo-element laid over it, and the two cross-fade. */
-.wordmark .ess { position:relative; display:inline-block; transition:color .22s ease; }
+   The dollar sign is a pseudo-element laid over it, and the two cross-fade.
+
+   The trigger is .hit, an empty box laid exactly over the S's ink — the glyph
+   measures 0.43em wide from 0.063em, and 0.722em tall from 0.146em below the
+   top of a line box set solid. .ess itself takes no pointer events, so the
+   swap fires on the letter and not on the space around it. */
+.wordmark .ess { position:relative; display:inline-block;
+  pointer-events:none; transition:color .22s ease; }
+.wordmark .hit { position:absolute; pointer-events:auto;
+  left:.063em; width:.43em; top:.146em; height:.722em; }
 .wordmark .ess::after {
   content:"$"; position:absolute; left:0; right:0; text-align:center;
   letter-spacing:0; color:var(--gold); opacity:0; transition:opacity .22s ease;
   pointer-events:none;
 }
 .wordmark .ess::after { content:"$" / ""; }
-.wordmark:hover .ess, .wordmark:focus-visible .ess,
-.wordmark:active .ess { color:transparent; }
-.wordmark:hover .ess::after, .wordmark:focus-visible .ess::after,
-.wordmark:active .ess::after { opacity:1; }
+.wordmark .ess:hover, .wordmark .ess:active,
+.wordmark:focus-visible .ess { color:transparent; }
+.wordmark .ess:hover::after, .wordmark .ess:active::after,
+.wordmark:focus-visible .ess::after { opacity:1; }
 @media (prefers-reduced-motion:reduce) {
   .wordmark .ess, .wordmark .ess::after { transition:none; }
 }
-.page-title { font-family:'Libre Caslon Text',serif; font-weight:700;
-  font-size:clamp(1.55rem,4.4vw,2rem); line-height:1.15; margin-top:8px; }
 .strap { margin-top:10px; font-family:'Libre Caslon Text',serif;
   font-style:italic; font-size:1.05rem; }
-.page-note { margin-top:10px; color:var(--muted); max-width:60ch; font-size:.95rem; }
 nav.site-nav { margin-top:18px; display:flex; gap:20px; flex-wrap:wrap; font-size:.9rem; }
 nav.site-nav a { color:var(--ink); text-underline-offset:3px; }
 nav.site-nav a[aria-current="page"] { color:var(--gold); text-decoration-thickness:2px; }
@@ -68,56 +77,89 @@ body {
   font-family:'IBM Plex Sans',sans-serif; font-size:17px; line-height:1.55;
 }
 .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
+main { padding:38px 0 10px; }
 
-.entry { padding:52px 0 0; }
+.page-title { font-family:'Libre Caslon Text',serif; font-weight:700;
+  font-size:clamp(1.9rem,5.4vw,2.5rem); line-height:1.1; }
+.page-note { margin-top:8px; color:var(--muted); max-width:62ch; font-size:.95rem; }
+
+.entry { border-bottom:1px solid var(--rule); padding:40px 0 36px; }
 .entry-head {
-  display:flex; justify-content:space-between; gap:16px;
-  font-family:'IBM Plex Mono',monospace; font-size:.78rem;
-  letter-spacing:.08em; color:var(--muted);
+  display:flex; justify-content:space-between; align-items:flex-start;
+  flex-wrap:wrap; gap:4px;
+  font-size:.76rem; color:var(--muted); margin-bottom:10px;
 }
-.entry-head .code { color:var(--debit); }
-.entry-co { font-family:'Libre Caslon Text',serif; font-size:2rem;
-  margin-top:14px; line-height:1.1; }
+.serial { text-decoration:none; color:inherit; letter-spacing:.08em; }
+.entry-co { font-family:'Libre Caslon Text',serif; font-weight:700; font-size:1.8rem; }
 .entry-who { color:var(--muted); font-size:.95rem; margin:2px 0 18px; }
 
 .ledger-line {
   display:grid; grid-template-columns:1fr 1fr;
   border-top:2px solid var(--ink); border-bottom:1px solid var(--rule);
 }
-.col { padding:16px 20px 22px 0; }
+.col { padding:16px 18px 20px; }
 .col-cr { border-right:1px solid var(--rule); }
-.col-dr { padding-left:20px; }
 .col-head {
-  font-family:'IBM Plex Mono',monospace; font-size:.72rem; font-weight:400;
-  letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
-  display:flex; justify-content:space-between;
+  font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+  font-weight:500; color:var(--muted); margin-bottom:8px;
 }
-.col-head .drcr { color:var(--credit); }
-.col-dr .col-head .drcr { color:var(--debit); }
-.figure { font-size:2.4rem; color:var(--credit); margin:10px 0 8px; }
-.col-note { font-size:.92rem; color:var(--muted); }
-.col-dr p { color:var(--debit); }
+.drcr { float:right; font-size:.72rem; }
+.col-cr .drcr { color:var(--credit); }
+.col-dr .drcr { color:var(--debit); }
+.figure {
+  color:var(--credit); font-weight:600;
+  font-size:clamp(1.9rem,5.5vw,2.9rem); letter-spacing:-0.01em;
+  font-variant-numeric:tabular-nums;
+}
+.col-note { margin-top:8px; font-size:.85rem; color:var(--muted); }
+.offset { color:var(--debit); font-weight:500; }
+.nooffset { color:var(--muted); font-style:italic; }
 .footnote {
-  font-family:'Libre Caslon Text',serif; font-style:italic;
-  margin-top:20px; font-size:1.05rem;
+  margin-top:16px; font-family:'Libre Caslon Text',serif; font-style:italic;
+  font-size:1rem; max-width:62ch;
 }
-.back { margin-top:30px; font-size:.95rem; }
-footer { padding:44px 0 58px; font-size:.85rem; color:var(--muted); }
+.sources { margin-top:10px; font-size:.8rem; color:var(--muted); }
+.sources a { color:var(--muted); }
+.sources a:hover { color:var(--credit); }
+
+footer { padding:30px 0 58px; font-size:.85rem; color:var(--muted); }
+footer p + p { margin-top:8px; }
+
 @media (max-width:560px) {
   .ledger-line { grid-template-columns:1fr; }
   .col-cr { border-right:none; border-bottom:1px solid var(--rule); }
-  .col-dr { padding-left:0; }
 }
+@media (prefers-reduced-motion: no-preference) {
+  .entry { animation:post .5s ease both; }
+  @keyframes post { from { opacity:0; transform:translateY(6px); } }
+}
+
+/* The one entry on this page has no serial to link and a status where the
+   date goes, so its head is set in the mono the status wants. */
+.entry { border-bottom:none; }
+.entry-head { font-family:'IBM Plex Mono',monospace; letter-spacing:.08em; }
+.entry-head .code { color:var(--debit); }
+.col-dr p { color:var(--debit); font-weight:500; }
+.back { margin-top:30px; font-size:.95rem; }
 </style>
 </head>
 <body>
 <header class="site-head">
-  
+  <svg class="guilloche" viewBox="0 0 200 200" aria-hidden="true">
+  <g fill="none" stroke="currentColor" stroke-width="0.5">
+    <ellipse cx="100" cy="100" rx="95" ry="38"/>
+    <ellipse cx="100" cy="100" rx="95" ry="38" transform="rotate(30 100 100)"/>
+    <ellipse cx="100" cy="100" rx="95" ry="38" transform="rotate(60 100 100)"/>
+    <ellipse cx="100" cy="100" rx="95" ry="38" transform="rotate(90 100 100)"/>
+    <ellipse cx="100" cy="100" rx="95" ry="38" transform="rotate(120 100 100)"/>
+    <ellipse cx="100" cy="100" rx="95" ry="38" transform="rotate(150 100 100)"/>
+    <circle cx="100" cy="100" r="60"/>
+    <circle cx="100" cy="100" r="95"/>
+  </g>
+</svg>
   <div class="wrap">
-    <p class="flag"><a class="wordmark" href="/index.html">BONU<span class="ess">S</span><span class="dom">.WATCH</span></a></p>
-    
+    <p class="flag"><a class="wordmark" href="/index.html">BONU<span class="ess">S<span class="hit" aria-hidden="true"></span></span><span class="dom">.WATCH</span></a></p>
     <p class="strap">Every bonus balances somewhere.</p>
-    
     <nav class="site-nav">
       <a href="/index.html">The register</a>
       <a href="/scale.html">The scale</a>

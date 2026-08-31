@@ -42,6 +42,10 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* The flag. Identical on every page; only the size changes. */
 header.site-head { position:relative; padding:46px 0 22px; overflow:hidden;
   border-bottom:3px double var(--ink); }
+.guilloche {
+  position:absolute; right:-40px; top:-30px; width:260px; height:260px;
+  color:var(--ink); opacity:.05; pointer-events:none;
+}
 header.site-head.is-home { padding:64px 0 26px; }
 .flag { --wm:clamp(1.8rem,5vw,2.3rem); font-weight:400; line-height:1; }
 .is-home .flag { --wm:clamp(2.15rem,7.5vw,4.2rem); }
@@ -52,26 +56,31 @@ header.site-head.is-home { padding:64px 0 26px; }
 }
 .wordmark .dom { color:var(--credit); }
 /* The S is a real S in the markup, so it still copies and still reads aloud.
-   The dollar sign is a pseudo-element laid over it, and the two cross-fade. */
-.wordmark .ess { position:relative; display:inline-block; transition:color .22s ease; }
+   The dollar sign is a pseudo-element laid over it, and the two cross-fade.
+
+   The trigger is .hit, an empty box laid exactly over the S's ink — the glyph
+   measures 0.43em wide from 0.063em, and 0.722em tall from 0.146em below the
+   top of a line box set solid. .ess itself takes no pointer events, so the
+   swap fires on the letter and not on the space around it. */
+.wordmark .ess { position:relative; display:inline-block;
+  pointer-events:none; transition:color .22s ease; }
+.wordmark .hit { position:absolute; pointer-events:auto;
+  left:.063em; width:.43em; top:.146em; height:.722em; }
 .wordmark .ess::after {
   content:"$"; position:absolute; left:0; right:0; text-align:center;
   letter-spacing:0; color:var(--gold); opacity:0; transition:opacity .22s ease;
   pointer-events:none;
 }
 .wordmark .ess::after { content:"$" / ""; }
-.wordmark:hover .ess, .wordmark:focus-visible .ess,
-.wordmark:active .ess { color:transparent; }
-.wordmark:hover .ess::after, .wordmark:focus-visible .ess::after,
-.wordmark:active .ess::after { opacity:1; }
+.wordmark .ess:hover, .wordmark .ess:active,
+.wordmark:focus-visible .ess { color:transparent; }
+.wordmark .ess:hover::after, .wordmark .ess:active::after,
+.wordmark:focus-visible .ess::after { opacity:1; }
 @media (prefers-reduced-motion:reduce) {
   .wordmark .ess, .wordmark .ess::after { transition:none; }
 }
-.page-title { font-family:'Libre Caslon Text',serif; font-weight:700;
-  font-size:clamp(1.55rem,4.4vw,2rem); line-height:1.15; margin-top:8px; }
 .strap { margin-top:10px; font-family:'Libre Caslon Text',serif;
   font-style:italic; font-size:1.05rem; }
-.page-note { margin-top:10px; color:var(--muted); max-width:60ch; font-size:.95rem; }
 nav.site-nav { margin-top:18px; display:flex; gap:20px; flex-wrap:wrap; font-size:.9rem; }
 nav.site-nav a { color:var(--ink); text-underline-offset:3px; }
 nav.site-nav a[aria-current="page"] { color:var(--gold); text-decoration-thickness:2px; }
@@ -321,7 +330,7 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
 </head>
 <body class="m-cum">
 <div class="intro">
-  <h1><a class="wordmark" href="index.html">BONU<span class="ess">S</span><span class="dom">.WATCH</span></a>
+  <h1><a class="wordmark" href="index.html">BONU<span class="ess">S<span class="hit" aria-hidden="true"></span></span><span class="dom">.WATCH</span></a>
       <span class="sep">· The scale</span></h1>
   <p>Scroll right.</p>
   <div class="counter" id="counter">US$0</div>
