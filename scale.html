@@ -33,6 +33,7 @@
   --wash:#F6F9F7; --wash-gold:#FCFAF4; --wash-debit:#FBF6F5;
 }
 * { box-sizing:border-box; margin:0; }
+[hidden] { display:none !important; }
 .mono { font-family:'IBM Plex Mono',monospace; }
 a { color:var(--credit); text-decoration-thickness:1px; text-underline-offset:2px; }
 a:focus-visible, button:focus-visible, input:focus-visible {
@@ -194,8 +195,14 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
   top:calc(var(--axis) + var(--lane-base) + var(--lane) * var(--lane-pitch));
   font-size:.74rem; line-height:1.35; color:var(--muted);
   background:var(--paper); padding:0 6px 2px 0;
+  font-family:inherit; font-weight:400; text-align:left;
+  border:0; cursor:pointer;
 }
 .boundary-label b { color:var(--ink); font-weight:500; }
+.boundary-label:hover b, .pk-label:hover b { color:var(--credit); }
+.boundary-label:focus-visible, .pk-label:focus-visible {
+  outline:2px solid var(--credit); outline-offset:1px; z-index:9;
+}
 
 /* From zero: one package, ending. The stem drops into its own lane. */
 .pk { position:absolute; top:0; height:100%; }
@@ -212,7 +219,9 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
   position:absolute; left:5px; width:168px; z-index:2;
   top:calc(var(--axis) + var(--lane-base) + var(--lane) * var(--lane-pitch));
   font-size:.7rem; line-height:1.25; color:var(--muted);
-  background:var(--paper); padding-right:6px;
+  background:var(--paper); padding:0 6px 0 0;
+  font-family:inherit; font-weight:400; text-align:left;
+  border:0; cursor:pointer; display:block;
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
 .pk-label b { color:var(--ink); font-weight:500; }
@@ -313,6 +322,43 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
   .endpanel { max-width:86vw; }
 }
 
+
+/* One name, opened where it stands. Enough to know whether it is worth
+   crossing to the register for, and no more. */
+.peek {
+  position:fixed; left:50%; bottom:18px; transform:translateX(-50%) translateY(8px);
+  z-index:12; width:min(430px,calc(100vw - 28px));
+  padding:16px 18px 15px; background:var(--paper);
+  border:1px solid var(--ink); border-radius:3px;
+  box-shadow:0 10px 34px rgba(33,43,38,.18);
+  opacity:0; visibility:hidden; transition:opacity .16s ease, transform .16s ease;
+}
+.peek.on { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+@media (prefers-reduced-motion: reduce) { .peek { transition:none; } }
+.peek-head {
+  display:flex; justify-content:space-between; gap:12px; align-items:baseline;
+  font-family:'IBM Plex Mono',monospace; font-size:.7rem;
+  letter-spacing:.08em; color:var(--muted);
+}
+.peek h2 { font-family:'Libre Caslon Text',serif; font-size:1.3rem;
+  line-height:1.15; margin-top:8px; }
+.peek .who { color:var(--muted); font-size:.86rem; margin-top:2px; }
+.peek .fig {
+  font-family:'IBM Plex Mono',monospace; font-size:1.5rem; color:var(--credit);
+  font-weight:600; margin-top:10px;
+}
+.peek .note {
+  font-family:'Libre Caslon Text',serif; font-style:italic;
+  font-size:.95rem; line-height:1.4; margin-top:8px;
+}
+.peek .go { display:inline-block; margin-top:12px; font-size:.88rem; }
+.peek-close {
+  position:absolute; top:8px; right:10px; font:inherit; font-size:1.1rem;
+  line-height:1; padding:4px 6px; cursor:pointer;
+  background:none; border:0; color:var(--muted);
+}
+.peek-close:hover { color:var(--ink); }
+
 /* Shorter phones. Everything above the bar and everything below it has to fit
    between the header and the bottom of the screen, and there is less of both. */
 @media (max-width:900px) and (max-height:620px) {
@@ -373,427 +419,427 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
 
     <div class="boundary" style="left:7px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Nadine Lee</b><br><span class="co">Dallas Area Rapid Transit · </span><span class="mono">US$72,000</span></div>
+      <button class="boundary-label" data-id="dallas-area-rapid-2025"><b>Nadine Lee</b><br><span class="co">Dallas Area Rapid Transit · </span><span class="mono">US$72,000</span></button>
     </div>
     <div class="boundary" style="left:15px; --lane:1">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>The average VIA Rail executive</b><br><span class="co">VIA Rail · </span><span class="mono">C$115,293 avg</span></div>
+      <button class="boundary-label" data-id="via-rail-2025-bonuses"><b>The average VIA Rail executive</b><br><span class="co">VIA Rail · </span><span class="mono">C$115,293 avg</span></button>
     </div>
     <div class="boundary" style="left:36px; --lane:2">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Dennis Barnes</b><br><span class="co">Snowy Hydro · </span><span class="mono">A$323k</span></div>
+      <button class="boundary-label" data-id="snowy-hydro-2026"><b>Dennis Barnes</b><br><span class="co">Snowy Hydro · </span><span class="mono">A$323k</span></button>
     </div>
     <div class="boundary" style="left:60px; --lane:3">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Peter Hebblethwaite</b><br><span class="co">P&amp;O Ferries · </span><span class="mono">£183k</span></div>
+      <button class="boundary-label" data-id="po-ferries-2023-hebblethwaite"><b>Peter Hebblethwaite</b><br><span class="co">P&amp;O Ferries · </span><span class="mono">£183k</span></button>
     </div>
     <div class="boundary" style="left:97px; --lane:4">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Ryan Tubridy</b><br><span class="co">RTÉ · </span><span class="mono">€345k</span></div>
+      <button class="boundary-label" data-id="rte-2023-tubridy"><b>Ryan Tubridy</b><br><span class="co">RTÉ · </span><span class="mono">€345k</span></button>
     </div>
     <div class="boundary" style="left:139px; --lane:5">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Paulee Day</b><br><span class="co">West Marine · </span><span class="mono">US$425,000</span></div>
+      <button class="boundary-label" data-id="west-marine-2026-day"><b>Paulee Day</b><br><span class="co">West Marine · </span><span class="mono">US$425,000</span></button>
     </div>
     <div class="boundary" style="left:189px; --lane:6">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Lisa Roberts</b><br><span class="co">University of Exeter · </span><span class="mono">£392k</span></div>
+      <button class="boundary-label" data-id="exeter-2025-roberts"><b>Lisa Roberts</b><br><span class="co">University of Exeter · </span><span class="mono">£392k</span></button>
     </div>
     <div class="boundary" style="left:242px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Jolie Hodson</b><br><span class="co">Spark · </span><span class="mono">NZ$886k</span></div>
+      <button class="boundary-label" data-id="spark-2026-fy26-bonus"><b>Jolie Hodson</b><br><span class="co">Spark · </span><span class="mono">NZ$886k</span></button>
     </div>
     <div class="boundary" style="left:296px; --lane:1">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Alexandra Reis</b><br><span class="co">TAP Air Portugal · </span><span class="mono">€500k</span></div>
+      <button class="boundary-label" data-id="tap-2022-reis"><b>Alexandra Reis</b><br><span class="co">TAP Air Portugal · </span><span class="mono">€500k</span></button>
     </div>
     <div class="boundary" style="left:350px; --lane:2">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Peter Mathieson</b><br><span class="co">University of Edinburgh · </span><span class="mono">£426k</span></div>
+      <button class="boundary-label" data-id="edinburgh-2025-mathieson"><b>Peter Mathieson</b><br><span class="co">University of Edinburgh · </span><span class="mono">£426k</span></button>
     </div>
     <div class="boundary" style="left:411px; --lane:3">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Cedric Brown</b><br><span class="co">British Gas · </span><span class="mono">£475,000</span></div>
+      <button class="boundary-label" data-id="british-gas-1994-brown"><b>Cedric Brown</b><br><span class="co">British Gas · </span><span class="mono">£475,000</span></button>
     </div>
     <div class="boundary" style="left:496px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Ruth Jefferson</b><br><span class="co">Wessex Water · </span><span class="mono">£670k</span></div>
+      <button class="boundary-label" data-id="wessex-water-2025-jefferson"><b>Ruth Jefferson</b><br><span class="co">Wessex Water · </span><span class="mono">£670k</span></button>
     </div>
     <div class="boundary" style="left:584px; --lane:1">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Colin Skellett</b><br><span class="co">Wessex Water · </span><span class="mono">£693k</span></div>
+      <button class="boundary-label" data-id="wessex-water-2025-skellett"><b>Colin Skellett</b><br><span class="co">Wessex Water · </span><span class="mono">£693k</span></button>
     </div>
     <div class="boundary" style="left:673px; --lane:2">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Fred Goodwin</b><br><span class="co">Royal Bank of Scotland · </span><span class="mono">£703k</span></div>
+      <button class="boundary-label" data-id="rbs-2009-goodwin-pension"><b>Fred Goodwin</b><br><span class="co">Royal Bank of Scotland · </span><span class="mono">£703k</span></button>
     </div>
     <div class="boundary" style="left:785px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Each of 21 senior executives</b><br><span class="co">Thames Water · </span><span class="mono">£881k avg</span></div>
+      <button class="boundary-label" data-id="thames-water-2025-retention"><b>Each of 21 senior executives</b><br><span class="co">Thames Water · </span><span class="mono">£881k avg</span></button>
     </div>
     <div class="boundary" style="left:912px; --lane:1">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Hilary Marden-Resnik</b><br><span class="co">UCare · </span><span class="mono">US$1.27m</span></div>
+      <button class="boundary-label" data-id="ucare-2025"><b>Hilary Marden-Resnik</b><br><span class="co">UCare · </span><span class="mono">US$1.27m</span></button>
     </div>
     <div class="boundary" style="left:1044px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Nick Grayston</b><br><span class="co">The Warehouse Group · </span><span class="mono">NZ$2.2m</span></div>
+      <button class="boundary-label" data-id="warehouse-group-2024"><b>Nick Grayston</b><br><span class="co">The Warehouse Group · </span><span class="mono">NZ$2.2m</span></button>
     </div>
     <div class="boundary" style="left:1217px; --lane:1">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Marjan Rintel</b><br><span class="co">KLM · </span><span class="mono">€1.6m</span></div>
+      <button class="boundary-label" data-id="klm-2026"><b>Marjan Rintel</b><br><span class="co">KLM · </span><span class="mono">€1.6m</span></button>
     </div>
     <div class="boundary" style="left:1407px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Richard Howson</b><br><span class="co">Carillion · </span><span class="mono">£1.5m</span></div>
+      <button class="boundary-label" data-id="carillion-2018-howson"><b>Richard Howson</b><br><span class="co">Carillion · </span><span class="mono">£1.5m</span></button>
     </div>
     <div class="boundary" style="left:1649px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Mark Thurston</b><br><span class="co">Anglian Water · </span><span class="mono">£1.9m</span></div>
+      <button class="boundary-label" data-id="anglian-water-2025-thurston"><b>Mark Thurston</b><br><span class="co">Anglian Water · </span><span class="mono">£1.9m</span></button>
     </div>
     <div class="boundary" style="left:1919px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Mads Nipper</b><br><span class="co">Ørsted · </span><span class="mono">DKK18.9m (US$2.7m)</span></div>
+      <button class="boundary-label" data-id="orsted-2024-nipper"><b>Mads Nipper</b><br><span class="co">Ørsted · </span><span class="mono">DKK18.9m (US$2.7m)</span></button>
     </div>
     <div class="boundary" style="left:2189px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Birgitte Bonnesen</b><br><span class="co">Swedbank · </span><span class="mono">SEK26.6m (US$2.7m)</span></div>
+      <button class="boundary-label" data-id="swedbank-2019-bonnesen"><b>Birgitte Bonnesen</b><br><span class="co">Swedbank · </span><span class="mono">SEK26.6m (US$2.7m)</span></button>
     </div>
     <div class="boundary" style="left:2468px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Paula Vennells</b><br><span class="co">Post Office · </span><span class="mono">£2.2m</span></div>
+      <button class="boundary-label" data-id="post-office-2019-vennells"><b>Paula Vennells</b><br><span class="co">Post Office · </span><span class="mono">£2.2m</span></button>
     </div>
     <div class="boundary" style="left:2786px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Louise Beardmore</b><br><span class="co">United Utilities · </span><span class="mono">£2.5m</span></div>
+      <button class="boundary-label" data-id="united-utilities-2025-beardmore"><b>Louise Beardmore</b><br><span class="co">United Utilities · </span><span class="mono">£2.5m</span></button>
     </div>
     <div class="boundary" style="left:3146px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Greg Becker</b><br><span class="co">Silicon Valley Bank · </span><span class="mono">US$3.6m</span></div>
+      <button class="boundary-label" data-id="svb-2023-becker"><b>Greg Becker</b><br><span class="co">Silicon Valley Bank · </span><span class="mono">US$3.6m</span></button>
     </div>
     <div class="boundary" style="left:3592px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Roy Bagattini</b><br><span class="co">Woolworths Holdings · </span><span class="mono">R79.8m</span></div>
+      <button class="boundary-label" data-id="woolworths-2025-bagattini"><b>Roy Bagattini</b><br><span class="co">Woolworths Holdings · </span><span class="mono">R79.8m</span></button>
     </div>
     <div class="boundary" style="left:4041px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Vicki Brady</b><br><span class="co">Telstra · </span><span class="mono">A$6.8m</span></div>
+      <button class="boundary-label" data-id="telstra-2026"><b>Vicki Brady</b><br><span class="co">Telstra · </span><span class="mono">A$6.8m</span></button>
     </div>
     <div class="boundary" style="left:4498px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Chris O&#x27;Shea</b><br><span class="co">Centrica (British Gas) · </span><span class="mono">£3.6m</span></div>
+      <button class="boundary-label" data-id="centrica-british-gas-2026"><b>Chris O&#x27;Shea</b><br><span class="co">Centrica (British Gas) · </span><span class="mono">£3.6m</span></button>
     </div>
     <div class="boundary" style="left:5020px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Shayne Elliott</b><br><span class="co">ANZ · </span><span class="mono">A$7.9m</span></div>
+      <button class="boundary-label" data-id="anz-2025"><b>Shayne Elliott</b><br><span class="co">ANZ · </span><span class="mono">A$7.9m</span></button>
     </div>
     <div class="boundary" style="left:5629px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>James Jesic</b><br><span class="co">Severn Trent · </span><span class="mono">£4.8m</span></div>
+      <button class="boundary-label" data-id="severn-trent-2026"><b>James Jesic</b><br><span class="co">Severn Trent · </span><span class="mono">£4.8m</span></button>
     </div>
     <div class="boundary" style="left:6254px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Daniel Chu</b><br><span class="co">Tricolor · </span><span class="mono">US$6.25m</span></div>
+      <button class="boundary-label" data-id="tricolor-2025"><b>Daniel Chu</b><br><span class="co">Tricolor · </span><span class="mono">US$6.25m</span></button>
     </div>
     <div class="boundary" style="left:6892px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Steve McCann</b><br><span class="co">Star Entertainment Group · </span><span class="mono">A$9.66m</span></div>
+      <button class="boundary-label" data-id="star-entertainment-group-2026"><b>Steve McCann</b><br><span class="co">Star Entertainment Group · </span><span class="mono">A$9.66m</span></button>
     </div>
     <div class="boundary" style="left:7564px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Wes Powell</b><br><span class="co">Aimco · </span><span class="mono">US$6.72m</span></div>
+      <button class="boundary-label" data-id="aimco-2025"><b>Wes Powell</b><br><span class="co">Aimco · </span><span class="mono">US$6.72m</span></button>
     </div>
     <div class="boundary" style="left:8250px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Matt Comyn</b><br><span class="co">Commonwealth Bank · </span><span class="mono">A$10.4m</span></div>
+      <button class="boundary-label" data-id="cba-2023-comyn"><b>Matt Comyn</b><br><span class="co">Commonwealth Bank · </span><span class="mono">A$10.4m</span></button>
     </div>
     <div class="boundary" style="left:8962px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Noel Quinn</b><br><span class="co">HSBC · </span><span class="mono">£5.6m</span></div>
+      <button class="boundary-label" data-id="hsbc-2022-quinn"><b>Noel Quinn</b><br><span class="co">HSBC · </span><span class="mono">£5.6m</span></button>
     </div>
     <div class="boundary" style="left:9698px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Rico Back</b><br><span class="co">Royal Mail · </span><span class="mono">£5.8m</span></div>
+      <button class="boundary-label" data-id="royal-mail-2018-back"><b>Rico Back</b><br><span class="co">Royal Mail · </span><span class="mono">£5.8m</span></button>
     </div>
     <div class="boundary" style="left:10454px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Christian Sewing</b><br><span class="co">Deutsche Bank · </span><span class="mono">€7m</span></div>
+      <button class="boundary-label" data-id="deutsche-bank-2018-sewing"><b>Christian Sewing</b><br><span class="co">Deutsche Bank · </span><span class="mono">€7m</span></button>
     </div>
     <div class="boundary" style="left:11232px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Carlos Ghosn</b><br><span class="co">Renault · </span><span class="mono">€7.2m</span></div>
+      <button class="boundary-label" data-id="renault-2016-ghosn"><b>Carlos Ghosn</b><br><span class="co">Renault · </span><span class="mono">€7.2m</span></button>
     </div>
     <div class="boundary" style="left:12014px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Rainer Seele</b><br><span class="co">OMV · </span><span class="mono">€7.24m</span></div>
+      <button class="boundary-label" data-id="omv-2019-seele"><b>Rainer Seele</b><br><span class="co">OMV · </span><span class="mono">€7.24m</span></button>
     </div>
     <div class="boundary" style="left:12802px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Martin Winterkorn</b><br><span class="co">Volkswagen · </span><span class="mono">€7.3m</span></div>
+      <button class="boundary-label" data-id="volkswagen-2015-winterkorn"><b>Martin Winterkorn</b><br><span class="co">Volkswagen · </span><span class="mono">€7.3m</span></button>
     </div>
     <div class="boundary" style="left:13600px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Kyle Sandilands</b><br><span class="co">ARN Media · </span><span class="mono">A$12.09m</span></div>
+      <button class="boundary-label" data-id="arn-2026-sandilands"><b>Kyle Sandilands</b><br><span class="co">ARN Media · </span><span class="mono">A$12.09m</span></button>
     </div>
     <div class="boundary" style="left:14410px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Frans Muller</b><br><span class="co">Ahold Delhaize · </span><span class="mono">€7.5m</span></div>
+      <button class="boundary-label" data-id="ahold-2025-muller"><b>Frans Muller</b><br><span class="co">Ahold Delhaize · </span><span class="mono">€7.5m</span></button>
     </div>
     <div class="boundary" style="left:15271px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Galen Weston</b><br><span class="co">Loblaw · </span><span class="mono">C$11.79m</span></div>
+      <button class="boundary-label" data-id="loblaw-2022-weston"><b>Galen Weston</b><br><span class="co">Loblaw · </span><span class="mono">C$11.79m</span></button>
     </div>
     <div class="boundary" style="left:16171px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Kenny Fihla</b><br><span class="co">Absa Group · </span><span class="mono">R148m (US$9m)</span></div>
+      <button class="boundary-label" data-id="absa-group-2026"><b>Kenny Fihla</b><br><span class="co">Absa Group · </span><span class="mono">R148m (US$9m)</span></button>
     </div>
     <div class="boundary" style="left:17071px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Salil Parekh</b><br><span class="co">Infosys · </span><span class="mono">₹82.6 crore (US$9m)</span></div>
+      <button class="boundary-label" data-id="infosys-2026-parekh"><b>Salil Parekh</b><br><span class="co">Infosys · </span><span class="mono">₹82.6 crore (US$9m)</span></button>
     </div>
     <div class="boundary" style="left:18071px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Pat Gelsinger</b><br><span class="co">Intel · </span><span class="mono">US$10m</span></div>
+      <button class="boundary-label" data-id="intel-2024-gelsinger"><b>Pat Gelsinger</b><br><span class="co">Intel · </span><span class="mono">US$10m</span></button>
     </div>
     <div class="boundary" style="left:19071px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Eduardo Bartolomeo</b><br><span class="co">Vale · </span><span class="mono">R$55m (US$10m)</span></div>
+      <button class="boundary-label" data-id="vale-2021-bartolomeo"><b>Eduardo Bartolomeo</b><br><span class="co">Vale · </span><span class="mono">R$55m (US$10m)</span></button>
     </div>
     <div class="boundary" style="left:20331px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Euisun Chung</b><br><span class="co">Hyundai Motor · </span><span class="mono">₩17.5bn (US$12.6m)</span></div>
+      <button class="boundary-label" data-id="hyundai-2025-chung"><b>Euisun Chung</b><br><span class="co">Hyundai Motor · </span><span class="mono">₩17.5bn (US$12.6m)</span></button>
     </div>
     <div class="boundary" style="left:21671px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Alan Shaw</b><br><span class="co">Norfolk Southern · </span><span class="mono">US$13.4m</span></div>
+      <button class="boundary-label" data-id="norfolk-southern-2023-shaw"><b>Alan Shaw</b><br><span class="co">Norfolk Southern · </span><span class="mono">US$13.4m</span></button>
     </div>
     <div class="boundary" style="left:23021px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Akio Toyoda</b><br><span class="co">Toyota · </span><span class="mono">¥1.95bn (US$13.5m)</span></div>
+      <button class="boundary-label" data-id="toyota-2025-toyoda"><b>Akio Toyoda</b><br><span class="co">Toyota · </span><span class="mono">¥1.95bn (US$13.5m)</span></button>
     </div>
     <div class="boundary" style="left:24433px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Alan Joyce</b><br><span class="co">Qantas · </span><span class="mono">A$21.4m</span></div>
+      <button class="boundary-label" data-id="qantas-2023-joyce-exit"><b>Alan Joyce</b><br><span class="co">Qantas · </span><span class="mono">A$21.4m</span></button>
     </div>
     <div class="boundary" style="left:25859px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Andrea Orcel</b><br><span class="co">UniCredit · </span><span class="mono">€13.2m</span></div>
+      <button class="boundary-label" data-id="unicredit-2024-orcel"><b>Andrea Orcel</b><br><span class="co">UniCredit · </span><span class="mono">€13.2m</span></button>
     </div>
     <div class="boundary" style="left:27449px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Sergio Ermotti</b><br><span class="co">UBS · </span><span class="mono">CHF14.4m (US$15.9m)</span></div>
+      <button class="boundary-label" data-id="ubs-2023-ermotti"><b>Sergio Ermotti</b><br><span class="co">UBS · </span><span class="mono">CHF14.4m (US$15.9m)</span></button>
     </div>
     <div class="boundary" style="left:29049px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Robert Allen</b><br><span class="co">AT&amp;T · </span><span class="mono">US$16m</span></div>
+      <button class="boundary-label" data-id="att-1996-allen"><b>Robert Allen</b><br><span class="co">AT&amp;T · </span><span class="mono">US$16m</span></button>
     </div>
     <div class="boundary" style="left:30738px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Jean-Sébastien Jacques</b><br><span class="co">Rio Tinto · </span><span class="mono">£13.3m</span></div>
+      <button class="boundary-label" data-id="rio-tinto-2020-jacques"><b>Jean-Sébastien Jacques</b><br><span class="co">Rio Tinto · </span><span class="mono">£13.3m</span></button>
     </div>
     <div class="boundary" style="left:32490px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Wael Sawan</b><br><span class="co">Shell · </span><span class="mono">£13.8m</span></div>
+      <button class="boundary-label" data-id="shell-2026"><b>Wael Sawan</b><br><span class="co">Shell · </span><span class="mono">£13.8m</span></button>
     </div>
     <div class="boundary" style="left:34270px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>John Foley</b><br><span class="co">Peloton · </span><span class="mono">US$17.8m</span></div>
+      <button class="boundary-label" data-id="peloton-2021-foley"><b>John Foley</b><br><span class="co">Peloton · </span><span class="mono">US$17.8m</span></button>
     </div>
     <div class="boundary" style="left:36120px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Tony Hayward</b><br><span class="co">BP · </span><span class="mono">£12m (US$18.5m)</span></div>
+      <button class="boundary-label" data-id="bp-2010-hayward"><b>Tony Hayward</b><br><span class="co">BP · </span><span class="mono">£12m (US$18.5m)</span></button>
     </div>
     <div class="boundary" style="left:37974px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Sukhinder Singh Cassidy</b><br><span class="co">Xero · </span><span class="mono">NZ$30.9m</span></div>
+      <button class="boundary-label" data-id="xero-2026-fy27-package"><b>Sukhinder Singh Cassidy</b><br><span class="co">Xero · </span><span class="mono">NZ$30.9m</span></button>
     </div>
     <div class="boundary" style="left:39974px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Kåre Schultz</b><br><span class="co">Teva · </span><span class="mono">US$20m</span></div>
+      <button class="boundary-label" data-id="teva-2017-schultz"><b>Kåre Schultz</b><br><span class="co">Teva · </span><span class="mono">US$20m</span></button>
     </div>
     <div class="boundary" style="left:42114px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Carly Fiorina</b><br><span class="co">Hewlett-Packard · </span><span class="mono">US$21.4m</span></div>
+      <button class="boundary-label" data-id="hp-2005-fiorina"><b>Carly Fiorina</b><br><span class="co">Hewlett-Packard · </span><span class="mono">US$21.4m</span></button>
     </div>
     <div class="boundary" style="left:44261px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Pascal Soriot</b><br><span class="co">AstraZeneca · </span><span class="mono">£16.9m</span></div>
+      <button class="boundary-label" data-id="astrazeneca-2023-soriot"><b>Pascal Soriot</b><br><span class="co">AstraZeneca · </span><span class="mono">£16.9m</span></button>
     </div>
     <div class="boundary" style="left:46721px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Albert Bourla</b><br><span class="co">Pfizer · </span><span class="mono">US$24.6m</span></div>
+      <button class="boundary-label" data-id="pfizer-2024-bourla"><b>Albert Bourla</b><br><span class="co">Pfizer · </span><span class="mono">US$24.6m</span></button>
     </div>
     <div class="boundary" style="left:49521px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Ari Bousbib</b><br><span class="co">IQVIA · </span><span class="mono">US$28m</span></div>
+      <button class="boundary-label" data-id="iqvia-2026-bousbib"><b>Ari Bousbib</b><br><span class="co">IQVIA · </span><span class="mono">US$28m</span></button>
     </div>
     <div class="boundary" style="left:52801px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Dave Calhoun</b><br><span class="co">Boeing · </span><span class="mono">US$32.8m</span></div>
+      <button class="boundary-label" data-id="boeing-2023-calhoun"><b>Dave Calhoun</b><br><span class="co">Boeing · </span><span class="mono">US$32.8m</span></button>
     </div>
     <div class="boundary" style="left:56666px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Andrew Wilson</b><br><span class="co">Electronic Arts · </span><span class="mono">US$38.65m</span></div>
+      <button class="boundary-label" data-id="ea-2026-wilson"><b>Andrew Wilson</b><br><span class="co">Electronic Arts · </span><span class="mono">US$38.65m</span></button>
     </div>
     <div class="boundary" style="left:60608px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Carlos Tavares</b><br><span class="co">Stellantis · </span><span class="mono">€36.5m</span></div>
+      <button class="boundary-label" data-id="stellantis-2023-tavares"><b>Carlos Tavares</b><br><span class="co">Stellantis · </span><span class="mono">€36.5m</span></button>
     </div>
     <div class="boundary" style="left:64766px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Daniel Bernard</b><br><span class="co">Carrefour · </span><span class="mono">€38.5m</span></div>
+      <button class="boundary-label" data-id="carrefour-2005-bernard"><b>Daniel Bernard</b><br><span class="co">Carrefour · </span><span class="mono">€38.5m</span></button>
     </div>
     <div class="boundary" style="left:69166px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Xia Haijun</b><br><span class="co">China Evergrande · </span><span class="mono">RMB298m (US$44m)</span></div>
+      <button class="boundary-label" data-id="evergrande-2017-xia"><b>Xia Haijun</b><br><span class="co">China Evergrande · </span><span class="mono">RMB298m (US$44m)</span></button>
     </div>
     <div class="boundary" style="left:74356px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>David Zaslav</b><br><span class="co">Warner Bros. Discovery · </span><span class="mono">US$51.9m</span></div>
+      <button class="boundary-label" data-id="wbd-2024-zaslav"><b>David Zaslav</b><br><span class="co">Warner Bros. Discovery · </span><span class="mono">US$51.9m</span></button>
     </div>
     <div class="boundary" style="left:79656px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>F. Ross Johnson</b><br><span class="co">RJR Nabisco · </span><span class="mono">US$53m</span></div>
+      <button class="boundary-label" data-id="rjr-nabisco-1989-johnson"><b>F. Ross Johnson</b><br><span class="co">RJR Nabisco · </span><span class="mono">US$53m</span></button>
     </div>
     <div class="boundary" style="left:86978px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Andrea Orcel</b><br><span class="co">Santander · </span><span class="mono">€67.8m</span></div>
+      <button class="boundary-label" data-id="santander-2021-orcel-award"><b>Andrea Orcel</b><br><span class="co">Santander · </span><span class="mono">€67.8m</span></button>
     </div>
     <div class="boundary" style="left:94968px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Marc Casper</b><br><span class="co">Thermo Fisher Scientific · </span><span class="mono">US$79.9m</span></div>
+      <button class="boundary-label" data-id="thermo-fisher-2025-casper"><b>Marc Casper</b><br><span class="co">Thermo Fisher Scientific · </span><span class="mono">US$79.9m</span></button>
     </div>
     <div class="boundary" style="left:102968px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Carlos Ghosn</b><br><span class="co">Nissan · </span><span class="mono">US$80m</span></div>
+      <button class="boundary-label" data-id="nissan-2018-ghosn"><b>Carlos Ghosn</b><br><span class="co">Nissan · </span><span class="mono">US$80m</span></button>
     </div>
     <div class="boundary" style="left:111768px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Percy Barnevik</b><br><span class="co">ABB · </span><span class="mono">CHF148m (US$88m)</span></div>
+      <button class="boundary-label" data-id="abb-2002-barnevik"><b>Percy Barnevik</b><br><span class="co">ABB · </span><span class="mono">CHF148m (US$88m)</span></button>
     </div>
     <div class="boundary" style="left:120658px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Martin Sorrell</b><br><span class="co">WPP · </span><span class="mono">£70m</span></div>
+      <button class="boundary-label" data-id="wpp-2015-sorrell"><b>Martin Sorrell</b><br><span class="co">WPP · </span><span class="mono">£70m</span></button>
     </div>
     <div class="boundary" style="left:129658px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Andy Rubin</b><br><span class="co">Google · </span><span class="mono">US$90m</span></div>
+      <button class="boundary-label" data-id="google-2014-rubin"><b>Andy Rubin</b><br><span class="co">Google · </span><span class="mono">US$90m</span></button>
     </div>
     <div class="boundary" style="left:139183px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Jeff Fairburn</b><br><span class="co">Persimmon · </span><span class="mono">£75m</span></div>
+      <button class="boundary-label" data-id="persimmon-2018-fairburn"><b>Jeff Fairburn</b><br><span class="co">Persimmon · </span><span class="mono">£75m</span></button>
     </div>
     <div class="boundary" style="left:148783px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Brian Niccol</b><br><span class="co">Starbucks · </span><span class="mono">US$96m</span></div>
+      <button class="boundary-label" data-id="starbucks-2024-niccol"><b>Brian Niccol</b><br><span class="co">Starbucks · </span><span class="mono">US$96m</span></button>
     </div>
     <div class="boundary" style="left:158583px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Lee Raymond</b><br><span class="co">ExxonMobil · </span><span class="mono">US$98m</span></div>
+      <button class="boundary-label" data-id="exxonmobil-2005-raymond"><b>Lee Raymond</b><br><span class="co">ExxonMobil · </span><span class="mono">US$98m</span></button>
     </div>
     <div class="boundary" style="left:168583px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Al Dunlap</b><br><span class="co">Scott Paper · </span><span class="mono">US$100m</span></div>
+      <button class="boundary-label" data-id="scott-paper-1995-dunlap"><b>Al Dunlap</b><br><span class="co">Scott Paper · </span><span class="mono">US$100m</span></button>
     </div>
     <div class="boundary" style="left:179283px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Russell Artzt</b><br><span class="co">Computer Associates · </span><span class="mono">US$107m</span></div>
+      <button class="boundary-label" data-id="computer-associates-1998-artzt"><b>Russell Artzt</b><br><span class="co">Computer Associates · </span><span class="mono">US$107m</span></button>
     </div>
     <div class="boundary" style="left:190083px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Michael O&#x27;Leary</b><br><span class="co">Ryanair · </span><span class="mono">€100m</span></div>
+      <button class="boundary-label" data-id="ryanair-2025-oleary"><b>Michael O&#x27;Leary</b><br><span class="co">Ryanair · </span><span class="mono">€100m</span></button>
     </div>
     <div class="boundary" style="left:203083px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>John Stumpf</b><br><span class="co">Wells Fargo · </span><span class="mono">US$130m</span></div>
+      <button class="boundary-label" data-id="wells-fargo-2016-stumpf"><b>John Stumpf</b><br><span class="co">Wells Fargo · </span><span class="mono">US$130m</span></button>
     </div>
     <div class="boundary" style="left:217033px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Richard Grasso</b><br><span class="co">New York Stock Exchange · </span><span class="mono">US$139.5m</span></div>
+      <button class="boundary-label" data-id="nyse-2003-grasso"><b>Richard Grasso</b><br><span class="co">New York Stock Exchange · </span><span class="mono">US$139.5m</span></button>
     </div>
     <div class="boundary" style="left:231033px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Michael Ovitz</b><br><span class="co">The Walt Disney Company · </span><span class="mono">US$140m</span></div>
+      <button class="boundary-label" data-id="disney-1996-ovitz"><b>Michael Ovitz</b><br><span class="co">The Walt Disney Company · </span><span class="mono">US$140m</span></button>
     </div>
     <div class="boundary" style="left:246133px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Nikesh Arora</b><br><span class="co">Palo Alto Networks · </span><span class="mono">US$151m</span></div>
+      <button class="boundary-label" data-id="palo-alto-2023-arora"><b>Nikesh Arora</b><br><span class="co">Palo Alto Networks · </span><span class="mono">US$151m</span></button>
     </div>
     <div class="boundary" style="left:262033px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>John Hammergren</b><br><span class="co">McKesson · </span><span class="mono">US$159m</span></div>
+      <button class="boundary-label" data-id="mckesson-2013-hammergren"><b>John Hammergren</b><br><span class="co">McKesson · </span><span class="mono">US$159m</span></button>
     </div>
     <div class="boundary" style="left:278183px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Stan O&#x27;Neal</b><br><span class="co">Merrill Lynch · </span><span class="mono">US$161.5m</span></div>
+      <button class="boundary-label" data-id="merrill-lynch-2007-oneal"><b>Stan O&#x27;Neal</b><br><span class="co">Merrill Lynch · </span><span class="mono">US$161.5m</span></button>
     </div>
     <div class="boundary" style="left:296183px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Hank McKinnell</b><br><span class="co">Pfizer · </span><span class="mono">US$180m</span></div>
+      <button class="boundary-label" data-id="pfizer-2006-mckinnell"><b>Hank McKinnell</b><br><span class="co">Pfizer · </span><span class="mono">US$180m</span></button>
     </div>
     <div class="boundary" style="left:316713px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Hock Tan</b><br><span class="co">Broadcom · </span><span class="mono">US$205.3m</span></div>
+      <button class="boundary-label" data-id="broadcom-2025-tan"><b>Hock Tan</b><br><span class="co">Broadcom · </span><span class="mono">US$205.3m</span></button>
     </div>
     <div class="boundary" style="left:337713px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Robert Nardelli</b><br><span class="co">Home Depot · </span><span class="mono">US$210m</span></div>
+      <button class="boundary-label" data-id="home-depot-2007-nardelli"><b>Robert Nardelli</b><br><span class="co">Home Depot · </span><span class="mono">US$210m</span></button>
     </div>
     <div class="boundary" style="left:362373px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>David Zaslav</b><br><span class="co">Discovery · </span><span class="mono">US$246.6m</span></div>
+      <button class="boundary-label" data-id="discovery-2021-zaslav"><b>David Zaslav</b><br><span class="co">Discovery · </span><span class="mono">US$246.6m</span></button>
     </div>
     <div class="boundary" style="left:390453px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Niraj Shah</b><br><span class="co">Wayfair · </span><span class="mono">US$280.8m</span></div>
+      <button class="boundary-label" data-id="wayfair-2025-shah-grant"><b>Niraj Shah</b><br><span class="co">Wayfair · </span><span class="mono">US$280.8m</span></button>
     </div>
     <div class="boundary" style="left:418553px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Sundar Pichai</b><br><span class="co">Alphabet · </span><span class="mono">US$281m</span></div>
+      <button class="boundary-label" data-id="alphabet-2019-pichai"><b>Sundar Pichai</b><br><span class="co">Alphabet · </span><span class="mono">US$281m</span></button>
     </div>
     <div class="boundary" style="left:450653px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Sanjay Kumar</b><br><span class="co">Computer Associates · </span><span class="mono">US$321m</span></div>
+      <button class="boundary-label" data-id="computer-associates-1998-kumar"><b>Sanjay Kumar</b><br><span class="co">Computer Associates · </span><span class="mono">US$321m</span></button>
     </div>
     <div class="boundary" style="left:490953px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>RJ Scaringe</b><br><span class="co">Rivian · </span><span class="mono">US$403m</span></div>
+      <button class="boundary-label" data-id="rivian-2026"><b>RJ Scaringe</b><br><span class="co">Rivian · </span><span class="mono">US$403m</span></button>
     </div>
     <div class="boundary" style="left:535453px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Adam Neumann</b><br><span class="co">WeWork · </span><span class="mono">US$445m</span></div>
+      <button class="boundary-label" data-id="wework-2021-neumann"><b>Adam Neumann</b><br><span class="co">WeWork · </span><span class="mono">US$445m</span></button>
     </div>
     <div class="boundary" style="left:580253px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Sridhar Ramaswamy</b><br><span class="co">Snowflake · </span><span class="mono">US$448m</span></div>
+      <button class="boundary-label" data-id="snowflake-2026-ramaswamy"><b>Sridhar Ramaswamy</b><br><span class="co">Snowflake · </span><span class="mono">US$448m</span></button>
     </div>
     <div class="boundary" style="left:625053px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>William McGuire</b><br><span class="co">UnitedHealth Group · </span><span class="mono">US$448m</span></div>
+      <button class="boundary-label" data-id="unitedhealth-2006-mcguire"><b>William McGuire</b><br><span class="co">UnitedHealth Group · </span><span class="mono">US$448m</span></button>
     </div>
     <div class="boundary" style="left:673453px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Dick Fuld</b><br><span class="co">Lehman Brothers · </span><span class="mono">US$484m</span></div>
+      <button class="boundary-label" data-id="lehman-2008-fuld"><b>Dick Fuld</b><br><span class="co">Lehman Brothers · </span><span class="mono">US$484m</span></button>
     </div>
     <div class="boundary" style="left:725603px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Angelo Mozilo</b><br><span class="co">Countrywide Financial · </span><span class="mono">US$521.5m</span></div>
+      <button class="boundary-label" data-id="countrywide-2008-mozilo"><b>Angelo Mozilo</b><br><span class="co">Countrywide Financial · </span><span class="mono">US$521.5m</span></button>
     </div>
     <div class="boundary" style="left:782103px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Michael Eisner</b><br><span class="co">The Walt Disney Company · </span><span class="mono">US$565m</span></div>
+      <button class="boundary-label" data-id="disney-1997-eisner"><b>Michael Eisner</b><br><span class="co">The Walt Disney Company · </span><span class="mono">US$565m</span></button>
     </div>
     <div class="boundary" style="left:846403px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Charles Wang</b><br><span class="co">Computer Associates · </span><span class="mono">US$643m</span></div>
+      <button class="boundary-label" data-id="computer-associates-1998-wang"><b>Charles Wang</b><br><span class="co">Computer Associates · </span><span class="mono">US$643m</span></button>
     </div>
     <div class="boundary" style="left:928503px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Shankh Mitra</b><br><span class="co">Welltower · </span><span class="mono">US$821m</span></div>
+      <button class="boundary-label" data-id="welltower-2026-mitra"><b>Shankh Mitra</b><br><span class="co">Welltower · </span><span class="mono">US$821m</span></button>
     </div>
     <div class="boundary" style="left:1038503px; --lane:0">
       <div class="boundary-tick"></div>
-      <div class="boundary-label"><b>Alex Karp</b><br><span class="co">Palantir · </span><span class="mono">US$1.1b</span></div>
+      <button class="boundary-label" data-id="palantir-2020-karp-grant"><b>Alex Karp</b><br><span class="co">Palantir · </span><span class="mono">US$1.1b</span></button>
     </div>
 
   <div class="endpanel" style="left:1038783px">
@@ -801,7 +847,7 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
     <p><span class="mono">US$10.39b</span> credited to <b>106 people</b>.</p>
     <p>That is roughly <b>173,084 years</b> of work at the median wage — about <b>4,327 entire careers</b>, mostly credited for one year each.</p>
     <p>The register grows most weeks. So does this page.</p>
-<p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla — about <b>26 km</b> of screen. Browsers refuse to draw it. So do we.</p><p class="notdrawn"><b>Not counted:</b> Hui Ka Yan&#x27;s US$8bn from China Evergrande was dividends on his own shareholding, not pay — the company paid him RMB126,000 in salary in 2022 — so it is recorded here but kept out of a total of remuneration.</p>
+<p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla — about <b>26 km</b> of screen. Browsers refuse to draw it. So do we.</p>
     <a class="back" href="index.html">Back to the register</a>
   </div>
 </div>
@@ -838,532 +884,532 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
     <div class="pk" style="left:14px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Nadine Lee — Dallas Area Rapid Transit · US$72,000"><b>Nadine Lee</b> <span class="mono">US$72,000</span> <i>Dallas Area Rapid Transit</i></div>
+      <button class="pk-label" data-id="dallas-area-rapid-2025" title="Nadine Lee — Dallas Area Rapid Transit · US$72,000"><b>Nadine Lee</b> <span class="mono">US$72,000</span> <i>Dallas Area Rapid Transit</i></button>
     </div>
     <div class="pk" style="left:16px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="The average VIA Rail executive — VIA Rail · C$115,293 avg"><b>The average VIA Rail executive</b> <span class="mono">C$115,293 avg</span> <i>VIA Rail</i></div>
+      <button class="pk-label" data-id="via-rail-2025-bonuses" title="The average VIA Rail executive — VIA Rail · C$115,293 avg"><b>The average VIA Rail executive</b> <span class="mono">C$115,293 avg</span> <i>VIA Rail</i></button>
     </div>
     <div class="pk" style="left:42px; --lane:2">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Dennis Barnes — Snowy Hydro · A$323k"><b>Dennis Barnes</b> <span class="mono">A$323k</span> <i>Snowy Hydro</i></div>
+      <button class="pk-label" data-id="snowy-hydro-2026" title="Dennis Barnes — Snowy Hydro · A$323k"><b>Dennis Barnes</b> <span class="mono">A$323k</span> <i>Snowy Hydro</i></button>
     </div>
     <div class="pk" style="left:46px; --lane:3">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Peter Hebblethwaite — P&amp;O Ferries · £183k"><b>Peter Hebblethwaite</b> <span class="mono">£183k</span> <i>P&amp;O Ferries</i></div>
+      <button class="pk-label" data-id="po-ferries-2023-hebblethwaite" title="Peter Hebblethwaite — P&amp;O Ferries · £183k"><b>Peter Hebblethwaite</b> <span class="mono">£183k</span> <i>P&amp;O Ferries</i></button>
     </div>
     <div class="pk" style="left:74px; --lane:4">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Ryan Tubridy — RTÉ · €345k"><b>Ryan Tubridy</b> <span class="mono">€345k</span> <i>RTÉ</i></div>
+      <button class="pk-label" data-id="rte-2023-tubridy" title="Ryan Tubridy — RTÉ · €345k"><b>Ryan Tubridy</b> <span class="mono">€345k</span> <i>RTÉ</i></button>
     </div>
     <div class="pk" style="left:85px; --lane:5">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Paulee Day — West Marine · US$425,000"><b>Paulee Day</b> <span class="mono">US$425,000</span> <i>West Marine</i></div>
+      <button class="pk-label" data-id="west-marine-2026-day" title="Paulee Day — West Marine · US$425,000"><b>Paulee Day</b> <span class="mono">US$425,000</span> <i>West Marine</i></button>
     </div>
     <div class="pk" style="left:99px; --lane:6">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Lisa Roberts — University of Exeter · £392k"><b>Lisa Roberts</b> <span class="mono">£392k</span> <i>University of Exeter</i></div>
+      <button class="pk-label" data-id="exeter-2025-roberts" title="Lisa Roberts — University of Exeter · £392k"><b>Lisa Roberts</b> <span class="mono">£392k</span> <i>University of Exeter</i></button>
     </div>
     <div class="pk" style="left:106px; --lane:7">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Jolie Hodson — Spark · NZ$886k"><b>Jolie Hodson</b> <span class="mono">NZ$886k</span> <i>Spark</i></div>
+      <button class="pk-label" data-id="spark-2026-fy26-bonus" title="Jolie Hodson — Spark · NZ$886k"><b>Jolie Hodson</b> <span class="mono">NZ$886k</span> <i>Spark</i></button>
     </div>
     <div class="pk" style="left:108px; --lane:8">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Alexandra Reis — TAP Air Portugal · €500k"><b>Alexandra Reis</b> <span class="mono">€500k</span> <i>TAP Air Portugal</i></div>
+      <button class="pk-label" data-id="tap-2022-reis" title="Alexandra Reis — TAP Air Portugal · €500k"><b>Alexandra Reis</b> <span class="mono">€500k</span> <i>TAP Air Portugal</i></button>
     </div>
     <div class="pk" style="left:108px; --lane:9">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Peter Mathieson — University of Edinburgh · £426k"><b>Peter Mathieson</b> <span class="mono">£426k</span> <i>University of Edinburgh</i></div>
+      <button class="pk-label" data-id="edinburgh-2025-mathieson" title="Peter Mathieson — University of Edinburgh · £426k"><b>Peter Mathieson</b> <span class="mono">£426k</span> <i>University of Edinburgh</i></button>
     </div>
     <div class="pk" style="left:120px; --lane:10">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Cedric Brown — British Gas · £475,000"><b>Cedric Brown</b> <span class="mono">£475,000</span> <i>British Gas</i></div>
+      <button class="pk-label" data-id="british-gas-1994-brown" title="Cedric Brown — British Gas · £475,000"><b>Cedric Brown</b> <span class="mono">£475,000</span> <i>British Gas</i></button>
     </div>
     <div class="pk" style="left:170px; --lane:11">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Ruth Jefferson — Wessex Water · £670k"><b>Ruth Jefferson</b> <span class="mono">£670k</span> <i>Wessex Water</i></div>
+      <button class="pk-label" data-id="wessex-water-2025-jefferson" title="Ruth Jefferson — Wessex Water · £670k"><b>Ruth Jefferson</b> <span class="mono">£670k</span> <i>Wessex Water</i></button>
     </div>
     <div class="pk" style="left:176px; --lane:12">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Colin Skellett — Wessex Water · £693k"><b>Colin Skellett</b> <span class="mono">£693k</span> <i>Wessex Water</i></div>
+      <button class="pk-label" data-id="wessex-water-2025-skellett" title="Colin Skellett — Wessex Water · £693k"><b>Colin Skellett</b> <span class="mono">£693k</span> <i>Wessex Water</i></button>
     </div>
     <div class="pk" style="left:178px; --lane:13">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Fred Goodwin — Royal Bank of Scotland · £703k"><b>Fred Goodwin</b> <span class="mono">£703k</span> <i>Royal Bank of Scotland</i></div>
+      <button class="pk-label" data-id="rbs-2009-goodwin-pension" title="Fred Goodwin — Royal Bank of Scotland · £703k"><b>Fred Goodwin</b> <span class="mono">£703k</span> <i>Royal Bank of Scotland</i></button>
     </div>
     <div class="pk" style="left:223px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Each of 21 senior executives — Thames Water · £881k avg"><b>Each of 21 senior executives</b> <span class="mono">£881k avg</span> <i>Thames Water</i></div>
+      <button class="pk-label" data-id="thames-water-2025-retention" title="Each of 21 senior executives — Thames Water · £881k avg"><b>Each of 21 senior executives</b> <span class="mono">£881k avg</span> <i>Thames Water</i></button>
     </div>
     <div class="pk" style="left:254px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Hilary Marden-Resnik — UCare · US$1.27m"><b>Hilary Marden-Resnik</b> <span class="mono">US$1.27m</span> <i>UCare</i></div>
+      <button class="pk-label" data-id="ucare-2025" title="Hilary Marden-Resnik — UCare · US$1.27m"><b>Hilary Marden-Resnik</b> <span class="mono">US$1.27m</span> <i>UCare</i></button>
     </div>
     <div class="pk" style="left:264px; --lane:2">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Nick Grayston — The Warehouse Group · NZ$2.2m"><b>Nick Grayston</b> <span class="mono">NZ$2.2m</span> <i>The Warehouse Group</i></div>
+      <button class="pk-label" data-id="warehouse-group-2024" title="Nick Grayston — The Warehouse Group · NZ$2.2m"><b>Nick Grayston</b> <span class="mono">NZ$2.2m</span> <i>The Warehouse Group</i></button>
     </div>
     <div class="pk" style="left:345px; --lane:3">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Marjan Rintel — KLM · €1.6m"><b>Marjan Rintel</b> <span class="mono">€1.6m</span> <i>KLM</i></div>
+      <button class="pk-label" data-id="klm-2026" title="Marjan Rintel — KLM · €1.6m"><b>Marjan Rintel</b> <span class="mono">€1.6m</span> <i>KLM</i></button>
     </div>
     <div class="pk" style="left:381px; --lane:4">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Richard Howson — Carillion · £1.5m"><b>Richard Howson</b> <span class="mono">£1.5m</span> <i>Carillion</i></div>
+      <button class="pk-label" data-id="carillion-2018-howson" title="Richard Howson — Carillion · £1.5m"><b>Richard Howson</b> <span class="mono">£1.5m</span> <i>Carillion</i></button>
     </div>
     <div class="pk" style="left:482px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Mark Thurston — Anglian Water · £1.9m"><b>Mark Thurston</b> <span class="mono">£1.9m</span> <i>Anglian Water</i></div>
+      <button class="pk-label" data-id="anglian-water-2025-thurston" title="Mark Thurston — Anglian Water · £1.9m"><b>Mark Thurston</b> <span class="mono">£1.9m</span> <i>Anglian Water</i></button>
     </div>
     <div class="pk" style="left:540px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Mads Nipper — Ørsted · DKK18.9m (US$2.7m)"><b>Mads Nipper</b> <span class="mono">DKK18.9m (US$2.7m)</span> <i>Ørsted</i></div>
+      <button class="pk-label" data-id="orsted-2024-nipper" title="Mads Nipper — Ørsted · DKK18.9m (US$2.7m)"><b>Mads Nipper</b> <span class="mono">DKK18.9m (US$2.7m)</span> <i>Ørsted</i></button>
     </div>
     <div class="pk" style="left:540px; --lane:2">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Birgitte Bonnesen — Swedbank · SEK26.6m (US$2.7m)"><b>Birgitte Bonnesen</b> <span class="mono">SEK26.6m (US$2.7m)</span> <i>Swedbank</i></div>
+      <button class="pk-label" data-id="swedbank-2019-bonnesen" title="Birgitte Bonnesen — Swedbank · SEK26.6m (US$2.7m)"><b>Birgitte Bonnesen</b> <span class="mono">SEK26.6m (US$2.7m)</span> <i>Swedbank</i></button>
     </div>
     <div class="pk" style="left:558px; --lane:3">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Paula Vennells — Post Office · £2.2m"><b>Paula Vennells</b> <span class="mono">£2.2m</span> <i>Post Office</i></div>
+      <button class="pk-label" data-id="post-office-2019-vennells" title="Paula Vennells — Post Office · £2.2m"><b>Paula Vennells</b> <span class="mono">£2.2m</span> <i>Post Office</i></button>
     </div>
     <div class="pk" style="left:635px; --lane:4">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Louise Beardmore — United Utilities · £2.5m"><b>Louise Beardmore</b> <span class="mono">£2.5m</span> <i>United Utilities</i></div>
+      <button class="pk-label" data-id="united-utilities-2025-beardmore" title="Louise Beardmore — United Utilities · £2.5m"><b>Louise Beardmore</b> <span class="mono">£2.5m</span> <i>United Utilities</i></button>
     </div>
     <div class="pk" style="left:720px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Greg Becker — Silicon Valley Bank · US$3.6m"><b>Greg Becker</b> <span class="mono">US$3.6m</span> <i>Silicon Valley Bank</i></div>
+      <button class="pk-label" data-id="svb-2023-becker" title="Greg Becker — Silicon Valley Bank · US$3.6m"><b>Greg Becker</b> <span class="mono">US$3.6m</span> <i>Silicon Valley Bank</i></button>
     </div>
     <div class="pk" style="left:893px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Roy Bagattini — Woolworths Holdings · R79.8m"><b>Roy Bagattini</b> <span class="mono">R79.8m</span> <i>Woolworths Holdings</i></div>
+      <button class="pk-label" data-id="woolworths-2025-bagattini" title="Roy Bagattini — Woolworths Holdings · R79.8m"><b>Roy Bagattini</b> <span class="mono">R79.8m</span> <i>Woolworths Holdings</i></button>
     </div>
     <div class="pk" style="left:897px; --lane:2">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Vicki Brady — Telstra · A$6.8m"><b>Vicki Brady</b> <span class="mono">A$6.8m</span> <i>Telstra</i></div>
+      <button class="pk-label" data-id="telstra-2026" title="Vicki Brady — Telstra · A$6.8m"><b>Vicki Brady</b> <span class="mono">A$6.8m</span> <i>Telstra</i></button>
     </div>
     <div class="pk" style="left:914px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Chris O&#x27;Shea — Centrica (British Gas) · £3.6m"><b>Chris O&#x27;Shea</b> <span class="mono">£3.6m</span> <i>Centrica (British Gas)</i></div>
+      <button class="pk-label" data-id="centrica-british-gas-2026" title="Chris O&#x27;Shea — Centrica (British Gas) · £3.6m"><b>Chris O&#x27;Shea</b> <span class="mono">£3.6m</span> <i>Centrica (British Gas)</i></button>
     </div>
     <div class="pk" style="left:1042px; --lane:3">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Shayne Elliott — ANZ · A$7.9m"><b>Shayne Elliott</b> <span class="mono">A$7.9m</span> <i>ANZ</i></div>
+      <button class="pk-label" data-id="anz-2025" title="Shayne Elliott — ANZ · A$7.9m"><b>Shayne Elliott</b> <span class="mono">A$7.9m</span> <i>ANZ</i></button>
     </div>
     <div class="pk" style="left:1219px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="James Jesic — Severn Trent · £4.8m"><b>James Jesic</b> <span class="mono">£4.8m</span> <i>Severn Trent</i></div>
+      <button class="pk-label" data-id="severn-trent-2026" title="James Jesic — Severn Trent · £4.8m"><b>James Jesic</b> <span class="mono">£4.8m</span> <i>Severn Trent</i></button>
     </div>
     <div class="pk" style="left:1250px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Daniel Chu — Tricolor · US$6.25m"><b>Daniel Chu</b> <span class="mono">US$6.25m</span> <i>Tricolor</i></div>
+      <button class="pk-label" data-id="tricolor-2025" title="Daniel Chu — Tricolor · US$6.25m"><b>Daniel Chu</b> <span class="mono">US$6.25m</span> <i>Tricolor</i></button>
     </div>
     <div class="pk" style="left:1275px; --lane:2">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Steve McCann — Star Entertainment Group · A$9.66m"><b>Steve McCann</b> <span class="mono">A$9.66m</span> <i>Star Entertainment Group</i></div>
+      <button class="pk-label" data-id="star-entertainment-group-2026" title="Steve McCann — Star Entertainment Group · A$9.66m"><b>Steve McCann</b> <span class="mono">A$9.66m</span> <i>Star Entertainment Group</i></button>
     </div>
     <div class="pk" style="left:1344px; --lane:3">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Wes Powell — Aimco · US$6.72m"><b>Wes Powell</b> <span class="mono">US$6.72m</span> <i>Aimco</i></div>
+      <button class="pk-label" data-id="aimco-2025" title="Wes Powell — Aimco · US$6.72m"><b>Wes Powell</b> <span class="mono">US$6.72m</span> <i>Aimco</i></button>
     </div>
     <div class="pk" style="left:1372px; --lane:4">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Matt Comyn — Commonwealth Bank · A$10.4m"><b>Matt Comyn</b> <span class="mono">A$10.4m</span> <i>Commonwealth Bank</i></div>
+      <button class="pk-label" data-id="cba-2023-comyn" title="Matt Comyn — Commonwealth Bank · A$10.4m"><b>Matt Comyn</b> <span class="mono">A$10.4m</span> <i>Commonwealth Bank</i></button>
     </div>
     <div class="pk" style="left:1422px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Noel Quinn — HSBC · £5.6m"><b>Noel Quinn</b> <span class="mono">£5.6m</span> <i>HSBC</i></div>
+      <button class="pk-label" data-id="hsbc-2022-quinn" title="Noel Quinn — HSBC · £5.6m"><b>Noel Quinn</b> <span class="mono">£5.6m</span> <i>HSBC</i></button>
     </div>
     <div class="pk" style="left:1473px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Rico Back — Royal Mail · £5.8m"><b>Rico Back</b> <span class="mono">£5.8m</span> <i>Royal Mail</i></div>
+      <button class="pk-label" data-id="royal-mail-2018-back" title="Rico Back — Royal Mail · £5.8m"><b>Rico Back</b> <span class="mono">£5.8m</span> <i>Royal Mail</i></button>
     </div>
     <div class="pk" style="left:1512px; --lane:2">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Christian Sewing — Deutsche Bank · €7m"><b>Christian Sewing</b> <span class="mono">€7m</span> <i>Deutsche Bank</i></div>
+      <button class="pk-label" data-id="deutsche-bank-2018-sewing" title="Christian Sewing — Deutsche Bank · €7m"><b>Christian Sewing</b> <span class="mono">€7m</span> <i>Deutsche Bank</i></button>
     </div>
     <div class="pk" style="left:1555px; --lane:3">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Carlos Ghosn — Renault · €7.2m"><b>Carlos Ghosn</b> <span class="mono">€7.2m</span> <i>Renault</i></div>
+      <button class="pk-label" data-id="renault-2016-ghosn" title="Carlos Ghosn — Renault · €7.2m"><b>Carlos Ghosn</b> <span class="mono">€7.2m</span> <i>Renault</i></button>
     </div>
     <div class="pk" style="left:1563px; --lane:4">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Rainer Seele — OMV · €7.24m"><b>Rainer Seele</b> <span class="mono">€7.24m</span> <i>OMV</i></div>
+      <button class="pk-label" data-id="omv-2019-seele" title="Rainer Seele — OMV · €7.24m"><b>Rainer Seele</b> <span class="mono">€7.24m</span> <i>OMV</i></button>
     </div>
     <div class="pk" style="left:1576px; --lane:5">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Martin Winterkorn — Volkswagen · €7.3m"><b>Martin Winterkorn</b> <span class="mono">€7.3m</span> <i>Volkswagen</i></div>
+      <button class="pk-label" data-id="volkswagen-2015-winterkorn" title="Martin Winterkorn — Volkswagen · €7.3m"><b>Martin Winterkorn</b> <span class="mono">€7.3m</span> <i>Volkswagen</i></button>
     </div>
     <div class="pk" style="left:1595px; --lane:6">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Kyle Sandilands — ARN Media · A$12.09m"><b>Kyle Sandilands</b> <span class="mono">A$12.09m</span> <i>ARN Media</i></div>
+      <button class="pk-label" data-id="arn-2026-sandilands" title="Kyle Sandilands — ARN Media · A$12.09m"><b>Kyle Sandilands</b> <span class="mono">A$12.09m</span> <i>ARN Media</i></button>
     </div>
     <div class="pk" style="left:1620px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Frans Muller — Ahold Delhaize · €7.5m"><b>Frans Muller</b> <span class="mono">€7.5m</span> <i>Ahold Delhaize</i></div>
+      <button class="pk-label" data-id="ahold-2025-muller" title="Frans Muller — Ahold Delhaize · €7.5m"><b>Frans Muller</b> <span class="mono">€7.5m</span> <i>Ahold Delhaize</i></button>
     </div>
     <div class="pk" style="left:1721px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Galen Weston — Loblaw · C$11.79m"><b>Galen Weston</b> <span class="mono">C$11.79m</span> <i>Loblaw</i></div>
+      <button class="pk-label" data-id="loblaw-2022-weston" title="Galen Weston — Loblaw · C$11.79m"><b>Galen Weston</b> <span class="mono">C$11.79m</span> <i>Loblaw</i></button>
     </div>
     <div class="pk" style="left:1800px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Kenny Fihla — Absa Group · R148m (US$9m)"><b>Kenny Fihla</b> <span class="mono">R148m (US$9m)</span> <i>Absa Group</i></div>
+      <button class="pk-label" data-id="absa-group-2026" title="Kenny Fihla — Absa Group · R148m (US$9m)"><b>Kenny Fihla</b> <span class="mono">R148m (US$9m)</span> <i>Absa Group</i></button>
     </div>
     <div class="pk" style="left:1800px; --lane:2">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Salil Parekh — Infosys · ₹82.6 crore (US$9m)"><b>Salil Parekh</b> <span class="mono">₹82.6 crore (US$9m)</span> <i>Infosys</i></div>
+      <button class="pk-label" data-id="infosys-2026-parekh" title="Salil Parekh — Infosys · ₹82.6 crore (US$9m)"><b>Salil Parekh</b> <span class="mono">₹82.6 crore (US$9m)</span> <i>Infosys</i></button>
     </div>
     <div class="pk" style="left:2000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Pat Gelsinger — Intel · US$10m"><b>Pat Gelsinger</b> <span class="mono">US$10m</span> <i>Intel</i></div>
+      <button class="pk-label" data-id="intel-2024-gelsinger" title="Pat Gelsinger — Intel · US$10m"><b>Pat Gelsinger</b> <span class="mono">US$10m</span> <i>Intel</i></button>
     </div>
     <div class="pk" style="left:2000px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Eduardo Bartolomeo — Vale · R$55m (US$10m)"><b>Eduardo Bartolomeo</b> <span class="mono">R$55m (US$10m)</span> <i>Vale</i></div>
+      <button class="pk-label" data-id="vale-2021-bartolomeo" title="Eduardo Bartolomeo — Vale · R$55m (US$10m)"><b>Eduardo Bartolomeo</b> <span class="mono">R$55m (US$10m)</span> <i>Vale</i></button>
     </div>
     <div class="pk" style="left:2520px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Euisun Chung — Hyundai Motor · ₩17.5bn (US$12.6m)"><b>Euisun Chung</b> <span class="mono">₩17.5bn (US$12.6m)</span> <i>Hyundai Motor</i></div>
+      <button class="pk-label" data-id="hyundai-2025-chung" title="Euisun Chung — Hyundai Motor · ₩17.5bn (US$12.6m)"><b>Euisun Chung</b> <span class="mono">₩17.5bn (US$12.6m)</span> <i>Hyundai Motor</i></button>
     </div>
     <div class="pk" style="left:2680px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Alan Shaw — Norfolk Southern · US$13.4m"><b>Alan Shaw</b> <span class="mono">US$13.4m</span> <i>Norfolk Southern</i></div>
+      <button class="pk-label" data-id="norfolk-southern-2023-shaw" title="Alan Shaw — Norfolk Southern · US$13.4m"><b>Alan Shaw</b> <span class="mono">US$13.4m</span> <i>Norfolk Southern</i></button>
     </div>
     <div class="pk" style="left:2700px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Akio Toyoda — Toyota · ¥1.95bn (US$13.5m)"><b>Akio Toyoda</b> <span class="mono">¥1.95bn (US$13.5m)</span> <i>Toyota</i></div>
+      <button class="pk-label" data-id="toyota-2025-toyoda" title="Akio Toyoda — Toyota · ¥1.95bn (US$13.5m)"><b>Akio Toyoda</b> <span class="mono">¥1.95bn (US$13.5m)</span> <i>Toyota</i></button>
     </div>
     <div class="pk" style="left:2824px; --lane:2">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Alan Joyce — Qantas · A$21.4m"><b>Alan Joyce</b> <span class="mono">A$21.4m</span> <i>Qantas</i></div>
+      <button class="pk-label" data-id="qantas-2023-joyce-exit" title="Alan Joyce — Qantas · A$21.4m"><b>Alan Joyce</b> <span class="mono">A$21.4m</span> <i>Qantas</i></button>
     </div>
     <div class="pk" style="left:2851px; --lane:3">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Andrea Orcel — UniCredit · €13.2m"><b>Andrea Orcel</b> <span class="mono">€13.2m</span> <i>UniCredit</i></div>
+      <button class="pk-label" data-id="unicredit-2024-orcel" title="Andrea Orcel — UniCredit · €13.2m"><b>Andrea Orcel</b> <span class="mono">€13.2m</span> <i>UniCredit</i></button>
     </div>
     <div class="pk" style="left:3180px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Sergio Ermotti — UBS · CHF14.4m (US$15.9m)"><b>Sergio Ermotti</b> <span class="mono">CHF14.4m (US$15.9m)</span> <i>UBS</i></div>
+      <button class="pk-label" data-id="ubs-2023-ermotti" title="Sergio Ermotti — UBS · CHF14.4m (US$15.9m)"><b>Sergio Ermotti</b> <span class="mono">CHF14.4m (US$15.9m)</span> <i>UBS</i></button>
     </div>
     <div class="pk" style="left:3200px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Robert Allen — AT&amp;T · US$16m"><b>Robert Allen</b> <span class="mono">US$16m</span> <i>AT&amp;T</i></div>
+      <button class="pk-label" data-id="att-1996-allen" title="Robert Allen — AT&amp;T · US$16m"><b>Robert Allen</b> <span class="mono">US$16m</span> <i>AT&amp;T</i></button>
     </div>
     <div class="pk" style="left:3378px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Jean-Sébastien Jacques — Rio Tinto · £13.3m"><b>Jean-Sébastien Jacques</b> <span class="mono">£13.3m</span> <i>Rio Tinto</i></div>
+      <button class="pk-label" data-id="rio-tinto-2020-jacques" title="Jean-Sébastien Jacques — Rio Tinto · £13.3m"><b>Jean-Sébastien Jacques</b> <span class="mono">£13.3m</span> <i>Rio Tinto</i></button>
     </div>
     <div class="pk" style="left:3505px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Wael Sawan — Shell · £13.8m"><b>Wael Sawan</b> <span class="mono">£13.8m</span> <i>Shell</i></div>
+      <button class="pk-label" data-id="shell-2026" title="Wael Sawan — Shell · £13.8m"><b>Wael Sawan</b> <span class="mono">£13.8m</span> <i>Shell</i></button>
     </div>
     <div class="pk" style="left:3560px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="John Foley — Peloton · US$17.8m"><b>John Foley</b> <span class="mono">US$17.8m</span> <i>Peloton</i></div>
+      <button class="pk-label" data-id="peloton-2021-foley" title="John Foley — Peloton · US$17.8m"><b>John Foley</b> <span class="mono">US$17.8m</span> <i>Peloton</i></button>
     </div>
     <div class="pk" style="left:3700px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Tony Hayward — BP · £12m (US$18.5m)"><b>Tony Hayward</b> <span class="mono">£12m (US$18.5m)</span> <i>BP</i></div>
+      <button class="pk-label" data-id="bp-2010-hayward" title="Tony Hayward — BP · £12m (US$18.5m)"><b>Tony Hayward</b> <span class="mono">£12m (US$18.5m)</span> <i>BP</i></button>
     </div>
     <div class="pk" style="left:3708px; --lane:2">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Sukhinder Singh Cassidy — Xero · NZ$30.9m"><b>Sukhinder Singh Cassidy</b> <span class="mono">NZ$30.9m</span> <i>Xero</i></div>
+      <button class="pk-label" data-id="xero-2026-fy27-package" title="Sukhinder Singh Cassidy — Xero · NZ$30.9m"><b>Sukhinder Singh Cassidy</b> <span class="mono">NZ$30.9m</span> <i>Xero</i></button>
     </div>
     <div class="pk" style="left:4000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Kåre Schultz — Teva · US$20m"><b>Kåre Schultz</b> <span class="mono">US$20m</span> <i>Teva</i></div>
+      <button class="pk-label" data-id="teva-2017-schultz" title="Kåre Schultz — Teva · US$20m"><b>Kåre Schultz</b> <span class="mono">US$20m</span> <i>Teva</i></button>
     </div>
     <div class="pk" style="left:4280px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Carly Fiorina — Hewlett-Packard · US$21.4m"><b>Carly Fiorina</b> <span class="mono">US$21.4m</span> <i>Hewlett-Packard</i></div>
+      <button class="pk-label" data-id="hp-2005-fiorina" title="Carly Fiorina — Hewlett-Packard · US$21.4m"><b>Carly Fiorina</b> <span class="mono">US$21.4m</span> <i>Hewlett-Packard</i></button>
     </div>
     <div class="pk" style="left:4292px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Pascal Soriot — AstraZeneca · £16.9m"><b>Pascal Soriot</b> <span class="mono">£16.9m</span> <i>AstraZeneca</i></div>
+      <button class="pk-label" data-id="astrazeneca-2023-soriot" title="Pascal Soriot — AstraZeneca · £16.9m"><b>Pascal Soriot</b> <span class="mono">£16.9m</span> <i>AstraZeneca</i></button>
     </div>
     <div class="pk" style="left:4920px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Albert Bourla — Pfizer · US$24.6m"><b>Albert Bourla</b> <span class="mono">US$24.6m</span> <i>Pfizer</i></div>
+      <button class="pk-label" data-id="pfizer-2024-bourla" title="Albert Bourla — Pfizer · US$24.6m"><b>Albert Bourla</b> <span class="mono">US$24.6m</span> <i>Pfizer</i></button>
     </div>
     <div class="pk" style="left:5600px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Ari Bousbib — IQVIA · US$28m"><b>Ari Bousbib</b> <span class="mono">US$28m</span> <i>IQVIA</i></div>
+      <button class="pk-label" data-id="iqvia-2026-bousbib" title="Ari Bousbib — IQVIA · US$28m"><b>Ari Bousbib</b> <span class="mono">US$28m</span> <i>IQVIA</i></button>
     </div>
     <div class="pk" style="left:6559px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Dave Calhoun — Boeing · US$32.8m"><b>Dave Calhoun</b> <span class="mono">US$32.8m</span> <i>Boeing</i></div>
+      <button class="pk-label" data-id="boeing-2023-calhoun" title="Dave Calhoun — Boeing · US$32.8m"><b>Dave Calhoun</b> <span class="mono">US$32.8m</span> <i>Boeing</i></button>
     </div>
     <div class="pk" style="left:7730px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Andrew Wilson — Electronic Arts · US$38.65m"><b>Andrew Wilson</b> <span class="mono">US$38.65m</span> <i>Electronic Arts</i></div>
+      <button class="pk-label" data-id="ea-2026-wilson" title="Andrew Wilson — Electronic Arts · US$38.65m"><b>Andrew Wilson</b> <span class="mono">US$38.65m</span> <i>Electronic Arts</i></button>
     </div>
     <div class="pk" style="left:7884px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Carlos Tavares — Stellantis · €36.5m"><b>Carlos Tavares</b> <span class="mono">€36.5m</span> <i>Stellantis</i></div>
+      <button class="pk-label" data-id="stellantis-2023-tavares" title="Carlos Tavares — Stellantis · €36.5m"><b>Carlos Tavares</b> <span class="mono">€36.5m</span> <i>Stellantis</i></button>
     </div>
     <div class="pk" style="left:8316px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Daniel Bernard — Carrefour · €38.5m"><b>Daniel Bernard</b> <span class="mono">€38.5m</span> <i>Carrefour</i></div>
+      <button class="pk-label" data-id="carrefour-2005-bernard" title="Daniel Bernard — Carrefour · €38.5m"><b>Daniel Bernard</b> <span class="mono">€38.5m</span> <i>Carrefour</i></button>
     </div>
     <div class="pk" style="left:8800px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Xia Haijun — China Evergrande · RMB298m (US$44m)"><b>Xia Haijun</b> <span class="mono">RMB298m (US$44m)</span> <i>China Evergrande</i></div>
+      <button class="pk-label" data-id="evergrande-2017-xia" title="Xia Haijun — China Evergrande · RMB298m (US$44m)"><b>Xia Haijun</b> <span class="mono">RMB298m (US$44m)</span> <i>China Evergrande</i></button>
     </div>
     <div class="pk" style="left:10380px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="David Zaslav — Warner Bros. Discovery · US$51.9m"><b>David Zaslav</b> <span class="mono">US$51.9m</span> <i>Warner Bros. Discovery</i></div>
+      <button class="pk-label" data-id="wbd-2024-zaslav" title="David Zaslav — Warner Bros. Discovery · US$51.9m"><b>David Zaslav</b> <span class="mono">US$51.9m</span> <i>Warner Bros. Discovery</i></button>
     </div>
     <div class="pk" style="left:10600px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="F. Ross Johnson — RJR Nabisco · US$53m"><b>F. Ross Johnson</b> <span class="mono">US$53m</span> <i>RJR Nabisco</i></div>
+      <button class="pk-label" data-id="rjr-nabisco-1989-johnson" title="F. Ross Johnson — RJR Nabisco · US$53m"><b>F. Ross Johnson</b> <span class="mono">US$53m</span> <i>RJR Nabisco</i></button>
     </div>
     <div class="pk" style="left:14644px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Andrea Orcel — Santander · €67.8m"><b>Andrea Orcel</b> <span class="mono">€67.8m</span> <i>Santander</i></div>
+      <button class="pk-label" data-id="santander-2021-orcel-award" title="Andrea Orcel — Santander · €67.8m"><b>Andrea Orcel</b> <span class="mono">€67.8m</span> <i>Santander</i></button>
     </div>
     <div class="pk" style="left:15980px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Marc Casper — Thermo Fisher Scientific · US$79.9m"><b>Marc Casper</b> <span class="mono">US$79.9m</span> <i>Thermo Fisher Scientific</i></div>
+      <button class="pk-label" data-id="thermo-fisher-2025-casper" title="Marc Casper — Thermo Fisher Scientific · US$79.9m"><b>Marc Casper</b> <span class="mono">US$79.9m</span> <i>Thermo Fisher Scientific</i></button>
     </div>
     <div class="pk" style="left:16000px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Carlos Ghosn — Nissan · US$80m"><b>Carlos Ghosn</b> <span class="mono">US$80m</span> <i>Nissan</i></div>
+      <button class="pk-label" data-id="nissan-2018-ghosn" title="Carlos Ghosn — Nissan · US$80m"><b>Carlos Ghosn</b> <span class="mono">US$80m</span> <i>Nissan</i></button>
     </div>
     <div class="pk" style="left:17600px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Percy Barnevik — ABB · CHF148m (US$88m)"><b>Percy Barnevik</b> <span class="mono">CHF148m (US$88m)</span> <i>ABB</i></div>
+      <button class="pk-label" data-id="abb-2002-barnevik" title="Percy Barnevik — ABB · CHF148m (US$88m)"><b>Percy Barnevik</b> <span class="mono">CHF148m (US$88m)</span> <i>ABB</i></button>
     </div>
     <div class="pk" style="left:17780px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Martin Sorrell — WPP · £70m"><b>Martin Sorrell</b> <span class="mono">£70m</span> <i>WPP</i></div>
+      <button class="pk-label" data-id="wpp-2015-sorrell" title="Martin Sorrell — WPP · £70m"><b>Martin Sorrell</b> <span class="mono">£70m</span> <i>WPP</i></button>
     </div>
     <div class="pk" style="left:18000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Andy Rubin — Google · US$90m"><b>Andy Rubin</b> <span class="mono">US$90m</span> <i>Google</i></div>
+      <button class="pk-label" data-id="google-2014-rubin" title="Andy Rubin — Google · US$90m"><b>Andy Rubin</b> <span class="mono">US$90m</span> <i>Google</i></button>
     </div>
     <div class="pk" style="left:19050px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Jeff Fairburn — Persimmon · £75m"><b>Jeff Fairburn</b> <span class="mono">£75m</span> <i>Persimmon</i></div>
+      <button class="pk-label" data-id="persimmon-2018-fairburn" title="Jeff Fairburn — Persimmon · £75m"><b>Jeff Fairburn</b> <span class="mono">£75m</span> <i>Persimmon</i></button>
     </div>
     <div class="pk" style="left:19200px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Brian Niccol — Starbucks · US$96m"><b>Brian Niccol</b> <span class="mono">US$96m</span> <i>Starbucks</i></div>
+      <button class="pk-label" data-id="starbucks-2024-niccol" title="Brian Niccol — Starbucks · US$96m"><b>Brian Niccol</b> <span class="mono">US$96m</span> <i>Starbucks</i></button>
     </div>
     <div class="pk" style="left:19600px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Lee Raymond — ExxonMobil · US$98m"><b>Lee Raymond</b> <span class="mono">US$98m</span> <i>ExxonMobil</i></div>
+      <button class="pk-label" data-id="exxonmobil-2005-raymond" title="Lee Raymond — ExxonMobil · US$98m"><b>Lee Raymond</b> <span class="mono">US$98m</span> <i>ExxonMobil</i></button>
     </div>
     <div class="pk" style="left:20000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Al Dunlap — Scott Paper · US$100m"><b>Al Dunlap</b> <span class="mono">US$100m</span> <i>Scott Paper</i></div>
+      <button class="pk-label" data-id="scott-paper-1995-dunlap" title="Al Dunlap — Scott Paper · US$100m"><b>Al Dunlap</b> <span class="mono">US$100m</span> <i>Scott Paper</i></button>
     </div>
     <div class="pk" style="left:21400px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Russell Artzt — Computer Associates · US$107m"><b>Russell Artzt</b> <span class="mono">US$107m</span> <i>Computer Associates</i></div>
+      <button class="pk-label" data-id="computer-associates-1998-artzt" title="Russell Artzt — Computer Associates · US$107m"><b>Russell Artzt</b> <span class="mono">US$107m</span> <i>Computer Associates</i></button>
     </div>
     <div class="pk" style="left:21600px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Michael O&#x27;Leary — Ryanair · €100m"><b>Michael O&#x27;Leary</b> <span class="mono">€100m</span> <i>Ryanair</i></div>
+      <button class="pk-label" data-id="ryanair-2025-oleary" title="Michael O&#x27;Leary — Ryanair · €100m"><b>Michael O&#x27;Leary</b> <span class="mono">€100m</span> <i>Ryanair</i></button>
     </div>
     <div class="pk" style="left:26000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="John Stumpf — Wells Fargo · US$130m"><b>John Stumpf</b> <span class="mono">US$130m</span> <i>Wells Fargo</i></div>
+      <button class="pk-label" data-id="wells-fargo-2016-stumpf" title="John Stumpf — Wells Fargo · US$130m"><b>John Stumpf</b> <span class="mono">US$130m</span> <i>Wells Fargo</i></button>
     </div>
     <div class="pk" style="left:27900px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Richard Grasso — New York Stock Exchange · US$139.5m"><b>Richard Grasso</b> <span class="mono">US$139.5m</span> <i>New York Stock Exchange</i></div>
+      <button class="pk-label" data-id="nyse-2003-grasso" title="Richard Grasso — New York Stock Exchange · US$139.5m"><b>Richard Grasso</b> <span class="mono">US$139.5m</span> <i>New York Stock Exchange</i></button>
     </div>
     <div class="pk" style="left:28000px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Michael Ovitz — The Walt Disney Company · US$140m"><b>Michael Ovitz</b> <span class="mono">US$140m</span> <i>The Walt Disney Company</i></div>
+      <button class="pk-label" data-id="disney-1996-ovitz" title="Michael Ovitz — The Walt Disney Company · US$140m"><b>Michael Ovitz</b> <span class="mono">US$140m</span> <i>The Walt Disney Company</i></button>
     </div>
     <div class="pk" style="left:30200px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Nikesh Arora — Palo Alto Networks · US$151m"><b>Nikesh Arora</b> <span class="mono">US$151m</span> <i>Palo Alto Networks</i></div>
+      <button class="pk-label" data-id="palo-alto-2023-arora" title="Nikesh Arora — Palo Alto Networks · US$151m"><b>Nikesh Arora</b> <span class="mono">US$151m</span> <i>Palo Alto Networks</i></button>
     </div>
     <div class="pk" style="left:31800px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="John Hammergren — McKesson · US$159m"><b>John Hammergren</b> <span class="mono">US$159m</span> <i>McKesson</i></div>
+      <button class="pk-label" data-id="mckesson-2013-hammergren" title="John Hammergren — McKesson · US$159m"><b>John Hammergren</b> <span class="mono">US$159m</span> <i>McKesson</i></button>
     </div>
     <div class="pk" style="left:32300px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Stan O&#x27;Neal — Merrill Lynch · US$161.5m"><b>Stan O&#x27;Neal</b> <span class="mono">US$161.5m</span> <i>Merrill Lynch</i></div>
+      <button class="pk-label" data-id="merrill-lynch-2007-oneal" title="Stan O&#x27;Neal — Merrill Lynch · US$161.5m"><b>Stan O&#x27;Neal</b> <span class="mono">US$161.5m</span> <i>Merrill Lynch</i></button>
     </div>
     <div class="pk" style="left:36000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Hank McKinnell — Pfizer · US$180m"><b>Hank McKinnell</b> <span class="mono">US$180m</span> <i>Pfizer</i></div>
+      <button class="pk-label" data-id="pfizer-2006-mckinnell" title="Hank McKinnell — Pfizer · US$180m"><b>Hank McKinnell</b> <span class="mono">US$180m</span> <i>Pfizer</i></button>
     </div>
     <div class="pk" style="left:41060px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Hock Tan — Broadcom · US$205.3m"><b>Hock Tan</b> <span class="mono">US$205.3m</span> <i>Broadcom</i></div>
+      <button class="pk-label" data-id="broadcom-2025-tan" title="Hock Tan — Broadcom · US$205.3m"><b>Hock Tan</b> <span class="mono">US$205.3m</span> <i>Broadcom</i></button>
     </div>
     <div class="pk" style="left:42000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Robert Nardelli — Home Depot · US$210m"><b>Robert Nardelli</b> <span class="mono">US$210m</span> <i>Home Depot</i></div>
+      <button class="pk-label" data-id="home-depot-2007-nardelli" title="Robert Nardelli — Home Depot · US$210m"><b>Robert Nardelli</b> <span class="mono">US$210m</span> <i>Home Depot</i></button>
     </div>
     <div class="pk" style="left:49320px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="David Zaslav — Discovery · US$246.6m"><b>David Zaslav</b> <span class="mono">US$246.6m</span> <i>Discovery</i></div>
+      <button class="pk-label" data-id="discovery-2021-zaslav" title="David Zaslav — Discovery · US$246.6m"><b>David Zaslav</b> <span class="mono">US$246.6m</span> <i>Discovery</i></button>
     </div>
     <div class="pk" style="left:56160px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Niraj Shah — Wayfair · US$280.8m"><b>Niraj Shah</b> <span class="mono">US$280.8m</span> <i>Wayfair</i></div>
+      <button class="pk-label" data-id="wayfair-2025-shah-grant" title="Niraj Shah — Wayfair · US$280.8m"><b>Niraj Shah</b> <span class="mono">US$280.8m</span> <i>Wayfair</i></button>
     </div>
     <div class="pk" style="left:56200px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Sundar Pichai — Alphabet · US$281m"><b>Sundar Pichai</b> <span class="mono">US$281m</span> <i>Alphabet</i></div>
+      <button class="pk-label" data-id="alphabet-2019-pichai" title="Sundar Pichai — Alphabet · US$281m"><b>Sundar Pichai</b> <span class="mono">US$281m</span> <i>Alphabet</i></button>
     </div>
     <div class="pk" style="left:64200px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Sanjay Kumar — Computer Associates · US$321m"><b>Sanjay Kumar</b> <span class="mono">US$321m</span> <i>Computer Associates</i></div>
+      <button class="pk-label" data-id="computer-associates-1998-kumar" title="Sanjay Kumar — Computer Associates · US$321m"><b>Sanjay Kumar</b> <span class="mono">US$321m</span> <i>Computer Associates</i></button>
     </div>
     <div class="pk" style="left:80600px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="RJ Scaringe — Rivian · US$403m"><b>RJ Scaringe</b> <span class="mono">US$403m</span> <i>Rivian</i></div>
+      <button class="pk-label" data-id="rivian-2026" title="RJ Scaringe — Rivian · US$403m"><b>RJ Scaringe</b> <span class="mono">US$403m</span> <i>Rivian</i></button>
     </div>
     <div class="pk" style="left:89000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Adam Neumann — WeWork · US$445m"><b>Adam Neumann</b> <span class="mono">US$445m</span> <i>WeWork</i></div>
+      <button class="pk-label" data-id="wework-2021-neumann" title="Adam Neumann — WeWork · US$445m"><b>Adam Neumann</b> <span class="mono">US$445m</span> <i>WeWork</i></button>
     </div>
     <div class="pk" style="left:89600px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Sridhar Ramaswamy — Snowflake · US$448m"><b>Sridhar Ramaswamy</b> <span class="mono">US$448m</span> <i>Snowflake</i></div>
+      <button class="pk-label" data-id="snowflake-2026-ramaswamy" title="Sridhar Ramaswamy — Snowflake · US$448m"><b>Sridhar Ramaswamy</b> <span class="mono">US$448m</span> <i>Snowflake</i></button>
     </div>
     <div class="pk" style="left:89600px; --lane:1">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="William McGuire — UnitedHealth Group · US$448m"><b>William McGuire</b> <span class="mono">US$448m</span> <i>UnitedHealth Group</i></div>
+      <button class="pk-label" data-id="unitedhealth-2006-mcguire" title="William McGuire — UnitedHealth Group · US$448m"><b>William McGuire</b> <span class="mono">US$448m</span> <i>UnitedHealth Group</i></button>
     </div>
     <div class="pk" style="left:96800px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Dick Fuld — Lehman Brothers · US$484m"><b>Dick Fuld</b> <span class="mono">US$484m</span> <i>Lehman Brothers</i></div>
+      <button class="pk-label" data-id="lehman-2008-fuld" title="Dick Fuld — Lehman Brothers · US$484m"><b>Dick Fuld</b> <span class="mono">US$484m</span> <i>Lehman Brothers</i></button>
     </div>
     <div class="pk" style="left:104300px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Angelo Mozilo — Countrywide Financial · US$521.5m"><b>Angelo Mozilo</b> <span class="mono">US$521.5m</span> <i>Countrywide Financial</i></div>
+      <button class="pk-label" data-id="countrywide-2008-mozilo" title="Angelo Mozilo — Countrywide Financial · US$521.5m"><b>Angelo Mozilo</b> <span class="mono">US$521.5m</span> <i>Countrywide Financial</i></button>
     </div>
     <div class="pk" style="left:113000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Michael Eisner — The Walt Disney Company · US$565m"><b>Michael Eisner</b> <span class="mono">US$565m</span> <i>The Walt Disney Company</i></div>
+      <button class="pk-label" data-id="disney-1997-eisner" title="Michael Eisner — The Walt Disney Company · US$565m"><b>Michael Eisner</b> <span class="mono">US$565m</span> <i>The Walt Disney Company</i></button>
     </div>
     <div class="pk" style="left:128600px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Charles Wang — Computer Associates · US$643m"><b>Charles Wang</b> <span class="mono">US$643m</span> <i>Computer Associates</i></div>
+      <button class="pk-label" data-id="computer-associates-1998-wang" title="Charles Wang — Computer Associates · US$643m"><b>Charles Wang</b> <span class="mono">US$643m</span> <i>Computer Associates</i></button>
     </div>
     <div class="pk" style="left:164200px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Shankh Mitra — Welltower · US$821m"><b>Shankh Mitra</b> <span class="mono">US$821m</span> <i>Welltower</i></div>
+      <button class="pk-label" data-id="welltower-2026-mitra" title="Shankh Mitra — Welltower · US$821m"><b>Shankh Mitra</b> <span class="mono">US$821m</span> <i>Welltower</i></button>
     </div>
     <div class="pk" style="left:220000px; --lane:0">
       <div class="pk-stem"></div>
       <div class="pk-dot"></div>
-      <div class="pk-label" title="Alex Karp — Palantir · US$1.1b"><b>Alex Karp</b> <span class="mono">US$1.1b</span> <i>Palantir</i></div>
+      <button class="pk-label" data-id="palantir-2020-karp-grant" title="Alex Karp — Palantir · US$1.1b"><b>Alex Karp</b> <span class="mono">US$1.1b</span> <i>Palantir</i></button>
     </div>
 
   <div class="endpanel" style="left:220280px">
@@ -1371,7 +1417,7 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
     <p><span class="mono">US$1.1b</span> at Palantir. One person, the whole page.</p>
     <p>Second place — Shankh Mitra on US$821m — stopped <b>55,800 pixels</b> back.</p>
     <p>The middle of the register is <span class="mono">US$16.0m</span>, which ends <b>3,200 pixels</b> in. The first <b>1.5%</b> of this page holds half of it.</p>
-<p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla — <b>909 times</b> the length of this page. Browsers refuse to draw it. So do we.</p><p class="notdrawn"><b>Not counted:</b> Hui Ka Yan&#x27;s US$8bn from China Evergrande was dividends on his own shareholding, not pay — the company paid him RMB126,000 in salary in 2022 — so it is recorded here but kept out of a total of remuneration.</p>
+<p class="notdrawn"><b>Not drawn:</b> Elon Musk’s US$1tn package at Tesla — <b>909 times</b> the length of this page. Browsers refuse to draw it. So do we.</p>
     <a class="back" href="index.html">Back to the register</a>
   </div>
 </div>
@@ -1384,6 +1430,59 @@ body.m-cum .t-abs, body.m-abs .t-cum { display:none; }
 
 <div class="hint" id="hint">scroll →</div>
 
+<div class="peek" id="peek" role="dialog" aria-label="Entry summary">
+  <button class="peek-close" id="peekClose" type="button" aria-label="Close">×</button>
+  <div class="peek-head"><span id="peekSerial"></span><span id="peekWhen"></span></div>
+  <h2 id="peekCo"></h2>
+  <p class="who" id="peekWho"></p>
+  <p class="fig" id="peekFig"></p>
+  <p class="note" id="peekNote"></p>
+  <a class="go" id="peekGo" href="index.html">Open in the register →</a>
+</div>
+
+<script>
+/* A name on the scale opens a card; the card leads to the entry. The register
+   holds the full text, so this carries only enough to decide whether to go. */
+(function () {
+  var PEEK = {"xero-2026-fy27-package":{"n":"BW-0107","e":"Sukhinder Singh Cassidy","r":"CEO","c":"Xero","x":"ASX","d":"2026-08","f":"NZ$30.9m","t":"Awarded in the same week the chair explained the company must 'remain competitive'."},"spark-2026-fy26-bonus":{"n":"BW-0106","e":"Jolie Hodson","r":"CEO","c":"Spark","x":"NZX","d":"2026-08","f":"NZ$886k","t":"The CEO says the bonus was 'based on performance'. The 627 staff were unavailable for comment."},"telstra-2026":{"n":"BW-0105","e":"Vicki Brady","r":"CEO","c":"Telstra","x":"ASX","d":"2026-08","f":"A$6.8m","t":"Her bonus was docked A$607,000. Her pay rose A$600,000."},"severn-trent-2026":{"n":"BW-0104","e":"James Jesic","r":"CEO","c":"Severn Trent","x":"LSE","d":"2026-07","f":"£4.8m","t":"Two hundred thousand hours of sewage. The long-term incentive plan was doubled."},"anglian-water-2025-thurston":{"n":"BW-0103","e":"Mark Thurston","r":"CEO","c":"Anglian Water","x":"Private (UK)","d":"2026-07","f":"£1.9m","t":"The bonus ban held. The £500,000 was not called a bonus."},"ea-2026-wilson":{"n":"BW-0102","e":"Andrew Wilson","r":"CEO","c":"Electronic Arts","x":"NASDAQ","d":"2026-07","f":"US$38.65m","t":"The teams that made the year's best-selling game were cut in the same year it paid for the jet."},"absa-group-2026":{"n":"BW-0101","e":"Kenny Fihla","r":"CEO","c":"Absa Group","x":"JSE","d":"2026-06","f":"R148m (US$9m)","t":"Two thirds of the package rewards work he did for a competitor."},"welltower-2026-mitra":{"n":"BW-0100","e":"Shankh Mitra","r":"CEO","c":"Welltower","x":"NYSE","d":"2026-06","f":"US$821m","t":"Eighty-one per cent said no. The vote was advisory."},"snowflake-2026-ramaswamy":{"n":"BW-0099","e":"Sridhar Ramaswamy","r":"CEO","c":"Snowflake","x":"NYSE","d":"2026-06","f":"US$448m","t":"They asked the shareholders what was wrong, listened, and lost the vote a second time."},"palo-alto-2023-arora":{"n":"BW-0098","e":"Nikesh Arora","r":"CEO","c":"Palo Alto Networks","x":"NASDAQ","d":"2026-06","f":"US$151m","t":"Seven rejections. Seven packages."},"iqvia-2026-bousbib":{"n":"BW-0097","e":"Ari Bousbib","r":"Chairman and CEO","c":"IQVIA","x":"NYSE","d":"2026-06","f":"US$28m","t":"Three quarters of the owners voted no. The package stood."},"arn-2026-sandilands":{"n":"BW-0096","e":"Kyle Sandilands","r":"Breakfast presenter, KIIS FM","c":"ARN Media","x":"ASX","d":"2026-06","f":"A$12.09m","t":"The contract was worth more than the company that signed it."},"wayfair-2025-shah-grant":{"n":"BW-0095","e":"Niraj Shah","r":"Co-founder & CEO","c":"Wayfair","x":"NYSE","d":"2026-05","f":"US$280.8m","t":"The US$80,000 salary is presumably for the days the stock units are resting."},"snowy-hydro-2026":{"n":"BW-0094","e":"Dennis Barnes","r":"CEO","c":"Snowy Hydro","x":"State-owned","d":"2026-05","f":"A$323k","t":"Six times over budget and years late, but the customer satisfaction target was met."},"infosys-2026-parekh":{"n":"BW-0093","e":"Salil Parekh","r":"CEO and MD","c":"Infosys","x":"NSE/NYSE","d":"2026-05","f":"₹82.6 crore (US$9m)","t":"Seven hundred and forty-two times the median. The median's rise was still under review."},"thermo-fisher-2025-casper":{"n":"BW-0092","e":"Marc Casper","r":"Chairman, President and CEO","c":"Thermo Fisher Scientific","x":"NYSE","d":"2026-05","f":"US$79.9m","t":"Retained at eighty million, against the wishes of two-thirds of the owners."},"edinburgh-2025-mathieson":{"n":"BW-0091","e":"Peter Mathieson","r":"Vice-Chancellor","c":"University of Edinburgh","x":"University (UK)","d":"2026-05","f":"£426k","t":"Eighteen million spent removing staff. Thirteen thousand more for the vice-chancellor."},"west-marine-2026-day":{"n":"BW-0090","e":"Paulee Day","r":"CEO","c":"West Marine","x":"Private","d":"2026-05","f":"US$425,000","t":"Sixteen days between the retention bonuses and the bankruptcy."},"rivian-2026":{"n":"BW-0089","e":"RJ Scaringe","r":"CEO and founder","c":"Rivian","x":"NASDAQ","d":"2026-04","f":"US$403m","t":"Forty-two thousand cars. Four hundred and three million dollars. Or, as one trade outlet measured it, fifteen Jim Farleys."},"klm-2026":{"n":"BW-0088","e":"Marjan Rintel","r":"CEO","c":"KLM","x":"Euronext","d":"2026-04","f":"€1.6m","t":"Labour productivity is to rise five per cent. The board did not specify whose labour."},"broadcom-2025-tan":{"n":"BW-0087","e":"Hock Tan","r":"CEO","c":"Broadcom","x":"NASDAQ","d":"2026-03","f":"US$205.3m","t":"Semiconductors had a good year. One person had a better one."},"shell-2026":{"n":"BW-0086","e":"Wael Sawan","r":"CEO","c":"Shell","x":"LSE","d":"2026-03","f":"£13.8m","t":"A 22% fall in profit earned a 60% rise in pay. The board's response was to propose making the arithmetic more generous."},"hyundai-2025-chung":{"n":"BW-0085","e":"Euisun Chung","r":"Executive chairman","c":"Hyundai Motor","x":"KRX","d":"2026-03","f":"₩17.5bn (US$12.6m)","t":"Seventy times, and widening."},"centrica-british-gas-2026":{"n":"BW-0084","e":"Chris O'Shea","r":"CEO","c":"Centrica (British Gas)","x":"LSE","d":"2026-02","f":"£3.6m","t":"O'Shea once said there was 'no point' trying to justify his £8.2m package. He has not attempted to justify this one either."},"ahold-2025-muller":{"n":"BW-0083","e":"Frans Muller","r":"CEO","c":"Ahold Delhaize","x":"Euronext","d":"2026-02","f":"€7.5m","t":"The ceiling rose by four million while the shop floor was offered two per cent and lost half the Sunday rate."},"exeter-2025-roberts":{"n":"BW-0082","e":"Lisa Roberts","r":"Vice-Chancellor","c":"University of Exeter","x":"University (UK)","d":"2026-02","f":"£392k","t":"Four hundred and twenty-seven people left. The vice-chancellor's pay went up by three thousand."},"anz-2025":{"n":"BW-0081","e":"Shayne Elliott","r":"Former CEO","c":"ANZ","x":"ASX","d":"2025-12","f":"A$7.9m","t":"The board called it accountability. The proxy advisers called it insufficient. Both were describing the same A$7.9m."},"aimco-2025":{"n":"BW-0080","e":"Wes Powell","r":"President and CEO","c":"Aimco","x":"NYSE","d":"2025-12","f":"US$6.72m","t":"A retention award, for staying until there is nothing left to stay for."},"tesla-2025-trillion-package":{"n":"BW-0079","e":"Elon Musk","r":"CEO","c":"Tesla","x":"NASDAQ","d":"2025-11","f":"US$1tn","t":"The largest pay package in corporate history, announced on stage with dancing robots. Too large to draw on our scale page — see for yourself."},"dallas-area-rapid-2025":{"n":"BW-0078","e":"Nadine Lee","r":"CEO","c":"Dallas Area Rapid Transit","x":"Public agency","d":"2025-11","f":"US$72,000","t":"The largest service cuts in the agency's history came in September. The bonus came in November. Nadine Lee announced her departure the following year."},"star-entertainment-group-2026":{"n":"BW-0077","e":"Steve McCann","r":"Former CEO","c":"Star Entertainment Group","x":"ASX","d":"2025-10","f":"A$9.66m","t":"Eight per cent of it was performance related. The A$91,337 of car parking, accommodation, airfares and travel was not."},"wessex-water-2025-jefferson":{"n":"BW-0076","e":"Ruth Jefferson","r":"CEO","c":"Wessex Water","x":"Private (UK)","d":"2025-10","f":"£670k","t":"Fourteen per cent for one. Three and a half for everyone else."},"woolworths-2025-bagattini":{"n":"BW-0075","e":"Roy Bagattini","r":"Group CEO","c":"Woolworths Holdings","x":"JSE","d":"2025-09","f":"R79.8m","t":"The bonus for performing was forfeited. The bonus for arriving was not."},"tricolor-2025":{"n":"BW-0074","e":"Daniel Chu","r":"CEO and founder","c":"Tricolor","x":"Private","d":"2025-08","f":"US$6.25m","t":"The bonus cleared. The payroll did not."},"ucare-2025":{"n":"BW-0073","e":"Hilary Marden-Resnik","r":"CEO","c":"UCare","x":"Nonprofit","d":"2025-08","f":"US$1.27m","t":"The plan lost US$397 for every dollar it paid her."},"toyota-2025-toyoda":{"n":"BW-0072","e":"Akio Toyoda","r":"Chairman","c":"Toyota","x":"TSE/NYSE","d":"2025-06","f":"¥1.95bn (US$13.5m)","t":"Twice the chief executive's pay, for not being chief executive."},"thames-water-2025-retention":{"n":"BW-0071","e":"Each of 21 senior executives","r":"Management retention scheme","c":"Thames Water","x":"Private (UK)","d":"2025-05","f":"£881k avg","t":"The chair told MPs the board 'does not intend to recover this money'. The sewage, presumably, also stays where it landed."},"ryanair-2025-oleary":{"n":"BW-0070","e":"Michael O'Leary","r":"CEO","c":"Ryanair","x":"Euronext/LSE","d":"2025-05","f":"€100m","t":"He compared it to a footballer's wages. Footballers do not approve their own transfer fees."},"wbd-2024-zaslav":{"n":"BW-0069","e":"David Zaslav","r":"CEO","c":"Warner Bros. Discovery","x":"NASDAQ","d":"2025-04","f":"US$51.9m","t":"The 'other' column includes US$991,179 for personal security and US$813,990 of personal jet use. His 401(k) match was US$20,700 — almost relatable."},"pfizer-2024-bourla":{"n":"BW-0068","e":"Albert Bourla","r":"CEO","c":"Pfizer","x":"NYSE","d":"2025-04","f":"US$24.6m","t":"Two hundred and sixty-nine times the median, for trailing the index."},"orsted-2024-nipper":{"n":"BW-0067","e":"Mads Nipper","r":"CEO (departing)","c":"Ørsted","x":"Nasdaq Copenhagen","d":"2025-02","f":"DKK18.9m (US$2.7m)","t":"Ninety-four billion of market value became fifteen. The severance was paid monthly for a year."},"starbucks-2024-niccol":{"n":"BW-0066","e":"Brian Niccol","r":"CEO","c":"Starbucks","x":"NASDAQ","d":"2025-01","f":"US$96m","t":"Works out near US$800,000 a day. The company also covered his jet commute from Southern California; relocation to Seattle was not required."},"united-utilities-2025-beardmore":{"n":"BW-0065","e":"Louise Beardmore","r":"CEO","c":"United Utilities","x":"LSE","d":"2025","f":"£2.5m","t":"Named in the Act. Paid anyway."},"wessex-water-2025-skellett":{"n":"BW-0064","e":"Colin Skellett","r":"Former CEO","c":"Wessex Water","x":"Private (UK)","d":"2025","f":"£693k","t":"Banned from taking a bonus at the water company. Paid one by its owner."},"unicredit-2024-orcel":{"n":"BW-0063","e":"Andrea Orcel","r":"CEO","c":"UniCredit","x":"Borsa Italiana","d":"2025","f":"€13.2m","t":"The revolt was over a package half this size."},"via-rail-2025-bonuses":{"n":"BW-0062","e":"The average VIA Rail executive","r":"Executive ranks","c":"VIA Rail","x":"Crown corporation (CA)","d":"2025","f":"C$115,293 avg","t":"Thirty-five per cent of trains on time. One hundred per cent of executives on a bonus."},"intel-2024-gelsinger":{"n":"BW-0061","e":"Pat Gelsinger","r":"CEO (departing)","c":"Intel","x":"NASDAQ","d":"2024-12","f":"US$10m","t":"The savings plan reached the benefits before it reached the severance."},"warehouse-group-2024":{"n":"BW-0060","e":"Nick Grayston","r":"Former CEO","c":"The Warehouse Group","x":"NZX","d":"2024-09","f":"NZ$2.2m","t":"He was paid NZ$2.2m to leave. Torpedo7 sold for a dollar."},"boeing-2023-calhoun":{"n":"BW-0059","e":"Dave Calhoun","r":"CEO (departing)","c":"Boeing","x":"NYSE","d":"2024-04","f":"US$32.8m","t":"He declined the US$2.8m annual incentive bonus after the door blew off. The other US$32.8m stayed bolted on."},"stellantis-2023-tavares":{"n":"BW-0058","e":"Carlos Tavares","r":"CEO","c":"Stellantis","x":"Euronext/NYSE","d":"2024-04","f":"€36.5m","t":"He compared his contract to a footballer's or an F1 driver's. Neither of those gets to restructure the stadium."},"astrazeneca-2023-soriot":{"n":"BW-0057","e":"Pascal Soriot","r":"CEO","c":"AstraZeneca","x":"LSE","d":"2024-04","f":"£16.9m","t":"A top-20 shareholder's rebuttal: he is 'massively underpaid'. Somewhere, a nurse doing a double shift agrees to disagree."},"po-ferries-2023-hebblethwaite":{"n":"BW-0056","e":"Peter Hebblethwaite","r":"CEO","c":"P&O Ferries","x":"Private (UK)","d":"2024-03","f":"£183k","t":"£4.87 an hour for the replacements. £183,000 for the man who chose them."},"ubs-2023-ermotti":{"n":"BW-0055","e":"Sergio Ermotti","r":"CEO","c":"UBS","x":"SIX/NYSE","d":"2024-03","f":"CHF14.4m (US$15.9m)","t":"Parliament responded by trying to make the number illegal."},"norfolk-southern-2023-shaw":{"n":"BW-0054","e":"Alan Shaw","r":"CEO","c":"Norfolk Southern","x":"NYSE","d":"2024-02","f":"US$13.4m","t":"The derailment had its own line in the bonus calculation. It raised the payout."},"qantas-2023-joyce-exit":{"n":"BW-0053","e":"Alan Joyce","r":"CEO (departing)","c":"Qantas","x":"ASX","d":"2023-09","f":"A$21.4m","t":"The board found his decisions caused 'considerable harm' to staff and customers. The remaining millions cleared for landing anyway."},"cba-2023-comyn":{"n":"BW-0052","e":"Matt Comyn","r":"CEO","c":"Commonwealth Bank","x":"ASX","d":"2023-08","f":"A$10.4m","t":"The margin that made the record was the gap between the savers and the borrowers."},"rte-2023-tubridy":{"n":"BW-0051","e":"Ryan Tubridy","r":"Presenter","c":"RTÉ","x":"State broadcaster (IE)","d":"2023-06","f":"€345k","t":"The declared figure was under half a million. That was the point of the arrangement."},"loblaw-2022-weston":{"n":"BW-0050","e":"Galen Weston","r":"Chairman and CEO","c":"Loblaw","x":"TSX","d":"2023-04","f":"C$11.79m","t":"The consultants were hired by the company. They found he was underpaid."},"svb-2023-becker":{"n":"BW-0049","e":"Greg Becker","r":"CEO","c":"Silicon Valley Bank","x":"NASDAQ","d":"2023-03","f":"US$3.6m","t":"The plan was filed in January. The bank failed in March."},"hsbc-2022-quinn":{"n":"BW-0048","e":"Noel Quinn","r":"CEO","c":"HSBC","x":"LSE/HKEX","d":"2023-02","f":"£5.6m","t":"Up 14% for one. Down 4% for the pool."},"tap-2022-reis":{"n":"BW-0047","e":"Alexandra Reis","r":"Former board member","c":"TAP Air Portugal","x":"State-owned (PT)","d":"2022-12","f":"€500k","t":"Half a million to leave a state airline, on the way into a government job that lasted a month."},"vale-2021-bartolomeo":{"n":"BW-0046","e":"Eduardo Bartolomeo","r":"CEO","c":"Vale","x":"B3/NYSE","d":"2022-07","f":"R$55m (US$10m)","t":"Three point six billion to shareholders. Six hundred and eighty-seven million to the people downstream."},"peloton-2021-foley":{"n":"BW-0045","e":"John Foley","r":"Co-founder and CEO","c":"Peloton","x":"NASDAQ","d":"2022-02","f":"US$17.8m","t":"A 57% rise, then the bikes stopped selling."},"santander-2021-orcel-award":{"n":"BW-0044","e":"Andrea Orcel","r":"CEO appointee (never started)","c":"Santander","x":"BME","d":"2021-12","f":"€67.8m","t":"Sixty-eight million euros for a job he did not start."},"palantir-2020-karp-grant":{"n":"BW-0043","e":"Alex Karp","r":"Co-founder & CEO","c":"Palantir","x":"NYSE","d":"2021-04","f":"US$1.1b","t":"By 2024 the same equity had ballooned so far that the SEC's 'compensation actually paid' line read US$6.8b. Palantir's footnote insists that isn't real money."},"rio-tinto-2020-jacques":{"n":"BW-0042","e":"Jean-Sébastien Jacques","r":"CEO (departing)","c":"Rio Tinto","x":"LSE/ASX","d":"2021-02","f":"£13.3m","t":"Forty-six thousand years, ended for an iron ore expansion. His best-paid year followed."},"wework-2021-neumann":{"n":"BW-0041","e":"Adam Neumann","r":"Co-founder and former CEO","c":"WeWork","x":"Private","d":"2021","f":"US$445m","t":"We over me."},"discovery-2021-zaslav":{"n":"BW-0040","e":"David Zaslav","r":"President and CEO","c":"Discovery","x":"NASDAQ","d":"2021","f":"US$246.6m","t":"Six times his own previous year, for a merger whose savings came out of other people's jobs."},"swedbank-2019-bonnesen":{"n":"BW-0039","e":"Birgitte Bonnesen","r":"Former CEO","c":"Swedbank","x":"Nasdaq Stockholm","d":"2020-03","f":"SEK26.6m (US$2.7m)","t":"Removed an hour before the shareholders could ask."},"alphabet-2019-pichai":{"n":"BW-0038","e":"Sundar Pichai","r":"CEO","c":"Alphabet","x":"NASDAQ","d":"2019-12","f":"US$281m","t":"The company paid US$310m to settle how it handled the payouts. He was paid US$281m."},"post-office-2019-vennells":{"n":"BW-0037","e":"Paula Vennells","r":"CEO","c":"Post Office","x":"State-owned (UK)","d":"2019-04","f":"£2.2m","t":"Seven hundred and thirty-six prosecutions. Two point two million in bonuses."},"deutsche-bank-2018-sewing":{"n":"BW-0036","e":"Christian Sewing","r":"CEO","c":"Deutsche Bank","x":"Frankfurt","d":"2019-03","f":"€7m","t":"Bonuses returned for the board first."},"omv-2019-seele":{"n":"BW-0035","e":"Rainer Seele","r":"CEO","c":"OMV","x":"Vienna","d":"2019","f":"€7.24m","t":"Twenty thousand a day. The flights were extra."},"nissan-2018-ghosn":{"n":"BW-0034","e":"Carlos Ghosn","r":"Chairman","c":"Nissan","x":"TSE","d":"2018-11","f":"US$80m","t":"Eighty million dollars, kept off the disclosure."},"persimmon-2018-fairburn":{"n":"BW-0033","e":"Jeff Fairburn","r":"CEO","c":"Persimmon","x":"LSE","d":"2018-11","f":"£75m","t":"A scheme to help people buy homes, and a bonus scaled to the share price it lifted."},"royal-mail-2018-back":{"n":"BW-0032","e":"Rico Back","r":"CEO","c":"Royal Mail","x":"LSE","d":"2018-07","f":"£5.8m","t":"A transfer fee, to move one man from one part of the company to another."},"carillion-2018-howson":{"n":"BW-0031","e":"Richard Howson","r":"Former CEO","c":"Carillion","x":"LSE","d":"2018-01","f":"£1.5m","t":"The clawback rules were changed first. The company collapsed second."},"evergrande-2017-xia":{"n":"BW-0030","e":"Xia Haijun","r":"Vice-chairman and chief executive","c":"China Evergrande","x":"HKEX","d":"2017-12","f":"RMB298m (US$44m)","t":"The wage king kept his. The staff were told to send fifteen per cent of theirs to a police account."},"teva-2017-schultz":{"n":"BW-0029","e":"Kåre Schultz","r":"CEO","c":"Teva","x":"TASE/NYSE","d":"2017-11","f":"US$20m","t":"The staff bonuses were cancelled. The management bonuses were not."},"wells-fargo-2016-stumpf":{"n":"BW-0028","e":"John Stumpf","r":"Chairman and CEO","c":"Wells Fargo","x":"NYSE","d":"2016-10","f":"US$130m","t":"Five thousand three hundred people were sacked for hitting the targets he set."},"wpp-2015-sorrell":{"n":"BW-0027","e":"Martin Sorrell","r":"CEO","c":"WPP","x":"LSE","d":"2016-06","f":"£70m","t":"Two shareholder revolts, four years apart, and the scheme paid out both times."},"volkswagen-2015-winterkorn":{"n":"BW-0026","e":"Martin Winterkorn","r":"Former CEO","c":"Volkswagen","x":"Frankfurt","d":"2016-04","f":"€7.3m","t":"A bonus for the year the cheating was found."},"renault-2016-ghosn":{"n":"BW-0025","e":"Carlos Ghosn","r":"Chairman and CEO","c":"Renault","x":"Euronext","d":"2016-04","f":"€7.2m","t":"The shareholders voted no. The board voted yes. The board won."},"google-2014-rubin":{"n":"BW-0024","e":"Andy Rubin","r":"SVP, mobile and digital content","c":"Google","x":"NASDAQ","d":"2014-10","f":"US$90m","t":"Ninety million dollars, and a public tribute on the way out."},"mckesson-2013-hammergren":{"n":"BW-0023","e":"John Hammergren","r":"Chairman and CEO","c":"McKesson","x":"NYSE","d":"2013-06","f":"US$159m","t":"The pension and the penalty are nine million dollars apart."},"bp-2010-hayward":{"n":"BW-0022","e":"Tony Hayward","r":"Group chief executive","c":"BP","x":"LSE/NYSE","d":"2010-10","f":"£12m (US$18.5m)","t":"Eleven people died. The pension was unaffected."},"rbs-2009-goodwin-pension":{"n":"BW-0021","e":"Fred Goodwin","r":"Former CEO","c":"Royal Bank of Scotland","x":"LSE","d":"2009-02","f":"£703k","t":"He took early retirement at fifty. The taxpayer did not."},"lehman-2008-fuld":{"n":"BW-0020","e":"Dick Fuld","r":"Chairman and CEO","c":"Lehman Brothers","x":"NYSE","d":"2008-10","f":"US$484m","t":"The pay was real money. The assets were not."},"countrywide-2008-mozilo":{"n":"BW-0019","e":"Angelo Mozilo","r":"Co-founder and CEO","c":"Countrywide Financial","x":"NYSE","d":"2008","f":"US$521.5m","t":"Half a billion dollars, and no charges."},"merrill-lynch-2007-oneal":{"n":"BW-0018","e":"Stan O'Neal","r":"Chairman and CEO","c":"Merrill Lynch","x":"NYSE","d":"2007-10","f":"US$161.5m","t":"Two per cent of the writedown, paid to the man who signed it off."},"home-depot-2007-nardelli":{"n":"BW-0017","e":"Robert Nardelli","r":"Chairman and CEO","c":"Home Depot","x":"NYSE","d":"2007-01","f":"US$210m","t":"Seven years of the customer-service budget, paid once, to one person."},"pfizer-2006-mckinnell":{"n":"BW-0016","e":"Hank McKinnell","r":"Chairman and CEO","c":"Pfizer","x":"NYSE","d":"2006-12","f":"US$180m","t":"Shareholders hired a plane. The banner read “Give it back, Hank!”"},"unitedhealth-2006-mcguire":{"n":"BW-0015","e":"William McGuire","r":"Chairman and CEO","c":"UnitedHealth Group","x":"NYSE","d":"2006-10","f":"US$448m","t":"The dates on the options were chosen after the fact."},"exxonmobil-2005-raymond":{"n":"BW-0014","e":"Lee Raymond","r":"Chairman and CEO","c":"ExxonMobil","x":"NYSE","d":"2005-12","f":"US$98m","t":"Forty-three years in, ninety-eight million out, forty-three front groups funded."},"hp-2005-fiorina":{"n":"BW-0013","e":"Carly Fiorina","r":"Chair and CEO","c":"Hewlett-Packard","x":"NYSE","d":"2005-02","f":"US$21.4m","t":"The merger cost thirty thousand jobs. Leaving it cost twenty-one million."},"carrefour-2005-bernard":{"n":"BW-0012","e":"Daniel Bernard","r":"Former CEO","c":"Carrefour","x":"Euronext","d":"2005","f":"€38.5m","t":"The shop floor found out and walked out."},"nyse-2003-grasso":{"n":"BW-0011","e":"Richard Grasso","r":"Chairman and CEO","c":"New York Stock Exchange","x":"Nonprofit","d":"2003-08","f":"US$139.5m","t":"A non-profit paid it. The courts let him keep it."},"abb-2002-barnevik":{"n":"BW-0010","e":"Percy Barnevik","r":"Former CEO and chairman","c":"ABB","x":"SIX/Nasdaq Stockholm","d":"2002-02","f":"CHF148m (US$88m)","t":"A pension the size of the hole the company was in."},"computer-associates-1998-wang":{"n":"BW-0009","e":"Charles Wang","r":"Chairman and CEO","c":"Computer Associates","x":"NYSE","d":"1998-05","f":"US$643m","t":"The grant was triggered by a share price the company was later accused of inventing."},"computer-associates-1998-kumar":{"n":"BW-0008","e":"Sanjay Kumar","r":"President and COO","c":"Computer Associates","x":"NYSE","d":"1998-05","f":"US$321m","t":"The price target was the trigger. The revenue behind it was invented."},"computer-associates-1998-artzt":{"n":"BW-0007","e":"Russell Artzt","r":"EVP, research and development","c":"Computer Associates","x":"NYSE","d":"1998-05","f":"US$107m","t":"The smallest share of the three, and still a hundred million dollars."},"disney-1997-eisner":{"n":"BW-0006","e":"Michael Eisner","r":"Chairman and CEO","c":"The Walt Disney Company","x":"NYSE","d":"1997-12","f":"US$565m","t":"The largest payday in history, one year after the largest payoff."},"disney-1996-ovitz":{"n":"BW-0005","e":"Michael Ovitz","r":"President","c":"The Walt Disney Company","x":"NYSE","d":"1996-12","f":"US$140m","t":"Ten million a month, and a court called it lawful."},"att-1996-allen":{"n":"BW-0004","e":"Robert Allen","r":"Chairman and CEO","c":"AT&T","x":"NYSE","d":"1996-02","f":"US$16m","t":"Forty thousand redundancies in January. The pay packet in February."},"scott-paper-1995-dunlap":{"n":"BW-0003","e":"Al Dunlap","r":"Chairman and CEO","c":"Scott Paper","x":"NYSE","d":"1995-12","f":"US$100m","t":"Eleven thousand jobs, twenty months, one hundred million dollars."},"british-gas-1994-brown":{"n":"BW-0002","e":"Cedric Brown","r":"Chief executive","c":"British Gas","x":"LSE","d":"1994-11","f":"£475,000","t":"They brought a pig to the annual meeting and named it after him."},"rjr-nabisco-1989-johnson":{"n":"BW-0001","e":"F. Ross Johnson","r":"President and CEO","c":"RJR Nabisco","x":"Private (post-LBO)","d":"1989-02","f":"US$53m","t":"The bid failed. The parachute did not."}};
+  var card = document.getElementById('peek');
+  var go = document.getElementById('peekGo');
+  var open = null;
+  var f = {
+    serial: document.getElementById('peekSerial'),
+    when: document.getElementById('peekWhen'),
+    co: document.getElementById('peekCo'),
+    who: document.getElementById('peekWho'),
+    fig: document.getElementById('peekFig'),
+    note: document.getElementById('peekNote')
+  };
+
+  function show(id) {
+    var e = PEEK[id];
+    if (!e) return;
+    open = id;
+    f.serial.textContent = 'ENTRY Nº ' + e.n;
+    f.when.textContent = e.d + ' · ' + e.x;
+    f.co.textContent = e.c;
+    f.who.textContent = e.e + ', ' + e.r;
+    f.fig.textContent = e.f;
+    f.note.textContent = e.t;
+    go.href = 'index.html#' + e.n.toLowerCase();
+    card.classList.add('on');
+  }
+  function hide() { open = null; card.classList.remove('on'); }
+
+  document.addEventListener('click', function (ev) {
+    var label = ev.target.closest('.boundary-label, .pk-label');
+    if (label) { ev.preventDefault(); show(label.dataset.id); return; }
+    if (!card.contains(ev.target)) hide();
+  });
+  document.getElementById('peekClose').addEventListener('click', hide);
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') hide();
+  });
+})();
+</script>
 <script>
 (function () {
   var MODES = {"cum": {"marks": [{"x": 7, "n": 1}, {"x": 15, "n": 2}, {"x": 36, "n": 3}, {"x": 60, "n": 4}, {"x": 97, "n": 5}, {"x": 139, "n": 6}, {"x": 189, "n": 7}, {"x": 242, "n": 8}, {"x": 296, "n": 9}, {"x": 350, "n": 10}, {"x": 411, "n": 11}, {"x": 496, "n": 12}, {"x": 584, "n": 13}, {"x": 673, "n": 14}, {"x": 785, "n": 15}, {"x": 912, "n": 16}, {"x": 1044, "n": 17}, {"x": 1217, "n": 18}, {"x": 1407, "n": 19}, {"x": 1649, "n": 20}, {"x": 1919, "n": 21}, {"x": 2189, "n": 22}, {"x": 2468, "n": 23}, {"x": 2786, "n": 24}, {"x": 3146, "n": 25}, {"x": 3592, "n": 26}, {"x": 4041, "n": 27}, {"x": 4498, "n": 28}, {"x": 5020, "n": 29}, {"x": 5629, "n": 30}, {"x": 6254, "n": 31}, {"x": 6892, "n": 32}, {"x": 7564, "n": 33}, {"x": 8250, "n": 34}, {"x": 8962, "n": 35}, {"x": 9698, "n": 36}, {"x": 10454, "n": 37}, {"x": 11232, "n": 38}, {"x": 12014, "n": 39}, {"x": 12802, "n": 40}, {"x": 13600, "n": 41}, {"x": 14410, "n": 42}, {"x": 15271, "n": 43}, {"x": 16171, "n": 44}, {"x": 17071, "n": 45}, {"x": 18071, "n": 46}, {"x": 19071, "n": 47}, {"x": 20331, "n": 48}, {"x": 21671, "n": 49}, {"x": 23021, "n": 50}, {"x": 24433, "n": 51}, {"x": 25859, "n": 52}, {"x": 27449, "n": 53}, {"x": 29049, "n": 54}, {"x": 30738, "n": 55}, {"x": 32490, "n": 56}, {"x": 34270, "n": 57}, {"x": 36120, "n": 58}, {"x": 37974, "n": 59}, {"x": 39974, "n": 60}, {"x": 42114, "n": 61}, {"x": 44261, "n": 62}, {"x": 46721, "n": 63}, {"x": 49521, "n": 64}, {"x": 52801, "n": 65}, {"x": 56666, "n": 66}, {"x": 60608, "n": 67}, {"x": 64766, "n": 68}, {"x": 69166, "n": 69}, {"x": 74356, "n": 70}, {"x": 79656, "n": 71}, {"x": 86978, "n": 72}, {"x": 94968, "n": 73}, {"x": 102968, "n": 74}, {"x": 111768, "n": 75}, {"x": 120658, "n": 76}, {"x": 129658, "n": 77}, {"x": 139183, "n": 78}, {"x": 148783, "n": 79}, {"x": 158583, "n": 80}, {"x": 168583, "n": 81}, {"x": 179283, "n": 82}, {"x": 190083, "n": 83}, {"x": 203083, "n": 84}, {"x": 217033, "n": 85}, {"x": 231033, "n": 86}, {"x": 246133, "n": 87}, {"x": 262033, "n": 88}, {"x": 278183, "n": 89}, {"x": 296183, "n": 90}, {"x": 316713, "n": 91}, {"x": 337713, "n": 92}, {"x": 362373, "n": 93}, {"x": 390453, "n": 94}, {"x": 418553, "n": 95}, {"x": 450653, "n": 96}, {"x": 490953, "n": 97}, {"x": 535453, "n": 98}, {"x": 580253, "n": 99}, {"x": 625053, "n": 100}, {"x": 673453, "n": 101}, {"x": 725603, "n": 102}, {"x": 782103, "n": 103}, {"x": 846403, "n": 104}, {"x": 928503, "n": 105}, {"x": 1038503, "n": 106}], "total": 106, "max": 10385036453, "perPx": 10000, "labelW": 190, "sel": ".t-cum .boundary-label", "unit": "people passed", "caption": "scrolled past so far"}, "abs": {"marks": [{"x": 14, "n": 1}, {"x": 16, "n": 2}, {"x": 42, "n": 3}, {"x": 46, "n": 4}, {"x": 74, "n": 5}, {"x": 85, "n": 6}, {"x": 99, "n": 7}, {"x": 106, "n": 8}, {"x": 108, "n": 9}, {"x": 108, "n": 10}, {"x": 120, "n": 11}, {"x": 170, "n": 12}, {"x": 176, "n": 13}, {"x": 178, "n": 14}, {"x": 223, "n": 15}, {"x": 254, "n": 16}, {"x": 264, "n": 17}, {"x": 345, "n": 18}, {"x": 381, "n": 19}, {"x": 482, "n": 20}, {"x": 540, "n": 21}, {"x": 540, "n": 22}, {"x": 558, "n": 23}, {"x": 635, "n": 24}, {"x": 720, "n": 25}, {"x": 893, "n": 26}, {"x": 897, "n": 27}, {"x": 914, "n": 28}, {"x": 1042, "n": 29}, {"x": 1219, "n": 30}, {"x": 1250, "n": 31}, {"x": 1275, "n": 32}, {"x": 1344, "n": 33}, {"x": 1372, "n": 34}, {"x": 1422, "n": 35}, {"x": 1473, "n": 36}, {"x": 1512, "n": 37}, {"x": 1555, "n": 38}, {"x": 1563, "n": 39}, {"x": 1576, "n": 40}, {"x": 1595, "n": 41}, {"x": 1620, "n": 42}, {"x": 1721, "n": 43}, {"x": 1800, "n": 44}, {"x": 1800, "n": 45}, {"x": 2000, "n": 46}, {"x": 2000, "n": 47}, {"x": 2520, "n": 48}, {"x": 2680, "n": 49}, {"x": 2700, "n": 50}, {"x": 2824, "n": 51}, {"x": 2851, "n": 52}, {"x": 3180, "n": 53}, {"x": 3200, "n": 54}, {"x": 3378, "n": 55}, {"x": 3505, "n": 56}, {"x": 3560, "n": 57}, {"x": 3700, "n": 58}, {"x": 3708, "n": 59}, {"x": 4000, "n": 60}, {"x": 4280, "n": 61}, {"x": 4292, "n": 62}, {"x": 4920, "n": 63}, {"x": 5600, "n": 64}, {"x": 6559, "n": 65}, {"x": 7730, "n": 66}, {"x": 7884, "n": 67}, {"x": 8316, "n": 68}, {"x": 8800, "n": 69}, {"x": 10380, "n": 70}, {"x": 10600, "n": 71}, {"x": 14644, "n": 72}, {"x": 15980, "n": 73}, {"x": 16000, "n": 74}, {"x": 17600, "n": 75}, {"x": 17780, "n": 76}, {"x": 18000, "n": 77}, {"x": 19050, "n": 78}, {"x": 19200, "n": 79}, {"x": 19600, "n": 80}, {"x": 20000, "n": 81}, {"x": 21400, "n": 82}, {"x": 21600, "n": 83}, {"x": 26000, "n": 84}, {"x": 27900, "n": 85}, {"x": 28000, "n": 86}, {"x": 30200, "n": 87}, {"x": 31800, "n": 88}, {"x": 32300, "n": 89}, {"x": 36000, "n": 90}, {"x": 41060, "n": 91}, {"x": 42000, "n": 92}, {"x": 49320, "n": 93}, {"x": 56160, "n": 94}, {"x": 56200, "n": 95}, {"x": 64200, "n": 96}, {"x": 80600, "n": 97}, {"x": 89000, "n": 98}, {"x": 89600, "n": 99}, {"x": 89600, "n": 100}, {"x": 96800, "n": 101}, {"x": 104300, "n": 102}, {"x": 113000, "n": 103}, {"x": 128600, "n": 104}, {"x": 164200, "n": 105}, {"x": 220000, "n": 106}], "total": 106, "max": 1100000000, "perPx": 5000, "labelW": 168, "sel": ".t-abs .pk-label", "unit": "packages ended", "caption": "a package this size ends here"}};
