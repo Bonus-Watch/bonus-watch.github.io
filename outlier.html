@@ -432,12 +432,14 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
     var lastLabel = 1e9;
     for (var r = rows.length - 1; r >= 0; r--) {
       var R = rows[r];
-      var fs = R.p * 19;
-      if (fs < 7) continue;
-      fs = Math.min(fs, 15);
+      // The label scales on the same depth its bar does, with no ceiling, so
+      // the two shrink together. Capping it made the nearest half dozen all
+      // the same size while their bars did not.
+      var fs = Math.min(R.p * 24, 24);
+      if (fs < 6.5) continue;
       var top = R.y - R.h / 2 - 3;
       if (lastLabel - top < fs + 3) continue;
-      var txt = fs >= 10.5 ? R.m.n + '  ' + R.m.f : R.m.f;
+      var txt = fs >= 11 ? R.m.n + '  ' + R.m.f : R.m.f;
       ctx.font = Math.round(fs * 10) / 10 + 'px ' + MONO;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'alphabetic';
@@ -452,6 +454,25 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
       ctx.fillText(txt, cx, top);
       ctx.globalAlpha = 1;
       lastLabel = top - fs;
+    }
+
+    /* The furthest thing still drawn is named at a fixed size whatever its
+       width, so the reader can always see where the scale bottoms out. */
+    if (rows.length) {
+      var F = rows[0];
+      ctx.font = '10.5px ' + MONO;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'alphabetic';
+      var ft = 'smallest still drawn · ' + F.m.n + ' · ' + F.m.f;
+      // On a narrow screen the caption goes and the fact stays.
+      if (ctx.measureText(ft).width > W - 16) ft = F.m.n + ' · ' + F.m.f;
+      var fy = F.y + F.h / 2 + 13;
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = 3.5;
+      ctx.strokeStyle = C.paper;
+      ctx.strokeText(ft, cx, fy);
+      ctx.fillStyle = C.muted;
+      ctx.fillText(ft, cx, fy);
     }
 
     // What has collapsed into the last pixel, and what it is still worth.
