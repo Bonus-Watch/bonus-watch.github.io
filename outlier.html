@@ -153,27 +153,48 @@ main { line-height:1.62; }
 p + p { margin-top:12px; }
 .lede { font-size:1.08rem; margin-top:14px; }
 
-.zoomer { margin:26px 0 8px; border:1px solid var(--rule); background:var(--wash);
-  padding:16px 16px 18px; }
-.zbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-  padding-bottom:14px; margin-bottom:14px; border-bottom:1px solid var(--rule); }
-.zbar label { font-size:.78rem; color:var(--muted); letter-spacing:.07em;
-  text-transform:uppercase; }
-#zoom { flex:1 1 170px; min-width:130px; accent-color:var(--credit); }
-.zbtn { font:inherit; font-size:.85rem; padding:4px 11px; cursor:pointer;
+/* The stage is a tall section with the canvas stuck to the top of it. The
+   reader's ordinary scroll walks the camera back; at the end of the section
+   the page carries on. Nothing is taken over. */
+.corridor-scroll { position:relative; height:420vh; margin:30px 0 6px;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  background:var(--paper); }
+.corridor-sticky { position:sticky; top:0; height:100vh; height:100svh;
+  overflow:hidden; }
+#corridor { display:block; }
+
+.hud { position:absolute; left:0; right:0; bottom:0; padding:14px 22px 18px;
+  background:linear-gradient(180deg,transparent,var(--paper) 42%);
+  display:flex; align-items:flex-end; gap:18px; flex-wrap:wrap; }
+.hud-read { flex:1 1 260px; }
+.hud-read p { max-width:none; }
+.readout { font-size:.95rem; }
+.readout b { font-family:'IBM Plex Mono',monospace; color:var(--credit); }
+#gone { margin-top:5px; font-size:.85rem; color:var(--debit); }
+.hud-btns { display:flex; gap:8px; }
+.zbtn { font:inherit; font-size:.85rem; padding:5px 12px; cursor:pointer;
   border:1px solid var(--rule); background:var(--paper); color:var(--ink);
   border-radius:2px; }
-.zbtn:hover:not(:disabled) { border-color:var(--credit); color:var(--credit); }
-.zbtn:disabled { opacity:.35; cursor:default; }
+.zbtn:hover { border-color:var(--credit); color:var(--credit); }
 
-.stage { position:relative; background:var(--paper); border:1px solid var(--rule);
-  overflow:hidden; }
-#corridor { display:block; touch-action:pan-y; }
-#nocanvas { padding:18px 16px; font-size:.9rem; color:var(--muted); max-width:none; }
+#hint { position:absolute; left:0; right:0; top:22px; text-align:center;
+  font-size:.8rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); transition:opacity .4s ease; }
+#hint.is-off { opacity:0; }
+#nocanvas { padding:40px 22px; font-size:.9rem; color:var(--muted); }
+.corridor-scroll:not(.is-live) { height:auto; }
+.corridor-scroll:not(.is-live) .corridor-sticky { position:static; height:auto; }
+.corridor-scroll:not(.is-live) .hud { position:static; background:none; }
+/* Without the drawing there is nothing to scroll through and nothing to
+   pull back from, so the controls and the prompt go too. */
+.corridor-scroll:not(.is-live) #hint,
+.corridor-scroll:not(.is-live) .hud { display:none; }
 
-.readout { font-size:.92rem; margin-top:14px; }
-.readout b { font-family:'IBM Plex Mono',monospace; color:var(--credit); }
-#gone { margin-top:8px; font-size:.85rem; color:var(--debit); max-width:none; }
+@media (max-width:560px) {
+  .corridor-scroll { height:380vh; }
+  .hud { padding:12px 16px 14px; gap:10px; }
+  .readout { font-size:.88rem; }
+}
 
 .sums { margin-top:26px; border-left:3px solid var(--ink); padding:2px 0 2px 16px; }
 .sums p { margin:11px 0; }
@@ -225,24 +246,31 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
     Pull back until the Tesla bar fits inside the frame, and watch what the
     same move does to the other hundred and fifty.</p>
 
-    <div class="zoomer">
-      <div class="zbar">
-        <label for="zoom">Pull back</label>
+  </div>
+</main>
+
+<section class="corridor-scroll" id="cscroll">
+  <div class="corridor-sticky">
+    <canvas id="corridor" hidden role="img"
+            aria-label="The register in perspective."></canvas>
+    <p id="nocanvas">The drawing needs JavaScript. The numbers below do not.</p>
+    <p id="hint">Scroll to pull back</p>
+    <div class="hud">
+      <div class="hud-read">
+        <p class="readout">One pixel is <b id="rate">—</b> at the near end.
+        The far end of the corridor is <b id="screen">—</b> across.</p>
+        <p id="gone">—</p>
+      </div>
+      <div class="hud-btns">
         <button class="zbtn" id="back" type="button">← Closer</button>
-        <input type="range" id="zoom" min="0" max="1000" step="1" value="0"
-               aria-label="Distance from the register">
         <button class="zbtn" id="fwd" type="button">Further →</button>
       </div>
-      <div class="stage">
-        <canvas id="corridor" hidden role="img"
-                aria-label="Perspective view of the register."></canvas>
-        <p id="nocanvas">The drawing needs JavaScript. The numbers below do not.</p>
-      </div>
-      <p class="readout">One pixel is <b id="rate">—</b> at the near end.
-      The far end of the corridor is <b id="screen">—</b> across.</p>
-      <p id="gone">—</p>
     </div>
+  </div>
+</section>
 
+<main>
+  <div class="wrap">
     <div class="sums">
       <p>At the scale page’s rate the register — every entry on it, 1989
       to now — is <b>315 metres</b> of bar. The Tesla package is
@@ -267,50 +295,51 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
 (function () {
   var D = {"marks":[{"n":"Elon Musk","f":"US$1tn","v":1000000000000.0,"k":"musk","l":1},{"n":"Musk, realised in 2025","f":"US$158.3b","v":158300000000,"k":"musk","l":1},{"n":"The whole register","f":"US$11.89b","v":11889612231.13,"k":"reg","l":1},{"n":"Alex Karp","f":"US$1.1b","v":1100000000.0,"k":"","l":1},{"n":"Shankh Mitra","f":"US$821m","v":821000000.0,"k":"","l":1},{"n":"Rene Haas","f":"US$800m","v":800000000.0,"k":"","l":0},{"n":"Charles Wang","f":"US$643m","v":643000000.0,"k":"","l":0},{"n":"Michael Eisner","f":"US$565m","v":565000000.0,"k":"","l":0},{"n":"Angelo Mozilo","f":"US$521.5m","v":521500000.0,"k":"","l":0},{"n":"Dick Fuld","f":"US$484m","v":484000000.0,"k":"","l":0},{"n":"Sridhar Ramaswamy","f":"US$448m","v":448000000.0,"k":"","l":0},{"n":"William McGuire","f":"US$448m","v":448000000.0,"k":"","l":0},{"n":"Adam Neumann","f":"US$445m","v":445000000.0,"k":"","l":0},{"n":"RJ Scaringe","f":"US$403m","v":403000000.0,"k":"","l":0},{"n":"Sanjay Kumar","f":"US$321m","v":321000000.0,"k":"","l":0},{"n":"Sundar Pichai","f":"US$281m","v":281000000.0,"k":"","l":0},{"n":"Niraj Shah","f":"US$280.8m","v":280800000.0,"k":"","l":0},{"n":"David Zaslav","f":"US$246.6m","v":246600000.0,"k":"","l":0},{"n":"Robert Nardelli","f":"US$210m","v":210000000.0,"k":"","l":0},{"n":"Hock Tan","f":"US$205.3m","v":205300000.0,"k":"","l":1},{"n":"Hank McKinnell","f":"US$180m","v":180000000.0,"k":"","l":0},{"n":"Stan O'Neal","f":"US$161.5m","v":161500000.0,"k":"","l":0},{"n":"John Hammergren","f":"US$159m","v":159000000.0,"k":"","l":0},{"n":"Nikesh Arora","f":"US$151m","v":151000000.0,"k":"","l":0},{"n":"Michael Ovitz","f":"US$140m","v":140000000.0,"k":"","l":0},{"n":"Richard Grasso","f":"US$139.5m","v":139500000.0,"k":"","l":0},{"n":"John Stumpf","f":"US$130m","v":130000000.0,"k":"","l":0},{"n":"Michael O'Leary","f":"€100m","v":108000000.0,"k":"","l":0},{"n":"Russell Artzt","f":"US$107m","v":107000000.0,"k":"","l":0},{"n":"Steve Easterbrook","f":"US$105m","v":105000000.0,"k":"","l":0},{"n":"Al Dunlap","f":"US$100m","v":100000000.0,"k":"","l":0},{"n":"Lee Raymond","f":"US$98m","v":98000000.0,"k":"","l":0},{"n":"Brian Niccol","f":"US$96m","v":96000000.0,"k":"","l":0},{"n":"Jeff Fairburn","f":"£75m","v":95250000.0,"k":"","l":0},{"n":"Andy Rubin","f":"US$90m","v":90000000.0,"k":"","l":0},{"n":"Martin Sorrell","f":"£70m","v":88900000.0,"k":"","l":0},{"n":"Percy Barnevik","f":"CHF148m (US$88m)","v":88000000.0,"k":"","l":0},{"n":"Ralph de la Torre","f":"US$81.5m","v":81500000.0,"k":"","l":0},{"n":"Carlos Ghosn","f":"US$80m","v":80000000.0,"k":"","l":0},{"n":"Marc Casper","f":"US$79.9m","v":79900000.0,"k":"","l":0},{"n":"Andrea Orcel","f":"€67.8m","v":73224000.0,"k":"","l":0},{"n":"Bob Bakish","f":"US$69.3m","v":69300000.0,"k":"","l":0},{"n":"Stephen Hemsley","f":"US$60.94m","v":60940000.0,"k":"","l":0},{"n":"F. Ross Johnson","f":"US$53m","v":53000000.0,"k":"","l":0},{"n":"David Zaslav","f":"US$51.9m","v":51900000.0,"k":"","l":0},{"n":"Tim Cook","f":"US$47m","v":47000000.0,"k":"","l":0},{"n":"Xia Haijun","f":"RMB298m (US$44m)","v":44000000.0,"k":"","l":0},{"n":"Daniel Bernard","f":"€38.5m","v":41580000.0,"k":"","l":0},{"n":"Carlos Tavares","f":"€36.5m","v":39420000.0,"k":"","l":0},{"n":"Andrew Wilson","f":"US$38.65m","v":38650000.0,"k":"","l":0},{"n":"Lloyd Dean","f":"US$35.46m","v":35460000.0,"k":"","l":0},{"n":"Dave Calhoun","f":"US$32.8m","v":32799999.999999996,"k":"","l":0},{"n":"Ethan Brown","f":"US$29.85m","v":29850000.0,"k":"","l":0},{"n":"Doug McMillon","f":"US$29.24m","v":29240000.0,"k":"","l":0},{"n":"Jeff Smisek","f":"US$28.6m","v":28600000.0,"k":"","l":0},{"n":"Ari Bousbib","f":"US$28.13m","v":28130000.0,"k":"","l":0},{"n":"Benjamin Gliklich","f":"US$26.5m","v":26500000.0,"k":"","l":0},{"n":"Albert Bourla","f":"US$24.6m","v":24600000.0,"k":"","l":0},{"n":"Marissa Mayer","f":"US$23m","v":23000000.0,"k":"","l":0},{"n":"Pascal Soriot","f":"£16.9m","v":21463000.0,"k":"","l":0},{"n":"Carly Fiorina","f":"US$21.4m","v":21400000.0,"k":"","l":0},{"n":"Kåre Schultz","f":"US$20m","v":20000000.0,"k":"","l":0},{"n":"Sukhinder Singh Cassidy","f":"NZ$30.9m","v":18540000.0,"k":"","l":0},{"n":"Tony Hayward","f":"£12m (US$18.5m)","v":18500000.0,"k":"","l":0},{"n":"John Foley","f":"US$17.8m","v":17800000.0,"k":"","l":0},{"n":"Wael Sawan","f":"£13.8m","v":17526000.0,"k":"","l":0},{"n":"Jean-Sébastien Jacques","f":"£13.3m","v":16891000.0,"k":"","l":0},{"n":"Robert Allen","f":"US$16m","v":16000000.0,"k":"","l":0},{"n":"Sergio Ermotti","f":"CHF14.4m (US$15.9m)","v":15900000.0,"k":"","l":0},{"n":"George Zoley","f":"US$15m","v":15000000.0,"k":"","l":0},{"n":"Andrea Orcel","f":"€13.2m","v":14256000.000000002,"k":"","l":0},{"n":"Alan Joyce","f":"A$21.4m","v":14124000.0,"k":"","l":0},{"n":"Joseph Impicciche","f":"US$13.71m","v":13710000.0,"k":"","l":0},{"n":"Akio Toyoda","f":"¥1.95bn (US$13.5m)","v":13500000.0,"k":"","l":0},{"n":"Alan Shaw","f":"US$13.4m","v":13400000.0,"k":"","l":0},{"n":"Gregory Adams","f":"US$12.98m","v":12980000.0,"k":"","l":0},{"n":"Kevin McNamara","f":"US$12.9m","v":12900000.0,"k":"","l":0},{"n":"Euisun Chung","f":"₩17.5bn (US$12.6m)","v":12600000.0,"k":"","l":0},{"n":"Rod Hochman","f":"US$12.26m","v":12260000.0,"k":"","l":0},{"n":"Jerry Falwell Jr","f":"US$10.5m","v":10500000.0,"k":"","l":0},{"n":"Pat Gelsinger","f":"US$10m","v":10000000.0,"k":"","l":0},{"n":"Eduardo Bartolomeo","f":"R$55m (US$10m)","v":10000000.0,"k":"","l":0},{"n":"Jeffrey Romoff","f":"US$9.49m","v":9490000.0,"k":"","l":0},{"n":"Mirko Bibic","f":"C$12.82m","v":9358600.0,"k":"","l":0},{"n":"Kenny Fihla","f":"R148m (US$9m)","v":9000000.0,"k":"","l":0},{"n":"Salil Parekh","f":"₹82.6 crore (US$9m)","v":9000000.0,"k":"","l":0},{"n":"Galen Weston","f":"C$11.79m","v":8606700.0,"k":"","l":0},{"n":"Frans Muller","f":"€7.5m","v":8100000.000000001,"k":"","l":0},{"n":"Kyle Sandilands","f":"A$12.09m","v":7979400.0,"k":"","l":0},{"n":"Martin Winterkorn","f":"€7.3m","v":7884000.000000001,"k":"","l":0},{"n":"Rainer Seele","f":"€7.24m","v":7819200.000000001,"k":"","l":0},{"n":"Carlos Ghosn","f":"€7.2m","v":7776000.000000001,"k":"","l":0},{"n":"C. L. Max Nikias","f":"US$7.7m","v":7700000.0,"k":"","l":0},{"n":"Christian Sewing","f":"€7m","v":7560000.000000001,"k":"","l":0},{"n":"Rico Back","f":"£5.8m","v":7366000.0,"k":"","l":0},{"n":"Noel Quinn","f":"£5.6m","v":7112000.0,"k":"","l":0},{"n":"Mitchell Baker","f":"US$6.9m","v":6900000.0,"k":"","l":0},{"n":"Matt Comyn","f":"A$10.4m","v":6864000.0,"k":"","l":0},{"n":"Oliver Blume","f":"€6.31m","v":6814800.0,"k":"","l":0},{"n":"Wes Powell","f":"US$6.72m","v":6720000.0,"k":"","l":0},{"n":"Steve McCann","f":"A$9.66m","v":6375600.0,"k":"","l":0},{"n":"Daniel Chu","f":"US$6.25m","v":6250000.0,"k":"","l":0},{"n":"James Jesic","f":"£4.8m","v":6096000.0,"k":"","l":0},{"n":"John Starcher","f":"US$6m","v":6000000.0,"k":"","l":0},{"n":"Debbie Crosbie","f":"£4.67m","v":5930900.0,"k":"","l":0},{"n":"Shayne Elliott","f":"A$7.9m","v":5214000.0,"k":"","l":0},{"n":"Sarah Krevans","f":"US$4.79m","v":4790000.0,"k":"","l":0},{"n":"Julie Masino","f":"US$4.63m","v":4630000.0,"k":"","l":1},{"n":"Chris O'Shea","f":"£3.6m","v":4572000.0,"k":"","l":0},{"n":"Euan Sutherland","f":"£3.6m","v":4572000.0,"k":"","l":0},{"n":"Vicki Brady","f":"A$6.8m","v":4488000.0,"k":"","l":0},{"n":"Roy Bagattini","f":"R79.8m","v":4468800.0,"k":"","l":0},{"n":"Ted Christie","f":"US$3.8m","v":3800000.0,"k":"","l":0},{"n":"Gianni Infantino","f":"CHF3.6m (US$3.8m)","v":3800000.0,"k":"","l":0},{"n":"Greg Becker","f":"US$3.6m","v":3600000.0,"k":"","l":0},{"n":"Mark Emmert","f":"US$3.31m","v":3310000.0,"k":"","l":0},{"n":"Dan Frumkin","f":"£2.6m","v":3302000.0,"k":"","l":0},{"n":"Louise Beardmore","f":"£2.5m","v":3175000.0,"k":"","l":0},{"n":"Paula Vennells","f":"£2.2m","v":2794000.0,"k":"","l":0},{"n":"Mads Nipper","f":"DKK18.9m (US$2.7m)","v":2700000.0,"k":"","l":0},{"n":"Birgitte Bonnesen","f":"SEK26.6m (US$2.7m)","v":2700000.0,"k":"","l":0},{"n":"Mark Thurston","f":"£1.9m","v":2413000.0,"k":"","l":0},{"n":"The highest-paid director","f":"£1.7m","v":2159000.0,"k":"","l":1},{"n":"Richard Howson","f":"£1.5m","v":1905000.0,"k":"","l":0},{"n":"Marjan Rintel","f":"€1.6m","v":1728000.0,"k":"","l":0},{"n":"Nick Grayston","f":"NZ$2.2m","v":1320000.0,"k":"","l":0},{"n":"Steve Buck","f":"£1m","v":1270000.0,"k":"","l":0},{"n":"Hilary Marden-Resnik","f":"US$1.27m","v":1270000.0,"k":"","l":0},{"n":"Wayne LaPierre","f":"US$1.17m","v":1170000.0,"k":"","l":0},{"n":"Each of 21 senior executives","f":"£881k avg","v":1118870.0,"k":"","l":0},{"n":"Pejman Okhovat","f":"A$1.6m","v":1056000.0,"k":"","l":0},{"n":"Steve Penny","f":"US$1m","v":1000000.0,"k":"","l":0},{"n":"Carol Adelkoff","f":"US$907,923","v":907923.0,"k":"","l":0},{"n":"Fred Goodwin","f":"£703k","v":892810.0,"k":"","l":0},{"n":"Colin Skellett","f":"£693k","v":880110.0,"k":"","l":0},{"n":"Ruth Jefferson","f":"£670k","v":850900.0,"k":"","l":0},{"n":"Roger Mosby","f":"US$666,473","v":666473.0,"k":"","l":0},{"n":"Darren Hawkins","f":"US$625,000","v":625000.0,"k":"","l":0},{"n":"Cedric Brown","f":"£475,000","v":603250.0,"k":"","l":0},{"n":"Gail McGovern","f":"US$556,772","v":556772.0,"k":"","l":0},{"n":"Peter Mathieson","f":"£426k","v":541020.0,"k":"","l":0},{"n":"Alexandra Reis","f":"€500k","v":540000.0,"k":"","l":0},{"n":"Jolie Hodson","f":"NZ$886k","v":531600.0,"k":"","l":0},{"n":"Lisa Roberts","f":"£392k","v":497840.0,"k":"","l":0},{"n":"Steven Nardizzi","f":"US$473,000","v":473000.0,"k":"","l":0},{"n":"Paulee Day","f":"US$425,000","v":425000.0,"k":"","l":0},{"n":"Niall Gleeson","f":"€391,953","v":423309.24000000005,"k":"","l":0},{"n":"Ryan Tubridy","f":"€345k","v":372600.0,"k":"","l":0},{"n":"Peter Hebblethwaite","f":"£183k","v":232410.0,"k":"","l":1},{"n":"Dennis Barnes","f":"A$323k","v":213180.0,"k":"","l":0},{"n":"The average VIA Rail executive","f":"C$115,293 avg","v":84163.89,"k":"","l":0},{"n":"Nadine Lee","f":"US$72,000","v":72000.0,"k":"","l":1}],"top":1000000000000,"rateMin":90000};
   var cv = document.getElementById('corridor');
-  var slider = document.getElementById('zoom');
-  if (!cv || !slider) return;
-  var stage = cv.parentNode;
+  var sect = document.getElementById('cscroll');
+  if (!cv || !sect) return;
   var fallback = document.getElementById('nocanvas');
   if (fallback) fallback.remove();
   cv.hidden = false;
+  sect.classList.add('is-live');
 
   var rateEl = document.getElementById('rate');
   var scrEl  = document.getElementById('screen');
   var goneEl = document.getElementById('gone');
+  var hintEl = document.getElementById('hint');
   var backEl = document.getElementById('back');
   var fwdEl  = document.getElementById('fwd');
   var ctx = cv.getContext('2d');
 
   /* Depth is rank, not money. The largest package stands nearest the reader
-     and the smallest sits at the vanishing point, foreshortened by SPREAD. Money is the
-     width. Putting money on the depth axis would send the largest package
-     13.9 million times further away and turn it into a speck, which is the
-     opposite of what is true about it. */
-  var SPREAD = 0.0861;          // last rung ends up ~1/14 the scale of the first
+     and the smallest sits at the vanishing point. Money is the width. Putting
+     money on the depth axis would send the largest package 13.9 million times
+     further away and turn it into a speck, which is the opposite of what is
+     true about it. */
+  var SPREAD = 0.0861;
   var BAR_H = 11;
-  var HORIZON = 44;
   var css = getComputedStyle(document.documentElement);
+  function v(n, f) { return css.getPropertyValue(n).trim() || f; }
   var C = {
-    ink:    css.getPropertyValue('--ink').trim()    || '#212B26',
-    credit: css.getPropertyValue('--credit').trim() || '#0E7A52',
-    debit:  css.getPropertyValue('--debit').trim()  || '#B23A31',
-    rule:   css.getPropertyValue('--rule').trim()   || '#E9E7E1',
-    muted:  css.getPropertyValue('--muted').trim()  || '#73726C',
-    paper:  css.getPropertyValue('--paper').trim()  || '#FFFFFF'
+    ink: v('--ink', '#212B26'), credit: v('--credit', '#0E7A52'),
+    debit: v('--debit', '#B23A31'), rule: v('--rule', '#E9E7E1'),
+    muted: v('--muted', '#73726C'), paper: v('--paper', '#FFFFFF')
   };
   var COLOUR = { '': C.credit, reg: C.ink, musk: C.debit };
 
   var marks = D.marks.map(function (m, i) {
     return { m: m, p: 1 / (1 + i * SPREAD) };
   });
-  var deepest = marks[marks.length - 1].p;   // vanishing point
+  var deepest = marks[marks.length - 1].p;   // the vanishing point
   var nearest = marks[0].p;                  // the largest package, at the front
 
-  var W = 0, H = 0, dpr = 1;
+  var W = 0, H = 0, HORIZON = 0, HUD = 0;
+  var hudEl = document.querySelector('.hud');
   function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = stage.clientWidth;
-    H = W < 560 ? 380 : 520;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = sect.clientWidth;
+    H = cv.parentNode.clientHeight;
+    HORIZON = Math.round(H * 0.10);
+    HUD = (hudEl ? hudEl.offsetHeight : 0) + 16;
     cv.style.width = W + 'px';
     cv.style.height = H + 'px';
     cv.width = Math.round(W * dpr);
@@ -318,34 +347,31 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
-  /* The rate the largest rung needs before it finally fits the screen. It
-     depends on the reader's own window, which is the honest answer. */
-  function rateMax() { return D.top / (W * 0.92) / nearest; }
-  function rateAt(tv) {
-    var t = tv / 1000;
-    return D.rateMin * Math.pow(rateMax() / D.rateMin, t);
+  /* The rate at which the largest package finally fits. It depends on the
+     reader's own window, which is the honest answer: there is no fixed one. */
+  function rateMax() { return D.top / (W * 0.94) / nearest; }
+  function rateAt(f) {
+    return D.rateMin * Math.pow(rateMax() / D.rateMin, f);
   }
 
-  function money(v) {
-    if (v >= 1e12) return 'US$' + trim(v / 1e12) + 'tn';
-    if (v >= 1e9)  return 'US$' + trim(v / 1e9) + 'b';
-    if (v >= 1e6)  return 'US$' + trim(v / 1e6) + 'm';
-    if (v >= 1e3)  return 'US$' + Math.round(v).toLocaleString('en-US');
-    return 'US$' + v.toFixed(2);
-  }
   function trim(n) { return n.toFixed(2).replace(/\.?0+$/, ''); }
-  function perPx(v) {
-    if (v >= 1e9) return 'US$' + trim(v / 1e9) + ' billion';
-    if (v >= 1e6) return 'US$' + trim(v / 1e6) + ' million';
-    if (v >= 1e3) return 'US$' + Math.round(v / 1e3).toLocaleString('en-US') + ' thousand';
-    return 'US$' + Math.round(v).toLocaleString('en-US');
+  function money(x) {
+    if (x >= 1e12) return 'US$' + trim(x / 1e12) + 'tn';
+    if (x >= 1e9)  return 'US$' + trim(x / 1e9) + 'b';
+    if (x >= 1e6)  return 'US$' + trim(x / 1e6) + 'm';
+    return 'US$' + Math.round(x).toLocaleString('en-US');
+  }
+  function perPx(x) {
+    if (x >= 1e9) return 'US$' + trim(x / 1e9) + ' billion';
+    if (x >= 1e6) return 'US$' + trim(x / 1e6) + ' million';
+    if (x >= 1e3) return 'US$' + Math.round(x / 1e3).toLocaleString('en-US') + ' thousand';
+    return 'US$' + Math.round(x).toLocaleString('en-US');
   }
 
   function draw(rate) {
-    var cx = W / 2, floor = H - 18, span = floor - HORIZON;
+    var cx = W / 2, floor = H - HUD, span = Math.max(80, floor - HORIZON);
     ctx.clearRect(0, 0, W, H);
 
-    // The corridor itself: two rails running to the vanishing point.
     ctx.strokeStyle = C.rule;
     ctx.lineWidth = 1;
     ctx.beginPath();
@@ -355,7 +381,6 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
     ctx.stroke();
 
     var gone = 0, over = 0, lastLabelY = -99, labels = [];
-    // Far to near, so nearer rungs paint over further ones.
     for (var i = marks.length - 1; i >= 0; i--) {
       var o = marks[i], p = o.p;
       var w = (o.m.v / rate) * p;
@@ -369,9 +394,6 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
       var col = COLOUR[o.m.k] || C.credit;
 
       if (clipped) {
-        // It leaves the frame on both sides; fade the ends so the bar reads
-        // as continuing rather than as stopping at the same place as its
-        // neighbours.
         var g = ctx.createLinearGradient(0, 0, W, 0);
         g.addColorStop(0, 'transparent');
         g.addColorStop(0.26, col);
@@ -383,29 +405,40 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
       }
       ctx.fillRect(x0, y - h / 2, x1 - x0, h);
 
-      if ((clipped || (o.m.l && h >= 4.5)) && Math.abs(y - lastLabelY) > 12) {
+      if ((clipped || (o.m.l && h >= 4.5)) && Math.abs(y - lastLabelY) > 15) {
         labels.push({ y: y, t: o.m.n + ' \u00b7 ' + o.m.f, c: col, clipped: clipped });
         lastLabelY = y;
       }
     }
 
-    ctx.font = '11px ui-monospace,"IBM Plex Mono",monospace';
+    ctx.font = '12px ui-monospace,"IBM Plex Mono",monospace';
     ctx.textBaseline = 'middle';
     for (var j = 0; j < labels.length; j++) {
       var L = labels[j];
       var txt = L.t + (L.clipped ? '  \u2192' : '');
       var tw = ctx.measureText(txt).width;
-      var lx = Math.min(W - tw - 8, Math.max(8, cx + 10));
+      var lx = Math.min(W - tw - 10, Math.max(10, cx + 12));
       ctx.fillStyle = C.paper;
-      ctx.fillRect(lx - 3, L.y - 7, tw + 6, 14);
+      ctx.fillRect(lx - 4, L.y - 8, tw + 8, 16);
       ctx.fillStyle = L.clipped ? L.c : C.muted;
       ctx.fillText(txt, lx, L.y);
     }
     return { gone: gone, over: over };
   }
 
+  /* How far through the tall section the reader has scrolled. The stage is
+     sticky inside it, so this is just the page's own scroll position: nothing
+     is taken over, and the scrollbar still means what it says. */
+  function progress() {
+    var travel = sect.offsetHeight - window.innerHeight;
+    if (travel <= 0) return 0;
+    var top = sect.getBoundingClientRect().top;
+    return Math.max(0, Math.min(1, -top / travel));
+  }
+
   function render() {
-    var rate = rateAt(+slider.value);
+    var f = progress();
+    var rate = rateAt(f);
     var r = draw(rate);
     rateEl.textContent = perPx(rate);
     scrEl.textContent = money(rate * W / deepest);
@@ -414,30 +447,30 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
                          + ' wider than the screen');
     msg.push(r.gone + ' of ' + marks.length + ' are under a pixel');
     goneEl.textContent = msg.join('; ') + '.';
+    if (hintEl) hintEl.classList.toggle('is-off', f > 0.02);
     cv.setAttribute('aria-label',
-      'Perspective view of the register. One pixel is ' + rateEl.textContent
-      + '. ' + r.gone + ' of ' + marks.length + ' markers are too small to draw.');
-    backEl.disabled = +slider.value <= 0;
-    fwdEl.disabled = +slider.value >= 1000;
+      'The register in perspective. One pixel is ' + rateEl.textContent + '. '
+      + r.gone + ' of ' + marks.length + ' markers are too small to draw.');
   }
 
-  function nudge(d) {
-    slider.value = String(Math.max(0, Math.min(1000, +slider.value + d)));
-    render();
+  var queued = false;
+  function onScroll() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { queued = false; render(); });
   }
-  slider.addEventListener('input', render);
-  backEl.addEventListener('click', function () { nudge(-60); });
-  fwdEl.addEventListener('click', function () { nudge(60); });
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-  /* Wheel pulls the camera back, but hands the page its scroll back at either
-     end so the reader is never trapped on the canvas. */
-  cv.addEventListener('wheel', function (ev) {
-    var d = ev.deltaY > 0 ? 28 : -28;
-    var v = +slider.value;
-    if ((v >= 1000 && d > 0) || (v <= 0 && d < 0)) return;
-    ev.preventDefault();
-    nudge(d);
-  }, { passive: false });
+  function step(dir) {
+    var travel = sect.offsetHeight - window.innerHeight;
+    var base = sect.getBoundingClientRect().top + window.pageYOffset;
+    var f = Math.max(0, Math.min(1, progress() + dir * 0.12));
+    window.scrollTo({ top: base + travel * f,
+                      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
+                                ? 'auto' : 'smooth' });
+  }
+  backEl.addEventListener('click', function () { step(-1); });
+  fwdEl.addEventListener('click', function () { step(1); });
 
   var rt;
   window.addEventListener('resize', function () {
