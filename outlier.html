@@ -161,20 +161,20 @@ p + p { margin-top:12px; }
   overflow:hidden; }
 #corridor { display:block; }
 
-/* The whole argument, twice, before anything moves. It gets out of the way
-   as soon as the reader does. */
+/* High in the frame, above the eye line, so it sits in the empty part of the
+   corridor rather than over the floor where the packages are. */
 .intro { position:absolute; inset:0; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; text-align:center;
-  padding:24px; transition:opacity .45s ease; }
+  align-items:center; justify-content:flex-start; text-align:center;
+  padding:7vh 24px 0; transition:opacity .4s ease; }
 .intro.is-off { opacity:0; pointer-events:none; }
-.intro-card { background:color-mix(in srgb,var(--paper) 88%,transparent);
+.intro-card { background:color-mix(in srgb,var(--paper) 86%,transparent);
   -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px);
-  border:1px solid var(--rule); padding:26px 30px; max-width:44rem; }
+  border:1px solid var(--rule); padding:22px 28px; max-width:42rem; }
 .intro h1 { font-family:'Libre Caslon Text',serif; font-weight:700;
-  font-size:clamp(1.9rem,5vw,2.9rem); line-height:1.1; }
-.intro p { max-width:none; margin-top:14px; font-size:clamp(.98rem,1.6vw,1.1rem); }
-.intro .cue { margin-top:20px; font-family:'IBM Plex Mono',monospace;
-  font-size:.74rem; letter-spacing:.16em; text-transform:uppercase;
+  font-size:clamp(1.8rem,4.4vw,2.6rem); line-height:1.1; }
+.intro p { max-width:none; margin-top:12px; font-size:clamp(.95rem,1.5vw,1.05rem); }
+.intro .cue { margin-top:16px; font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
   color:var(--muted); }
 
 .hud { position:absolute; left:0; right:0; bottom:0; padding:14px 22px 18px;
@@ -200,7 +200,8 @@ p + p { margin-top:12px; }
 
 @media (max-width:560px) {
   .corridor-scroll { height:400vh; }
-  .intro-card { padding:20px 18px; }
+  .intro { padding-top:5vh; }
+  .intro-card { padding:18px 16px; }
   .hud { padding:12px 16px 14px; gap:10px; }
   .readout { font-size:.88rem; }
 }
@@ -309,20 +310,20 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
   var fwdEl  = document.getElementById('fwd');
   var ctx = cv.getContext('2d');
 
-  /* Depth is rank, not money. The largest package stands nearest the reader
-     and the smallest sits at the vanishing point. Money is the width. Putting
-     money on the depth axis would send the largest package 13.9 million times
-     further away and turn it into a speck, which is the opposite of what is
-     true about it. */
-  var SPREAD = 0.16;
-  var BAR_H = 20;
-  var WEIGHT = { '': 1, reg: 1.45, musk: 1.95 };   // the anchors carry more ink
+  /* Depth is rank, not money. Money is the width. Putting money on the depth
+     axis would send the largest package 13.9 million times further away and
+     turn it into a speck, which is the opposite of what is true about it. */
+  var SPREAD = 0.09;
+  var BAR_H = 17;
+  var WEIGHT = { '': 1, reg: 1.5, musk: 2.1 };
+  var HIDE = 3;          // the three biggest start behind the camera
+  var REVEAL = 0.2;      // and arrive over the first fifth of the scroll
   var css = getComputedStyle(document.documentElement);
-  function v(n, f) { return css.getPropertyValue(n).trim() || f; }
+  function g(n, f) { return css.getPropertyValue(n).trim() || f; }
   var C = {
-    ink: v('--ink', '#212B26'), credit: v('--credit', '#0E7A52'),
-    debit: v('--debit', '#B23A31'), rule: v('--rule', '#E9E7E1'),
-    muted: v('--muted', '#73726C'), paper: v('--paper', '#FFFFFF')
+    ink: g('--ink', '#212B26'), credit: g('--credit', '#0E7A52'),
+    debit: g('--debit', '#B23A31'), rule: g('--rule', '#E9E7E1'),
+    muted: g('--muted', '#73726C'), paper: g('--paper', '#FFFFFF')
   };
   var COLOUR = { '': C.credit, reg: C.ink, musk: C.debit };
   var MONO = 'ui-monospace,"IBM Plex Mono",monospace';
@@ -333,13 +334,14 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
   var deepest = marks[marks.length - 1].p;
   var nearest = marks[0].p;
 
-  var W = 0, H = 0, HUD = 0;
+  var W = 0, H = 0, HUD = 0, TOP = 0;
   var hudEl = document.querySelector('.hud');
   function resize() {
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = sect.clientWidth;
     H = cv.parentNode.clientHeight;
-    HUD = (hudEl ? hudEl.offsetHeight : 0) + 14;
+    HUD = (hudEl ? hudEl.offsetHeight : 0) + 12;
+    TOP = sect.getBoundingClientRect().top + window.pageYOffset;
     cv.style.width = W + 'px';
     cv.style.height = H + 'px';
     cv.width = Math.round(W * dpr);
@@ -364,16 +366,16 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
     return 'US$' + Math.round(x).toLocaleString('en-US');
   }
 
-  function draw(rate) {
-    var cx = W / 2;
-    var floor = H - HUD;
-    var roof = 8;
-    var vy = roof + (floor - roof) * 0.40;    // the vanishing point
+  function draw(rate, f) {
+    /* Eye level, not the middle of the frame. You are standing in the corridor
+       looking slightly down it, so the vanishing point sits high and most of
+       the picture is the floor the packages are lying on. */
+    var cx = W / 2, roof = 0, floor = H - HUD;
+    var vy = roof + (floor - roof) * 0.27;
     var span = Math.max(60, floor - vy);
+    var behind = HIDE * Math.max(0, 1 - f / REVEAL);
     ctx.clearRect(0, 0, W, H);
 
-    /* Four rails to one point: floor, roof and both walls. Without the roof
-       the drawing reads as a pyramid rather than something you are inside. */
     ctx.strokeStyle = C.rule;
     ctx.lineWidth = 1;
     ctx.beginPath();
@@ -384,7 +386,7 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
     ctx.stroke();
 
     var gone = 0, over = 0, tally = 0, tallyN = 0;
-    var rows = [], prevDrawn = null, lastName = -1e9;
+    var rows = [], prevDrawn = null;
 
     for (var i = marks.length - 1; i >= 0; i--) {
       var o = marks[i], p = o.p;
@@ -395,8 +397,12 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
         if (o.m.e) { tally += o.m.v; tallyN++; }
         continue;
       }
+      // The nearest few start behind the camera and fade in as it retreats.
+      var vis = Math.max(0, Math.min(1, i + 1 - behind));
+      if (vis <= 0) continue;
+
       var gap = prevDrawn === null ? 999 : y - prevDrawn;
-      var share = o.m.k ? 0.85 : 0.6;
+      var share = o.m.k ? 0.8 : 0.62;
       var h = Math.max(1, Math.min(BAR_H * (WEIGHT[o.m.k] || 1) * p, gap * share));
       prevDrawn = y;
       var clipped = w > W;
@@ -404,48 +410,48 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
       var col = COLOUR[o.m.k] || C.credit;
       var x0 = Math.max(0, cx - w / 2), x1 = Math.min(W, cx + w / 2);
 
+      ctx.globalAlpha = vis;
       if (clipped) {
-        var g = ctx.createLinearGradient(0, 0, W, 0);
-        g.addColorStop(0, 'transparent');
-        g.addColorStop(0.26, col);
-        g.addColorStop(0.74, col);
-        g.addColorStop(1, 'transparent');
-        ctx.fillStyle = g;
+        var grd = ctx.createLinearGradient(0, 0, W, 0);
+        grd.addColorStop(0, 'transparent');
+        grd.addColorStop(0.26, col);
+        grd.addColorStop(0.74, col);
+        grd.addColorStop(1, 'transparent');
+        ctx.fillStyle = grd;
       } else {
         ctx.fillStyle = col;
       }
       ctx.fillRect(x0, y - h / 2, x1 - x0, h);
-      rows.push({ y: y, h: h, w: w, gap: gap, col: col, m: o.m, clipped: clipped });
+      ctx.globalAlpha = 1;
+      rows.push({ y: y, h: h, p: p, col: col, m: o.m, vis: vis });
     }
 
-    /* Names first, then figures over the top: a name plate sits tight under
-       the line above it, and drawing the figures last means a plate can never
-       cover one. The person stands above the line; the money is in it. */
-    for (var r = 0; r < rows.length; r++) {
+    /* The label belongs to its bar rather than to the gap above it, so it can
+       be taller than the bar is and still sit on it. It shrinks with depth
+       like everything else, loses the name first and then goes entirely. */
+    var lastLabel = 1e9;
+    for (var r = rows.length - 1; r >= 0; r--) {
       var R = rows[r];
-      if (R.h >= 4 && R.y - lastName > 17) {
-        ctx.font = '12.5px ' + MONO;
-        ctx.textBaseline = 'alphabetic';
-        ctx.textAlign = 'center';
-        var ny = R.y - R.h / 2 - 4, nw = ctx.measureText(R.m.n).width;
-        ctx.fillStyle = C.paper;
-        ctx.fillRect(cx - nw / 2 - 5, ny - 10, nw + 10, 13);
-        ctx.fillStyle = R.m.k === 'musk' ? C.debit : C.ink;
-        ctx.fillText(R.m.n, cx, ny);
-        lastName = R.y;
-      }
-    }
-    for (var q = 0; q < rows.length; q++) {
-      var Q = rows[q];
-      if (Q.h < 11) continue;
-      var fs = Math.min(Math.max(9, Math.floor(Q.h - 4)), 14);
-      ctx.font = fs + 'px ' + MONO;
-      ctx.textBaseline = 'middle';
+      var fs = R.p * 19;
+      if (fs < 7) continue;
+      fs = Math.min(fs, 15);
+      var top = R.y - R.h / 2 - 3;
+      if (lastLabel - top < fs + 3) continue;
+      var txt = fs >= 10.5 ? R.m.n + '  ' + R.m.f : R.m.f;
+      ctx.font = Math.round(fs * 10) / 10 + 'px ' + MONO;
       ctx.textAlign = 'center';
-      if (ctx.measureText(Q.m.f).width + 18 < Math.min(Q.w, W)) {
-        ctx.fillStyle = C.paper;
-        ctx.fillText(Q.m.f, cx, Q.y + 0.5);
-      }
+      ctx.textBaseline = 'alphabetic';
+      ctx.globalAlpha = R.vis;
+      // A halo rather than a plate: the label stays readable where it crosses
+      // the line above without punching a hole in it.
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = 3.5;
+      ctx.strokeStyle = C.paper;
+      ctx.strokeText(txt, cx, top);
+      ctx.fillStyle = R.m.k === 'musk' ? C.debit : (R.m.k === 'reg' ? C.ink : C.credit);
+      ctx.fillText(txt, cx, top);
+      ctx.globalAlpha = 1;
+      lastLabel = top - fs;
     }
 
     // What has collapsed into the last pixel, and what it is still worth.
@@ -455,41 +461,40 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
       ctx.textAlign = 'center';
       ctx.textBaseline = 'alphabetic';
       ctx.font = '13px ' + MONO;
-      ctx.fillStyle = C.ink;
-      ctx.fillText(money(tally), cx, vy - 26);
+      ctx.fillText(money(tally), cx, vy - 28);
       ctx.font = '11px ' + MONO;
       ctx.fillStyle = C.muted;
-      ctx.fillText(tallyN + ' packages, piled into the last pixel', cx, vy - 12);
+      ctx.fillText(tallyN + ' packages, piled into the last pixel', cx, vy - 14);
       if (D.top / tally >= 2) {
         ctx.fillStyle = C.debit;
         ctx.fillText('the bar at your feet is '
           + Math.round(D.top / tally).toLocaleString('en-US') + ' times this',
-          cx, vy + 16);
+          cx, vy + 18);
       }
     }
     return { gone: gone, over: over };
   }
 
-  /* How far through the tall section the reader has scrolled. The stage is
-     sticky inside it, so this is the page's own scroll position: nothing is
-     taken over, and the scrollbar still means what it says. */
+  /* Measured from the top of the document, not from the top of the section,
+     so the first pixel of scroll already moves the camera rather than being
+     spent arriving at the corridor. */
   function progress() {
-    var travel = sect.offsetHeight - window.innerHeight;
+    var travel = TOP + sect.offsetHeight - window.innerHeight;
     if (travel <= 0) return 0;
-    return Math.max(0, Math.min(1, -sect.getBoundingClientRect().top / travel));
+    return Math.max(0, Math.min(1, window.pageYOffset / travel));
   }
 
   function render() {
-    var f = progress();
-    var r = draw(rateAt(f));
-    rateEl.textContent = perPx(rateAt(f));
-    scrEl.textContent = money(rateAt(f) * W / deepest);
+    var f = progress(), rate = rateAt(f);
+    var r = draw(rate, f);
+    rateEl.textContent = perPx(rate);
+    scrEl.textContent = money(rate * W / deepest);
     var msg = [];
     if (r.over) msg.push(r.over + (r.over === 1 ? ' marker is' : ' markers are')
                          + ' wider than the screen');
     msg.push(r.gone + ' of ' + marks.length + ' are under a pixel');
     goneEl.textContent = msg.join('; ') + '.';
-    if (introEl) introEl.classList.toggle('is-off', f > 0.012);
+    if (introEl) introEl.classList.toggle('is-off', f > 0.008);
     cv.setAttribute('aria-label',
       'The register in perspective. One pixel is ' + rateEl.textContent + '. '
       + r.gone + ' of ' + marks.length + ' markers are too small to draw.');
@@ -503,10 +508,9 @@ footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
   }, { passive: true });
 
   function step(dir) {
-    var travel = sect.offsetHeight - window.innerHeight;
-    var base = sect.getBoundingClientRect().top + window.pageYOffset;
-    var f = Math.max(0, Math.min(1, progress() + dir * 0.12));
-    window.scrollTo({ top: base + travel * f,
+    var travel = TOP + sect.offsetHeight - window.innerHeight;
+    var f = Math.max(0, Math.min(1, progress() + dir * 0.1));
+    window.scrollTo({ top: travel * f,
       behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   }
   backEl.addEventListener('click', function () { step(-1); });
