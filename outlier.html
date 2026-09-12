@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>To Their Credit — Bonus Watch</title>
-<meta name="description" content="The same ledger, running the other way: owners and founders who took the money out of their own column and put it into everyone else's.">
-<link rel="canonical" href="https://bonus.watch/to-their-credit.html">
+<title>The outlier — Bonus Watch</title>
+<meta name="description" content="The scale page draws every package at one rate: a pixel is US$10,000. One entry cannot be drawn at it. Zoom out until it fits, and watch the rest of the register disappear.">
+<link rel="canonical" href="https://bonus.watch/outlier.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bonus Watch">
-<meta property="og:url" content="https://bonus.watch/to-their-credit.html">
-<meta property="og:title" content="To Their Credit — Bonus Watch">
-<meta property="og:description" content="Owners and founders who moved the money into the workforce&#x27;s column. What was credited to the staff, and what it cost the person who signed it over.">
+<meta property="og:url" content="https://bonus.watch/outlier.html">
+<meta property="og:title" content="The outlier — Bonus Watch">
+<meta property="og:description" content="One entry cannot be drawn at the same rate as the others. Zoom out until it fits, and watch the rest of the register disappear.">
 <meta property="og:image" content="https://bonus.watch/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="To Their Credit — Bonus Watch">
-<meta name="twitter:description" content="Owners and founders who moved the money into the workforce&#x27;s column. What was credited to the staff, and what it cost the person who signed it over.">
+<meta name="twitter:title" content="The outlier — Bonus Watch">
+<meta name="twitter:description" content="One entry cannot be drawn at the same rate as the others. Zoom out until it fits, and watch the rest of the register disappear.">
 <meta name="twitter:image" content="https://bonus.watch/og.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.svg">
@@ -148,16 +148,53 @@ footer p + p { margin-top:8px; }
   @keyframes post { from { opacity:0; transform:translateY(6px); } }
 }
 
-/* The same ledger card as the register. Only the debit column changes hands:
-   what was taken from everyone else is now what the owner gave up, so it is
-   gilt rather than red. */
-.lede {
-  font-family:'Libre Caslon Text',serif; font-size:1.25rem; line-height:1.5;
-  max-width:34em; margin-top:14px;
-}
-.lede b { color:var(--gold); font-weight:400; font-style:italic; }
-.col-dr .drcr, .offset { color:var(--gold); }
-.offset { font-weight:500; }
+main p { max-width:62ch; }
+main { line-height:1.62; }
+p + p { margin-top:12px; }
+.lede { font-size:1.08rem; margin-top:14px; }
+
+.zoomer { margin:26px 0 8px; border:1px solid var(--rule); background:var(--wash);
+  padding:16px 16px 18px; }
+.zbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  padding-bottom:14px; margin-bottom:16px; border-bottom:1px solid var(--rule); }
+.zbar label { font-size:.78rem; color:var(--muted); letter-spacing:.07em;
+  text-transform:uppercase; }
+#zoom { flex:1 1 170px; min-width:130px; accent-color:var(--credit); }
+.zbtn { font:inherit; font-size:.85rem; padding:4px 11px; cursor:pointer;
+  border:1px solid var(--rule); background:var(--paper); color:var(--ink);
+  border-radius:2px; }
+.zbtn:hover:not(:disabled) { border-color:var(--credit); color:var(--credit); }
+.zbtn:disabled { opacity:.35; cursor:default; }
+.readout { font-size:.92rem; margin-bottom:16px; }
+.readout b { font-family:'IBM Plex Mono',monospace; color:var(--credit); }
+
+#lmt { width:100%; }
+.lm { margin-bottom:13px; }
+.lm-bar { height:16px; width:1px; background:var(--credit); border-radius:1px;
+  transition:width .55s cubic-bezier(.4,0,.2,1); }
+.lm-bar.is-reg { background:var(--ink); }
+.lm-bar.is-musk { background:var(--debit); }
+.lm-lab { font-size:.84rem; margin-top:5px; line-height:1.35; max-width:none; }
+.lm-sub { color:var(--muted); }
+.lm.is-gone { opacity:.35; }
+.lm.is-gone .lm-bar { background:var(--muted); }
+.lm.is-gone .lm-lab::after { content:" — under a pixel"; color:var(--muted); }
+/* Clipped bars all stop at the same edge, so without a cut they read as
+   the same length. The mask fades the last of it out. */
+.lm.is-over .lm-bar { border-radius:1px 0 0 1px;
+  -webkit-mask-image:linear-gradient(90deg,#000 0 86%,transparent 100%);
+          mask-image:linear-gradient(90deg,#000 0 86%,transparent 100%); }
+.lm.is-over .lm-lab::after { content:" → runs off the screen"; color:var(--debit); }
+#gone { margin-top:16px; padding-top:13px; border-top:1px solid var(--rule);
+  font-size:.85rem; color:var(--debit); max-width:none; }
+#gone.is-empty { color:var(--muted); }
+
+.sums { margin-top:26px; border-left:3px solid var(--ink); padding:2px 0 2px 16px; }
+.sums p { margin:11px 0; }
+.sums b { font-family:'IBM Plex Mono',monospace; }
+@media (prefers-reduced-motion: reduce) { .lm-bar { transition:none; } }
+footer { border-top:1px solid var(--rule); margin-top:34px; padding-top:30px; }
+
 </style>
 </head>
 <body>
@@ -180,137 +217,157 @@ footer p + p { margin-top:8px; }
     <nav class="site-nav">
       <a href="index.html">The register</a>
       <a href="scale.html">The scale</a>
-      <a href="outlier.html">The outlier</a>
-      <a href="to-their-credit.html" aria-current="page">To their credit</a>
+      <a href="outlier.html" aria-current="page">The outlier</a>
+      <a href="to-their-credit.html">To their credit</a>
       <a href="about.html">About</a>
       <a href="https://ko-fi.com/bonuswatch" rel="noopener">Support</a>
     </nav>
   </div>
 </header>
-
 <main>
   <div class="wrap">
-    <h1 class="page-title">To their credit</h1>
-    <p class="lede">The register runs one way: credited to the executive, debited
-    from everyone else. <b>These are the entries where it runs the other way.</b></p>
+    <h1 class="page-title">The outlier</h1>
+    <p class="lede">The scale page draws every package in the register at one
+    rate. A pixel is US$10,000, and it is still US$10,000 at the far end. That
+    fixed rate is the only reason the page means anything.</p>
+    <p>One entry cannot be drawn at it. At US$10,000 a pixel the Tesla package
+    is 100,000,000 pixels long, and browsers give out a long way short of that.
+    So it sits on the register uncounted and undrawn, and this page is the hole
+    it left.</p>
+    <p>Take the rate down until it fits. Watch what the same move does to
+    everything else.</p>
 
-    <article class="entry" id="tc-0005">
-      <div class="entry-head">
-        <a class="mono serial" href="#tc-0005">ENTRY Nº TC-0005</a>
-        <span class="mono">2025-07 · US</span>
+    <div class="zoomer">
+      <div class="zbar">
+        <label for="zoom">Dollars per pixel</label>
+        <button class="zbtn" id="back" type="button">← In</button>
+        <input type="range" id="zoom" min="0" max="6" step="1" value="0"
+               aria-label="Dollars per pixel">
+        <button class="zbtn" id="fwd" type="button">Out →</button>
       </div>
-      <h2 class="entry-co">Fibrebond</h2>
-      <p class="entry-who">Graham Walker, Outgoing CEO</p>
-      <div class="ledger-line">
-        <div class="col col-cr">
-          <h3 class="col-head">Credited to the workforce <span class="mono drcr">CR</span></h3>
-          <p class="figure mono">US$240m</p>
-          <p class="col-note">About 15% of the proceeds of a US$1.7bn sale, put into a bonus pool for the 540 full-time staff of a manufacturer in Minden, Louisiana. Roughly US$443,000 each, paid out over five years, weighted so that the longest-serving get the most.</p>
-        </div>
-        <div class="col col-dr">
-          <h3 class="col-head">Debited from the owner <span class="mono drcr">DR</span></h3>
-          <p class="offset">The money came out of the family&#x27;s own share of the sale. He rejected the word gift: the sale was only possible, he told NBC News, because of the work the whole team had put in, including through the years when the company was struggling.</p>
-        </div>
-      </div>
-      <p class="footnote">Fifteen per cent of the sale price, split five hundred and forty ways.</p>
-      <p class="sources">Sources: <a href="https://www.fortune.com/2025/12/30/fibrebond-ceo-graham-walker-leaves-443000-to-each-employee-240-million" rel="noopener">Fortune</a> · <a href="https://www.wcnc.com/article/news/nation-world/ceo-gives-six-figure-bonus-to-employees/507-b5dde988-230d-4635-9ad8-08c4d92497eb" rel="noopener">WCNC</a> · <a href="https://www.goodnewsnetwork.org/boss-gifts-employees-240m-in-bonuses-after-selling-family-company/" rel="noopener">Good News Network</a></p>
-    </article>
-    <article class="entry" id="tc-0004">
-      <div class="entry-head">
-        <a class="mono serial" href="#tc-0004">ENTRY Nº TC-0004</a>
-        <span class="mono">2022-09 · US</span>
-      </div>
-      <h2 class="entry-co">Patagonia</h2>
-      <p class="entry-who">Yvon Chouinard, Founder</p>
-      <div class="ledger-line">
-        <div class="col col-cr">
-          <h3 class="col-head">Credited to the workforce <span class="mono drcr">CR</span></h3>
-          <p class="figure mono">US$3b</p>
-          <p class="col-note">The whole company. 2% of it — the voting stock — to the Patagonia Purpose Trust, and the other 98% to the Holdfast Collective, a non-profit. Roughly US$100m of profit a year now goes to fighting climate change and protecting undeveloped land.</p>
-        </div>
-        <div class="col col-dr">
-          <h3 class="col-head">Debited from the owner <span class="mono drcr">DR</span></h3>
-          <p class="offset">The family took no tax deduction for any of it. The Holdfast Collective is a 501(c)(4), which can make unlimited political contributions and to which donations are not deductible — so the structure that made the money most useful was also the one that cost the family most.</p>
-        </div>
-      </div>
-      <p class="footnote">He stopped being a billionaire on purpose.</p>
-      <p class="sources">Sources: <a href="https://www.cnbc.com/2022/09/15/yvon-chouinard-donates-patagonia-to-fight-climate-change-protect-land.html" rel="noopener">CNBC</a> · <a href="https://www.forbes.com/sites/matthewerskine/2022/09/16/yvon-chouinard-and-the-patagonia-purpose-trust-what-is-it-and-will-it-work/" rel="noopener">Forbes</a> · <a href="https://www.voanews.com/a/patagonia-founder-donates-company-to-charity/6749946.html" rel="noopener">VOA News</a></p>
-    </article>
-    <article class="entry" id="tc-0003">
-      <div class="entry-head">
-        <a class="mono serial" href="#tc-0003">ENTRY Nº TC-0003</a>
-        <span class="mono">2019-05 · UK</span>
-      </div>
-      <h2 class="entry-co">Richer Sounds</h2>
-      <p class="entry-who">Julian Richer, Founder</p>
-      <div class="ledger-line">
-        <div class="col col-cr">
-          <h3 class="col-head">Credited to the workforce <span class="mono drcr">CR</span></h3>
-          <p class="figure mono">£3.5m</p>
-          <p class="col-note">Paid straight to the 522 staff when 60% of the company was transferred to an employee ownership trust — £1,000 for every year served, which averaged about £8,000 a head.</p>
-        </div>
-        <div class="col col-dr">
-          <h3 class="col-head">Debited from the owner <span class="mono drcr">DR</span></h3>
-          <p class="offset">Control of the company he founded as a teenager, and the price a trade buyer would have paid for it. He took £9.2m from the trust for the 60% stake.</p>
-        </div>
-      </div>
-      <p class="footnote">A thousand pounds for every year you stayed.</p>
-      <p class="sources">Sources: <a href="https://www.forbes.com/sites/oliverwilliams1/2019/05/15/why-julian-richer-gave-his-multimillion-dollar-firm-to-employees/" rel="noopener">Forbes</a> · <a href="https://www.whathifi.com/news/richer-sounds-founder-hands-control-of-business-to-employees" rel="noopener">What Hi-Fi?</a> · <a href="https://www.lawblacks.com/2019/05/22/the-richer-sounds-of-employee-ownership-trusts/" rel="noopener">Blacks Solicitors</a></p>
-    </article>
-    <article class="entry" id="tc-0002">
-      <div class="entry-head">
-        <a class="mono serial" href="#tc-0002">ENTRY Nº TC-0002</a>
-        <span class="mono">2016-04 · US</span>
-      </div>
-      <h2 class="entry-co">Chobani</h2>
-      <p class="entry-who">Hamdi Ulukaya, Founder and CEO</p>
-      <div class="ledger-line">
-        <div class="col col-cr">
-          <h3 class="col-head">Credited to the workforce <span class="mono drcr">CR</span></h3>
-          <p class="figure mono">10% of the company</p>
-          <p class="col-note">Award units to all 2,000 full-time employees, scaled by tenure and role, converting to cash or shares if the company ever floated or sold. Estimates at the time put the average at around US$150,000, with the longest-serving staff above US$1m.</p>
-        </div>
-        <div class="col col-dr">
-          <h3 class="col-head">Debited from the owner <span class="mono drcr">DR</span></h3>
-          <p class="offset">The stake came out of his own holding in a company he owned privately and did not have to share with anyone.</p>
-        </div>
-      </div>
-      <p class="footnote">Ten per cent, and the longest-serving got the most of it.</p>
-      <p class="sources">Sources: <a href="https://www.washingtonpost.com/news/on-leadership/wp/2016/04/27/chobanis-ceo-is-giving-up-to-10-percent-of-his-company-to-employees/" rel="noopener">The Washington Post</a> · <a href="https://www.npr.org/sections/thesalt/2016/04/28/476021520/why-chobani-gave-employees-a-financial-stake-in-companys-future" rel="noopener">NPR</a> · <a href="https://www.forbes.com/sites/maryjosephs/2016/04/29/what-does-chobanis-founder-get-for-giving-10-of-his-company-to-workers/" rel="noopener">Forbes</a></p>
-    </article>
-    <article class="entry" id="tc-0001">
-      <div class="entry-head">
-        <a class="mono serial" href="#tc-0001">ENTRY Nº TC-0001</a>
-        <span class="mono">1995-12 · US</span>
-      </div>
-      <h2 class="entry-co">Malden Mills</h2>
-      <p class="entry-who">Aaron Feuerstein, Owner and CEO</p>
-      <div class="ledger-line">
-        <div class="col col-cr">
-          <h3 class="col-head">Credited to the workforce <span class="mono drcr">CR</span></h3>
-          <p class="figure mono">1,400 jobs, on full pay</p>
-          <p class="col-note">Two days after a fire destroyed the factory complex in Lawrence, Massachusetts, he announced that the workforce would be paid in full for 30 days. He extended the wages to 90 days and the benefits to 180, while the mill was rebuilt on the same site rather than moved offshore.</p>
-        </div>
-        <div class="col col-dr">
-          <h3 class="col-head">Debited from the owner <span class="mono drcr">DR</span></h3>
-          <p class="offset">Insurance money that could have been banked, or taken as profit, or spent rebuilding somewhere cheaper. He did none of those things, and the decision is widely reckoned to have cost the company its financial cushion.</p>
-        </div>
-      </div>
-      <p class="footnote">“I&#x27;m not throwing 3,000 people out of work two weeks before Christmas.”</p>
-      <p class="sources">Sources: <a href="https://www.cbsnews.com/boston/news/aaron-feuerstein-dead-obit-malden-mills-lawrence-massachusetts-polartec/" rel="noopener">CBS News Boston</a> · <a href="https://www.jta.org/2021/11/07/obituaries/aaron-feuerstein-mensch-of-malden-mills-who-paid-his-workers-even-after-his-factory-burned-down-dies-at-95" rel="noopener">Jewish Telegraphic Agency</a> · <a href="https://www.timesofisrael.com/mensch-of-malden-mills-who-paid-workers-even-after-factory-burned-dies-at-95/" rel="noopener">The Times of Israel</a></p>
-    </article>
+      <p class="readout">One pixel is <b id="rate">US$10,000</b>. This screen is
+      worth <b id="screen">—</b>.</p>
+      <div id="lmt"></div>
+      <p id="gone">—</p>
+    </div>
+
+    <div class="sums">
+      <p>At the scale page’s rate the register — every entry on it, 1989
+      to now — is <b>293 metres</b> of bar. The Tesla package is
+      <b>26.5 kilometres</b>.</p>
+      <p>It is <b>90 times</b> the whole register, and <b>909 times</b>
+      the longest bar the scale page draws.</p>
+      <p>That figure is a promise, and pays in full only at an US$8.5tn market
+      capitalisation. What Musk realised in 2025 is not a promise: the AFL-CIO
+      puts it at <b>US$158.3bn</b> — 4.2 kilometres, <b>14 times</b>
+      the register, and 2.5 million times the pay of the median Tesla worker.</p>
+      <p><a href="index.html#bw-0108">The entry is on the register</a>, counted in
+      neither the total nor the scale, and saying so.</p>
+    </div>
   </div>
 </main>
-
 <footer>
   <div class="wrap">
-    <p>Same standard as the register: a figure that can be traced to a filing or
-    to named reporting, and a cost that can be traced to the person who bore it.
-    Know of one that belongs here?
-    <a href="mailto:hello@bonus.watch">Tell us</a>.</p>
+    <p>Bonus Watch · <a href="mailto:hello@bonus.watch">hello@bonus.watch</a></p>
   </div>
 </footer>
-<script data-goatcounter="https://bonuswatch.goatcounter.com/count"
+<script>
+(function () {
+  var D = {"marks":[{"n":"Nadine Lee","s":"Dallas Area Rapid Transit · US$72,000","v":72000.0,"k":""},{"n":"Peter Hebblethwaite","s":"P&amp;O Ferries · £183k","v":232410.0,"k":""},{"n":"Julie Masino","s":"Cracker Barrel · US$4.63m","v":4630000.0,"k":""},{"n":"Hock Tan","s":"Broadcom · US$205.3m","v":205300000.0,"k":""},{"n":"Alex Karp","s":"the longest bar the scale page draws","v":1100000000.0,"k":""},{"n":"The whole register","s":"all 150 entries, 1989 to now · US$11.09b","v":11089612231.13,"k":"reg"},{"n":"Elon Musk","s":"Tesla · US$158.3b · what he realised in 2025","v":158300000000,"k":"musk"},{"n":"Elon Musk","s":"Tesla · US$1tn · the package","v":1000000000000,"k":"musk"}],"fit":1000000000000};
+  var track  = document.getElementById('lmt');
+  var slider = document.getElementById('zoom');
+  var rateEl = document.getElementById('rate');
+  var scrEl  = document.getElementById('screen');
+  var goneEl = document.getElementById('gone');
+  var backEl = document.getElementById('back');
+  var fwdEl  = document.getElementById('fwd');
+  if (!track || !slider) return;
+
+  /* Six fixed rungs, then one computed so the largest bar always just fits
+     the reader's own screen. The last rung is therefore different on a phone
+     and on a desktop, which is the honest answer: there isn't a fixed rate
+     at which this thing fits anything. */
+  var STEPS = [1e4, 1e5, 1e6, 1e7, 1e8, 1e9];
+
+  function money(v) {
+    if (v >= 1e12) return 'US$' + (v / 1e12).toFixed(2).replace(/\.?0+$/, '') + 'tn';
+    if (v >= 1e9)  return 'US$' + (v / 1e9).toFixed(2).replace(/\.?0+$/, '') + 'b';
+    if (v >= 1e6)  return 'US$' + (v / 1e6).toFixed(2).replace(/\.?0+$/, '') + 'm';
+    return 'US$' + Math.round(v).toLocaleString('en-US');
+  }
+  function perPx(v) {
+    if (v >= 1e9) return 'US$' + (v / 1e9).toFixed(2).replace(/\.?0+$/, '') + ' billion';
+    if (v >= 1e6) return 'US$' + (v / 1e6).toFixed(2).replace(/\.?0+$/, '') + ' million';
+    return 'US$' + Math.round(v).toLocaleString('en-US');
+  }
+
+  function width() { return Math.max(160, track.clientWidth); }
+  function fitRate() { return D.fit / (width() * 0.88); }
+  function rates() { return STEPS.concat([fitRate()]); }
+
+  var rows = D.marks.map(function (m) {
+    var row = document.createElement('div');
+    row.className = 'lm';
+    var bar = document.createElement('div');
+    bar.className = 'lm-bar' + (m.k ? ' is-' + m.k : '');
+    var lab = document.createElement('p');
+    lab.className = 'lm-lab';
+    lab.innerHTML = '<b>' + m.n + '</b> <span class="lm-sub">' + m.s + '</span>';
+    row.appendChild(bar);
+    row.appendChild(lab);
+    track.appendChild(row);
+    return { m: m, row: row, bar: bar };
+  });
+
+  function render(i) {
+    var r = rates()[i], w = width(), vanished = [];
+    rateEl.textContent = perPx(r);
+    scrEl.textContent = money(r * w);
+    rows.forEach(function (o) {
+      var px = o.m.v / r;
+      if (px < 1) {
+        o.row.classList.add('is-gone');
+        o.row.classList.remove('is-over');
+        o.bar.style.width = '1px';
+        vanished.push(o.m.n);
+      } else {
+        o.row.classList.remove('is-gone');
+        o.row.classList.toggle('is-over', px > w);
+        o.bar.style.width = Math.min(px, w) + 'px';
+      }
+    });
+    var over = rows.filter(function (o) {
+      return o.row.classList.contains('is-over');
+    }).length;
+    var msg = [];
+    if (over) {
+      msg.push(over + (over === 1 ? ' bar runs' : ' bars run') + ' off the screen');
+    }
+    if (vanished.length) {
+      msg.push('under one pixel: ' + vanished.join(' · '));
+    }
+    goneEl.textContent = msg.length ? msg.join('; ') + '.' : 'Everything fits.';
+    goneEl.classList.toggle('is-empty', !msg.length);
+    backEl.disabled = i <= 0;
+    fwdEl.disabled = i >= rates().length - 1;
+  }
+
+  slider.max = String(rates().length - 1);
+  slider.addEventListener('input', function () { render(+slider.value); });
+  backEl.addEventListener('click', function () {
+    slider.value = String(Math.max(0, +slider.value - 1)); render(+slider.value);
+  });
+  fwdEl.addEventListener('click', function () {
+    slider.value = String(Math.min(rates().length - 1, +slider.value + 1));
+    render(+slider.value);
+  });
+  var t;
+  window.addEventListener('resize', function () {
+    clearTimeout(t); t = setTimeout(function () { render(+slider.value); }, 120);
+  });
+  render(0);
+})();
+</script><script data-goatcounter="https://bonuswatch.goatcounter.com/count"
         async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
